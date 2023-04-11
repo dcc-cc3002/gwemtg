@@ -12,19 +12,20 @@ import gwent.Card.Card
  * @since 1.0.0
  * @version 1.0.0
  */
-abstract class AbstractPlayer(val name: String, var deck: List[Card])
-{
-
+abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
+  /*
+  def cardIn(carta: Card, indice: Int): List[Card] = {
+    this.deck = this.deck.take(indice) ::: List(carta) ::: this.deck.drop(deck.length-indice)
+  }
+  */
 }
 
 //este es el constructor de un jugador humano
-class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck)
-{
+class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {
 
 }
 
 //este es el constructor de un jugador automata
-class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck)
-{
+class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {
 
 }
