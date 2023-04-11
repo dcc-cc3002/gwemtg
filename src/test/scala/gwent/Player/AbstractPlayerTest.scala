@@ -18,6 +18,7 @@ class AbstractPlayerTest extends munit.FunSuite {
   var uno = new Card("Card 1")
   var dos = new Card("Card 2")
   var tres = new Card("Card 3")
+  var robada: Card = _
   var jugador = new Player("Hugo", List(uno, dos))
   var npc = new ComputerPlayer("Marvin", List(cero, uno))
   override def beforeEach(context: BeforeEach): Unit = {
@@ -77,17 +78,17 @@ class AbstractPlayerTest extends munit.FunSuite {
     assertEquals(jugador.deck.last, tres, "la carta no fue anxadida en el indice -2")
     assertEquals(jugador.deck(jugador.deck.length - 2), tres, "la carta no fue anxadida en el indice -2")
     assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
+    //// ??????????????????????????
+    assert(false)
   }
 
-  /*
-    test("robar una carta al mazo del jugador deberia disminuir su tamanxo y termimnar siendo mas pequenxo")
-    {
+
+    test("robar una carta al mazo del jugador deberia disminuir su tamanxo y termimnar siendo mas pequenxo"){
       assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
-      robada = jugador.deck.robar()
+      robada = jugador.robar()
       //assertEquals(type(robada), Card, "carta robada es tipo carta")
-      assertEquals(robada,Card("Card 1"),"no se robo la carta esperada 'Card 1'")
+      assertEquals(robada,uno,"no se robo la carta esperada 'uno'")
       assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")
     }
-  */
 
 }

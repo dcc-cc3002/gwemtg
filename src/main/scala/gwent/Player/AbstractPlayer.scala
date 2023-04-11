@@ -19,16 +19,18 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
     * abajo del mazo tambien es -1
     */
   def cardIn(carta: Card, i: Double): Unit = {
-
     val indice = i.asInstanceOf[Int]
     if(i==0){deck = List(carta) ::: deck.drop(0)}
     else{if(i>0){deck = deck.take(indice-1) ::: List(carta) ::: deck.drop(indice)}
     //else{if(i==-1){deck = deck.take(deck.length) ::: List(carta)}
     else{deck = deck.take(deck.length-indice) ::: List(carta) ::: deck.drop(1+deck.length-indice)}}
-
-
   }
 
+  def robar(): Card = {
+    val h = deck.head
+    deck = deck.drop(1)
+    return h
+  }
 }
 
 //este es el constructor de un jugador humano
