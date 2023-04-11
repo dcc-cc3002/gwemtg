@@ -12,6 +12,9 @@ import gwent.Card.Card
  * @since 1.0.0
  * @version 1.1.0
  */
+
+
+
 class Player(val name: String, var deck: List[Card]) {
   /** metodo que anxade la Card carta en la posicion indice
     * arriba del mazo es 0
@@ -19,7 +22,7 @@ class Player(val name: String, var deck: List[Card]) {
     * abajo del mazo tambien es -1
     */
   def cardIn(carta: Card, i: Double): Unit = {
-    val indice = i.asInstanceOf[Int]
+    var indice = i.asInstanceOf[Int]
     /***/
     if(i==0){deck = List(carta) ::: deck.drop(0)}else{
       /** poner la carta en una posicion indice */
@@ -28,7 +31,9 @@ class Player(val name: String, var deck: List[Card]) {
         if(i==(-1).asInstanceOf[Double]){deck = deck.take(deck.length) ::: List(carta)}
         /** pora poner la carta se recorre el mazo desde el final para los Double < 0  */
         else{
-          deck = deck.take(deck.length-indice) ::: List(carta) ::: deck.drop(deck.length-indice)
+          assert{deck.length >= indice}
+          indice = (deck.length.asInstanceOf[Double]+i).asInstanceOf[Int] + 1
+          deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)
         }
       }
     }

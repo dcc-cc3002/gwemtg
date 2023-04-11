@@ -81,15 +81,11 @@ class PlayerTest extends munit.FunSuite {
 
   test("anxadir una carta en el mazo de un jugador deberia aumentar su tamanxo y quedar entre medio") {
     assertEquals(jugador.deck.length, 2, "mazo de distinto tamanxo al esperado")
-    jugador.cardIn(tres, -4)
+    jugador.cardIn(tres, -2)
     assertEquals(jugador.deck.length, 3, "mazo de distinto tamanxo al esperado")
-    println(jugador.deck(0).name)
-    println(jugador.deck(1).name)
-    println(jugador.deck(2).name)
-    assertEquals(jugador.deck.head, tres, "la carta no fue anxadida en el indice -2 aka head")
-    assertEquals(jugador.deck(jugador.deck.length - 4), tres, "la carta no fue anxadida en el indice -2")
-    assertEquals(jugador.deck, List(tres, uno, dos), "los mazos no coinciden")
-    //fail("this test should fail")
+    assertEquals(jugador.deck(jugador.deck.length - 2), tres, "la carta no fue anxadida en el indice -2")
+    assertEquals(jugador.deck(1), tres, "la carta fue anxadida en el indice 1")
+    assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")    //fail("this test should fail")
   }
 
 
