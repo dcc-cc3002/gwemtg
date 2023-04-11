@@ -24,15 +24,15 @@ abstract class AbstractPlayerTest extends munit.FunSuite {
   var dos: Card = _
   var tres: Card = _
   var jugador: Player = _
-  var npc: ComputerPlayer = _
+  //var npc: CP = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     cero = new Card("Card 0")
     uno = new Card("Card 1")
     dos = new Card("Card 2")
     tres = new Card("Card 3")
-    Player = new Player("Hugo", List(uno,dos))
-    ComputerPlayer = new ComputerPlayer("Marvin", List(cero,uno))
+    jugador = new Player("Hugo", List(uno,dos))
+    //npc = new Player("Marvin", List(cero,uno))
   }
 
   test("crear un jugador humano con un mazo y un nombre deberia tener los mismos atributos que los puestos"){
@@ -40,13 +40,13 @@ abstract class AbstractPlayerTest extends munit.FunSuite {
     assertEquals(jugador.name, esperado.name,"los nombres no coinciden")
     assertEquals(jugador.deck, esperado.deck,"los mazos no coinciden")
   }
-
+/*
   test("crear un jugador automata con un mazo y un nombre deberia tener los mismos atributos que los puestos"){
     val esperado = new ComputerPlayer("Marvin", List(cero,uno))
     assertEquals(npc.name, esperado.name,"los nombres no coinciden")
     assertEquals(npc.deck, esperado.deck,"los mazos no coinciden")
   }
-
+*/
   test("anxadir una carta sobre el mazo de un jugador deberia aumentar su tamanxo y quedar al principio"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, 0)
