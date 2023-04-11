@@ -9,7 +9,7 @@ package gwent.Card
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class Card(val name: String) {
