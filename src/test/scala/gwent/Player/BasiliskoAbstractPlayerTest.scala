@@ -87,7 +87,7 @@ abstract class AbstractPlayerTest extends munit.FunSuite {
 
   test("robar una carta al mazo del jugador deberia disminuir su tamanxo y termimnar siendo mas pequenxo") {
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
-    val robada: Card = jugador.robar()
+    val robada: Card = jugador.draw()
     //assertEquals(type(robada), Card, "carta robada es tipo carta")
     assertEquals(robada, uno, "no se robo la carta esperada 'uno'")
     assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")

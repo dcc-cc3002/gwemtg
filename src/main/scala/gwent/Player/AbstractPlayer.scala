@@ -29,7 +29,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
     else{deck = deck.take(deck.length-indice) ::: List(carta) ::: deck.drop(1+deck.length-indice)}}
   }
 
-  def robar(): Card = {
+  def draw(): Card = {
     val h = deck.head
     deck = deck.drop(1)
     return h
