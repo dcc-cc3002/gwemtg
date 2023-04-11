@@ -1,8 +1,7 @@
 package cl.uchile.dcc
 package gwent.Player
 
-import gwent.Card.Card
-import gwent.Player.Player
+
 /**
  * AbstractPlayerTest
  *
@@ -14,17 +13,16 @@ import gwent.Player.Player
  */
 
 import gwent.Card.Card
-import gwent.Player.*
-
+import gwent.Player.Player
 import munit.*
-//import munit.Clue.generate
 
-abstract class PlayerTest extends munit.FunSuite {
+class PlayerTest extends munit.FunSuite {
 
   var cero: Card = _
   var uno: Card = _
   var dos: Card = _
   var tres: Card = _
+  var esperado: Player = _
   var jugador: Player = _
   var npc: Player = _
 
@@ -33,19 +31,25 @@ abstract class PlayerTest extends munit.FunSuite {
     uno = new Card("Card 1")
     dos = new Card("Card 2")
     tres = new Card("Card 3")
-    jugador = new Player("Hugo", List(uno,dos))
-    npc = new Player("Marvin", List(cero,uno))
+    jugador = new Player("Hugo", List(uno, dos))
+    npc = new Player("Marvin", List(cero, uno))
   }
 
-  test("crear un jugador humano con un mazo y un nombre deberia tener los mismos atributos que los puestos"){
-    val esperado = new Player("Hugo", List(uno,dos))
-    assertEquals(jugador.name, esperado.name,"los nombres no coinciden")
-    assertEquals(jugador.deck, esperado.deck,"los mazos no coinciden")
+  cero = new Card("Card 0")
+  uno = new Card("Card 1")
+  dos = new Card("Card 2")
+  tres = new Card("Card 3")
+  jugador = new Player("Hugo", List(uno, dos))
+  npc = new Player("Marvin", List(cero, uno))
+
+  test("crear un jugador humano con un mazo y un nombre deberia tener los mismos atributos que los puestos") {
+    esperado = new Player("Hugo", List(uno, dos))
+    assertEquals(jugador.name, esperado.name, "los nombres no coinciden")
+    assertEquals(jugador.deck, esperado.deck, "los mazos no coinciden")
   }
 
-  /** now redundant*/
   test("crear un jugador automata con un mazo y un nombre deberia tener los mismos atributos que los puestos"){
-    val esperado = new Player("Marvin", List(cero,uno))
+    esperado = new Player("Marvin", List(cero,uno))
     assertEquals(npc.name, esperado.name,"los nombres no coinciden")
     assertEquals(npc.deck, esperado.deck,"los mazos no coinciden")
   }
@@ -55,20 +59,19 @@ abstract class PlayerTest extends munit.FunSuite {
     jugador.cardIn(tres, 0)
     assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
     assertEquals(jugador.deck.head, tres, "la carta no fue anxadida arriba")
-    assertEquals(jugador.deck(0), tres, "la carta no fue anxadida arriba")
     assertEquals(jugador.deck, List(tres, uno, dos), "los mazos no coinciden")
   }
 
   test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al principio"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, -1)
-    //assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
-    //assertEquals(jugador.deck.last, tres, "la carta no fue anxadida abajo")
-    //assertEquals(jugador.deck(jugador.deck.length-1), tres, "la carta no fue anxadida abajo")
-    //assertEquals(jugador.deck, List(uno, dos, tres), "los mazos no coinciden")
+    assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
+    assertEquals(jugador.deck.last, tres, "la carta no fue anxadida abajo")
+    assertEquals(jugador.deck(jugador.deck.length-1), tres, "la carta no fue anxadida abajo")
+    assertEquals(jugador.deck, List(uno, dos, tres), "los mazos no coinciden")
     }
 
-  test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al principio") {
+  test("anxadir una en el mazo de un jugador deberia aumentar su tamanxo y quedar donde fue puesta") {
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, 1)
     assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
@@ -76,19 +79,17 @@ abstract class PlayerTest extends munit.FunSuite {
     assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
   }
 
-  test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al principio") {
-    println(jugador.deck.size)
-    println(jugador.deck.length)
+  test("anxadir una carta en el mazo de un jugador deberia aumentar su tamanxo y quedar entre medio") {
     assertEquals(jugador.deck.length, 2, "mazo de distinto tamanxo al esperado")
-    jugador.cardIn(tres, -2)
-    println(jugador.deck.size)
-    println(jugador.deck.length)
-    assertEquals(jugador.deck.length, 4, "mazo de distinto tamanxo al esperado")
-    assertEquals(jugador.deck.last, tres, "la carta no fue anxadida en el indice -2")
-    assertEquals(jugador.deck(jugador.deck.length - 2), tres, "la carta no fue anxadida en el indice -2")
-    assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
-    //// ??????????????????????????
-    assert(false)
+    jugador.cardIn(tres, -4)
+    assertEquals(jugador.deck.length, 3, "mazo de distinto tamanxo al esperado")
+    println(jugador.deck(0).name)
+    println(jugador.deck(1).name)
+    println(jugador.deck(2).name)
+    assertEquals(jugador.deck.head, tres, "la carta no fue anxadida en el indice -2 aka head")
+    assertEquals(jugador.deck(jugador.deck.length - 4), tres, "la carta no fue anxadida en el indice -2")
+    assertEquals(jugador.deck, List(tres, uno, dos), "los mazos no coinciden")
+    //fail("this test should fail")
   }
 
 

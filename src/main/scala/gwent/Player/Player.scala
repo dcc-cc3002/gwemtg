@@ -21,12 +21,17 @@ class Player(val name: String, var deck: List[Card]) {
   def cardIn(carta: Card, i: Double): Unit = {
     val indice = i.asInstanceOf[Int]
     /***/
-    if(i==0){deck = List(carta) ::: deck.drop(0)}
-    /**poner la carta en una posicion indice*/  
-    else{if(i>0){deck = deck.take(indice-1) ::: List(carta) ::: deck.drop(indice)}
-    //else{if(i==-1){deck = deck.take(deck.length) ::: List(carta)}
-    /**pora poner la carta se recorre el mazo desde el final para los Double < 0  */
-    else{deck = deck.take(deck.length-indice) ::: List(carta) ::: deck.drop(1+deck.length-indice)}}
+    if(i==0){deck = List(carta) ::: deck.drop(0)}else{
+      /** poner la carta en una posicion indice */
+      if(i>0){deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)}else{
+        /** caso borde i == -1 */
+        if(i==(-1).asInstanceOf[Double]){deck = deck.take(deck.length) ::: List(carta)}
+        /** pora poner la carta se recorre el mazo desde el final para los Double < 0  */
+        else{
+          deck = deck.take(deck.length-indice) ::: List(carta) ::: deck.drop(deck.length-indice)
+        }
+      }
+    }
   }
 
   def draw(): Card = {
