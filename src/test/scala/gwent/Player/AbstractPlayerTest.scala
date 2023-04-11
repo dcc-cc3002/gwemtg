@@ -1,6 +1,16 @@
 package cl.uchile.dcc
 package gwent.Player
 
+/**
+ * AbstractPlayerTest
+ *
+ * Tests para la clase AbstractPlayerTest que representa jugadores tanto humanos como no
+ *
+ * @author Hugo Diaz
+ * @since 1.1.0
+ * @version 1.1.0
+ */
+
 //import munit.Clue.generate
 import cl.uchile.dcc.gwent.Card.Card
 import munit.*
