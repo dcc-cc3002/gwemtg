@@ -13,11 +13,22 @@ import gwent.Card.Card
  * @version 1.0.0
  */
 abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
-  /*
-  def cardIn(carta: Card, indice: Int): List[Card] = {
-    this.deck = this.deck.take(indice) ::: List(carta) ::: this.deck.drop(deck.length-indice)
+  /** metodo que anxade la Card carta en la posicion indice
+    * arriba del mazo es 0
+    * abajo del mazo es deck.length - 1
+    * abajo del mazo tambien es -1
+    */
+  def cardIn(carta: Card, i: Double): Unit = {
+
+    val indice = i.asInstanceOf[Int]
+    if(i==0){deck = List(carta) ::: deck.drop(0)}
+    else{if(i>0){deck = deck.take(indice-1) ::: List(carta) ::: deck.drop(indice)}
+    //else{if(i==-1){deck = deck.take(deck.length) ::: List(carta)}
+    else{deck = deck.take(deck.length-indice) ::: List(carta) ::: deck.drop(1+deck.length-indice)}}
+
+
   }
-  */
+
 }
 
 //este es el constructor de un jugador humano
