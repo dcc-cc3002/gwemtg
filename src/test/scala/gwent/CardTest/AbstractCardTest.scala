@@ -17,7 +17,13 @@ package gwent.CardTest
 import gwent.Card.*
 import munit.*
 
-class CardTest extends FunSuite {
+class AbstractCardTest extends FunSuite {
+
+  test("Card debe tener nommbre"){
+    val test: Card = new Card("Test")
+    assertEquals(test.nombre,"Test")
+  }
+
   test("UnitCard debe tener fuerza, coste, tipo y efectos acertados") {
     val geralt: UnitCard = new UnitCard("Geralt", 8, "mele", 6, List())
     assertEquals(geralt.nombre, "Geralt")
