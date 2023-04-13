@@ -12,20 +12,27 @@ package gwent.Card
  * @version 1.1.2
  */
 
-abstract class AbstractCard(val nombre: String) {
-
+/** esta clase es una abstraccion de una carta */
+abstract class AbstractCard{
+  def getName(): String
 }
 
-class Card(nombre: String) extends AbstractCard(nombre: String){}
+/**
+ *  este constructor es para tener una carta simplificada para tests
+ * la idea es hacer una base de datos de UnitCard y ClimateCard tanto para el juego como para los test
+ * entonces se puede eliminar Card que aqui llace
+ *
+ */
+class Card(nombre: String) extends AbstractCard{
+  def getName(): String = nombre
+}
 
 /** este es el constructor de un carta de criatura o 'unidad' */
-class UnitCard(nombre: String, var fuerza: Int, val tipo: String, var coste: Int, val efectos: List[String]) extends AbstractCard(nombre: String){
-
+class UnitCard(nombre: String, var fuerza: Int, val tipo: String, var coste: Int, val efectos: List[String]) extends AbstractCard{
+  def getName(): String = nombre
 }
 
-
 /** este es el constructor de una carta climatica */
-class ClimateCard(nombre: String, var coste: Int, val efectos: List[String]) extends AbstractCard(nombre: String) {
-
-
+class ClimateCard(nombre: String, var coste: Int, val efectos: List[String]) extends AbstractCard{
+  def getName(): String = nombre
 }

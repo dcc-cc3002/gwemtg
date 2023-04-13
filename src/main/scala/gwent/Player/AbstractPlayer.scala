@@ -31,8 +31,11 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
         if(i==(-1).asInstanceOf[Double]){deck = deck.take(deck.length) ::: List(carta)}
         /** pora poner la carta se recorre el mazo desde el final para los Double < 0  */
         else{
+          /** indice dentro del rango */
           assert{deck.length >= indice}
+          /** indice = i+1 */
           indice = (deck.length.asInstanceOf[Double]+i).asInstanceOf[Int] + 1
+          /** caso inverso a i>0 */
           deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)
         }
       }

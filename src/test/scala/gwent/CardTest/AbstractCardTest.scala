@@ -21,12 +21,12 @@ class AbstractCardTest extends FunSuite {
 
   test("Card debe tener nommbre"){
     val test: Card = new Card("Test")
-    assertEquals(test.nombre,"Test")
+    assertEquals(test.getName(),"Test")
   }
 
   test("UnitCard debe tener fuerza, coste, tipo y efectos acertados") {
     val geralt: UnitCard = new UnitCard("Geralt", 8, "mele", 6, List())
-    assertEquals(geralt.nombre, "Geralt")
+    assertEquals(geralt.getName(), "Geralt")
     assertEquals(geralt.fuerza, 8)
     assertEquals(geralt.coste, 6)
     assertEquals(geralt.tipo, "mele")
@@ -35,7 +35,7 @@ class AbstractCardTest extends FunSuite {
 
   test("ClimateCard debe tener coste y efectos acertados") {
     val escarchaMordiente: ClimateCard = new ClimateCard("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
-    assertEquals(escarchaMordiente.nombre, "Escarcha mordiente")
+    assertEquals(escarchaMordiente.getName(), "Escarcha mordiente")
     assertEquals(escarchaMordiente.coste, 1)
     assertEquals(escarchaMordiente.efectos, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
   }
