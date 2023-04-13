@@ -61,10 +61,10 @@ class AbstractPlayerTest extends munit.FunSuite {
   test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al principio"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, -1)
-    //assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
-    //assertEquals(jugador.deck.last, tres, "la carta no fue anxadida abajo")
-    //assertEquals(jugador.deck(jugador.deck.length-1), tres, "la carta no fue anxadida abajo")
-    //assertEquals(jugador.deck, List(uno, dos, tres), "los mazos no coinciden")
+    assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
+    assertEquals(jugador.deck.last, tres, "la carta no fue anxadida abajo")
+    assertEquals(jugador.deck(jugador.deck.length-1), tres, "la carta no fue anxadida abajo")
+    assertEquals(jugador.deck, List(uno, dos, tres), "los mazos no coinciden")
     }
 
   test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al principio") {
@@ -76,18 +76,11 @@ class AbstractPlayerTest extends munit.FunSuite {
   }
 
   test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al principio") {
-    println(jugador.deck.size)
-    println(jugador.deck.length)
     assertEquals(jugador.deck.length, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, -2)
-    println(jugador.deck.size)
-    println(jugador.deck.length)
     assertEquals(jugador.deck.length, 3, "mazo de distinto tamanxo al esperado")
-    assertEquals(jugador.deck.last, tres, "la carta no fue anxadida en el indice -2")
     assertEquals(jugador.deck(jugador.deck.length - 2), tres, "la carta no fue anxadida en el indice -2")
     assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
-    //// ??????????????????????????
-    assert(false)
   }
 
 
