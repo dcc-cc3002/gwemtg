@@ -42,13 +42,13 @@ class AbstractPlayerTest extends munit.FunSuite {
     assertEquals(jugador.name, esperado.name,"los nombres no coinciden")
     assertEquals(jugador.deck, esperado.deck,"los mazos no coinciden")
   }
-/*
+
   test("crear un jugador automata con un mazo y un nombre deberia tener los mismos atributos que los puestos"){
     val esperado = new ComputerPlayer("Marvin", List(cero,uno))
     assertEquals(npc.name, esperado.name,"los nombres no coinciden")
     assertEquals(npc.deck, esperado.deck,"los mazos no coinciden")
   }
-*/
+
   test("anxadir una carta sobre el mazo de un jugador deberia aumentar su tamanxo y quedar al principio"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, 0)
