@@ -10,12 +10,12 @@ import gwent.Card.Card
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.1.2
  */
 
 
 
-class Player(val name: String, var deck: List[Card]) {
+abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
   /** metodo que anxade la Card carta en la posicion indice
     * arriba del mazo es 0
     * abajo del mazo es deck.length - 1
@@ -47,7 +47,7 @@ class Player(val name: String, var deck: List[Card]) {
 }
 
 //este es el constructor de un jugador humano
-//class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
+class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
 
 //este es el constructor de un jugador automata
-//class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
+class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}

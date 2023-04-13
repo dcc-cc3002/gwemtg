@@ -9,11 +9,11 @@ package gwent.Player
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 import gwent.Card.Card
-import gwent.Player.Player
+import gwent.Player.AbstractPlayer
 import munit.*
 
 class PlayerTest extends munit.FunSuite {
@@ -22,9 +22,9 @@ class PlayerTest extends munit.FunSuite {
   var uno: Card = _
   var dos: Card = _
   var tres: Card = _
-  var esperado: Player = _
-  var jugador: Player = _
-  var npc: Player = _
+  var esperado: AbstractPlayer = _
+  var jugador: AbstractPlayer = _
+  var npc: AbstractPlayer = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     cero = new Card("Card 0")
@@ -32,7 +32,7 @@ class PlayerTest extends munit.FunSuite {
     dos = new Card("Card 2")
     tres = new Card("Card 3")
     jugador = new Player("Hugo", List(uno, dos))
-    npc = new Player("Marvin", List(cero, uno))
+    npc = new ComputerPlayer("Marvin", List(cero, uno))
   }
 
   cero = new Card("Card 0")
@@ -40,7 +40,7 @@ class PlayerTest extends munit.FunSuite {
   dos = new Card("Card 2")
   tres = new Card("Card 3")
   jugador = new Player("Hugo", List(uno, dos))
-  npc = new Player("Marvin", List(cero, uno))
+  npc = new ComputerPlayer("Marvin", List(cero, uno))
 
   test("crear un jugador humano con un mazo y un nombre deberia tener los mismos atributos que los puestos") {
     esperado = new Player("Hugo", List(uno, dos))

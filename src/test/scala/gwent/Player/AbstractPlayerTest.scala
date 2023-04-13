@@ -8,7 +8,7 @@ package gwent.Player
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 1.1.1
+ * @version 1.1.2
  */
 
 import gwent.Card.Card
@@ -17,14 +17,15 @@ import gwent.Player.*
 import munit.*
 //import munit.Clue.generate
 
-abstract class AbstractPlayerTest extends munit.FunSuite {
+class AbstractPlayerTest extends munit.FunSuite {
 
-  var cero: Card = _
-  var uno: Card = _
-  var dos: Card = _
-  var tres: Card = _
-  var jugador: Player = _
-  //var npc: CP = _
+  var cero: Card = new Card("Card 0")
+  var uno: Card = new Card("Card 1")
+  var dos: Card = new Card("Card 2")
+  var tres: Card = new Card("Card 3")
+  var jugador: Player = new Player("Hugo", List(uno, dos))
+  var npc: ComputerPlayer = new ComputerPlayer("Marvin", List(cero, uno))
+
 
   override def beforeEach(context: BeforeEach): Unit = {
     cero = new Card("Card 0")
@@ -32,11 +33,12 @@ abstract class AbstractPlayerTest extends munit.FunSuite {
     dos = new Card("Card 2")
     tres = new Card("Card 3")
     jugador = new Player("Hugo", List(uno,dos))
-    //npc = new Player("Marvin", List(cero,uno))
+    npc = new ComputerPlayer("Marvin", List(cero,uno))
   }
 
+
   test("crear un jugador humano con un mazo y un nombre deberia tener los mismos atributos que los puestos"){
-    val esperado = new Player("Hugo", List(uno,dos))
+    val esperado: AbstractPlayer = new Player("Hugo", List(uno, dos))
     assertEquals(jugador.name, esperado.name,"los nombres no coinciden")
     assertEquals(jugador.deck, esperado.deck,"los mazos no coinciden")
   }
@@ -80,7 +82,7 @@ abstract class AbstractPlayerTest extends munit.FunSuite {
     jugador.cardIn(tres, -2)
     println(jugador.deck.size)
     println(jugador.deck.length)
-    assertEquals(jugador.deck.length, 4, "mazo de distinto tamanxo al esperado")
+    assertEquals(jugador.deck.length, 3, "mazo de distinto tamanxo al esperado")
     assertEquals(jugador.deck.last, tres, "la carta no fue anxadida en el indice -2")
     assertEquals(jugador.deck(jugador.deck.length - 2), tres, "la carta no fue anxadida en el indice -2")
     assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
