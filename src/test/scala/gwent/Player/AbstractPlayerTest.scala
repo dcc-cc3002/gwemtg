@@ -11,7 +11,7 @@ package gwent.Player
  * @version 1.1.2
  */
 
-import gwent.Card.Card
+import gwent.Card.*
 import gwent.Player.*
 
 import munit.*
@@ -92,4 +92,11 @@ class AbstractPlayerTest extends munit.FunSuite {
       assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")
     }
 
+  /*
+  test("Player should start with 10 health and an empty hand") {
+    val player = new Player("Alice")
+    assertEquals(player.health, 10)
+    assertEquals(player.hand.size, 0)
+  }
+  */
 }

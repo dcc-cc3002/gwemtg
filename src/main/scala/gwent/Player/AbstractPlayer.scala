@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Player
 
-import gwent.Card.Card
+import gwent.Card.*
 
 /**
  * AbstractPlayer
@@ -46,8 +46,8 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
   }
 }
 
-//este es el constructor de un jugador humano
+/** este es el constructor de un jugador  */
 class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
 
-//este es el constructor de un jugador automata
+/** este es el constructor de un jugador automata */
 class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
