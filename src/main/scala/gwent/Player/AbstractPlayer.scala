@@ -41,10 +41,13 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
       }
     }
   }
-
+  /** funcion draw es analoga a pop y devuelve la carta robada */
   def draw(): Card = {
+    /** carta robada */
     val h = deck.head
+    /** el mazo pierde la carta superior */
     deck = deck.drop(1)
+    /** return innecesario pero por claridad */
     return h
   }
 }
