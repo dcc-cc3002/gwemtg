@@ -23,11 +23,27 @@ abstract class AbstractCard{
  * entonces se puede eliminar Card que aqui llace
  *
  */
-abstract class Card(nombre: String) extends AbstractCard{
+
+
+class Card(nombre: String) extends AbstractCard{
+  def getName(): String = nombre
 }
 
-/** este es el constructor de un carta de criatura o 'unidad' */
-class UnitCard(nombre: String, var fuerza: Int, val tipo: String, var coste: Int, val efectos: List[String]) extends AbstractCard{
+/**
+ * este es el constructor de un carta de criatura o 'unidad'
+ *
+ * tipo esta representado por un entero por mientras
+ * definitivamente hay que cambiarlo por subclases
+ * 1 => mele
+ * 2 => rango
+ * 3 => asedio
+ *
+ * */
+class UnitCard(nombre: String, var fuerza: Int, val tipo: Int, var coste: Int, val efectos: List[String]=List()) extends AbstractCard{
+  /** el indice index debe estar entre 1 y 6 */
+  assert {0 < tipo}
+  assert {tipo < 4}
+  
   def getName(): String = nombre
 }
 

@@ -22,6 +22,27 @@ class AbstractCardTest extends FunSuite {
   var cero: Card = new Card("Card 0")
   var uno: Card = new Card("Card 1")
   var dos: Card = new Card("Card 2")
+
+  // Define some UnitCards for Gwent
+  val geraltOfRivia = new UnitCard("Geralt of Rivia", 5, 10, 5)
+  val yenneferOfVengerberg = new UnitCard("Yennefer of Vengerberg", 4, 6, 7)
+  val ciri = new UnitCard("Ciri", 7, 8, 4)
+  val vesemir = new UnitCard("Vesemir", 3, 6, 5)
+  val dandelion = new UnitCard("Dandelion", 2, 4, 7)
+  val trissMerigold = new UnitCard("Triss Merigold", 6, 7, 5)
+  val yen = new UnitCard("Yen", 7, 5, 6)
+  val eskel = new UnitCard("Eskel", 5, 8, 3)
+  val lambert = new UnitCard("Lambert", 6, 5, 6)
+  val zoltanChivay = new UnitCard("Zoltan Chivay", 4, 7, 4)
+
+  // Define some ClimateCards for Gwent
+  val bitingFrost = new ClimateCard("Biting Frost", 1, "Apply Frost to an enemy row.")
+  val impenetrableFog = new ClimateCard("Impenetrable Fog", 2, "Apply Fog to an enemy row.")
+  val torrentialRain = new ClimateCard("Torrential Rain", 3, "Apply Rain to an enemy row.")
+  val clearWeather = new ClimateCard("Clear Weather", 1, "Clear all weather effects from the board.")
+  val commanderHorn = new ClimateCard("Commander's Horn", 4, "Double the strength of all units on a row.")
+
+
   override def beforeEach(context: BeforeEach): Unit = {
     cero = Card("Card 0")
     uno = Card("Card 1")
@@ -29,7 +50,7 @@ class AbstractCardTest extends FunSuite {
   }
 
 
-    test("test para equals") {}
+  test("test para equals") {}
 
   test("Card debe tener nombre"){
     val test: Card = new Card("Test")
