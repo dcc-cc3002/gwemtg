@@ -31,7 +31,7 @@ class AbstractCardTest extends FunSuite {
 
     test("test para equals") {}
 
-  test("Card debe tener nommbre"){
+  test("Card debe tener nombre"){
     val test: Card = new Card("Test")
     val test1: Card = new Card("Card 1")
     assertEquals(test.getName(),"Test")

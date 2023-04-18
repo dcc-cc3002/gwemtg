@@ -96,10 +96,11 @@ class AbstractPlayerTest extends munit.FunSuite {
     }
 
   /*
-  test("Player should start with 10 health and an empty hand") {
+  test("Player should start with 2 gems and an empty hand") {
     val player = new Player("Alice")
     assertEquals(player.health, 10)
-    assertEquals(player.hand.size, 0)
+      assertEquals(player.hand, List())
+      assertEquals(player.hand.size, 0)
   }
   */
 }

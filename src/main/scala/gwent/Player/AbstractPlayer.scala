@@ -69,8 +69,12 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    *
    */
 
-
   def play(card: Card, index: Int): Unit ={
+    /** el indice index debe estar entre 1 y 6 */
+    assert{0 < index}
+    assert{index < 7}
+    /** el tipo de card debe poder lanzarse a la zona en la zona que representa index */
+    //do stuff
   }
 }
 
