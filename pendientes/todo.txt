@@ -19,9 +19,12 @@ Cada jugador tiene:
 ###############     participantes en la partida.
 >   Sección del tablero: Es la zona del tablero que le corresponde al jugador. En ella, el jugador
     ubicará sus cartas.
+
 >   Contador de gemas: Es la cantidad de gemas que tiene el jugador. Estas gemas representan la «vida»
     del jugador.
+
 >   Mazo de cartas: Es el conjunto de cartas que tiene el jugador. Desde aquí, podrá robar cartas.
+
 >   Mano de cartas: Es el conjunto de cartas que el jugador tiene en su mano. Estas cartas pueden ser
     utilizadas para jugar durante la partida.
 
