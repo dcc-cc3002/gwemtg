@@ -12,7 +12,7 @@ package gwent
  * @author Hugo Diaz
  * @since 1.?.0
  *       // ? pertenece a {0,1}
- * @version 1.1.2
+ * @version 1.1.3
  */
 @main
 def main(): Unit = {

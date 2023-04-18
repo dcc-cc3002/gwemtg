@@ -9,7 +9,7 @@ package gwent.Card
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 1.1.2
+ * @version 1.1.3
  */
 
 /** esta clase es una abstraccion de una carta */
@@ -23,8 +23,7 @@ abstract class AbstractCard{
  * entonces se puede eliminar Card que aqui llace
  *
  */
-class Card(nombre: String) extends AbstractCard{
-  def getName(): String = nombre
+abstract class Card(nombre: String) extends AbstractCard{
 }
 
 /** este es el constructor de un carta de criatura o 'unidad' */

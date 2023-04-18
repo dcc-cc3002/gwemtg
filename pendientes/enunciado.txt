@@ -56,6 +56,7 @@ jugadores, dependiendo del tipo de clima que se haya elegido.
 Cada carta tiene un nombre y su clasificación que la identifica. Finalmente, cada carta de unidad puede
 tener su propia habilidad especial, esto se explica en la sección 1.4.
 
+
 1.4. Efectos
 Las cartas de unidad pueden tener una habilidad especial que se activa cuando la carta es colocada en el
 campo de batalla y que se mantiene activo mientras la carta permanezca en el tablero.

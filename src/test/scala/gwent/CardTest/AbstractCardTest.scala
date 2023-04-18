@@ -11,7 +11,7 @@ package gwent.CardTest
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 1.1.2
+ * @version 1.1.3
  */
 
 import gwent.Card.*
@@ -19,9 +19,23 @@ import munit.*
 
 class AbstractCardTest extends FunSuite {
 
+  var cero: Card = new Card("Card 0")
+  var uno: Card = new Card("Card 1")
+  var dos: Card = new Card("Card 2")
+  override def beforeEach(context: BeforeEach): Unit = {
+    cero = Card("Card 0")
+    uno = Card("Card 1")
+    dos = Card("Card 2")
+  }
+
+
+    test("test para equals") {}
+
   test("Card debe tener nommbre"){
     val test: Card = new Card("Test")
+    val test1: Card = new Card("Card 1")
     assertEquals(test.getName(),"Test")
+    assertEquals(test1.getName(), uno.getName())
   }
 
   test("UnitCard debe tener fuerza, coste, tipo y efectos acertados") {
@@ -40,13 +54,13 @@ class AbstractCardTest extends FunSuite {
     assertEquals(escarchaMordiente.efectos, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
   }
 
-                       /*
-  test("") {
-    val board = new Board
-    val card = new UnitCard("Card 1", 1, 1, 1)
-    board.addCard(card)
-    assertEquals(board.size, 1)
-    board.removeCard(card)
-    assertEquals(board.size, 0)}     */
-
 }
+
+/* este es el constructor de un carta de criatura o 'unidad' 
+class UnitCard(nombre: String, var fuerza: Int, val tipo: String, var coste: Int, val efectos: List[String]) extends AbstractCard{
+}
+
+ este es el constructor de una carta climatica
+class ClimateCard(nombre: String, var coste: Int, val efectos: List[String]) extends AbstractCard{
+}
+ */

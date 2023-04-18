@@ -10,7 +10,7 @@ import gwent.Card.*
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 1.1.2
+ * @version 1.1.3
  */
 
 
@@ -19,6 +19,8 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
   var side : List[List[Card]] = _
   var hand : List[Card] = _
   var gems : Int = 2
+  val initialDeckSize: Int = 25
+
   /** metodo que anxade la Card carta en la posicion indice
     * arriba del mazo es 0
     * abajo del mazo es deck.length - 1
@@ -69,7 +71,6 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
 
 
   def play(card: Card, index: Int): Unit ={
-    Unit
   }
 }
 

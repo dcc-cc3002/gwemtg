@@ -15,6 +15,10 @@ Llamaremos jugador a cada uno de los participantes de una partida, estos serán 
 usuario y una computadora 1.
 
 Cada jugador tiene:
+
+> equals
+
+
 ############### >   Nombre: Es el identificador del jugador. Es una manera de distinguir a los distintos
 ###############     participantes en la partida.
 >   Sección del tablero: Es la zona del tablero que le corresponde al jugador. En ella, el jugador

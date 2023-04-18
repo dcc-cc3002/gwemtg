@@ -8,7 +8,7 @@ package gwent.Player
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 1.1.2
+ * @version 1.1.3
  */
 
 import gwent.Card.*
@@ -35,6 +35,9 @@ class AbstractPlayerTest extends munit.FunSuite {
     jugador = new Player("Hugo", List(uno,dos))
     npc = new ComputerPlayer("Marvin", List(cero,uno))
   }
+
+
+  test("test para equals") {}
 
 
   test("crear un jugador humano con un mazo y un nombre deberia tener los mismos atributos que los puestos"){
