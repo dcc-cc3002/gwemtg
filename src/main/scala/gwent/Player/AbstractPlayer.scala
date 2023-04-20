@@ -17,26 +17,59 @@ import java.util.Objects
 
 
 
+/**
+ * Represents an abstract player in the Gwent game.
+ * This class serves as a base for both human players (Player) and non-player characters (ComputerPlayer).
+ *
+ * @author Hugo Diaz
+ * @since 1.0.0
+ * @version 1.1.3
+ */
 abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
-  /**  */
+  /**
+   * side representa el lado del tablero poseido por un jugador
+   * su tipo es Tuple(List[Card],List[Card],List[Card])
+   * */
   var side = (List[Card],List[Card],List[Card])
+  /** hand representa la mano de cartas de un jugador */
   var hand : List[Card] = List()
+  /** gems representa las vidas del jugador, llamadas gemas */
   var gems : Int = 2
+  /** initialDeckSize es una constante, 25, que es el unico valor valido para el larrgo de una mazo */
   val initialDeckSize: Int = 25
 
+  /**
+   * hashCode
+   * hashCode: ???
+   * crea una llave a partir de algo, por ser remplazada a por la del auxiliar
+   */
+  override def hashCode: Int = Objects.hash(classOf[AbstractPlayer], side, hand, gems)
+  /** verificamos que initialDeckSize sea 25 */
+  assert {
+    initialDeckSize == 25
+  }
+
+  /**
+   * canEqual
+   * canEqual: any -> Boolean
+   * verifica si se puede comparar dos objetos al poder ser instanciado como la clase AbstractPlayer
+   *
+   * definida aqui
+   */
   def canEqual(that: Any): Boolean = that.isInstanceOf[AbstractPlayer]
 
+  /**
+   * equals
+   * equals: any -> Boolean
+   * verifica si todos los campos
+   */
   override def equals(that: Any): Boolean = that match {
     case ap: AbstractPlayer => ap.canEqual(this) &&  this.side == ap.side && this.hand == ap.hand && this.gems == ap.gems && this.initialDeckSize == ap.initialDeckSize && ap.initialDeckSize == 25
     case _ => false
   }
 
-  override def hashCode: Int = Objects.hash(classOf[AbstractPlayer],  side, hand, gems, initialDeckSize)
-  /** metodo que anxade la Card carta en la posicion indice
-    * arriba del mazo es 0
-    * abajo del mazo es deck.length - 1
-    * abajo del mazo tambien es -1
-    */
+
+  /**  */
   def cardIn(carta: Card, i: Double): Unit = {
     var indice = i.asInstanceOf[Int]
     /***/
