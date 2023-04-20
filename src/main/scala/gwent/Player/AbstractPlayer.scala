@@ -1,7 +1,9 @@
 package cl.uchile.dcc
 package gwent.Player
 
+import gwent.Player.*
 import gwent.Card.*
+import java.util.Objects
 
 /**
  * AbstractPlayer
@@ -16,11 +18,20 @@ import gwent.Card.*
 
 
 abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
-  var side : List[List[Card]] = _
-  var hand : List[Card] = _
+  /**  */
+  var side = (List[Card],List[Card],List[Card])
+  var hand : List[Card] = List()
   var gems : Int = 2
   val initialDeckSize: Int = 25
 
+  def canEqual(that: Any): Boolean = that.isInstanceOf[AbstractPlayer]
+
+  override def equals(that: Any): Boolean = that match {
+    case ap: AbstractPlayer => ap.canEqual(this) &&  this.side == ap.side && this.hand == ap.hand && this.gems == ap.gems && this.initialDeckSize == ap.initialDeckSize && ap.initialDeckSize == 25
+    case _ => false
+  }
+
+  override def hashCode: Int = Objects.hash(classOf[AbstractPlayer],  side, hand, gems, initialDeckSize)
   /** metodo que anxade la Card carta en la posicion indice
     * arriba del mazo es 0
     * abajo del mazo es deck.length - 1

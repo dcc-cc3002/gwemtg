@@ -15,6 +15,8 @@ import gwent.Card.*
 import gwent.Player.*
 
 import munit.*
+import munit.Clue.generate
+
 //import munit.Clue.generate
 
 class AbstractPlayerTest extends munit.FunSuite {
@@ -38,14 +40,21 @@ class AbstractPlayerTest extends munit.FunSuite {
 
 
   test("test para equals") {
-    val p1: Player = p1(("Hugo", List(uno,dos)))
-    val p2: ComputerPlayer = p2("Marvin", List(cero,uno))
+    val p1: Player = Player("Hugo", List(uno,dos))
+//    val p2: ComputerPlayer = Player("Marvin", List(cero,uno))
     p1.equals(jugador)
-    p2.equals(jugador)
+//    p2.equals(jugador)
     jugador.equals(p1)
-    jugador.equals(p2)
-}
-
+//    jugador.equals(p2)
+  }
+/*
+  test("un jugador tiene bien puestas su mano, campo de battalla y mazo iniciales"){
+    assertEquals(jugador.side, (List[Card], List[Card], List[Card]))
+    assertEquals(jugador.hand, List())
+    assertEquals(jugador.gems, 2)
+    assertEquals(jugador.initialDeckSize, 25)
+  }
+*/
 
   test("crear un jugador humano con un mazo y un nombre deberia tener los mismos atributos que los puestos"){
     val esperado: AbstractPlayer = new Player("Hugo", List(uno, dos))
