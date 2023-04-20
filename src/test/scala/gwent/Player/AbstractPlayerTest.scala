@@ -37,7 +37,14 @@ class AbstractPlayerTest extends munit.FunSuite {
   }
 
 
-  test("test para equals") {}
+  test("test para equals") {
+    val p1: Player = p1(("Hugo", List(uno,dos)))
+    val p2: ComputerPlayer = p2("Marvin", List(cero,uno))
+    p1.equals(jugador)
+    p2.equals(jugador)
+    jugador.equals(p1)
+    jugador.equals(p2)
+}
 
 
   test("crear un jugador humano con un mazo y un nombre deberia tener los mismos atributos que los puestos"){
