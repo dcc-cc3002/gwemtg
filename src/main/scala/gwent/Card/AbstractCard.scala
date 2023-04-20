@@ -14,7 +14,11 @@ package gwent.Card
 
 /** esta clase es una abstraccion de una carta */
 abstract class AbstractCard(nombre: String){
+  /** funcion para obtener el nombre */
   def getName(): String = nombre
+  /** funcion para oprobar si dos objetos pueden ser iguales */
+  def canEqual(that: Any): Boolean = that.isInstanceOf[AbstractCard]
+
 }
 
 /**
@@ -26,7 +30,12 @@ abstract class AbstractCard(nombre: String){
 
 
 class Card(nombre: String) extends AbstractCard(nombre: String){
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[Card]
 
+  override def equals(that: Any): Boolean = that match {
+    case c: Card => c.canEqual(this) && this.getName() == c.getName()
+    case _ => false
+  }
 }
 
 /**
@@ -40,13 +49,25 @@ class Card(nombre: String) extends AbstractCard(nombre: String){
  *
  * */
 class UnitCard(nombre: String, var fuerza: Int, val tipo: Int, var coste: Int, val efectos: List[String]=List()) extends AbstractCard(nombre: String){
-/*
+
   /** el indice index debe estar entre 1 y 3 */
   assert {0 < tipo}
   assert {tipo < 4}
-*/
+
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[UnitCard]
+
+  override def equals(that: Any): Boolean = that match {
+    case uc: UnitCard => uc.canEqual(this) && this.getName() == uc.getName() && this.fuerza == uc.fuerza && this.tipo == uc.tipo  && this.coste == uc.coste && this.efectos == uc.efectos
+    case _ => false
+  }
 }
 
 /** este es el constructor de una carta climatica */
 class ClimateCard(nombre: String, var coste: Int, val efectos: List[String]) extends AbstractCard(nombre: String){
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[UnitCard]
+
+  override def equals(that: Any): Boolean = that match {
+    case uc: UnitCard => uc.canEqual(this) && this.getName() == uc.getName() && this.coste == uc.coste && this.efectos == uc.efectos
+    case _ => false
+  }
 }

@@ -64,10 +64,6 @@ class AbstractCardTest extends FunSuite {
 
   }
 
-
-
-  
-
   test("Card debe tener nombre"){
     val test: Card = new Card("Test")
     val test1: Card = new Card("Card 1")
@@ -75,7 +71,7 @@ class AbstractCardTest extends FunSuite {
     assertEquals(test1.getName(), uno.getName())
   }
 
-  /*
+
   test("UnitCard debe tener fuerza, coste, tipo y efectos acertados") {
     val geralt: UnitCard = new UnitCard("Geralt", 8, 1, 6, List())
     assertEquals(geralt.getName(), "Geralt")
@@ -84,22 +80,13 @@ class AbstractCardTest extends FunSuite {
     assertEquals(geralt.tipo, 1)
     assertEquals(geralt.efectos, List())
   }
-  */
-  /*
+
+
   test("ClimateCard debe tener coste y efectos acertados") {
     val escarchaMordiente: ClimateCard = new ClimateCard("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
     assertEquals(escarchaMordiente.getName(), "Escarcha mordiente")
     assertEquals(escarchaMordiente.coste, 1)
     assertEquals(escarchaMordiente.efectos, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
   }
-  */
-}
 
-/* este es el constructor de un carta de criatura o 'unidad' 
-class UnitCard(nombre: String, var fuerza: Int, val tipo: String, var coste: Int, val efectos: List[String]) extends AbstractCard{
 }
-
- este es el constructor de una carta climatica
-class ClimateCard(nombre: String, var coste: Int, val efectos: List[String]) extends AbstractCard{
-}
- */
