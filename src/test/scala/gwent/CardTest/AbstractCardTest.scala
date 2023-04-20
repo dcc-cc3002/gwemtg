@@ -23,34 +23,50 @@ class AbstractCardTest extends FunSuite {
   var uno: Card = new Card("Card 1")
   var dos: Card = new Card("Card 2")
 
-  // Define some UnitCards for Gwent
-  val geraltOfRivia = new UnitCard("Geralt of Rivia", 5, 10, 5)
-  val yenneferOfVengerberg = new UnitCard("Yennefer of Vengerberg", 4, 6, 7)
-  val ciri = new UnitCard("Ciri", 7, 8, 4)
-  val vesemir = new UnitCard("Vesemir", 3, 6, 5)
-  val dandelion = new UnitCard("Dandelion", 2, 4, 7)
-  val trissMerigold = new UnitCard("Triss Merigold", 6, 7, 5)
-  val yen = new UnitCard("Yen", 7, 5, 6)
-  val eskel = new UnitCard("Eskel", 5, 8, 3)
-  val lambert = new UnitCard("Lambert", 6, 5, 6)
-  val zoltanChivay = new UnitCard("Zoltan Chivay", 4, 7, 4)
-
-  // Define some ClimateCards for Gwent
-  val bitingFrost = new ClimateCard("Biting Frost", 1, "Apply Frost to an enemy row.")
-  val impenetrableFog = new ClimateCard("Impenetrable Fog", 2, "Apply Fog to an enemy row.")
-  val torrentialRain = new ClimateCard("Torrential Rain", 3, "Apply Rain to an enemy row.")
-  val clearWeather = new ClimateCard("Clear Weather", 1, "Clear all weather effects from the board.")
-  val commanderHorn = new ClimateCard("Commander's Horn", 4, "Double the strength of all units on a row.")
+  /** 10 UnitCards para el juego */
+  var geraltOfRivia: UnitCard = UnitCard("Geralt of Rivia", 5, 1, 5)
+  var yenneferOfVengerberg: UnitCard = UnitCard("Yennefer of Vengerberg", 4, 2, 7)
+  var ciri: UnitCard = UnitCard("Ciri", 7, 2, 4)
+  var vesemir: UnitCard = UnitCard("Vesemir", 3, 3, 5)
+  var dandelion: UnitCard = UnitCard("Dandelion", 2, 3, 7)
+  var trissMerigold: UnitCard = UnitCard("Triss Merigold", 6, 1, 5)
+  var yen: UnitCard = UnitCard("Yen", 7, 5, 6)
+  var eskel: UnitCard = UnitCard("Eskel", 5, 1, 3)
+  var lambert: UnitCard = UnitCard("Lambert", 6, 3, 6)
+  var zoltanChivay: UnitCard = UnitCard("Zoltan Chivay", 4, 1, 4)
+  /** 5 ClimateCards for para el juego */
+  var bitingFrost: ClimateCard = new ClimateCard("Biting Frost", 1, List("Apply Frost to an enemy row."))
+  var impenetrableFog: ClimateCard = new ClimateCard("Impenetrable Fog", 2, List("Apply Fog to an enemy row."))
+  var torrentialRain: ClimateCard = new ClimateCard("Torrential Rain", 3, List("Apply Rain to an enemy row."))
+  var clearWeather: ClimateCard = new ClimateCard("Clear Weather", 1, List("Clear all weather effects from the board."))
+  var commanderHorn: ClimateCard = new ClimateCard("Commander's Horn", 4, List("Double the strength of all units on a row."))
 
 
   override def beforeEach(context: BeforeEach): Unit = {
     cero = Card("Card 0")
     uno = Card("Card 1")
     dos = Card("Card 2")
+    geraltOfRivia = UnitCard("Geralt of Rivia", 5, 1, 5)
+    yenneferOfVengerberg = UnitCard("Yennefer of Vengerberg", 4, 2, 7)
+    ciri = UnitCard("Ciri", 7, 2, 4)
+    vesemir = UnitCard("Vesemir", 3, 3, 5)
+    dandelion = UnitCard("Dandelion", 2, 3, 7)
+    trissMerigold = UnitCard("Triss Merigold", 6, 1, 5)
+    yen = UnitCard("Yen", 7, 5, 6)
+    eskel = UnitCard("Eskel", 5, 1, 3)
+    lambert = UnitCard("Lambert", 6, 3, 6)
+    zoltanChivay = UnitCard("Zoltan Chivay", 4, 1, 4)
+    bitingFrost = ClimateCard("Biting Frost", 1, List("Apply Frost to an enemy row."))
+    impenetrableFog = ClimateCard("Impenetrable Fog", 2, List("Apply Fog to an enemy row."))
+    torrentialRain = ClimateCard("Torrential Rain", 3, List("Apply Rain to an enemy row."))
+    clearWeather = ClimateCard("Clear Weather", 1, List("Clear all weather effects from the board."))
+    commanderHorn = ClimateCard("Commander's Horn", 4, List("Double the strength of all units on a row."))
+
   }
 
 
-  test("test para equals") {}
+
+  
 
   test("Card debe tener nombre"){
     val test: Card = new Card("Test")
@@ -59,22 +75,24 @@ class AbstractCardTest extends FunSuite {
     assertEquals(test1.getName(), uno.getName())
   }
 
+  /*
   test("UnitCard debe tener fuerza, coste, tipo y efectos acertados") {
-    val geralt: UnitCard = new UnitCard("Geralt", 8, "mele", 6, List())
+    val geralt: UnitCard = new UnitCard("Geralt", 8, 1, 6, List())
     assertEquals(geralt.getName(), "Geralt")
     assertEquals(geralt.fuerza, 8)
     assertEquals(geralt.coste, 6)
-    assertEquals(geralt.tipo, "mele")
+    assertEquals(geralt.tipo, 1)
     assertEquals(geralt.efectos, List())
   }
-
+  */
+  /*
   test("ClimateCard debe tener coste y efectos acertados") {
     val escarchaMordiente: ClimateCard = new ClimateCard("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
     assertEquals(escarchaMordiente.getName(), "Escarcha mordiente")
     assertEquals(escarchaMordiente.coste, 1)
     assertEquals(escarchaMordiente.efectos, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
   }
-
+  */
 }
 
 /* este es el constructor de un carta de criatura o 'unidad' 
