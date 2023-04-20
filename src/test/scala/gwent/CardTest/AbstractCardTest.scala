@@ -18,11 +18,10 @@ import gwent.Card.*
 import munit.*
 
 class AbstractCardTest extends FunSuite {
-
+  /** tres cartas Card para el juego */
   var cero: Card = new Card("Card 0")
   var uno: Card = new Card("Card 1")
   var dos: Card = new Card("Card 2")
-
   /** 10 UnitCards para el juego */
   var geraltOfRivia: UnitCard = UnitCard("Geralt of Rivia", 5, 1, 5)
   var yenneferOfVengerberg: UnitCard = UnitCard("Yennefer of Vengerberg", 4, 2, 7)
@@ -34,12 +33,12 @@ class AbstractCardTest extends FunSuite {
   var eskel: UnitCard = UnitCard("Eskel", 5, 1, 3)
   var lambert: UnitCard = UnitCard("Lambert", 6, 3, 6)
   var zoltanChivay: UnitCard = UnitCard("Zoltan Chivay", 4, 1, 4)
-  /** 5 ClimateCards for para el juego */
-  var bitingFrost: ClimateCard = new ClimateCard("Biting Frost", 1, List("Apply Frost to an enemy row."))
-  var impenetrableFog: ClimateCard = new ClimateCard("Impenetrable Fog", 2, List("Apply Fog to an enemy row."))
-  var torrentialRain: ClimateCard = new ClimateCard("Torrential Rain", 3, List("Apply Rain to an enemy row."))
-  var clearWeather: ClimateCard = new ClimateCard("Clear Weather", 1, List("Clear all weather effects from the board."))
-  var commanderHorn: ClimateCard = new ClimateCard("Commander's Horn", 4, List("Double the strength of all units on a row."))
+  /** 5 ClimateCards para el juego */
+  var bitingFrost: ClimateCard = new ClimateCard("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
+  var impenetrableFog: ClimateCard = new ClimateCard("Niebla Impenetrable", 2, List("Aplica niebla a una fila enemiga."))
+  var torrentialRain: ClimateCard = new ClimateCard("LLuvia Torrencial", 3, List("Aplica lluvia a una fila enemiga."))
+  var clearWeather: ClimateCard = new ClimateCard("Despejar", 1, List("Limpia todos los efectos de clima del campo de batalla."))
+  var commanderHorn: ClimateCard = new ClimateCard("Cuerno del Comandante", 4, List("Dobla la fuerza de todas las unidades de una fila."))
 
 
   override def beforeEach(context: BeforeEach): Unit = {
@@ -56,12 +55,18 @@ class AbstractCardTest extends FunSuite {
     eskel = UnitCard("Eskel", 5, 1, 3)
     lambert = UnitCard("Lambert", 6, 3, 6)
     zoltanChivay = UnitCard("Zoltan Chivay", 4, 1, 4)
-    bitingFrost = ClimateCard("Biting Frost", 1, List("Apply Frost to an enemy row."))
-    impenetrableFog = ClimateCard("Impenetrable Fog", 2, List("Apply Fog to an enemy row."))
-    torrentialRain = ClimateCard("Torrential Rain", 3, List("Apply Rain to an enemy row."))
-    clearWeather = ClimateCard("Clear Weather", 1, List("Clear all weather effects from the board."))
-    commanderHorn = ClimateCard("Commander's Horn", 4, List("Double the strength of all units on a row."))
+    bitingFrost = ClimateCard("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
+    impenetrableFog = ClimateCard("Niebla Impenetrable", 2, List("Aplica niebla a una fila enemiga."))
+    torrentialRain = ClimateCard("LLuvia Torrencial", 3, List("Aplica lluvia a una fila enemiga."))
+    clearWeather = ClimateCard("Despejar", 1, List("Limpia todos los efectos de clima del campo de batalla."))
+    commanderHorn = ClimateCard("Cuerno del Comandante", 4, List("Dobla la fuerza de todas las unidades de una fila."))
 
+  }
+
+  test("Card equls Card"){
+    val dos2: Card = Card("Card 2")
+    dos.equals(dos2)
+    dos2.equals(dos)
   }
 
   test("Card debe tener nombre"){
@@ -73,20 +78,28 @@ class AbstractCardTest extends FunSuite {
 
 
   test("UnitCard debe tener fuerza, coste, tipo y efectos acertados") {
-    val geralt: UnitCard = new UnitCard("Geralt", 8, 1, 6, List())
-    assertEquals(geralt.getName(), "Geralt")
-    assertEquals(geralt.fuerza, 8)
-    assertEquals(geralt.coste, 6)
+    val geralt: UnitCard = new UnitCard("Geralt of Rivia", 5, 1, 5, List())
+    assertEquals(geralt.getName(), "Geralt of Rivia")
+    assertEquals(geralt.fuerza, 5)
+    assertEquals(geralt.coste, 5)
     assertEquals(geralt.tipo, 1)
     assertEquals(geralt.efectos, List())
+    assertEquals(geralt.getName(), geraltOfRivia.getName())
+    assertEquals(geralt.fuerza, geraltOfRivia.fuerza)
+    assertEquals(geralt.coste, geraltOfRivia.coste)
+    assertEquals(geralt.tipo, geraltOfRivia.tipo)
+    assertEquals(geralt.efectos, geraltOfRivia.efectos)
   }
 
 
-  test("ClimateCard debe tener coste y efectos acertados") {
+  test("ClimateCard debe tener nombre, coste y efectos acertados") {
     val escarchaMordiente: ClimateCard = new ClimateCard("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
-    assertEquals(escarchaMordiente.getName(), "Escarcha mordiente")
-    assertEquals(escarchaMordiente.coste, 1)
-    assertEquals(escarchaMordiente.efectos, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
+    assertEquals(escarchaMordiente.getName(), "Escarcha mordiente","getName contra texto")
+    assertEquals(escarchaMordiente.coste, 1,"coste contra entero")
+    assertEquals(escarchaMordiente.efectos, List("Convierte el valor de fuerza de todas las cartas de mele a 1"), "efectos contra lista de cadenas")
+    assertEquals(escarchaMordiente.getName(), bitingFrost.getName(), "getName contra bitingFrost.getName()")
+    assertEquals(escarchaMordiente.coste, bitingFrost.coste, "coste contra bitingFrost.coste")
+    assertEquals(escarchaMordiente.efectos, bitingFrost.efectos, "efectos contra bitingFrost.efectos")
   }
 
 }
