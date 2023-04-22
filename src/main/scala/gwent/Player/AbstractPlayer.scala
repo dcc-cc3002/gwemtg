@@ -62,8 +62,6 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
     case ap: AbstractPlayer => ap.canEqual(this) &&  this.side == ap.side && this.hand == ap.hand && this.gems == ap.gems && this.initialDeckSize == ap.initialDeckSize && this.## == ap.##
     case _ => false
   }
-
-
   /**
    *  funcion que pone una carta en el indice i del mazo
    *  comienza desde el indice cero en la carta superior del mazo

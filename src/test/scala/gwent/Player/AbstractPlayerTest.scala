@@ -79,7 +79,7 @@ class AbstractPlayerTest extends munit.FunSuite {
     assertEquals(jugador.deck, List(tres, uno, dos), "los mazos no coinciden")
   }
 
-  test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al principio"){
+  test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al final"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, -1)
     assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
@@ -88,7 +88,7 @@ class AbstractPlayerTest extends munit.FunSuite {
     assertEquals(jugador.deck, List(uno, dos, tres), "los mazos no coinciden")
     }
 
-  test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al principio") {
+  test("anxadir una carta en la posicion 1 del mazo deberia quedar segunda") {
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, 1)
     assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
@@ -96,7 +96,7 @@ class AbstractPlayerTest extends munit.FunSuite {
     assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
   }
 
-  test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al principio") {
+  test("anxadir una carta en la posicion -2 del mazo deberia quedar penultima") {
     assertEquals(jugador.deck.length, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, -2)
     assertEquals(jugador.deck.length, 3, "mazo de distinto tamanxo al esperado")
@@ -105,11 +105,22 @@ class AbstractPlayerTest extends munit.FunSuite {
   }
 
 
-    test("robar una carta al mazo del jugador deberia disminuir su tamanxo y termimnar siendo mas pequenxo"){
+    test("robar una carta al mazo del jugador deberia disminuir su tamanxo y terminar siendo mas pequenxo"){
       assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
       val robada : Card = jugador.draw()
       //assertEquals(type(robada), Card, "carta robada es tipo carta")
       assertEquals(robada,uno,"no se robo la carta esperada 'uno'")
       assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")
+    }
+
+    test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberian ser las originales"){
+      var jugadorSinCartas : Player = new Player("Lain",List())
+      assertEquals(jugadorSinCartas.deck.length, 0, "mazo deberia estar vacio")
+      jugadorSinCartas.cardInDeck(uno)
+      assertEquals(jugadorSinCartas.deck.length, 1, "mazo deberia tener  una carta")
+      jugadorSinCartas.cardInDeck(dos)
+      assertEquals(jugadorSinCartas.deck.length, 2, "mazo deberia tener  dos cartas")
+      jugadorSinCartas.cardInDeck(tres)
+      assertEquals(jugadorSinCartas.deck.length, 3, "mazo deberia tener tres cartas")
     }
 }
