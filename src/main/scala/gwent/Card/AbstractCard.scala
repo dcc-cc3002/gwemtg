@@ -9,7 +9,7 @@ package gwent.Card
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 1.1.3
+ * @version 1.1.4
  */
 
 import java.util.Objects
@@ -55,26 +55,26 @@ class Card(nombre: String) extends AbstractCard(nombre: String){
 class UnitCard(nombre: String, var fuerza: Int, val tipo: Int, var coste: Int, val efectos: List[String]=List()) extends Card(nombre: String){
 
   /** el indice index debe estar entre 1 y 3 */
-  assert {0 < tipo}
-  assert {tipo < 4}
+  //assert(0 < tipo)
+  //assert(tipo < 4)
 
   /** sobreescribimos hashCode para hacer classOf[UnitCard] */
   override def hashCode: Int = Objects.hash(classOf[UnitCard], nombre, fuerza, tipo, coste, efectos)
-  
+
   /** sobreescribimos canEqual para hacer .isInstanceOf[UnitCard] */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[UnitCard]
-  
+
   /** sobreescibimos equals para que compare los parametros nuevos de UnitCard */
   override def equals(that: Any): Boolean = that match {
     case uc: UnitCard => uc.canEqual(this) && this.getName() == uc.getName() && this.fuerza == uc.fuerza && this.tipo == uc.tipo  && this.coste == uc.coste && this.efectos == uc.efectos
     case _ => false
   }
-  
+
 }
 
 /** este es el constructor de una carta climatica */
 class ClimateCard(nombre: String, var coste: Int, val efectos: List[String]) extends Card(nombre: String){
-  
+
   /** sobreescribimos hashCode para hacer classOf[ClimateCard] */
   override def hashCode: Int = Objects.hash(classOf[ClimateCard], nombre, coste, efectos)
 

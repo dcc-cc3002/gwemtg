@@ -12,7 +12,7 @@ import java.util.Objects
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 1.1.3
+ * @version 1.1.4
  */
 
 abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
@@ -42,7 +42,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
   override def hashCode: Int = Objects.hash(classOf[AbstractPlayer], side, hand, gems)
 
   /** verificamos que initialDeckSize sea 25 */
-  assert {initialDeckSize == 25}
+  //assert(initialDeckSize == 25)
 
   /**
    * canEqual

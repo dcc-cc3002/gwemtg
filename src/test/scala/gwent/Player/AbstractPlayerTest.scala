@@ -8,7 +8,7 @@ package gwent.Player
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 1.1.3
+ * @version 1.1.4
  */
 
 import gwent.Card.*
