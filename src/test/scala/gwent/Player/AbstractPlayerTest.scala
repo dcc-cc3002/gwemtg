@@ -41,20 +41,22 @@ class AbstractPlayerTest extends munit.FunSuite {
 
   test("test para equals") {
     val p1: Player = Player("Hugo", List(uno,dos))
-//    val p2: ComputerPlayer = Player("Marvin", List(cero,uno))
+    val p2: ComputerPlayer = ComputerPlayer("Marvin", List(cero,uno))
     p1.equals(jugador)
-//    p2.equals(jugador)
+    p2.equals(npc)
     jugador.equals(p1)
-//    jugador.equals(p2)
+    npc.equals(p2)
   }
-/*
+
   test("un jugador tiene bien puestas su mano, campo de battalla y mazo iniciales"){
-    assertEquals(jugador.side, (List[Card], List[Card], List[Card]))
-    assertEquals(jugador.hand, List())
-    assertEquals(jugador.gems, 2)
-    assertEquals(jugador.initialDeckSize, 25)
+    val listaVacia: List[Card] = List()
+    val campoVacio: Tuple = (listaVacia,listaVacia,listaVacia)
+//    assertEquals(jugador.side, campoVacio, "campo no es igual a campoVacio")
+    assertEquals(jugador.hand, listaVacia, "mano no es igual a lista vacia")
+    assertEquals(jugador.gems, 2, "vida inicial distinta de dos")
+    assertEquals(jugador.initialDeckSize, 25, "tamanxo de mazo inicial distinto a 25")
   }
-*/
+
 
   test("crear un jugador humano con un mazo y un nombre deberia tener los mismos atributos que los puestos"){
     val esperado: AbstractPlayer = new Player("Hugo", List(uno, dos))
@@ -110,13 +112,4 @@ class AbstractPlayerTest extends munit.FunSuite {
       assertEquals(robada,uno,"no se robo la carta esperada 'uno'")
       assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")
     }
-
-  /*
-  test("Player should start with 2 gems and an empty hand") {
-    val player = new Player("Alice")
-    assertEquals(player.health, 10)
-      assertEquals(player.hand, List())
-      assertEquals(player.hand.size, 0)
-  }
-  */
 }

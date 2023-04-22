@@ -20,7 +20,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    * side representa el lado del tablero poseido por un jugador
    * su tipo es Tuple(List[Card],List[Card],List[Card])
    * */
-  var side = (List[Card],List[Card],List[Card])
+  var side: (List[Card], List[Card], List[Card]) = (List(),List(),List())
   /**
    * hand representa la mano de cartas de un jugador
    * comienza vacia
