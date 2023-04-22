@@ -15,39 +15,34 @@ import java.util.Objects
  * @version 1.1.3
  */
 
-
-
-/**
- * Represents an abstract player in the Gwent game.
- * This class serves as a base for both human players (Player) and non-player characters (ComputerPlayer).
- *
- * @author Hugo Diaz
- * @since 1.0.0
- * @version 1.1.3
- */
 abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
   /**
    * side representa el lado del tablero poseido por un jugador
    * su tipo es Tuple(List[Card],List[Card],List[Card])
    * */
   var side = (List[Card],List[Card],List[Card])
-  /** hand representa la mano de cartas de un jugador */
+  /**
+   * hand representa la mano de cartas de un jugador
+   * comienza vacia
+   */
   var hand : List[Card] = List()
-  /** gems representa las vidas del jugador, llamadas gemas */
+  /**
+   * gems representa las vidas del jugador, llamadas gemas
+   * comienza en 2 y al ser 0 o menor el jugador muere y su oponente gana
+   */
   var gems : Int = 2
-  /** initialDeckSize es una constante, 25, que es el unico valor valido para el larrgo de una mazo */
+  /** initialDeckSize es una constante, 25, que es el unico valor valido para el largo de una mazo */
   val initialDeckSize: Int = 25
 
   /**
    * hashCode
-   * hashCode: ???
+   * hashCode: -> Int
    * crea una llave a partir de algo, por ser remplazada a por la del auxiliar
    */
   override def hashCode: Int = Objects.hash(classOf[AbstractPlayer], side, hand, gems)
+
   /** verificamos que initialDeckSize sea 25 */
-  assert {
-    initialDeckSize == 25
-  }
+  assert {initialDeckSize == 25}
 
   /**
    * canEqual
@@ -64,18 +59,22 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    * verifica si todos los campos
    */
   override def equals(that: Any): Boolean = that match {
-    case ap: AbstractPlayer => ap.canEqual(this) &&  this.side == ap.side && this.hand == ap.hand && this.gems == ap.gems && this.initialDeckSize == ap.initialDeckSize && ap.initialDeckSize == 25
+    case ap: AbstractPlayer => ap.canEqual(this) &&  this.side == ap.side && this.hand == ap.hand && this.gems == ap.gems && this.initialDeckSize == ap.initialDeckSize && this.## == ap.##
     case _ => false
   }
 
 
-  /**  */
+  /**
+   *  funcion que pone una carta en el indice i del mazo
+   *  comienza desde el indice cero en la carta superior del mazo
+   *  tambien acepta numeros negativos, siendo -1 el fondo del mazo
+   */
   def cardIn(carta: Card, i: Double): Unit = {
     var indice = i.asInstanceOf[Int]
-    /***/
-    if(i==0){deck = List(carta) ::: deck.drop(0)}else{
+    /** caso i = 0 */
+    if(i==0){deck = List(carta) ::: deck.drop(0)} else {
       /** poner la carta en una posicion indice */
-      if(i>0){deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)}else{
+      if(i>0){deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)} else {
         /** caso borde i == -1 */
         if(i==(-1).asInstanceOf[Double]){deck = deck.take(deck.length) ::: List(carta)}
         /** pora poner la carta se recorre el mazo desde el final para los Double < 0  */
@@ -90,6 +89,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
       }
     }
   }
+
   /** funcion draw es analoga a pop y devuelve la carta robada */
   def draw(): Card = {
     /** carta robada */
@@ -110,9 +110,8 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    * 4 contrario mele
    * 5 contrario rango
    * 6 contrario asedio
-   *
    */
-
+/*
   def play(card: Card, index: Int): Unit ={
     /** el indice index debe estar entre 1 y 6 */
     assert{0 < index}
@@ -120,6 +119,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
     /** el tipo de card debe poder lanzarse a la zona en la zona que representa index */
     //do stuff
   }
+*/
 }
 
 /** este es el constructor de un jugador  */
