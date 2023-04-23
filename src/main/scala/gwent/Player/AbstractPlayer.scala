@@ -88,6 +88,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
       }
     }
   }
+
   def cardInDeck(carta: Card): Unit = {
     /** pone una carta en el mazo (arriba) */
     cardIn(carta,0)
