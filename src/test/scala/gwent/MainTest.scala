@@ -1,8 +1,5 @@
-package cl.uchile.dcc
-package gwent
-
 /**
- * main.scala
+ * MainTest.scala
  * esta clase estaba de siempre
  * salve
  *
@@ -14,7 +11,9 @@ package gwent
  *       // ? pertenece a {0,1}
  * @version 1.1.4
  */
-@main
-def main(): Unit = {
-  println("Hello world!")
+
+import munit.*
+
+class MainTest extends munit.FunSuite{
+  
 }
