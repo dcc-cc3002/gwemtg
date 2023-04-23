@@ -87,7 +87,10 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
       }
     }
   }
-
+  def cardInDeck(carta: Card, i: Double): Unit = {
+    cardIn(carta, 0)
+    //deck shuffle
+  }
   /** funcion draw es analoga a pop y devuelve la carta robada */
   def draw(): Card = {
     /** carta robada */
