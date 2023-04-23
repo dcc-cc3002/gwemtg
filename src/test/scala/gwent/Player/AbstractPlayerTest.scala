@@ -107,7 +107,6 @@ test("anxadir una carta en la posicion -2 del mazo deberia quedar penultima") {
 test("robar una carta al mazo del jugador deberia disminuir su tamanxo y terminar siendo mas pequenxo"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     val robada : Card = jugador.draw()
-      //assertEquals(type(robada), Card, "carta robada es tipo carta")
     assertEquals(robada,uno,"no se robo la carta esperada 'uno'")
     assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")
   }
