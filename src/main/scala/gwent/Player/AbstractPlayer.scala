@@ -4,6 +4,7 @@ package gwent.Player
 import gwent.Player.*
 import gwent.Card.*
 import java.util.Objects
+import scala.util.Random
 
 /**
  * AbstractPlayer
@@ -87,10 +88,14 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
       }
     }
   }
-  def cardInDeck(carta: Card, i: Double): Unit = {
-    cardIn(carta, 0)
-    //deck shuffle
+
+  def cardInDeck(carta: Card): Unit = {
+    /** pone una carta en el mazo (arriba) */
+    cardIn(carta,0)
+    /** baraja */
+    deck = Random.shuffle(deck)
   }
+
   /** funcion draw es analoga a pop y devuelve la carta robada */
   def draw(): Card = {
     /** carta robada */

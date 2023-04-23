@@ -17,6 +17,7 @@ package gwent.CardTest
 import gwent.Card.*
 import munit.*
 
+
 class AbstractCardTest extends FunSuite {
   /** tres cartas Card para el juego */
   var cero: Card = new Card("Card 0")
