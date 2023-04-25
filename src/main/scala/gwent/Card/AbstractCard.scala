@@ -19,8 +19,10 @@ import scala.collection.mutable
 abstract class AbstractCard(val nombre: String){
   /** funcion para obtener el nombre */
   def getName: String = nombre
-  /** funcion para oprobar si dos objetos pueden ser iguales */
-  def canEqual(that: Any): Boolean = that.isInstanceOf[AbstractCard]
+  /** compromiso para funcion para oprobar si dos objetos pueden ser iguales */
+  def canEqual(that: Any): Boolean
+  /** compromiso para funcion de hash */
+  override def hashCode: Int
   /** funcion para comprobar que todos los campos representativos de AbstractCard sean iguales */
   override def equals(that: Any): Boolean = that match {
     case ac: Card => ac.canEqual(this) && this.getName == ac.getName && this.## == ac.##
