@@ -81,6 +81,8 @@ class AbstractCardTest extends FunSuite {
     yen2.equals(yen)
     assert(!(yen2.equals(vesemir)))
     assert(!(yen.equals(vesemir)))
+    assert (!(vesemir.equals(yen2)))
+    assert(!(vesemir.equals(yen)))
   }
 
   test ("Card equls ClimateCard") {
