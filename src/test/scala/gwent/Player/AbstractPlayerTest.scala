@@ -114,14 +114,14 @@ class AbstractPlayerTest extends munit.FunSuite {
     assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
   }
 
-test("robar una carta al mazo del jugador deberia disminuir su tamanxo y terminar siendo mas pequenxo"){
+  test("robar una carta al mazo del jugador deberia disminuir su tamanxo y terminar siendo mas pequenxo"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     val robada : Card = jugador.draw()
     assertEquals(robada,uno,"no se robo la carta esperada 'uno'")
     assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")
   }
 
-test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberian ser las originales"){
+  test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberian ser las originales"){
     var jugadorSinCartas : Player = new Player("Lain",List())
     assertEquals(jugadorSinCartas.deck.length, 0, "mazo deberia estar vacio")
     jugadorSinCartas.cardInDeck(uno)
@@ -131,4 +131,10 @@ test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberia
     jugadorSinCartas.cardInDeck(tres)
     assertEquals(jugadorSinCartas.deck.length, 3, "mazo deberia tener tres cartas")
   }
+
+  test("string bonitos"){
+    assertEquals(print(jugador),"")
+    assertEquals(print(npc),"")
+  }
+
 }

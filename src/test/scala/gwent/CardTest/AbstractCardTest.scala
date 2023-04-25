@@ -134,4 +134,9 @@ class AbstractCardTest extends FunSuite {
     assertEquals(escarchaMordiente.efectos, bitingFrost.efectos, "efectos contra bitingFrost.efectos")
   }
 
+  test("string bonitos") {
+    assertEquals(print(dos), "")
+    assertEquals(print(eskel), "")
+    assertEquals(print(torrentialRain), "")
+  }
 }
