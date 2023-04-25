@@ -80,6 +80,7 @@ class AbstractCardTest extends FunSuite {
     yen.equals(yen2)
     yen2.equals(yen)
     assert(!(yen2.equals(vesemir)))
+    assert(!(yen.equals(vesemir)))
   }
 
   test ("Card equls ClimateCard") {
@@ -89,6 +90,7 @@ class AbstractCardTest extends FunSuite {
     commanderHorn.equals(ch2)
     ch2.equals(commanderHorn)
     assert(!(ch2.equals(vesemir)))
+    assert(!(commanderHorn.equals(vesemir)))
   }
 
   test("las cartas debe tener nombre"){
@@ -102,7 +104,6 @@ class AbstractCardTest extends FunSuite {
     assertEquals(triss2.getName, trissMerigold.getName)
     assertEquals(cw2.getName, "Despejar")
     assertEquals(cw2.getName, clearWeather.getName)
-
   }
 
 
