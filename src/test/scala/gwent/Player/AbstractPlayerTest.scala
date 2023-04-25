@@ -122,7 +122,7 @@ class AbstractPlayerTest extends munit.FunSuite {
   }
 
   test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberian ser las originales"){
-    var jugadorSinCartas : Player = new Player("Lain",List())
+    val jugadorSinCartas : Player = new Player("Lain",List())
     assertEquals(jugadorSinCartas.deck.length, 0, "mazo deberia estar vacio")
     jugadorSinCartas.cardInDeck(uno)
     assertEquals(jugadorSinCartas.deck.length, 1, "mazo deberia tener  una carta")

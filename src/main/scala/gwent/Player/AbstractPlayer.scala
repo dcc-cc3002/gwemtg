@@ -111,8 +111,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
     val h = deck.head
     /** el mazo pierde la carta superior */
     deck = deck.drop(1)
-    /** return innecesario pero por claridad */
-    return h
+    h
   }
 
   /**

@@ -70,7 +70,7 @@ class AbstractCardTest extends FunSuite {
     assertEquals(dos2.## , dos.##)
     dos.equals(dos2)
     dos2.equals(dos)
-    assert(!(dos2.equals(vesemir)))
+    assert(!dos2.equals(vesemir))
   }
 
   test("Card equls UnitCard") {
@@ -79,10 +79,10 @@ class AbstractCardTest extends FunSuite {
     assertEquals(yen2.##, yen.##)
     yen.equals(yen2)
     yen2.equals(yen)
-    assert(!(yen2.equals(vesemir)))
-    assert(!(yen.equals(vesemir)))
-    assert (!(vesemir.equals(yen2)))
-    assert(!(vesemir.equals(yen)))
+    assert(!yen2.equals(vesemir))
+    assert(!yen.equals(vesemir))
+    assert (!vesemir.equals(yen2))
+    assert(!vesemir.equals(yen))
   }
 
   test ("Card equls ClimateCard") {
@@ -91,8 +91,8 @@ class AbstractCardTest extends FunSuite {
     assertEquals(ch2.##, commanderHorn.##)
     commanderHorn.equals(ch2)
     ch2.equals(commanderHorn)
-    assert(!(ch2.equals(vesemir)))
-    assert(!(commanderHorn.equals(vesemir)))
+    assert(!ch2.equals(vesemir))
+    assert(!commanderHorn.equals(vesemir))
   }
 
   test("las cartas debe tener nombre"){
