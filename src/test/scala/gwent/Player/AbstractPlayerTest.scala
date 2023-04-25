@@ -8,7 +8,7 @@ package gwent.Player
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 1.1.4
+ * @version 1.1.5
  */
 
 import gwent.Card.*
@@ -20,7 +20,6 @@ import munit.Clue.generate
 //import munit.Clue.generate
 
 class AbstractPlayerTest extends munit.FunSuite {
-
   var cero: Card = new Card("Card 0")
   var uno: Card = new Card("Card 1")
   var dos: Card = new Card("Card 2")
@@ -46,14 +45,25 @@ class AbstractPlayerTest extends munit.FunSuite {
     p2.equals(npc)
     jugador.equals(p1)
     npc.equals(p2)
+    assert(!(p1.equals(p2)))
   }
 
-  test("un jugador tiene bien puestas su mano, campo de battalla y mazo iniciales"){
+  test("un jugador tiene bien su hashCode y debe poder ser comparado con canEqual") {
+    val p1: Player = Player("Hugo", List(uno, dos))
+    val p2: ComputerPlayer = ComputerPlayer("Marvin", List(cero, uno))
+    assertEquals(p1.## , jugador.##)
+    assertEquals(p2.## , npc.##)
+    assert(p1.canEqual(jugador))
+    assert(jugador.canEqual(p1))
+    assert(p2.canEqual(npc))
+    assert(npc.canEqual(p2))
+  }
+
+    test("un jugador tiene bien puestas su mano, campo de battalla y mazo iniciales"){
     val listaVacia: List[Card] = List()
-    val campoVacio: Tuple = (listaVacia,listaVacia,listaVacia)
-//    assertEquals(jugador.side, campoVacio, "campo no es igual a campoVacio")
-    assertEquals(jugador.hand, listaVacia, "mano no es igual a lista vacia")
-    assertEquals(jugador.gems, 2, "vida inicial distinta de dos")
+    assertEquals(jugador.getSide, (List(),List(),List()), "campo no es igual a campoVacio")
+    assertEquals(jugador.getHand, listaVacia, "mano no es igual a lista vacia")
+    assertEquals(jugador.getGems, 2, "vida inicial distinta de dos")
     assertEquals(jugador.initialDeckSize, 25, "tamanxo de mazo inicial distinto a 25")
   }
 
@@ -88,7 +98,7 @@ class AbstractPlayerTest extends munit.FunSuite {
     assertEquals(jugador.deck, List(uno, dos, tres), "los mazos no coinciden")
   }
 
-test("anxadir una carta en la posicion 1 del mazo deberia quedar segunda") {
+  test("anxadir una carta en la posicion 1 del mazo deberia quedar segunda") {
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, 1)
     assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
@@ -96,7 +106,7 @@ test("anxadir una carta en la posicion 1 del mazo deberia quedar segunda") {
     assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
   }
 
-test("anxadir una carta en la posicion -2 del mazo deberia quedar penultima") {
+  test("anxadir una carta en la posicion -2 del mazo deberia quedar penultima") {
     assertEquals(jugador.deck.length, 2, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(tres, -2)
     assertEquals(jugador.deck.length, 3, "mazo de distinto tamanxo al esperado")
@@ -104,16 +114,15 @@ test("anxadir una carta en la posicion -2 del mazo deberia quedar penultima") {
     assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
   }
 
-test("robar una carta al mazo del jugador deberia disminuir su tamanxo y terminar siendo mas pequenxo"){
+  test("robar una carta al mazo del jugador deberia disminuir su tamanxo y terminar siendo mas pequenxo"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
     val robada : Card = jugador.draw()
-      //assertEquals(type(robada), Card, "carta robada es tipo carta")
     assertEquals(robada,uno,"no se robo la carta esperada 'uno'")
     assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")
   }
 
-test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberian ser las originales"){
-    var jugadorSinCartas : Player = new Player("Lain",List())
+  test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberian ser las originales"){
+    val jugadorSinCartas : Player = new Player("Lain",List())
     assertEquals(jugadorSinCartas.deck.length, 0, "mazo deberia estar vacio")
     jugadorSinCartas.cardInDeck(uno)
     assertEquals(jugadorSinCartas.deck.length, 1, "mazo deberia tener  una carta")
@@ -122,4 +131,10 @@ test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberia
     jugadorSinCartas.cardInDeck(tres)
     assertEquals(jugadorSinCartas.deck.length, 3, "mazo deberia tener tres cartas")
   }
+
+  test("string bonitos"){
+    assertEquals(jugador.toString,"Player( nombre=Hugo, mazo=List(Card(nombre=Card 1), Card(nombre=Card 2)) )")
+    assertEquals(npc.toString,"ComputerPlayer( nombre=Marvin, mazo=List(Card(nombre=Card 0), Card(nombre=Card 1)) )")
+  }
+
 }

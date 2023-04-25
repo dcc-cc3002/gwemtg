@@ -13,7 +13,7 @@ import scala.util.Random
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 1.1.4
+ * @version 1.1.5
  */
 
 abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
@@ -21,48 +21,57 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    * side representa el lado del tablero poseido por un jugador
    * su tipo es Tuple(List[Card],List[Card],List[Card])
    * */
-  var side: (List[Card], List[Card], List[Card]) = (List(),List(),List())
+  private var side: (List[Card], List[Card], List[Card]) = (List(),List(),List())
   /**
    * hand representa la mano de cartas de un jugador
    * comienza vacia
    */
-  var hand : List[Card] = List()
+  private var hand : List[Card] = List()
   /**
    * gems representa las vidas del jugador, llamadas gemas
    * comienza en 2 y al ser 0 o menor el jugador muere y su oponente gana
    */
-  var gems : Int = 2
+  private var gems : Int = 2
   /** initialDeckSize es una constante, 25, que es el unico valor valido para el largo de una mazo */
   val initialDeckSize: Int = 25
 
+  /** funcion para obtener el lado */
+  def getSide : Tuple = side
+  /** funcion para obtener la mano */
+  def getHand : List[Card] = hand
+  /** funcion para obtener las vidas */
+  def getGems : Int = gems
   /**
+   * compromiso
    * hashCode
    * hashCode: -> Int
-   * crea una llave a partir de algo, por ser remplazada a por la del auxiliar
+   * crea una llave a partir de algo
+   * este algo deberia ser los componentes de player
    */
-  override def hashCode: Int = Objects.hash(classOf[AbstractPlayer], side, hand, gems)
+  override def hashCode: Int
 
   /** verificamos que initialDeckSize sea 25 */
   //assert(initialDeckSize == 25)
 
   /**
+   * compromiso
    * canEqual
    * canEqual: any -> Boolean
    * verifica si se puede comparar dos objetos al poder ser instanciado como la clase AbstractPlayer
-   *
-   * definida aqui
    */
-  def canEqual(that: Any): Boolean = that.isInstanceOf[AbstractPlayer]
+  def canEqual(that: Any): Boolean
 
   /**
    * equals
    * equals: any -> Boolean
    * verifica si todos los campos
    */
-  override def equals(that: Any): Boolean = that match {
-    case ap: AbstractPlayer => ap.canEqual(this) &&  this.side == ap.side && this.hand == ap.hand && this.gems == ap.gems && this.initialDeckSize == ap.initialDeckSize && this.## == ap.##
+  override def equals(ap: Any): Boolean = ap match {
+    case ap: AbstractPlayer => ap.canEqual(this) &&  this.getSide == ap.getSide && this.getHand == ap.getHand && this.getGems == ap.getGems && this.initialDeckSize == ap.initialDeckSize && this.## == ap.##
     case _ => false
   }
+  /** compromiso para sobreescribir toString */
+  override def toString: String 
   /**
    *  funcion que pone una carta en el indice i del mazo
    *  comienza desde el indice cero en la carta superior del mazo
@@ -102,8 +111,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
     val h = deck.head
     /** el mazo pierde la carta superior */
     deck = deck.drop(1)
-    /** return innecesario pero por claridad */
-    return h
+    h
   }
 
   /**
@@ -129,7 +137,33 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
 }
 
 /** este es el constructor de un jugador  */
-class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
+class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {
+  //documentacion heredada
+  override def hashCode: Int = Objects.hash(classOf[Player], name, deck, this.getGems, this.getHand, this.getSide)
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[Player]
+  /** no es necesario hacer override todavia */
+/*
+  override def equals(that: Any): Boolean = that match {
+    case p: Player => p.canEqual(this) && this.name == p.name && this.deck == p.deck && this.getGems == p.getGems && this.getHand == p.getHand && this.getSide == p.getSide && this.## == ap.##
+    case _ => false
+  }
+*/
+  override def toString: String = s"Player( nombre=$name, mazo=$deck )"
+}
 
 /** este es el constructor de un jugador automata */
-class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
+class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {
+
+  //documentacion heredada
+  override def hashCode: Int = Objects.hash(classOf[ComputerPlayer], name, deck, this.getGems, this.getHand, this.getSide)
+
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[ComputerPlayer]
+  /** no es necesario hacer override todavia */
+/*
+  override def equals(that: Any): Boolean = that match {
+    case cp: ComputerPlayer => cp.canEqual(this) && this.name == cp.name && this.deck == cp.deck && this.getGems == cp.getGems && this.getHand == cp.getHand && this.getSide == cp.getSide && this.## == ap.##
+    case _ => false
+  }
+*/
+  override def toString: String = s"ComputerPlayer( nombre=$name, mazo=$deck )"
+  }

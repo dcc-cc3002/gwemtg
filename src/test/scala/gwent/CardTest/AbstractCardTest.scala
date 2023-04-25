@@ -11,7 +11,7 @@ package gwent.CardTest
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 1.1.4
+ * @version 1.1.5
  */
 
 import gwent.Card.*
@@ -65,27 +65,58 @@ class AbstractCardTest extends FunSuite {
   }
 
   test("Card equls Card"){
-    val dos2: Card = Card("Card 2")
+    val dos2: Card = new Card("Card 2")
+    dos2.canEqual(dos)
+    assertEquals(dos2.## , dos.##)
     dos.equals(dos2)
     dos2.equals(dos)
+    assert(!dos2.equals(vesemir))
   }
 
-  test("Card debe tener nombre"){
+  test("Card equls UnitCard") {
+    val yen2: UnitCard = new UnitCard("Yen", 7, 5, 6)
+    yen2.canEqual(yen)
+    assertEquals(yen2.##, yen.##)
+    yen.equals(yen2)
+    yen2.equals(yen)
+    assert(!yen2.equals(vesemir))
+    assert(!yen.equals(vesemir))
+    assert (!vesemir.equals(yen2))
+    assert(!vesemir.equals(yen))
+  }
+
+  test ("Card equls ClimateCard") {
+    val ch2: ClimateCard = new ClimateCard("Cuerno del Comandante", 4, List("Dobla la fuerza de todas las unidades de una fila."))
+    ch2.canEqual(commanderHorn)
+    assertEquals(ch2.##, commanderHorn.##)
+    commanderHorn.equals(ch2)
+    ch2.equals(commanderHorn)
+    assert(!ch2.equals(vesemir))
+    assert(!commanderHorn.equals(vesemir))
+  }
+
+  test("las cartas debe tener nombre"){
     val test: Card = new Card("Test")
     val test1: Card = new Card("Card 1")
-    assertEquals(test.getName(),"Test")
-    assertEquals(test1.getName(), uno.getName())
+    val triss2: UnitCard = new UnitCard("Triss Merigold", 6, 1, 5)
+    val cw2: ClimateCard = new ClimateCard("Despejar", 1, List("Limpia todos los efectos de clima del campo de batalla."))
+    assertEquals(test.getName,"Test")
+    assertEquals(test1.getName, uno.getName)
+    assertEquals(triss2.getName, "Triss Merigold")
+    assertEquals(triss2.getName, trissMerigold.getName)
+    assertEquals(cw2.getName, "Despejar")
+    assertEquals(cw2.getName, clearWeather.getName)
   }
 
 
   test("UnitCard debe tener fuerza, coste, tipo y efectos acertados") {
     val geralt: UnitCard = new UnitCard("Geralt of Rivia", 5, 1, 5, List())
-    assertEquals(geralt.getName(), "Geralt of Rivia")
+    assertEquals(geralt.getName, "Geralt of Rivia")
     assertEquals(geralt.fuerza, 5)
     assertEquals(geralt.coste, 5)
     assertEquals(geralt.tipo, 1)
     assertEquals(geralt.efectos, List())
-    assertEquals(geralt.getName(), geraltOfRivia.getName())
+    assertEquals(geralt.getName, geraltOfRivia.getName)
     assertEquals(geralt.fuerza, geraltOfRivia.fuerza)
     assertEquals(geralt.coste, geraltOfRivia.coste)
     assertEquals(geralt.tipo, geraltOfRivia.tipo)
@@ -95,12 +126,17 @@ class AbstractCardTest extends FunSuite {
 
   test("ClimateCard debe tener nombre, coste y efectos acertados") {
     val escarchaMordiente: ClimateCard = new ClimateCard("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
-    assertEquals(escarchaMordiente.getName(), "Escarcha mordiente","getName contra texto")
+    assertEquals(escarchaMordiente.getName, "Escarcha mordiente","getName contra texto")
     assertEquals(escarchaMordiente.coste, 1,"coste contra entero")
     assertEquals(escarchaMordiente.efectos, List("Convierte el valor de fuerza de todas las cartas de mele a 1"), "efectos contra lista de cadenas")
-    assertEquals(escarchaMordiente.getName(), bitingFrost.getName(), "getName contra bitingFrost.getName()")
+    assertEquals(escarchaMordiente.getName, bitingFrost.getName, "getName contra bitingFrost.getName()")
     assertEquals(escarchaMordiente.coste, bitingFrost.coste, "coste contra bitingFrost.coste")
     assertEquals(escarchaMordiente.efectos, bitingFrost.efectos, "efectos contra bitingFrost.efectos")
   }
 
+  test("string bonitos") {
+    assertEquals(dos.toString ,"Card(nombre=Card 2)")
+    assertEquals(eskel.toString , "UnitCard(nombre=Eskel)")
+    assertEquals(torrentialRain.toString , "ClimateCard(nombre=LLuvia Torrencial)")
+  }
 }
