@@ -11,7 +11,7 @@ package gwent.CardTest
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 1.1.4
+ * @version 1.1.5
  */
 
 import gwent.Card.*
@@ -73,19 +73,19 @@ class AbstractCardTest extends FunSuite {
   test("Card debe tener nombre"){
     val test: Card = new Card("Test")
     val test1: Card = new Card("Card 1")
-    assertEquals(test.getName(),"Test")
-    assertEquals(test1.getName(), uno.getName())
+    assertEquals(test.getName,"Test")
+    assertEquals(test1.getName, uno.getName)
   }
 
 
   test("UnitCard debe tener fuerza, coste, tipo y efectos acertados") {
     val geralt: UnitCard = new UnitCard("Geralt of Rivia", 5, 1, 5, List())
-    assertEquals(geralt.getName(), "Geralt of Rivia")
+    assertEquals(geralt.getName, "Geralt of Rivia")
     assertEquals(geralt.fuerza, 5)
     assertEquals(geralt.coste, 5)
     assertEquals(geralt.tipo, 1)
     assertEquals(geralt.efectos, List())
-    assertEquals(geralt.getName(), geraltOfRivia.getName())
+    assertEquals(geralt.getName, geraltOfRivia.getName)
     assertEquals(geralt.fuerza, geraltOfRivia.fuerza)
     assertEquals(geralt.coste, geraltOfRivia.coste)
     assertEquals(geralt.tipo, geraltOfRivia.tipo)
@@ -95,10 +95,10 @@ class AbstractCardTest extends FunSuite {
 
   test("ClimateCard debe tener nombre, coste y efectos acertados") {
     val escarchaMordiente: ClimateCard = new ClimateCard("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
-    assertEquals(escarchaMordiente.getName(), "Escarcha mordiente","getName contra texto")
+    assertEquals(escarchaMordiente.getName, "Escarcha mordiente","getName contra texto")
     assertEquals(escarchaMordiente.coste, 1,"coste contra entero")
     assertEquals(escarchaMordiente.efectos, List("Convierte el valor de fuerza de todas las cartas de mele a 1"), "efectos contra lista de cadenas")
-    assertEquals(escarchaMordiente.getName(), bitingFrost.getName(), "getName contra bitingFrost.getName()")
+    assertEquals(escarchaMordiente.getName, bitingFrost.getName, "getName contra bitingFrost.getName()")
     assertEquals(escarchaMordiente.coste, bitingFrost.coste, "coste contra bitingFrost.coste")
     assertEquals(escarchaMordiente.efectos, bitingFrost.efectos, "efectos contra bitingFrost.efectos")
   }

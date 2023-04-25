@@ -9,7 +9,7 @@ package gwent.Card
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 1.1.4
+ * @version 1.1.5
  */
 
 import java.util.Objects
@@ -18,12 +18,12 @@ import scala.collection.mutable
 /** esta clase es una abstraccion de una carta */
 abstract class AbstractCard(val nombre: String){
   /** funcion para obtener el nombre */
-  def getName(): String = nombre
+  def getName: String = nombre
   /** funcion para oprobar si dos objetos pueden ser iguales */
   def canEqual(that: Any): Boolean = that.isInstanceOf[AbstractCard]
   /** funcion para comprobar que todos los campos representativos de AbstractCard sean iguales */
   override def equals(that: Any): Boolean = that match {
-    case ac: Card => ac.canEqual(this) && this.getName() == ac.getName() && this.## == ac.##
+    case ac: Card => ac.canEqual(this) && this.getName == ac.getName && this.## == ac.##
     case _ => false
   }
 }
@@ -66,7 +66,7 @@ class UnitCard(nombre: String, var fuerza: Int, val tipo: Int, var coste: Int, v
 
   /** sobreescibimos equals para que compare los parametros nuevos de UnitCard */
   override def equals(that: Any): Boolean = that match {
-    case uc: UnitCard => uc.canEqual(this) && this.getName() == uc.getName() && this.fuerza == uc.fuerza && this.tipo == uc.tipo  && this.coste == uc.coste && this.efectos == uc.efectos
+    case uc: UnitCard => uc.canEqual(this) && this.getName == uc.getName && this.fuerza == uc.fuerza && this.tipo == uc.tipo  && this.coste == uc.coste && this.efectos == uc.efectos
     case _ => false
   }
 
@@ -83,7 +83,7 @@ class ClimateCard(nombre: String, var coste: Int, val efectos: List[String]) ext
 
   /** sobreescibimos equals para que compare los parametros nuevos de ClimateCard */
   override def equals(that: Any): Boolean = that match {
-    case cc: ClimateCard => cc.canEqual(this) && this.getName() == cc.getName() && this.coste == cc.coste && this.efectos == cc.efectos
+    case cc: ClimateCard => cc.canEqual(this) && this.getName == cc.getName && this.coste == cc.coste && this.efectos == cc.efectos
     case _ => false
   }
 }

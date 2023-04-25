@@ -8,7 +8,7 @@ package gwent.Player
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 1.1.4
+ * @version 1.1.5
  */
 
 import gwent.Card.*
@@ -51,7 +51,7 @@ class AbstractPlayerTest extends munit.FunSuite {
   test("un jugador tiene bien puestas su mano, campo de battalla y mazo iniciales"){
     val listaVacia: List[Card] = List()
     val campoVacio: Tuple = (listaVacia,listaVacia,listaVacia)
-//    assertEquals(jugador.side, campoVacio, "campo no es igual a campoVacio")
+    assertEquals(jugador.side, (List(),List(),List()), "campo no es igual a campoVacio")
     assertEquals(jugador.hand, listaVacia, "mano no es igual a lista vacia")
     assertEquals(jugador.gems, 2, "vida inicial distinta de dos")
     assertEquals(jugador.initialDeckSize, 25, "tamanxo de mazo inicial distinto a 25")
