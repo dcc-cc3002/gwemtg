@@ -20,7 +20,6 @@ import munit.Clue.generate
 //import munit.Clue.generate
 
 class AbstractPlayerTest extends munit.FunSuite {
-
   var cero: Card = new Card("Card 0")
   var uno: Card = new Card("Card 1")
   var dos: Card = new Card("Card 2")
@@ -46,11 +45,22 @@ class AbstractPlayerTest extends munit.FunSuite {
     p2.equals(npc)
     jugador.equals(p1)
     npc.equals(p2)
+    assert(!(p1.equals(p2)))
   }
 
-  test("un jugador tiene bien puestas su mano, campo de battalla y mazo iniciales"){
+  test("un jugador tiene bien su hashCode y debe poder ser comparado con canEqual") {
+    val p1: Player = Player("Hugo", List(uno, dos))
+    val p2: ComputerPlayer = ComputerPlayer("Marvin", List(cero, uno))
+    assertEquals(p1.## , jugador.##)
+    assertEquals(p2.## , npc.##)
+    assert(p1.canEqual(jugador))
+    assert(jugador.canEqual(p1))
+    assert(p2.canEqual(npc))
+    assert(npc.canEqual(p2))
+  }
+
+    test("un jugador tiene bien puestas su mano, campo de battalla y mazo iniciales"){
     val listaVacia: List[Card] = List()
-    val campoVacio: Tuple = (listaVacia,listaVacia,listaVacia)
     assertEquals(jugador.getSide, (List(),List(),List()), "campo no es igual a campoVacio")
     assertEquals(jugador.getHand, listaVacia, "mano no es igual a lista vacia")
     assertEquals(jugador.getGems, 2, "vida inicial distinta de dos")

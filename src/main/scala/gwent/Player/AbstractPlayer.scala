@@ -65,7 +65,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    * equals: any -> Boolean
    * verifica si todos los campos
    */
-  override def equals(that: Any): Boolean = that match {
+  override def equals(ap: Any): Boolean = ap match {
     case ap: AbstractPlayer => ap.canEqual(this) &&  this.getSide == ap.getSide && this.getHand == ap.getHand && this.getGems == ap.getGems && this.initialDeckSize == ap.initialDeckSize && this.## == ap.##
     case _ => false
   }
