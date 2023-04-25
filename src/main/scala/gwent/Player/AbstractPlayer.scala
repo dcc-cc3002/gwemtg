@@ -46,7 +46,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    * hashCode: -> Int
    * crea una llave a partir de algo, por ser remplazada a por la del auxiliar
    */
-  override def hashCode: Int = Objects.hash(classOf[AbstractPlayer], this.getSide, this.getHand, this.getGems)
+  override def hashCode: Int
 
   /** verificamos que initialDeckSize sea 25 */
   //assert(initialDeckSize == 25)
@@ -58,7 +58,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    *
    * definida aqui
    */
-  def canEqual(that: Any): Boolean = that.isInstanceOf[AbstractPlayer]
+  def canEqual(that: Any): Boolean
 
   /**
    * equals
