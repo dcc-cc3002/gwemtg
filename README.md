@@ -18,30 +18,30 @@ Sobrescritura de los métodos Equals, canEqual y hashCode para las clases Abstra
 Pruebas usando MUnit para las funcionalidades implementadas.
 
 ## Archivos nuevos
-|-- src
-|   |-- main
-|   |   |-- scala
-|   |   |   |-- gwent
-|   |   |   |   |-- Card
-|   |   |   |   |   |-- AbstractCard.scala
-|   |   |   |   |-- Player
-|   |   |   |   |   |-- AbstractPlayer.scala
-|   |   |-- test
-|   |   |   |-- gwent
-|   |   |   |   |-- Card
-|   |   |   |   |   |-- AbstractCardTest.scala
-|   |   |   |   |-- Player
-|   |   |   |   |   |-- AbstractPlayerTest.scala
-|-- pendientes
-|   |-- enunciado.txt
-|   |-- todo.txt
-|-- README.md
-
-src/main/scala/gwent/Card/AbstractCard.scala: Clase que representa una carta en el juego.
-src/main/scala/gwent/Player/AbstractPlayer.scala: Clase abstracta que representa un jugador en el juego.
-src/test/scala/gwent: Directorio contenedor de los tests del juego.
-pendientes/enunciado.txt: Archivo que contiene el enunciado del proyecto.
-pendientes/todo.txt: Archivo que contiene las tareas pendientes para la proxima entrega.
+|-- src  
+|   |-- main  
+|   |   |-- scala  
+|   |   |   |-- gwent  
+|   |   |   |   |-- Card  
+|   |   |   |   |   |-- AbstractCard.scala  
+|   |   |   |   |-- Player  
+|   |   |   |   |   |-- AbstractPlayer.scala  
+|   |   |-- test  
+|   |   |   |-- gwent  
+|   |   |   |   |-- Card  
+|   |   |   |   |   |-- AbstractCardTest.scala  
+|   |   |   |   |-- Player  
+|   |   |   |   |   |-- AbstractPlayerTest.scala  
+|-- pendientes  
+|   |-- enunciado.txt  
+|   |-- todo.txt  
+|-- README.md  
+    
+src/main/scala/gwent/Card/AbstractCard.scala: Clase que representa una carta en el juego.  
+src/main/scala/gwent/Player/AbstractPlayer.scala: Clase abstracta que representa un jugador en el juego.  
+src/test/scala/gwent: Directorio contenedor de los tests del juego.  
+pendientes/enunciado.txt: Archivo que contiene el enunciado del proyecto.  
+pendientes/todo.txt: Archivo que contiene las tareas pendientes para la proxima entrega.  
 
 ## Licencia
 
