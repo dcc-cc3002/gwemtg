@@ -65,16 +65,39 @@ class AbstractCardTest extends FunSuite {
   }
 
   test("Card equls Card"){
-    val dos2: Card = Card("Card 2")
+    val dos2: Card = new Card("Card 2")
+    dos2.canEqual(dos)
+    assertEquals(dos2.## , dos.##)
     dos.equals(dos2)
     dos2.equals(dos)
   }
 
-  test("Card debe tener nombre"){
+  test("Card equls UnitCard") {
+    val yen2: UnitCard = new UnitCard("Yen", 7, 5, 6)
+    yen2.canEqual(yen)
+    assertEquals(yen2.##, yen.##)
+    yen.equals(yen2)
+    yen2.equals(yen)
+  }
+
+  test ("Card equls ClimateCard") {
+    val ch2: ClimateCard = new ClimateCard("Cuerno del Comandante", 4, List("Dobla la fuerza de todas las unidades de una fila."))
+    commanderHorn.equals(ch2)
+    ch2.equals(commanderHorn)
+  }
+
+  test("las cartas debe tener nombre"){
     val test: Card = new Card("Test")
     val test1: Card = new Card("Card 1")
+    val triss2: UnitCard = new UnitCard("Triss Merigold", 6, 1, 5)
+    val cw2: ClimateCard = new ClimateCard("Despejar", 1, List("Limpia todos los efectos de clima del campo de batalla."))
     assertEquals(test.getName,"Test")
     assertEquals(test1.getName, uno.getName)
+    assertEquals(triss2.getName, "Triss Merigold")
+    assertEquals(triss2.getName, trissMerigold.getName)
+    assertEquals(cw2.getName, "Despejar")
+    assertEquals(cw2.getName, clearWeather.getName)
+
   }
 
 
