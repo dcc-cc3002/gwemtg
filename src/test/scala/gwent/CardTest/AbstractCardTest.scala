@@ -135,8 +135,8 @@ class AbstractCardTest extends FunSuite {
   }
 
   test("string bonitos") {
-    assertEquals(print(dos), "")
-    assertEquals(print(eskel), "")
-    assertEquals(print(torrentialRain), "")
+    assertEquals(dos.toString ,"Card(nombre=Card 2)")
+    assertEquals(eskel.toString , "UnitCard(nombre=Eskel)")
+    assertEquals(torrentialRain.toString , "ClimateCard(nombre=LLuvia Torrencial)")
   }
 }

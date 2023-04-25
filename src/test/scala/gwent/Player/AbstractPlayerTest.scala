@@ -133,8 +133,8 @@ class AbstractPlayerTest extends munit.FunSuite {
   }
 
   test("string bonitos"){
-    assertEquals(print(jugador),"")
-    assertEquals(print(npc),"")
+    assertEquals(jugador.toString,"Player( nombre=Hugo, mazo=List(Card(nombre=Card 1), Card(nombre=Card 2)) )")
+    assertEquals(npc.toString,"ComputerPlayer( nombre=Marvin, mazo=List(Card(nombre=Card 0), Card(nombre=Card 1)) )")
   }
 
 }

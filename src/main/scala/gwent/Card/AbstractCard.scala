@@ -28,6 +28,9 @@ abstract class AbstractCard(val nombre: String){
     case ac: Card => ac.canEqual(this) && this.getName == ac.getName && this.## == ac.##
     case _ => false
   }
+
+  /** compromiso para sobreescribir toString */
+  override def toString: String
 }
 
 /**
@@ -42,6 +45,8 @@ class Card(nombre: String) extends AbstractCard(nombre: String){
   override def hashCode: Int = Objects.hash(classOf[Card], nombre)
   /** sobreescribimos canEqual para hacer .isInstanceOf[Card] */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[Card]
+  /***/
+  override def toString: String = s"Card(nombre=$nombre)"
 }
 
 /**
@@ -71,7 +76,8 @@ class UnitCard(nombre: String, var fuerza: Int, val tipo: Int, var coste: Int, v
     case uc: UnitCard => uc.canEqual(this) && this.getName == uc.getName && this.fuerza == uc.fuerza && this.tipo == uc.tipo  && this.coste == uc.coste && this.efectos == uc.efectos
     case _ => false
   }
-
+  /***/
+  override def toString: String = s"UnitCard(nombre=$nombre)"
 }
 
 /** este es el constructor de una carta climatica */
@@ -81,11 +87,14 @@ class ClimateCard(nombre: String, var coste: Int, val efectos: List[String]) ext
   override def hashCode: Int = Objects.hash(classOf[ClimateCard], nombre, coste, efectos)
 
   /** sobreescribimos canEqual para hacer .isInstanceOf[ClimateCard] */
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[UnitCard]
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[ClimateCard]
 
   /** sobreescibimos equals para que compare los parametros nuevos de ClimateCard */
   override def equals(cc: Any): Boolean = cc match {
     case cc: ClimateCard => cc.canEqual(this) && this.getName == cc.getName && this.coste == cc.coste && this.efectos == cc.efectos
     case _ => false
   }
+
+  /** */
+  override def toString: String = s"ClimateCard(nombre=$nombre)"
 }

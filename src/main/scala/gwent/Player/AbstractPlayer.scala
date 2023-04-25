@@ -70,6 +70,8 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
     case ap: AbstractPlayer => ap.canEqual(this) &&  this.getSide == ap.getSide && this.getHand == ap.getHand && this.getGems == ap.getGems && this.initialDeckSize == ap.initialDeckSize && this.## == ap.##
     case _ => false
   }
+  /** compromiso para sobreescribir toString */
+  override def toString: String 
   /**
    *  funcion que pone una carta en el indice i del mazo
    *  comienza desde el indice cero en la carta superior del mazo
@@ -147,6 +149,7 @@ class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) 
     case _ => false
   }
 */
+  override def toString: String = s"Player( nombre=$name, mazo=$deck )"
 }
 
 /** este es el constructor de un jugador automata */
@@ -163,4 +166,5 @@ class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name
     case _ => false
   }
 */
-}
+  override def toString: String = s"ComputerPlayer( nombre=$name, mazo=$deck )"
+  }
