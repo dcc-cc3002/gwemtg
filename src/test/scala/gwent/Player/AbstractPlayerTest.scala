@@ -51,9 +51,9 @@ class AbstractPlayerTest extends munit.FunSuite {
   test("un jugador tiene bien puestas su mano, campo de battalla y mazo iniciales"){
     val listaVacia: List[Card] = List()
     val campoVacio: Tuple = (listaVacia,listaVacia,listaVacia)
-    assertEquals(jugador.side, (List(),List(),List()), "campo no es igual a campoVacio")
-    assertEquals(jugador.hand, listaVacia, "mano no es igual a lista vacia")
-    assertEquals(jugador.gems, 2, "vida inicial distinta de dos")
+    assertEquals(jugador.getSide, (List(),List(),List()), "campo no es igual a campoVacio")
+    assertEquals(jugador.getHand, listaVacia, "mano no es igual a lista vacia")
+    assertEquals(jugador.getGems, 2, "vida inicial distinta de dos")
     assertEquals(jugador.initialDeckSize, 25, "tamanxo de mazo inicial distinto a 25")
   }
 
