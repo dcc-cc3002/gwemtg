@@ -21,26 +21,32 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    * side representa el lado del tablero poseido por un jugador
    * su tipo es Tuple(List[Card],List[Card],List[Card])
    * */
-  var side: (List[Card], List[Card], List[Card]) = (List(),List(),List())
+  private var side: (List[Card], List[Card], List[Card]) = (List(),List(),List())
   /**
    * hand representa la mano de cartas de un jugador
    * comienza vacia
    */
-  var hand : List[Card] = List()
+  private var hand : List[Card] = List()
   /**
    * gems representa las vidas del jugador, llamadas gemas
    * comienza en 2 y al ser 0 o menor el jugador muere y su oponente gana
    */
-  var gems : Int = 2
+  private var gems : Int = 2
   /** initialDeckSize es una constante, 25, que es el unico valor valido para el largo de una mazo */
   val initialDeckSize: Int = 25
 
+  /** funcion para obtener el lado */
+  def getSide : Tuple = side
+  /** funcion para obtener la mano */
+  def getHand : List[Card] = hand
+  /** funcion para obtener las vidas */
+  def getGems : Int = gems
   /**
    * hashCode
    * hashCode: -> Int
    * crea una llave a partir de algo, por ser remplazada a por la del auxiliar
    */
-  override def hashCode: Int = Objects.hash(classOf[AbstractPlayer], side, hand, gems)
+  override def hashCode: Int = Objects.hash(classOf[AbstractPlayer], this.getSide, this.getHand, this.getGems)
 
   /** verificamos que initialDeckSize sea 25 */
   //assert(initialDeckSize == 25)
@@ -60,7 +66,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    * verifica si todos los campos
    */
   override def equals(that: Any): Boolean = that match {
-    case ap: AbstractPlayer => ap.canEqual(this) &&  this.side == ap.side && this.hand == ap.hand && this.gems == ap.gems && this.initialDeckSize == ap.initialDeckSize && this.## == ap.##
+    case ap: AbstractPlayer => ap.canEqual(this) &&  this.getSide == ap.getSide && this.getHand == ap.getHand && this.getGems == ap.getGems && this.initialDeckSize == ap.initialDeckSize && this.## == ap.##
     case _ => false
   }
   /**
@@ -129,7 +135,11 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
 }
 
 /** este es el constructor de un jugador  */
-class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
+class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {
+
+}
 
 /** este es el constructor de un jugador automata */
-class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
+class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {
+  
+}
