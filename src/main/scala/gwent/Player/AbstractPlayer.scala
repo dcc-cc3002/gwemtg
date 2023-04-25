@@ -13,7 +13,7 @@ import scala.util.Random
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 1.1.5
+ * @version 2.0.0
  */
 
 abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
