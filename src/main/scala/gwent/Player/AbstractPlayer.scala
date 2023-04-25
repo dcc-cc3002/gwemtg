@@ -42,9 +42,11 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
   /** funcion para obtener las vidas */
   def getGems : Int = gems
   /**
+   * compromiso
    * hashCode
    * hashCode: -> Int
-   * crea una llave a partir de algo, por ser remplazada a por la del auxiliar
+   * crea una llave a partir de algo
+   * este algo deberia ser los componentes de player
    */
   override def hashCode: Int
 
@@ -52,11 +54,10 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
   //assert(initialDeckSize == 25)
 
   /**
+   * compromiso
    * canEqual
    * canEqual: any -> Boolean
    * verifica si se puede comparar dos objetos al poder ser instanciado como la clase AbstractPlayer
-   *
-   * definida aqui
    */
   def canEqual(that: Any): Boolean
 
