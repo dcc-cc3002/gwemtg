@@ -21,47 +21,69 @@ Cada jugador tiene:
 
 ############### >   Nombre: Es el identificador del jugador. Es una manera de distinguir a los distintos
 ###############     participantes en la partida.
->   Sección del tablero: Es la zona del tablero que le corresponde al jugador. En ella, el jugador
-    ubicará sus cartas.
+############### >   Sección del tablero: Es la zona del tablero que le corresponde al jugador. En ella, el jugador
+###############     ubicará sus cartas.
 
->   Contador de gemas: Es la cantidad de gemas que tiene el jugador. Estas gemas representan la «vida»
-    del jugador.
+############### >   Contador de gemas: Es la cantidad de gemas que tiene el jugador. Estas gemas representan la «vida»
+###############     del jugador.
 
->   Mazo de cartas: Es el conjunto de cartas que tiene el jugador. Desde aquí, podrá robar cartas.
+############### >   Mazo de cartas: Es el conjunto de cartas que tiene el jugador. Desde aquí, podrá robar cartas.
 
->   Mano de cartas: Es el conjunto de cartas que el jugador tiene en su mano. Estas cartas pueden ser
-    utilizadas para jugar durante la partida.
+############### >   Mano de cartas: Es el conjunto de cartas que el jugador tiene en su mano. Estas cartas pueden ser
+###############     utilizadas para jugar durante la partida.
 
-Las acciones que un jugador puede realizar son:
->   Jugar una carta de su mano: Seleccionar una carta de su mano y colocarla en el tablero para realizar
-    una acción.
->   Robar una carta del mazo: Tomar una carta del mazo y agregarla a su mano.
+############### Las acciones que un jugador puede realizar son:
+>   Jugar una carta de su mano: Seleccionar una carta de su mano y colocarla en el tablero para realizar una acción.
+############### >   Robar una carta del mazo: Tomar una carta del mazo y agregarla a su mano.
+############### >   CardIn: Poner una carta en el mazo
+############### >   CardInDeck: Poner una carta en el mazo, luego revolver
+
 
 1.2. Tablero
+//    ((1,2,3)(0)(4,5,6))
+//    ((propio asedio, pripio rango, propio mele)(clima)(contrario mele, contrario rango, contrario asedio))
+//
+//    private var side: (List[Card], List[Card], List[Card]) = (List(),List(),List())
+//    board = (side,side)
+
 El tablero es la representación física del campo de batalla en el que los jugadores colocan sus cartas.
-Está dividido en dos secciones simétricas, una para cada jugador, y cada sección se subdivide en tres
-zonas: la zona de combate cuerpo a cuerpo, la zona de combate a distancia y la zona de asedio.
-Utilizaremos indistintamente los términos tablero y campo de batalla, así como los términos zona y fila.
-Además de las zonas de combate, existe una zona adicional para las cartas de clima que afectan el campo
-de batalla y pueden tener efectos como modificar la fuerza de las unidades en diferentes zonas. Esta
-zona es compartida por ambos jugadores, por lo que solo puede haber una carta de clima en el campo.
-La única diferencia entre las zonas del tablero son las cartas que pueden ser colocadas en cada una de
-ellas.
+
+Está dividido en dos secciones simétricas, una para cada jugador,
+y cada sección se subdivide en tres zonas:
+    la zona de combate cuerpo a cuerpo (mele),
+    la zona de combate a distancia (rango)
+    y la zona de asedio.
+
+//    Utilizaremos indistintamente los términos tablero y campo de batalla, así como los términos zona y fila.
+
+Además de las zonas de combate, existe una zona adicional (0)
+para las cartas de clima que afectan el campo de batalla
+pueden tener efectos como modificar la fuerza de las unidades en diferentes zonas.
+Esta zona es compartida por ambos jugadores, por lo que solo puede haber una carta de clima en el campo.
+similar a "world enchantment"
+La única diferencia entre las zonas del tablero son las cartas que pueden ser colocadas en cada una de ellas.
 
 1.3. Cartas
-En el juego, las cartas desempeñan un papel fundamental. Existen dos tipos principales de cartas: las
-cartas de unidad y las cartas de clima.
-Las cartas de unidad son aquellas que cada jugador debe colocar estratégicamente en las zonas
-correspondientes del campo de batalla. Estas cartas tienen tres clasificaciones: cuerpo a cuerpo, a
-distancia y de asedio, cada uno de los cuales determina la ubicación en la que puede ser colocada. Por
-ejemplo, las cartas cuerpo a cuerpo solo pueden ser colocadas en la zona de combate cuerpo a cuerpo,
-mientras que las cartas de distancia solo pueden ser colocadas en la zona de combate a distancia.
+En el juego, las cartas desempeñan un papel fundamental.
+Existen dos tipos principales de cartas:
+    las cartas de unidad
+    las cartas de clima.
+
+Las cartas de unidad
+son aquellas que cada jugador debe colocar estratégicamente en las zonas correspondientes del campo de batalla.
+Estas cartas tienen tres clasificaciones:
+    cuerpo a cuerpo (mele)
+    a distancia (ramngo)
+    y de asedio
+cada uno de los cuales determina la ubicación en la que puede ser colocada.
+
 Además, cada carta de unidad tiene un número que representa su valor de fuerza.
-Por otro lado, las cartas de clima son cartas especiales que pueden ser colocadas en la zona de clima.
-Estas cartas tienen el poder de afectar el campo de batalla y brindar ventajas o desventajas a los
-jugadores, dependiendo del tipo de clima que se haya elegido.
-Cada carta tiene un nombre y su clasificación que la identifica. Finalmente, cada carta de unidad puede
-tener su propia habilidad especial, esto se explica en la sección 1.4.
+
+Las cartas de clima
+son cartas especiales que pueden ser colocadas en la zona de clima.
+Estas cartas tienen el poder de afectar el campo de batalla y brindar ventajas o desventajas a los jugadores, dependiendo del tipo de clima que se haya elegido.
+Cada carta tiene un nombre y su clasificación que la identifica.
+Finalmente, cada carta de unidad puede tener su propia habilidad especial, ver sección 1.4.
 
 1.4. Efectos
 Las cartas de unidad pueden tener una habilidad especial que se activa cuando la carta es colocada en el
