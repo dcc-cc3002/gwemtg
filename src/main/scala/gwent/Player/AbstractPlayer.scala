@@ -1,3 +1,14 @@
+/**
+ * AbstractPlayer
+ * esta clase es una abstracion de los actores que toman las decisiones en el TCG Gwent
+ * a partir de ella se implementan los jugadores humanos Player y npcs ComputerPlayer
+ *
+ * @author Hugo Diaz
+ * @since 1.0.0
+ * @version 2.0.1
+ */
+
+
 package cl.uchile.dcc
 package gwent.Player
 
@@ -6,15 +17,6 @@ import gwent.Card.*
 import java.util.Objects
 import scala.util.Random
 
-/**
- * AbstractPlayer
- * esta clase es una abstracion de los actores que toman las decisiones en el TCG Gwent
- * a partir de ella se implementan los jugadores humanos Player y npcs ComputerPlayer
- *
- * @author Hugo Diaz
- * @since 1.0.0
- * @version 2.0.0
- */
 
 abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
   /**
@@ -136,34 +138,3 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
 */
 }
 
-/** este es el constructor de un jugador  */
-class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {
-  //documentacion heredada
-  override def hashCode: Int = Objects.hash(classOf[Player], name, deck, this.getGems, this.getHand, this.getSide)
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[Player]
-  /** no es necesario hacer override todavia */
-/*
-  override def equals(that: Any): Boolean = that match {
-    case p: Player => p.canEqual(this) && this.name == p.name && this.deck == p.deck && this.getGems == p.getGems && this.getHand == p.getHand && this.getSide == p.getSide && this.## == ap.##
-    case _ => false
-  }
-*/
-  override def toString: String = s"Player( nombre=$name, mazo=$deck )"
-}
-
-/** este es el constructor de un jugador automata */
-class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {
-
-  //documentacion heredada
-  override def hashCode: Int = Objects.hash(classOf[ComputerPlayer], name, deck, this.getGems, this.getHand, this.getSide)
-
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[ComputerPlayer]
-  /** no es necesario hacer override todavia */
-/*
-  override def equals(that: Any): Boolean = that match {
-    case cp: ComputerPlayer => cp.canEqual(this) && this.name == cp.name && this.deck == cp.deck && this.getGems == cp.getGems && this.getHand == cp.getHand && this.getSide == cp.getSide && this.## == ap.##
-    case _ => false
-  }
-*/
-  override def toString: String = s"ComputerPlayer( nombre=$name, mazo=$deck )"
-  }
