@@ -62,8 +62,8 @@ class Card(nombre: String) extends AbstractCard(nombre: String){
 class UnitCard(nombre: String, var fuerza: Int, val tipo: Int, var coste: Int, val efectos: List[String]=List()) extends Card(nombre: String){
 
   /** el indice index debe estar entre 1 y 3 */
-  //assert(0 < tipo)
-  //assert(tipo < 4)
+  require(0 < tipo)
+  require(tipo < 4)
 
   /** sobreescribimos hashCode para hacer classOf[UnitCard] */
   override def hashCode: Int = Objects.hash(classOf[UnitCard], nombre, fuerza, tipo, coste, efectos)

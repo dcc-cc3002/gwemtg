@@ -51,7 +51,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
   override def hashCode: Int
 
   /** verificamos que initialDeckSize sea 25 */
-  //assert(initialDeckSize == 25)
+  require(initialDeckSize == 25)
 
   /**
    * compromiso
