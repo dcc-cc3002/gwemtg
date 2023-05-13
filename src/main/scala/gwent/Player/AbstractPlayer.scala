@@ -12,8 +12,10 @@
 package cl.uchile.dcc
 package gwent.Player
 
-import gwent.Player.*
-import gwent.Card.*
+
+import munit.Clue.generate
+import cl.uchile.dcc.gwent.Card.*
+
 import java.util.Objects
 import scala.util.Random
 

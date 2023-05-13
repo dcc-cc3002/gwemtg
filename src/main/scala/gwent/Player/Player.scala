@@ -1,7 +1,7 @@
 /**
  * Player
- * esta clase representa un jugador humano y su comportamiento 
- * 
+ * esta clase representa un jugador humano y su comportamiento
+ *
  * @author Hugo Diaz
  * @since 2.0.1
  * @version 2.1.0
@@ -10,6 +10,8 @@
 package cl.uchile.dcc
 package gwent.Player
 package gwent.Card
+
+import java.util.Objects
 
 
 /** este es el constructor de un jugador  */

@@ -6,15 +6,16 @@ package gwent.CardTest
  *
  * Tests para la clase Card
  *
- * lorem ipsum
- * sit dolore atem
- *
  * @author Hugo Diaz
  * @since 1.1.0
  * @version 2.1.0
  */
 
-import gwent.Card.*
+import munit.Clue.generate
+
+import gwent.Card.Card
+import gwent.Card.ClimateCard
+import gwent.Card.UnitCard
 import munit.*
 
 

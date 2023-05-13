@@ -12,6 +12,8 @@
 package cl.uchile.dcc
 package gwent.Card
 
+import java.util.Objects
+
 /**
  * este es el constructor de un carta de criatura o 'unidad'
  *

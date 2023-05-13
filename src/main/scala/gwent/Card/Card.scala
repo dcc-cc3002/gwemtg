@@ -10,6 +10,8 @@
 package cl.uchile.dcc
 package gwent.Card
 
+import Card._
+import java.util.Objects
 
 /**
  *  este constructor es para tener una carta simplificada para tests

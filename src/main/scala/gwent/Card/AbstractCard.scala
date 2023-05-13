@@ -1,6 +1,3 @@
-package cl.uchile.dcc
-package gwent.Card
-
 /**
  * AbstractCard
  * esta clase es una representacion de una carta
@@ -11,6 +8,9 @@ package gwent.Card
  * @since 1.0.0
  * @version 2.1.0
  */
+
+package cl.uchile.dcc
+package gwent.Card
 
 import java.util.Objects
 import scala.collection.mutable
@@ -25,7 +25,7 @@ abstract class AbstractCard(val nombre: String){
   override def hashCode: Int
   /** funcion para comprobar que todos los campos representativos de AbstractCard sean iguales */
   override def equals(ac: Any): Boolean = ac match {
-    case ac: Card => ac.canEqual(this) && this.getName == ac.getName && this.## == ac.##
+    case ac: AbstractCard => ac.canEqual(this) && this.getName == ac.getName && this.## == ac.##
     case _ => false
   }
 

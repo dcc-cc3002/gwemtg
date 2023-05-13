@@ -12,6 +12,8 @@ package cl.uchile.dcc
 package gwent.Card
 
 
+import java.util.Objects
+
 /** este es el constructor de una carta climatica */
 class ClimateCard(nombre: String, var coste: Int, val efectos: List[String]) extends Card(nombre: String){
 
