@@ -9,7 +9,7 @@ package gwent.Card
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 2.0.1
+ * @version 2.1.0
  */
 
 import java.util.Objects
