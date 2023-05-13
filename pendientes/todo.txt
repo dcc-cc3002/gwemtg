@@ -1,3 +1,7 @@
+>>> 0. Urgencias
+Resolver imports
+
+
 >>> 1. Descripción
 
 El proyecto a realizar será crear un clon (simplificado) del juego de cartas Gwent desarrollado por
