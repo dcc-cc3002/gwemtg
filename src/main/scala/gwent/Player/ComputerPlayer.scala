@@ -12,11 +12,13 @@ package cl.uchile.dcc
 package gwent
 package Player
 
+import cl.uchile.dcc.gwent.Carta.Carta
+
 import java.util.Objects
 
 
 /** este es el constructor de un jugador automata */
-class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {
+class ComputerPlayer(name: String, deck: List[Carta]) extends AbstractPlayer(name, deck) {
 
   //documentacion heredada
   override def hashCode: Int = Objects.hash(classOf[ComputerPlayer], name, deck, this.getGems, this.getHand, this.getSide)

@@ -14,7 +14,6 @@ package gwent.Player
 
 
 import cl.uchile.dcc.gwent.Carta.Carta
-
 import java.util.Objects
 import scala.collection.mutable
 import scala.util.Random

@@ -29,9 +29,9 @@ Pruebas usando MUnit para las funcionalidades implementadas.
 |   |   |-- test  
 |   |   |   |-- gwent  
 |   |   |   |   |-- Card  
-|   |   |   |   |   |-- AbstractCartaTest.scala  
+|   |   |   |   |   |-- CartaTest.scala  
 |   |   |   |   |-- Player  
-|   |   |   |   |   |-- AbstractPlayerTest.scala  
+|   |   |   |   |   |-- PlayerTest.scala  
 |-- pendientes  
 |   |-- enunciado.txt  
 |   |-- todo.txt  
@@ -39,7 +39,7 @@ Pruebas usando MUnit para las funcionalidades implementadas.
     
 src/main/scala/gwent/Card/AbstractCarta.scala: Clase que representa una carta en el juego.  
 src/main/scala/gwent/Player/AbstractPlayer.scala: Clase abstracta que representa un jugador en el juego.  
-src/test/scala/gwent: Directorio contenedor de los tests del juego. Contiene los archivos './Card/AbstractCartaTest.scala' y './Player/AbstractPlayerTest.scala'   
+src/test/scala/gwent: Directorio contenedor de los tests del juego. Contiene los archivos './Card/CartaTest.scala' y './Player/PlayerTest.scala'   
 pendientes/enunciado.txt: Archivo que contiene el enunciado del proyecto.  
 pendientes/todo.txt: Archivo que contiene las tareas pendientes para la próxima entrega.  
 

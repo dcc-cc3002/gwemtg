@@ -11,8 +11,6 @@ package cl.uchile.dcc
 package gwent
 package Player
 
-import gwent.Player.*
-
 import cl.uchile.dcc.gwent.Carta.Carta
 
 import java.util.Objects

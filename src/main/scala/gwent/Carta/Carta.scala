@@ -10,7 +10,7 @@
 package cl.uchile.dcc
 package gwent.Carta
 
-import Carta._
+import gwent.Carta.*
 import java.util.Objects
 
 /**

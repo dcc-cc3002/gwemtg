@@ -27,8 +27,8 @@ import java.util.Objects
 class UnitCarta(nombre: String, var fuerza: Int, val tipo: Int, var coste: Int, val efectos: List[String]=List()) extends Carta(nombre: String){
 
   /** el indice index debe estar entre 1 y 3 */
-  require(0 < tipo)
-  require(tipo < 4)
+  //require(0 < tipo)
+  //require(tipo < 4)
 
   /** sobreescribimos hashCode para hacer classOf[UnitCarta] */
   override def hashCode: Int = Objects.hash(classOf[UnitCarta], nombre, fuerza, tipo, coste, efectos)

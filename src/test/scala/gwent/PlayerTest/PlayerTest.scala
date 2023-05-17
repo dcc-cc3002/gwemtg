@@ -17,7 +17,7 @@ import gwent.Carta.*
 import munit.*
 
 
-class AbstractPlayerTest extends munit.FunSuite {
+class PlayerTest extends munit.FunSuite {
   var cero: Carta = new Carta("Carta 0")
   var uno: Carta = new Carta("Carta 1")
   var dos: Carta = new Carta("Carta 2")
