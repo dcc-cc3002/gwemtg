@@ -1,3 +1,6 @@
+package cl.uchile.dcc
+package gwent.Player
+
 /**
  * AbstractPlayer
  * esta clase es una abstracion de los actores que toman las decisiones en el TCG Gwent
@@ -7,10 +10,6 @@
  * @since 1.0.0
  * @version 2.1.1
  */
-
-
-package cl.uchile.dcc
-package gwent.Player
 
 
 import gwent.Carta.{Carta, ClimateCarta, UnitCarta}
@@ -28,6 +27,14 @@ abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
    * su tipo es Tuple(List[Carta],List[Carta],List[Carta])
    * */
   private var side: Side = new Side(List(),List(),List())
+
+  /**
+   * climate
+   * climate representa el valor almacenado al medio de Board
+   * Game debe chequear que Player.climate, ComputerPlayer.climate y Board.clima sean la misma carta
+   * Game debe ser implementado de acuerdo a MVC (Modelo Vista Controlador)
+   */
+
   /**
    * hand representa la mano de cartas de un jugador
    * comienza vacia
@@ -135,7 +142,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
   }
 
   /**
-   * metodo que representa jugar una carta
+   * metodo que representa jugar una carta de Unidad
    *
    * la indexacion es la siguiente
    * 1 propio asedio
@@ -149,12 +156,16 @@ abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
   def playUnit(carta: UnitCarta, index: Int): Unit ={
     /**
       * el indice index debe estar entre 1 y 3
-      * esto implica que solo se puden jugar U
+      * esto implica que solo se puden jugar Unit s en el campo propio
       */
     //require(0 < index)
     //require(index < 4)
+    // si se quiere tambien poder jugar en la zona del oponente:
+    //require(index < 7)
+
     //require(index == carta.tipo)
     /** el tipo de Carta debe poder lanzarse a la zona en la zona que representa index */
+
     /** los require no funcionan asi que puse un mal if */
     if(carta.tipo==index)
     {
@@ -171,9 +182,29 @@ abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
     //error?
     }
   }
-  def playClimate(carta: ClimateCarta): Unit ={
-    //board.clima = carta
-  }
+  def playClimate(carta: ClimateCarta, tablero: Board): Unit = {tablero.clima = carta}
 
+  /** plays
+   *
+   * plays se encarga de jugar cartas
+   *
+   */
+  def plays(carta: Carta): Unit = {
+    /** realmente hay que remplazar t */
+    var t: Board = new Board(new Side(List(),List(),List()),new ClimateCarta("o",0,List()),new Side(List(),List(),List()))
+    /** revision de si esta mano cointiene una carta */
+    if(this.getHand.contains(carta)){//
+      /** pattern matching, inshallah del tipo */
+      val x: Any = carta.getClass match
+        /** si es Unit PlayUnit */
+        case x: UnitCarta => playUnit(x, x.tipo)
+        /** si es Climate PlayClimate */
+        case x: ClimateCarta => playClimate(x, t)
+        /** hacer este horrible raise mas metodologico */
+        case _ => assert(false)
+    }else{//error?
+      assert(false)
+    }
+  }
 }
 

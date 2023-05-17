@@ -1,5 +1,6 @@
 >>> 0. Urgencias
-Resolver imports
+############### Resolver imports
+linea     var t: Board = new Board(new Side(List(),List(),List()),new ClimateCarta("o",0,List()),new Side(List(),List(),List()))
 
 
 >>> 1. Descripción
