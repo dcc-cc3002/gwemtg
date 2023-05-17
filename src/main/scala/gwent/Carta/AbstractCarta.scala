@@ -1,3 +1,6 @@
+package cl.uchile.dcc
+package gwent.Carta
+
 /**
  * AbstractCarta
  * esta clase es una representacion de una carta
@@ -6,11 +9,9 @@
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 2.1.0
+ * @version 2.1.1
  */
 
-package cl.uchile.dcc
-package gwent.Carta
 
 import java.util.Objects
 import scala.collection.mutable

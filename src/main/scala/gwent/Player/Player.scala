@@ -4,7 +4,7 @@
  *
  * @author Hugo Diaz
  * @since 2.0.1
- * @version 2.1.0
+ * @version 2.1.1
  */
 
 package cl.uchile.dcc

@@ -8,7 +8,7 @@ package gwent.PlayerTest
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 2.1.0
+ * @version 2.1.1
  */
 
 
@@ -129,7 +129,7 @@ class PlayerTest extends munit.FunSuite {
     jugadorSinCartas CartaInDeck tres
     assertEquals(jugadorSinCartas.deck.length, 3, "mazo deberia tener tres cartas")
   }
-  
+
   test("string bonitos"){
     assertEquals(jugador.toString,"Player( nombre=Hugo, mazo=List(Carta(nombre=Carta 1), Carta(nombre=Carta 2)) )")
     assertEquals(npc.toString,"ComputerPlayer( nombre=Marvin, mazo=List(Carta(nombre=Carta 0), Carta(nombre=Carta 1)) )")

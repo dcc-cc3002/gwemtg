@@ -8,7 +8,7 @@ package gwent.CartaTest
  *
  * @author Hugo Diaz
  * @since 1.1.0
- * @version 2.1.0
+ * @version 2.1.1
  */
 
 import gwent.Carta.*
