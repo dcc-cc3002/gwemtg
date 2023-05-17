@@ -12,7 +12,6 @@ package gwent
 package Player
 
 import cl.uchile.dcc.gwent.Carta.Carta
-
 import java.util.Objects
 
 
@@ -28,6 +27,8 @@ class Player(name: String, deck: List[Carta]) extends AbstractPlayer(name, deck)
       case _ => false
     }
   */
+
+
   override def toString: String = s"Player( nombre=$name, mazo=$deck )"
 }
 

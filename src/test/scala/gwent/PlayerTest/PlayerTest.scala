@@ -118,18 +118,18 @@ class PlayerTest extends munit.FunSuite {
     assertEquals(robada,uno,"no se robo la carta esperada 'uno'")
     assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")
   }
-  /*
+
   test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberian ser las originales"){
     val jugadorSinCartas : Player = new Player("Lain",List())
     assertEquals(jugadorSinCartas.deck.length, 0, "mazo deberia estar vacio")
-    jugadorSinCartas.cartaInDeck(uno)
+    jugadorSinCartas CartaInDeck uno
     assertEquals(jugadorSinCartas.deck.length, 1, "mazo deberia tener  una carta")
-    jugadorSinCartas.cartaInDeck(dos)
+    jugadorSinCartas CartaInDeck dos
     assertEquals(jugadorSinCartas.deck.length, 2, "mazo deberia tener  dos cartas")
-    jugadorSinCartas.cartaInDeck(tres)
+    jugadorSinCartas CartaInDeck tres
     assertEquals(jugadorSinCartas.deck.length, 3, "mazo deberia tener tres cartas")
   }
-  */
+  
   test("string bonitos"){
     assertEquals(jugador.toString,"Player( nombre=Hugo, mazo=List(Carta(nombre=Carta 1), Carta(nombre=Carta 2)) )")
     assertEquals(npc.toString,"ComputerPlayer( nombre=Marvin, mazo=List(Carta(nombre=Carta 0), Carta(nombre=Carta 1)) )")

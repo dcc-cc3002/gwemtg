@@ -74,26 +74,39 @@ abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
     case _ => false
   }
   /** compromiso para sobreescribir toString */
-  override def toString: String 
+  override def toString: String
+
   /**
-   *  funcion que pone una carta en el indice i del mazo
-   *  comienza desde el indice cero en la carta superior del mazo
-   *  tambien acepta numeros negativos, siendo -1 el fondo del mazo
+   * funcion que pone una carta en el indice i del mazo
+   * comienza desde el indice cero en la carta superior del mazo
+   * tambien acepta numeros negativos, siendo -1 el fondo del mazo
    */
   def CartaIn(carta: Carta, i: Double): Unit = {
     var indice = i.asInstanceOf[Int]
+
     /** caso i = 0 */
-    if(i==0){deck = List(carta) ::: deck.drop(0)} else {
+    if (i == 0) {
+      deck = List(carta) ::: deck.drop(0)
+    } else {
       /** poner la carta en una posicion indice */
-      if(i>0){deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)} else {
+      if (i > 0) {
+        deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)
+      } else {
         /** caso borde i == -1 */
-        if(i==(-1).asInstanceOf[Double]){deck = deck.take(deck.length) ::: List(carta)}
-        /** pora poner la carta se recorre el mazo desde el final para los Double < 0  */
-        else{
+        if (i == (-1).asInstanceOf[Double]) {
+          deck = deck.take(deck.length) ::: List(carta)
+        }
+
+        /** pora poner la carta se recorre el mazo desde el final para los Double < 0 */
+        else {
           /** indice dentro del rango */
-          assert{deck.length >= indice}
+          assert {
+            deck.length >= indice
+          }
+
           /** indice = i+1 */
-          indice = (deck.length.asInstanceOf[Double]+i).asInstanceOf[Int] + 1
+          indice = (deck.length.asInstanceOf[Double] + i).asInstanceOf[Int] + 1
+
           /** caso inverso a i>0 */
           deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)
         }
@@ -101,20 +114,21 @@ abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
     }
   }
 
+  /** funcion que pone una carta en el indice i del mazo */
   def CartaInDeck(carta: Carta): Unit = {
     /** pone una carta en el mazo (arriba) */
-    CartaIn(carta,0)
+    CartaIn(carta, 0)
+
     /** baraja */
     deck = Random.shuffle(deck)
   }
-
   /** funcion draw es analoga a pop y devuelve la carta robada */
   def draw(): Carta = {
     /** carta robada */
     val h = deck.head
     /** el mazo pierde la carta superior */
     deck = deck.drop(1)
-    h
+    return h
   }
 
   /**
