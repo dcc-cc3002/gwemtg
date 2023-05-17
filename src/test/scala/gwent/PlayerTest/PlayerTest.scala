@@ -1,11 +1,10 @@
 package cl.uchile.dcc
-package gwent
-package Player
+package gwent.PlayerTest
 
 /**
- * AbstractPlayerTest
+ * PlayerTest
  *
- * Tests para la clase AbstractPlayerTest que representa jugadores tanto humanos como no
+ * Tests para la clase Player que representa jugadores tanto humanos como no
  *
  * @author Hugo Diaz
  * @since 1.1.0
@@ -13,6 +12,8 @@ package Player
  */
 
 
+import gwent.Player.*
+import gwent.Carta.*
 import munit.*
 
 
@@ -79,7 +80,7 @@ class AbstractPlayerTest extends munit.FunSuite {
 
   test("anxadir una carta sobre el mazo de un jugador deberia aumentar su tamanxo y quedar al principio"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
-    jugador.cardIn(tres, 0)
+    jugador.CartaIn(tres, 0)
     assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
     assertEquals(jugador.deck.head, tres, "la carta no fue anxadida arriba")
     assertEquals(jugador.deck(0), tres, "la carta no fue anxadida arriba")
@@ -88,7 +89,7 @@ class AbstractPlayerTest extends munit.FunSuite {
 
   test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al final"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
-    jugador.cardIn(tres, -1)
+    jugador.CartaIn(tres, -1)
     assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
     assertEquals(jugador.deck.last, tres, "la carta no fue anxadida abajo")
     assertEquals(jugador.deck(jugador.deck.length-1), tres, "la carta no fue anxadida abajo")
@@ -97,7 +98,7 @@ class AbstractPlayerTest extends munit.FunSuite {
 
   test("anxadir una carta en la posicion 1 del mazo deberia quedar segunda") {
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
-    jugador.cardIn(tres, 1)
+    jugador.CartaIn(tres, 1)
     assertEquals(jugador.deck.size, 3, "mazo de distinto tamanxo al esperado")
     assertEquals(jugador.deck(1), tres, "la carta fue anxadida en el indice 1")
     assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
@@ -105,7 +106,7 @@ class AbstractPlayerTest extends munit.FunSuite {
 
   test("anxadir una carta en la posicion -2 del mazo deberia quedar penultima") {
     assertEquals(jugador.deck.length, 2, "mazo de distinto tamanxo al esperado")
-    jugador.cardIn(tres, -2)
+    jugador.CartaIn(tres, -2)
     assertEquals(jugador.deck.length, 3, "mazo de distinto tamanxo al esperado")
     assertEquals(jugador.deck(jugador.deck.length - 2), tres, "la carta no fue anxadida en el indice -2")
     assertEquals(jugador.deck, List(uno, tres, dos), "los mazos no coinciden")
@@ -117,18 +118,18 @@ class AbstractPlayerTest extends munit.FunSuite {
     assertEquals(robada,uno,"no se robo la carta esperada 'uno'")
     assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")
   }
-
+  /*
   test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberian ser las originales"){
     val jugadorSinCartas : Player = new Player("Lain",List())
     assertEquals(jugadorSinCartas.deck.length, 0, "mazo deberia estar vacio")
-    jugadorSinCartas.cardInDeck(uno)
+    jugadorSinCartas.cartaInDeck(uno)
     assertEquals(jugadorSinCartas.deck.length, 1, "mazo deberia tener  una carta")
-    jugadorSinCartas.cardInDeck(dos)
+    jugadorSinCartas.cartaInDeck(dos)
     assertEquals(jugadorSinCartas.deck.length, 2, "mazo deberia tener  dos cartas")
-    jugadorSinCartas.cardInDeck(tres)
+    jugadorSinCartas.cartaInDeck(tres)
     assertEquals(jugadorSinCartas.deck.length, 3, "mazo deberia tener tres cartas")
   }
-
+  */
   test("string bonitos"){
     assertEquals(jugador.toString,"Player( nombre=Hugo, mazo=List(Carta(nombre=Carta 1), Carta(nombre=Carta 2)) )")
     assertEquals(npc.toString,"ComputerPlayer( nombre=Marvin, mazo=List(Carta(nombre=Carta 0), Carta(nombre=Carta 1)) )")

@@ -1,9 +1,8 @@
 package cl.uchile.dcc
-package gwent
-package Carta
+package gwent.CartaTest
 
 /**
- * Carta
+ * CartaTest
  *
  * Tests para la clase Carta
  *
@@ -12,6 +11,7 @@ package Carta
  * @version 2.1.0
  */
 
+import gwent.Carta.*
 import munit.*
 
 
