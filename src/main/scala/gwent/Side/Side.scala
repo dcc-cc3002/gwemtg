@@ -2,6 +2,8 @@ package cl.uchile.dcc
 package gwent.Side
 
 import gwent.Carta.UnitCarta
+import gwent.Player.Player
+import java.util.Objects
 
 /**
  * Board
@@ -18,4 +20,10 @@ import gwent.Carta.UnitCarta
 
 class Side(var mele: List[UnitCarta], var rango: List[UnitCarta], var asedio: List[UnitCarta]){
 
+  override def hashCode: Int = Objects.hash(classOf[Side], mele, rango, asedio)
+  def canEqual(that: Any): Boolean = that.isInstanceOf[Side]
+  override def equals(s: Any): Boolean = s match {
+    case s: Side => s.canEqual(this) && this.## == s.## && this.mele == s.mele && this.rango == s.rango && this.asedio == s.asedio
+    case _ => false
+  }
 }

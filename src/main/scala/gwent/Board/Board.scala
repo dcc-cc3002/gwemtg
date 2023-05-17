@@ -3,6 +3,7 @@ package gwent.Board
 
 import gwent.Carta.{Carta, ClimateCarta}
 import gwent.Side.Side
+import java.util.Objects
 
 /**
  * Board
@@ -15,5 +16,12 @@ import gwent.Side.Side
  */
 
 class Board(var player1: Side, var clima: ClimateCarta, var player2: Side) {
+  override def hashCode: Int = Objects.hash(classOf[Board], player1, clima, player2)
 
+  def canEqual(that: Any): Boolean = that.isInstanceOf[Board]
+
+  override def equals(b: Any): Boolean = b match {
+    case b: Board => b.canEqual(this) && this.## == b.## && this.player1 == b.player1 && this.clima == b.clima && this.player2 == b.player2
+    case _ => false
+  }
 }
