@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Side
 
-import gwent.Carta.Carta
+import gwent.Carta.UnitCarta
 
 /**
  * Board
@@ -16,6 +16,6 @@ import gwent.Carta.Carta
  * @version 2.1.1
  */
 
-class Side(var mele: List[Carta], var rango: List[Carta], var asedio: List[Carta]){
-  
+class Side(var mele: List[UnitCarta], var rango: List[UnitCarta], var asedio: List[UnitCarta]){
+
 }
