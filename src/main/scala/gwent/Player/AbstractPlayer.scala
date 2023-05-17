@@ -13,24 +13,24 @@ package cl.uchile.dcc
 package gwent.Player
 
 
-import munit.Clue.generate
-import cl.uchile.dcc.gwent.Card.*
+import cl.uchile.dcc.gwent.Carta.Carta
 
 import java.util.Objects
+import scala.collection.mutable
 import scala.util.Random
 
 
-abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
+abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
   /**
    * side representa el lado del tablero poseido por un jugador
-   * su tipo es Tuple(List[Card],List[Card],List[Card])
+   * su tipo es Tuple(List[Carta],List[Carta],List[Carta])
    * */
-  private var side: (List[Card], List[Card], List[Card]) = (List(),List(),List())
+  private var side: (List[Carta], List[Carta], List[Carta]) = (List(),List(),List())
   /**
    * hand representa la mano de cartas de un jugador
    * comienza vacia
    */
-  private var hand : List[Card] = List()
+  private var hand : List[Carta] = List()
   /**
    * gems representa las vidas del jugador, llamadas gemas
    * comienza en 2 y al ser 0 o menor el jugador muere y su oponente gana
@@ -42,7 +42,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
   /** funcion para obtener el lado */
   def getSide : Tuple = side
   /** funcion para obtener la mano */
-  def getHand : List[Card] = hand
+  def getHand : List[Carta] = hand
   /** funcion para obtener las vidas */
   def getGems : Int = gems
   /**
@@ -81,7 +81,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    *  comienza desde el indice cero en la carta superior del mazo
    *  tambien acepta numeros negativos, siendo -1 el fondo del mazo
    */
-  def cardIn(carta: Card, i: Double): Unit = {
+  def CartaIn(carta: Carta, i: Double): Unit = {
     var indice = i.asInstanceOf[Int]
     /** caso i = 0 */
     if(i==0){deck = List(carta) ::: deck.drop(0)} else {
@@ -102,15 +102,15 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
     }
   }
 
-  def cardInDeck(carta: Card): Unit = {
+  def CartaInDeck(carta: Carta): Unit = {
     /** pone una carta en el mazo (arriba) */
-    cardIn(carta,0)
+    CartaIn(carta,0)
     /** baraja */
     deck = Random.shuffle(deck)
   }
 
   /** funcion draw es analoga a pop y devuelve la carta robada */
-  def draw(): Card = {
+  def draw(): Carta = {
     /** carta robada */
     val h = deck.head
     /** el mazo pierde la carta superior */
@@ -130,11 +130,11 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    * 6 contrario asedio
    */
 /*
-  def play(card: Card, index: Int): Unit ={
+  def play(Carta: Carta, index: Int): Unit ={
     /** el indice index debe estar entre 1 y 6 */
     assert{0 < index}
     assert{index < 7}
-    /** el tipo de card debe poder lanzarse a la zona en la zona que representa index */
+    /** el tipo de Carta debe poder lanzarse a la zona en la zona que representa index */
     //do stuff
   }
 */

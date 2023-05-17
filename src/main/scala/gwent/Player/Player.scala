@@ -8,14 +8,18 @@
  */
 
 package cl.uchile.dcc
-package gwent.Player
-package gwent.Card
+package gwent
+package Player
+
+import gwent.Player.*
+
+import cl.uchile.dcc.gwent.Carta.Carta
 
 import java.util.Objects
 
 
 /** este es el constructor de un jugador  */
-class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {
+class Player(name: String, deck: List[Carta]) extends AbstractPlayer(name, deck) {
   //documentacion heredada
   override def hashCode: Int = Objects.hash(classOf[Player], name, deck, this.getGems, this.getHand, this.getSide)
   override def canEqual(that: Any): Boolean = that.isInstanceOf[Player]

@@ -1,5 +1,6 @@
 package cl.uchile.dcc
-package gwent.Player
+package gwent
+package Player
 
 /**
  * AbstractPlayerTest
@@ -11,28 +12,24 @@ package gwent.Player
  * @version 2.1.0
  */
 
-import gwent.Card.*
-import gwent.Player.*
 
 import munit.*
-import munit.Clue.generate
 
-//import munit.Clue.generate
 
 class AbstractPlayerTest extends munit.FunSuite {
-  var cero: Card = new Card("Card 0")
-  var uno: Card = new Card("Card 1")
-  var dos: Card = new Card("Card 2")
-  var tres: Card = new Card("Card 3")
+  var cero: Carta = new Carta("Carta 0")
+  var uno: Carta = new Carta("Carta 1")
+  var dos: Carta = new Carta("Carta 2")
+  var tres: Carta = new Carta("Carta 3")
   var jugador: Player = new Player("Hugo", List(uno, dos))
   var npc: ComputerPlayer = new ComputerPlayer("Marvin", List(cero, uno))
 
 
   override def beforeEach(context: BeforeEach): Unit = {
-    cero = new Card("Card 0")
-    uno = new Card("Card 1")
-    dos = new Card("Card 2")
-    tres = new Card("Card 3")
+    cero = new Carta("Carta 0")
+    uno = new Carta("Carta 1")
+    dos = new Carta("Carta 2")
+    tres = new Carta("Carta 3")
     jugador = new Player("Hugo", List(uno,dos))
     npc = new ComputerPlayer("Marvin", List(cero,uno))
   }
@@ -60,7 +57,7 @@ class AbstractPlayerTest extends munit.FunSuite {
   }
 
     test("un jugador tiene bien puestas su mano, campo de battalla y mazo iniciales"){
-    val listaVacia: List[Card] = List()
+    val listaVacia: List[Carta] = List()
     assertEquals(jugador.getSide, (List(),List(),List()), "campo no es igual a campoVacio")
     assertEquals(jugador.getHand, listaVacia, "mano no es igual a lista vacia")
     assertEquals(jugador.getGems, 2, "vida inicial distinta de dos")
@@ -116,7 +113,7 @@ class AbstractPlayerTest extends munit.FunSuite {
 
   test("robar una carta al mazo del jugador deberia disminuir su tamanxo y terminar siendo mas pequenxo"){
     assertEquals(jugador.deck.size, 2, "mazo de distinto tamanxo al esperado")
-    val robada : Card = jugador.draw()
+    val robada : Carta = jugador.draw()
     assertEquals(robada,uno,"no se robo la carta esperada 'uno'")
     assertEquals(jugador.deck.size, 1, "mazo de distinto tamanxo al esperado")
   }
@@ -133,8 +130,8 @@ class AbstractPlayerTest extends munit.FunSuite {
   }
 
   test("string bonitos"){
-    assertEquals(jugador.toString,"Player( nombre=Hugo, mazo=List(Card(nombre=Card 1), Card(nombre=Card 2)) )")
-    assertEquals(npc.toString,"ComputerPlayer( nombre=Marvin, mazo=List(Card(nombre=Card 0), Card(nombre=Card 1)) )")
+    assertEquals(jugador.toString,"Player( nombre=Hugo, mazo=List(Carta(nombre=Carta 1), Carta(nombre=Carta 2)) )")
+    assertEquals(npc.toString,"ComputerPlayer( nombre=Marvin, mazo=List(Carta(nombre=Carta 0), Carta(nombre=Carta 1)) )")
   }
 
 }

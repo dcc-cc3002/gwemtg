@@ -9,8 +9,8 @@
  */
 
 package cl.uchile.dcc
-package gwent.Player
-package gwent.Card
+package gwent
+package Player
 
 import java.util.Objects
 
