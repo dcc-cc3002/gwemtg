@@ -13,7 +13,9 @@ package cl.uchile.dcc
 package gwent.Player
 
 
-import cl.uchile.dcc.gwent.Carta.Carta
+import gwent.Carta.Carta
+import gwent.Board.Board
+import gwent.Side.Side
 import java.util.Objects
 import scala.collection.mutable
 import scala.util.Random

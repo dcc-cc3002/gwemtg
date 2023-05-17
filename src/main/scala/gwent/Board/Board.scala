@@ -1,6 +1,9 @@
 package cl.uchile.dcc
 package gwent.Board
 
+import gwent.Carta.{Carta, ClimateCarta}
+import gwent.Side.Side
+
 /**
  * Board
  * esta clase representa el campo de battalla
@@ -11,6 +14,6 @@ package gwent.Board
  * @version 2.1.1
  */
 
-class Board {
+class Board(var player1: Side, var clima: ClimateCarta, var player2: Side) {
 
 }

@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.Side
 
+import gwent.Carta.Carta
+
 /**
  * Board
  * esta clase representa el lado correspondiente a un jugador del campo de battalla
@@ -14,6 +16,6 @@ package gwent.Side
  * @version 2.1.1
  */
 
-class Side {
-
+class Side(var mele: List[Carta], var rango: List[Carta], var asedio: List[Carta]){
+  
 }
