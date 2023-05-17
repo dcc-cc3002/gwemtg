@@ -13,9 +13,10 @@ package cl.uchile.dcc
 package gwent.Player
 
 
-import gwent.Carta.Carta
+import gwent.Carta.{Carta, ClimateCarta, UnitCarta}
 import gwent.Board.Board
 import gwent.Side.Side
+
 import java.util.Objects
 import scala.collection.mutable
 import scala.util.Random
@@ -26,7 +27,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
    * side representa el lado del tablero poseido por un jugador
    * su tipo es Tuple(List[Carta],List[Carta],List[Carta])
    * */
-  private var side: (List[Carta], List[Carta], List[Carta]) = (List(),List(),List())
+  private var side: Side = new Side(List(),List(),List())
   /**
    * hand representa la mano de cartas de un jugador
    * comienza vacia
@@ -41,7 +42,7 @@ abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
   val initialDeckSize: Int = 25
 
   /** funcion para obtener el lado */
-  def getSide : Tuple = side
+  def getSide: Side = side
   /** funcion para obtener la mano */
   def getHand : List[Carta] = hand
   /** funcion para obtener las vidas */
@@ -144,14 +145,35 @@ abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
    * 5 contrario rango
    * 6 contrario asedio
    */
-/*
-  def play(Carta: Carta, index: Int): Unit ={
-    /** el indice index debe estar entre 1 y 6 */
-    assert{0 < index}
-    assert{index < 7}
+
+  def playUnit(carta: UnitCarta, index: Int): Unit ={
+    /**
+      * el indice index debe estar entre 1 y 3
+      * esto implica que solo se puden jugar U
+      */
+    //require(0 < index)
+    //require(index < 4)
+    //require(index == carta.tipo)
     /** el tipo de Carta debe poder lanzarse a la zona en la zona que representa index */
-    //do stuff
+    /** los require no funcionan asi que puse un mal if */
+    if(carta.tipo==index)
+    {
+      /** se juega carta dependiendo de en que index de side se intente lanzar */
+      index match{
+        case 1 => side.asedio = List(carta) ::: side.asedio.drop(0)
+        case 2 => side.rango = List(carta) ::: side.rango.drop(0)
+        case 3 => side.mele = List(carta) ::: side.mele.drop(0)
+        /** error por implementar */
+        //case _ => //error?
+      }
+    }else{
+    /** error por implementar */
+    //error?
+    }
   }
-*/
+  def playClimate(carta: ClimateCarta): Unit ={
+    //board.clima = carta
+  }
+
 }
 

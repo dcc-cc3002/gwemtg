@@ -75,7 +75,7 @@ Las cartas de unidad
 son aquellas que cada jugador debe colocar estratégicamente en las zonas correspondientes del campo de batalla.
 Estas cartas tienen tres clasificaciones:
     cuerpo a cuerpo (mele)
-    a distancia (ramngo)
+    a distancia (rango)
     y de asedio
 cada uno de los cuales determina la ubicación en la que puede ser colocada.
 

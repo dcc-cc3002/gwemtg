@@ -14,17 +14,22 @@ package gwent.PlayerTest
 
 import gwent.Player.*
 import gwent.Carta.*
+
+import cl.uchile.dcc.gwent.Board.Board
+import cl.uchile.dcc.gwent.Side.Side
 import munit.*
 
 
 class PlayerTest extends munit.FunSuite {
-  var cero: Carta = new Carta("Carta 0")
-  var uno: Carta = new Carta("Carta 1")
-  var dos: Carta = new Carta("Carta 2")
-  var tres: Carta = new Carta("Carta 3")
-  var jugador: Player = new Player("Hugo", List(uno, dos))
-  var npc: ComputerPlayer = new ComputerPlayer("Marvin", List(cero, uno))
-
+  var cero : Carta = new Carta("Carta 0")
+  var uno : Carta = new Carta("Carta 1")
+  var dos : Carta = new Carta("Carta 2")
+  var tres : Carta = new Carta("Carta 3")
+  var jugador : Player = new Player("Hugo", List(uno, dos))
+  var npc : ComputerPlayer = new ComputerPlayer("Marvin", List(cero, uno))
+  var zoltanChivay : UnitCarta = new UnitCarta("Zoltan Chivay", 4, 1, 4)
+  var bitingFrost : ClimateCarta = new ClimateCarta("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
+  var sinClima : ClimateCarta = new ClimateCarta(nombre = "Sin clima", coste = 1, efectos = List())
 
   override def beforeEach(context: BeforeEach): Unit = {
     cero = new Carta("Carta 0")
@@ -33,6 +38,8 @@ class PlayerTest extends munit.FunSuite {
     tres = new Carta("Carta 3")
     jugador = new Player("Hugo", List(uno,dos))
     npc = new ComputerPlayer("Marvin", List(cero,uno))
+    zoltanChivay = new UnitCarta("Zoltan Chivay", 4, 1, 4)
+    bitingFrost = new ClimateCarta("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
   }
 
 
@@ -59,7 +66,7 @@ class PlayerTest extends munit.FunSuite {
 
     test("un jugador tiene bien puestas su mano, campo de battalla y mazo iniciales"){
     val listaVacia: List[Carta] = List()
-    assertEquals(jugador.getSide, (List(),List(),List()), "campo no es igual a campoVacio")
+    assertEquals(jugador.getSide, new Side(List(),List(),List()), "campo no es igual a campoVacio")
     assertEquals(jugador.getHand, listaVacia, "mano no es igual a lista vacia")
     assertEquals(jugador.getGems, 2, "vida inicial distinta de dos")
     assertEquals(jugador.initialDeckSize, 25, "tamanxo de mazo inicial distinto a 25")
@@ -133,6 +140,18 @@ class PlayerTest extends munit.FunSuite {
   test("string bonitos"){
     assertEquals(jugador.toString,"Player( nombre=Hugo, mazo=List(Carta(nombre=Carta 1), Carta(nombre=Carta 2)) )")
     assertEquals(npc.toString,"ComputerPlayer( nombre=Marvin, mazo=List(Carta(nombre=Carta 0), Carta(nombre=Carta 1)) )")
+  }
+
+  test("player juega una carta"){
+    /** falta hacer un player.plays(Carta) que revise si Carta esta en hand de Player */
+    val jugadorSinCartas : Player = new Player("Lain",List())
+    assertEquals(jugadorSinCartas.getSide, new Side(List(),List(),List()),"Lain debe partir sin cartas en su lado")
+    jugadorSinCartas.playUnit(zoltanChivay,1)
+    assertEquals(jugadorSinCartas.getSide, new Side(List(),List(),List(zoltanChivay)),"Lain debe partir sin cartas en su lado")
+    /** Lain juega climate card in Board board4playing */
+    var board4playing : Board = new Board(new Side(List(),List(),List()),sinClima,jugadorSinCartas.getSide)
+    jugadorSinCartas.playClimate(bitingFrost,board4playing)
+    assertEquals(board4playing, new Board(new Side(List(),List(),List()),bitingFrost,jugadorSinCartas.getSide))
   }
 
 }
