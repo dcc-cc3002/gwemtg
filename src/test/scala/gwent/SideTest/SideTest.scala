@@ -32,4 +32,15 @@ class SideTest  extends munit.FunSuite {
     var ladoP2: Side = new Side(List(), List(), List())
   }
 
+  test("test para equals") {
+    var l1: Side = new Side(List(), List(), List())
+    var l2: Side = new Side(List(), List(), List())
+    .equals(jugador)
+    p2.equals(npc)
+    jugador.equals(p1)
+    npc.equals(p2)
+    assert(!(p1.equals(p2)))
+  }
+
+
 }
