@@ -16,6 +16,9 @@ class SideTest  extends munit.FunSuite {
   var jugador: Player = new Player("Hugo", List(uno, dos))
   var npc: ComputerPlayer = new ComputerPlayer("Marvin", List(cero, uno))
 
+  var ladoP1: Side = new Side(List(), List(), List())
+  var ladoP2: Side = new Side(List(), List(), List())
+
 
   override def beforeEach(context: BeforeEach): Unit = {
     cero = new Carta("Carta 0")
@@ -24,6 +27,9 @@ class SideTest  extends munit.FunSuite {
     tres = new Carta("Carta 3")
     jugador = new Player("Hugo", List(uno, dos))
     npc = new ComputerPlayer("Marvin", List(cero, uno))
+
+    var ladoP1: Side = new Side(List(), List(), List())
+    var ladoP2: Side = new Side(List(), List(), List())
   }
 
 }
