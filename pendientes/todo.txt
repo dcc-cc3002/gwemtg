@@ -3,6 +3,42 @@
 linea     var t: Board = new Board(new Side(List(),List(),List()),new ClimateCarta("o",0,List()),new Side(List(),List(),List()))
 
 
+
+
+
+
+
+>>> 0.5 Urgencias
+Mensaje Personal:
+Funcionalidad:
+- Jugadores no pueden robar una carta del mazo y agregarla a su mano (-0,5)
+- Contador de gemas puede ser negativo (-0,3)
+
+Diseño:
+- No separa clasificaciones de cartas en clases individuales (-1,25)
+- No crea una interfaz para las cartas (-1,0)
+- No utiliza una clase abstracta para las cartas de unidad (separada de las de clima) (-0,7)
+- No existe una buena organización del código en paquetes (-0,3)
+
+Coverage:
+- Porcentaje de coverage 67% (-0,6)
+
+Observaciones: Si bien la carta se puede sacar del mazo, el método draw no agrega la carta a la mano del jugador.
+Todas las clases que no sean sealed, deben ir en archivos separados.
+No te desconté por no tener las clasificaciones de carta porque en los comentarios especificaste que valor de tipo era cual carta, pero esto es un mal diseño, porque ese numero puede ser cualquier cosa y esto no puede ser detectado en tiempo de compilación. Las clasificaciones de carta de unidad debiesen ser sus propias clases.
+
+Revisado por Nicolás Escobar Zarzar
+
+
+
+
+
+
+
+
+
+
+
 >>> 1. Descripción
 
 El proyecto a realizar será crear un clon (simplificado) del juego de cartas Gwent desarrollado por
