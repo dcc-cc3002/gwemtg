@@ -3,11 +3,6 @@
 linea     var t: Board = new Board(new Side(List(),List(),List()),new ClimateCarta("o",0,List()),new Side(List(),List(),List()))
 
 
-
-
-
-
-
 >>> 0.5 Urgencias
 Mensaje Personal:
 Funcionalidad:
