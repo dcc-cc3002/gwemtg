@@ -1,11 +1,6 @@
 package cl.uchile.dcc
 package gwent.Player
 
-import gwent.Player.*
-import gwent.Card.*
-import java.util.Objects
-import scala.util.Random
-
 /**
  * AbstractPlayer
  * esta clase es una abstracion de los actores que toman las decisiones en el TCG Gwent
@@ -13,75 +8,115 @@ import scala.util.Random
  *
  * @author Hugo Diaz
  * @since 1.0.0
- * @version 1.1.4
+ * @version 2.1.1
  */
 
-abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
+
+import gwent.Carta.{Carta, ClimateCarta, UnitCarta}
+import gwent.Board.Board
+import gwent.Side.Side
+
+import java.util.Objects
+import scala.collection.mutable
+import scala.util.Random
+
+
+abstract class AbstractPlayer(val name: String, var deck: List[Carta]) {
   /**
    * side representa el lado del tablero poseido por un jugador
-   * su tipo es Tuple(List[Card],List[Card],List[Card])
+   * su tipo es Tuple(List[Carta],List[Carta],List[Carta])
    * */
-  var side: (List[Card], List[Card], List[Card]) = (List(),List(),List())
+  private var side: Side = new Side(List(),List(),List())
+
+  /**
+   * climate
+   * climate representa el valor almacenado al medio de Board
+   * Game debe chequear que Player.climate, ComputerPlayer.climate y Board.clima sean la misma carta
+   * Game debe ser implementado de acuerdo a MVC (Modelo Vista Controlador)
+   */
+
   /**
    * hand representa la mano de cartas de un jugador
    * comienza vacia
    */
-  var hand : List[Card] = List()
+  private var hand : List[Carta] = List()
   /**
    * gems representa las vidas del jugador, llamadas gemas
    * comienza en 2 y al ser 0 o menor el jugador muere y su oponente gana
    */
-  var gems : Int = 2
+  private var gems : Int = 2
   /** initialDeckSize es una constante, 25, que es el unico valor valido para el largo de una mazo */
   val initialDeckSize: Int = 25
 
+  /** funcion para obtener el lado */
+  def getSide: Side = side
+  /** funcion para obtener la mano */
+  def getHand : List[Carta] = hand
+  /** funcion para obtener las vidas */
+  def getGems : Int = gems
   /**
+   * compromiso
    * hashCode
    * hashCode: -> Int
-   * crea una llave a partir de algo, por ser remplazada a por la del auxiliar
+   * crea una llave a partir de algo
+   * este algo deberia ser los componentes de player
    */
-  override def hashCode: Int = Objects.hash(classOf[AbstractPlayer], side, hand, gems)
+  override def hashCode: Int
 
   /** verificamos que initialDeckSize sea 25 */
-  //assert(initialDeckSize == 25)
+  require(initialDeckSize == 25)
 
   /**
+   * compromiso
    * canEqual
    * canEqual: any -> Boolean
    * verifica si se puede comparar dos objetos al poder ser instanciado como la clase AbstractPlayer
-   *
-   * definida aqui
    */
-  def canEqual(that: Any): Boolean = that.isInstanceOf[AbstractPlayer]
+  def canEqual(that: Any): Boolean
 
   /**
    * equals
    * equals: any -> Boolean
    * verifica si todos los campos
    */
-  override def equals(that: Any): Boolean = that match {
-    case ap: AbstractPlayer => ap.canEqual(this) &&  this.side == ap.side && this.hand == ap.hand && this.gems == ap.gems && this.initialDeckSize == ap.initialDeckSize && this.## == ap.##
+  override def equals(ap: Any): Boolean = ap match {
+    case ap: AbstractPlayer => ap.canEqual(this) &&  this.getSide == ap.getSide && this.getHand == ap.getHand && this.getGems == ap.getGems && this.initialDeckSize == ap.initialDeckSize && this.## == ap.##
     case _ => false
   }
+  /** compromiso para sobreescribir toString */
+  override def toString: String
+
   /**
-   *  funcion que pone una carta en el indice i del mazo
-   *  comienza desde el indice cero en la carta superior del mazo
-   *  tambien acepta numeros negativos, siendo -1 el fondo del mazo
+   * funcion que pone una carta en el indice i del mazo
+   * comienza desde el indice cero en la carta superior del mazo
+   * tambien acepta numeros negativos, siendo -1 el fondo del mazo
    */
-  def cardIn(carta: Card, i: Double): Unit = {
+  def CartaIn(carta: Carta, i: Double): Unit = {
     var indice = i.asInstanceOf[Int]
+
     /** caso i = 0 */
-    if(i==0){deck = List(carta) ::: deck.drop(0)} else {
+    if (i == 0) {
+      deck = List(carta) ::: deck.drop(0)
+    } else {
       /** poner la carta en una posicion indice */
-      if(i>0){deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)} else {
+      if (i > 0) {
+        deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)
+      } else {
         /** caso borde i == -1 */
-        if(i==(-1).asInstanceOf[Double]){deck = deck.take(deck.length) ::: List(carta)}
-        /** pora poner la carta se recorre el mazo desde el final para los Double < 0  */
-        else{
+        if (i == (-1).asInstanceOf[Double]) {
+          deck = deck.take(deck.length) ::: List(carta)
+        }
+
+        /** pora poner la carta se recorre el mazo desde el final para los Double < 0 */
+        else {
           /** indice dentro del rango */
-          assert{deck.length >= indice}
+          assert {
+            deck.length >= indice
+          }
+
           /** indice = i+1 */
-          indice = (deck.length.asInstanceOf[Double]+i).asInstanceOf[Int] + 1
+          indice = (deck.length.asInstanceOf[Double] + i).asInstanceOf[Int] + 1
+
           /** caso inverso a i>0 */
           deck = deck.take(indice) ::: List(carta) ::: deck.drop(indice)
         }
@@ -89,25 +124,25 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
     }
   }
 
-  def cardInDeck(carta: Card): Unit = {
+  /** funcion que pone una carta en el indice i del mazo */
+  def CartaInDeck(carta: Carta): Unit = {
     /** pone una carta en el mazo (arriba) */
-    cardIn(carta,0)
+    CartaIn(carta, 0)
+
     /** baraja */
     deck = Random.shuffle(deck)
   }
-
   /** funcion draw es analoga a pop y devuelve la carta robada */
-  def draw(): Card = {
+  def draw(): Carta = {
     /** carta robada */
     val h = deck.head
     /** el mazo pierde la carta superior */
     deck = deck.drop(1)
-    /** return innecesario pero por claridad */
     return h
   }
 
   /**
-   * metodo que representa jugar una carta
+   * metodo que representa jugar una carta de Unidad
    *
    * la indexacion es la siguiente
    * 1 propio asedio
@@ -117,19 +152,59 @@ abstract class AbstractPlayer(val name: String, var deck: List[Card]) {
    * 5 contrario rango
    * 6 contrario asedio
    */
-/*
-  def play(card: Card, index: Int): Unit ={
-    /** el indice index debe estar entre 1 y 6 */
-    assert{0 < index}
-    assert{index < 7}
-    /** el tipo de card debe poder lanzarse a la zona en la zona que representa index */
-    //do stuff
+
+  def playUnit(carta: UnitCarta, index: Int): Unit ={
+    /**
+      * el indice index debe estar entre 1 y 3
+      * esto implica que solo se puden jugar Unit s en el campo propio
+      */
+    //require(0 < index)
+    //require(index < 4)
+    // si se quiere tambien poder jugar en la zona del oponente:
+    //require(index < 7)
+
+    //require(index == carta.tipo)
+    /** el tipo de Carta debe poder lanzarse a la zona en la zona que representa index */
+
+    /** los require no funcionan asi que puse un mal if */
+    if(carta.tipo==index)
+    {
+      /** se juega carta dependiendo de en que index de side se intente lanzar */
+      index match{
+        case 1 => side.asedio = List(carta) ::: side.asedio.drop(0)
+        case 2 => side.rango = List(carta) ::: side.rango.drop(0)
+        case 3 => side.mele = List(carta) ::: side.mele.drop(0)
+        /** error por implementar */
+        //case _ => //error?
+      }
+    }else{
+    /** error por implementar */
+    //error?
+    }
   }
-*/
+  def playClimate(carta: ClimateCarta, tablero: Board): Unit = {tablero.clima = carta}
+
+  /** plays
+   *
+   * plays se encarga de jugar cartas
+   *
+   */
+  def plays(carta: Carta): Unit = {
+    /** realmente hay que remplazar t */
+    var t: Board = new Board(new Side(List(),List(),List()),new ClimateCarta("o",0,List()),new Side(List(),List(),List()))
+    /** revision de si esta mano cointiene una carta */
+    if(this.getHand.contains(carta)){//
+      /** pattern matching, inshallah del tipo */
+      val x: Any = carta.getClass match
+        /** si es Unit PlayUnit */
+        case x: UnitCarta => playUnit(x, x.tipo)
+        /** si es Climate PlayClimate */
+        case x: ClimateCarta => playClimate(x, t)
+        /** hacer este horrible raise mas metodologico */
+        case _ => assert(false)
+    }else{//error?
+      assert(false)
+    }
+  }
 }
 
-/** este es el constructor de un jugador  */
-class Player(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
-
-/** este es el constructor de un jugador automata */
-class ComputerPlayer(name: String, deck: List[Card]) extends AbstractPlayer(name, deck) {}
