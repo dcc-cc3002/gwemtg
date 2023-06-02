@@ -3,6 +3,7 @@ package cl.uchile.dcc
 package gwent
 
 import gwent.cards.Card
+import java.util.Objects
 
 /** Class representing a player in the Gwen't game.
  *
@@ -25,14 +26,41 @@ import gwent.cards.Card
  * @version 1.1
  * @since 1.0
  */
-class Player(val name: String, var gemCounter: Int, private var _deck: List[Card],
-             private var _hand: List[Card]) {
+class Player(val name: String, var gemCounter: Int, private var _deck: List[Card], private var _hand: List[Card]) {
 
   /** Accessor method for the player's deck */
   def deck: List[Card] = _deck
 
   /** Accessor method for the player's hand */
   def hand: List[Card] = _hand
+
+  /**
+   * hashCode
+   * hashCode: -> Int
+   * crea una llave a partir de algo
+   * este algo deberia ser los componentes de player
+   */
+  override def hashCode:  Int = Objects.hash(classOf[Player], name, deck, gemCounter, hand)
+
+  //** verificamos que initialDeckSize sea 25 */
+  //assert(initialDeckSize == 25)
+
+  /**
+   * canEqual
+   * canEqual: any -> Boolean
+   * verifica si se puede comparar dos objetos al poder ser instanciado como la clase Player
+   */
+  def canEqual(p: Any): Boolean = p.isInstanceOf[Player]
+
+  /**
+   * equals
+   * equals: any -> Boolean
+   * verifica si todos los campos
+   */
+  override def equals(p: Any): Boolean = p match {
+    case p: Player => p.canEqual(this) && this.name == p.name && this.gemCounter == p.gemCounter && this.hand == p.hand && this.## == p.##
+    case _ => false
+  }
 
   /** Draws a card from the deck and adds it to the hand.
    *
@@ -60,5 +88,50 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    */
   def shuffleDeck(): Unit = {
     _deck = scala.util.Random.shuffle(_deck)
+  }
+  
+  
+  /**
+   *  funcion que pone una carta en el indice i del mazo
+   *  comienza desde el indice cero en la carta superior del mazo
+   *  tambien acepta numeros negativos, siendo -1 el fondo del mazo.
+   */
+  def cardIn(carta: Card, i: Double): Unit = {
+    val indice = i.asInstanceOf[Int]
+
+    (i, indice) match {
+      case (0, _) =>
+        _deck = List(carta) ::: _deck.drop(0)
+
+      case (_, _) if i > 0 =>
+        _deck = _deck.take(indice) ::: List(carta) ::: deck.drop(indice)
+
+      case (-1, _) =>
+        _deck = this.deck.take(this.deck.length) ::: List(carta)
+
+      case (_, _) if i < -1 =>
+        assert(deck.length >= indice)
+        val newIndex = (this.deck.length.asInstanceOf[Double] + i).asInstanceOf[Int] + 1
+        _deck = this.deck.take(newIndex) ::: List(carta) ::: this.deck.drop(newIndex)
+    }
+  }
+
+
+  def cardInDeck(carta: Card): Unit = {
+    /** pone una carta en el mazo (arriba) */
+    cardIn(carta, 0)
+
+    /** baraja */
+    shuffleDeck()
+  }
+
+  /** funcion draw es analoga a pop y devuelve la carta robada */
+  def draw(): Card = {
+    /** carta robada */
+    val h = _deck.head
+
+    /** el mazo pierde la carta superior */
+    _deck = _deck.drop(1)
+    h
   }
 }
