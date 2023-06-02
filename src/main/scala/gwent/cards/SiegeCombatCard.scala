@@ -15,7 +15,7 @@ package gwent.cards
  *              machinery's strength.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~YOUR NAME~
+ * @author hugodiazroa
  * @version 1.1
  * @since 1.0
  */

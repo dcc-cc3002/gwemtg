@@ -21,7 +21,7 @@ import gwent.cards.Card
  * @param _hand The initial list of cards in the player's hand.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~YOUR NAME~
+ * @author hugodiazroa
  * @version 1.1
  * @since 1.0
  */
