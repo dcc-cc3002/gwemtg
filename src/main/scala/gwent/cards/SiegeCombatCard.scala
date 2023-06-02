@@ -10,7 +10,7 @@ package gwent.cards
  *
  * @constructor create a new siege combat card with name, description, and power.
  * @param name the name of the card.
- * @param description the description of the card.
+ * @param cost how much mana is required to cast a card
  * @param power the initial power value of the card, which also corresponds to the siege
  *              machinery's strength.
  *
@@ -19,6 +19,6 @@ package gwent.cards
  * @version 1.1
  * @since 1.0
  */
-class SiegeCombatCard(name: String, description: String, power: Int)
-  extends AbstractUnitCard(name, description, power)
+class SiegeCombatCard(name: String, cost: Int, power: Int)
+  extends AbstractUnitCard(name, cost, power)
 

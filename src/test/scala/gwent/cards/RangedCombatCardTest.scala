@@ -1,6 +1,11 @@
 package cl.uchile.dcc
 package gwent.cards
 
-class RangedCombatCardTest {
+
+import gwent.cards.*
+import munit.*
+
+class RangedCombatCardTest extends munit.FunSuite {
+
 
 }

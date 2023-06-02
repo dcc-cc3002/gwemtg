@@ -11,7 +11,7 @@ package gwent.cards
  * @constructor Creates a new `CloseCombatCard` with a specified name, description, and
  *              power.
  * @param name the name of the card.
- * @param description the description of the card.
+ * @param cost how much mana is required to cast a card
  * @param power the initial power value of the card, which also corresponds to the
  *              strength of the troop it represents.
  *
@@ -20,7 +20,7 @@ package gwent.cards
  * @version 1.1
  * @since 1.0
  */
-class CloseCombatCard(name: String, description: String, power: Int)
-  extends AbstractUnitCard(name, description, power)
+class CloseCombatCard(name: String, cost: Int, power: Int)
+  extends AbstractUnitCard(name, cost, power)
 
 

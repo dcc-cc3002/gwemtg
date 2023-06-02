@@ -11,8 +11,7 @@ package gwent.cards
  * @constructor Creates a new `AbstractUnitCard` with a specified name, description, and
  *              power.
  * @param name The name of the card.
- * @param description The description of the card, explaining its specific abilities or
- *                    role in the game.
+ * @param cost The cost means how much mana is required to cast a card
  * @param power The base power of the card, indicating the contribution of this card to
  *              the player's total power when unaffected by any special conditions.
  *
@@ -21,7 +20,7 @@ package gwent.cards
  * @version 1.1
  * @since 1.0
  */
-abstract class AbstractUnitCard protected(val name: String, val description: String,
+abstract class AbstractUnitCard protected(val name: String, val cost: Int,
                                           val power: Int) extends Card {
 
   /** The current power of the card, which may be affected by various conditions during

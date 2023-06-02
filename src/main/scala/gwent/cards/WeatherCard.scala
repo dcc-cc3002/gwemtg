@@ -10,6 +10,7 @@ package gwent.cards
  *
  * @constructor Creates a new `WeatherCard` with a specified name and description.
  * @param name The name of the card.
+ * @param cost how much mana is required to cast a card
  * @param description The description of the card, explaining its specific effects.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
@@ -17,4 +18,4 @@ package gwent.cards
  * @version 1.1
  * @since 1.0
  */
-class WeatherCard(val name: String, val description: String) extends Card
+class WeatherCard(val name: String, val cost: Int, val description: String) extends Card

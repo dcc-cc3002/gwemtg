@@ -4,7 +4,7 @@ package gwent.cards
 
 /** Trait representing a card in the Gwen't game.
  *
- * A card is characterized by its [[name]] and [[description]].
+ * A card is characterized by its [[name]] and [[cost]].
  * This trait serves as a common interface for all card types and ensures that every card,
  * regardless of its specific subtype, will have these basic properties.
  *
@@ -29,8 +29,8 @@ trait Card {
    */
   val name: String
 
-  /** A description of the card's properties or effects.
+  /** How much mana is required to cast a card
    * This is an immutable property.
    */
-  val description: String
+  val cost: Int
 }

@@ -1,10 +1,8 @@
 package cl.uchile.dcc
 package gwent
-package cards
 
 
-import gwent.*
-
+import gwent.cards.*
 import munit.*
 
 class PlayerTest extends munit.FunSuite {
@@ -20,9 +18,11 @@ class PlayerTest extends munit.FunSuite {
   var lambert: SiegeCombatCard = SiegeCombatCard("Lambert", 6, 6)
   var zoltanChivay: CloseCombatCard = CloseCombatCard("Zoltan Chivay", 4, 4)
   /** 5 ClimateCards para el juego */
-  var bitingFrost: ClimateCard = new ClimateCard("Escarcha mordiente", 1, List("Convierte el valor de fuerza de todas las cartas de mele a 1"))
-  var impenetrableFog: ClimateCard = new ClimateCard("Niebla Impenetrable", 2, List("Aplica niebla a una fila enemiga."))
-  var torrentialRain: ClimateCard = new ClimateCard("LLuvia Torrencial", 3, List("Aplica lluvia a una fila enemiga."))
-  var clearWeather: ClimateCard = new ClimateCard("Despejar", 1, List("Limpia todos los efectos de clima del campo de batalla."))
-  var commanderHorn: ClimateCard = new ClimateCard("Cuerno del Comandante", 4, List("Dobla la fuerza de todas las unidades de una fila."))
+  var bitingFrost: WeatherCard = new WeatherCard("Escarcha mordiente", 1, "Convierte el valor de fuerza de todas las cartas de mele a 1")
+  var impenetrableFog: WeatherCard = new WeatherCard("Niebla Impenetrable", 2, "Aplica niebla a una fila enemiga.")
+  var torrentialRain: WeatherCard = new WeatherCard("LLuvia Torrencial", 3, "Aplica lluvia a una fila enemiga.")
+  var clearWeather: WeatherCard = new WeatherCard("Despejar", 1, "Limpia todos los efectos de clima del campo de batalla.")
+  var commanderHorn: WeatherCard = new WeatherCard("Cuerno del Comandante", 4, "Dobla la fuerza de todas las unidades de una fila.")
+  
+  
 }
