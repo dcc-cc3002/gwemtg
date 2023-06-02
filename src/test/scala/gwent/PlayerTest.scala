@@ -23,6 +23,24 @@ class PlayerTest extends munit.FunSuite {
   var torrentialRain: WeatherCard = new WeatherCard("LLuvia Torrencial", 3, "Aplica lluvia a una fila enemiga.")
   var clearWeather: WeatherCard = new WeatherCard("Despejar", 1, "Limpia todos los efectos de clima del campo de batalla.")
   var commanderHorn: WeatherCard = new WeatherCard("Cuerno del Comandante", 4, "Dobla la fuerza de todas las unidades de una fila.")
-  
-  
+
+  override def beforeEach(context: BeforeEach): Unit = {
+    geraltOfRivia = CloseCombatCard("Geralt of Rivia", 5, 5)
+    yenneferOfVengerberg = RangedCombatCard("Yennefer of Vengerberg", 4, 7)
+    ciri = RangedCombatCard("Ciri", 7, 4)
+    vesemir = SiegeCombatCard("Vesemir", 3, 5)
+    dandelion = SiegeCombatCard("Dandelion", 2, 7)
+    trissMerigold = CloseCombatCard("Triss Merigold", 6, 5)
+    yen = RangedCombatCard("Yen", 7, 6)
+    eskel = CloseCombatCard("Eskel", 5, 3)
+    lambert = SiegeCombatCard("Lambert", 6, 6)
+    zoltanChivay = CloseCombatCard("Zoltan Chivay", 4, 4)
+    bitingFrost = new WeatherCard("Escarcha mordiente", 1, "Convierte el valor de fuerza de todas las cartas de mele a 1")
+    impenetrableFog = new WeatherCard("Niebla Impenetrable", 2, "Aplica niebla a una fila enemiga.")
+    torrentialRain = new WeatherCard("LLuvia Torrencial", 3, "Aplica lluvia a una fila enemiga.")
+    clearWeather = new WeatherCard("Despejar", 1, "Limpia todos los efectos de clima del campo de batalla.")
+    commanderHorn = new WeatherCard("Cuerno del Comandante", 4, "Dobla la fuerza de todas las unidades de una fila.")
+
+  }
+
 }
