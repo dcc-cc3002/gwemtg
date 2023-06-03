@@ -6,7 +6,6 @@ import gwent.cards.*
 import munit.*
 
 class PlayerTest extends munit.FunSuite {
-
   /** 10 UnitCards para el juego */
   var geraltOfRivia: CloseCombatCard = CloseCombatCard("Geralt of Rivia", 5, 5)
   var yenneferOfVengerberg: RangedCombatCard = RangedCombatCard("Yennefer of Vengerberg", 4, 7)
