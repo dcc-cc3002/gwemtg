@@ -26,9 +26,8 @@ class BoardTest extends munit.FunSuite {
   var clearWeather: WeatherCard = new WeatherCard("Despejar", 1, "Limpia todos los efectos de clima del campo de batalla.")
   var commanderHorn: WeatherCard = new WeatherCard("Cuerno del Comandante", 4, "Dobla la fuerza de todas las unidades de una fila.")
 
-  /** tableros */
-  val tablero0: Board = new Board(List(List(List(List(), List(), List())), List(), List(List(List(), List(), List()))))
-  val tablero1: Board = new Board(List(List(List(List(lambert, dandelion), List(yen), List())), List(bitingFrost), List(List(List(trissMerigold, eskel, zoltanChivay), List(), List(vesemir)))))
+  /** tablero vacio */
+  val tablero: Board = new Board()
 
   /** jugadores a testear */
   var jugador1: Player = new Player("Hugo", 2, List(geraltOfRivia, yenneferOfVengerberg, ciri, torrentialRain, clearWeather), List(eskel, lambert, commanderHorn))
@@ -57,8 +56,8 @@ class BoardTest extends munit.FunSuite {
 
 
   test("test para equals") {
-    val tablero_vacio: Board = new Board(List(List(List(List(),List(),List())),List(),List(List(List(),List(),List()))))
-    val tablero_lleno: Board = new Board(List(List(List(List(lambert, dandelion),List(yen),List())),List(bitingFrost),List(List(List(trissMerigold,eskel,zoltanChivay),List(),List(vesemir)))))
+    val tablero_vacio: Board = new Board()
+    assertEquals(tablero, tablero_vacio)
   }
 
 }
