@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package gwent
 
 import gwent.cards.*
-import gwent.Player
+
 
 import munit.*
 
@@ -59,5 +59,7 @@ class BoardTest extends munit.FunSuite {
     val tablero_vacio: Board = new Board()
     assertEquals(tablero, tablero_vacio)
   }
+
+  test
 
 }

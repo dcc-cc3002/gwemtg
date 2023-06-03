@@ -136,4 +136,9 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
     _deck = _deck.drop(1)
     h
   }
+
+  /** juega una carta en el mazo, esto llama a tablero y pone este la cata en su zona que corresponda */
+  def playCard(card: Card, board: Board): Unit = {
+    board.playOnBoard(this, card)
+  }
 }

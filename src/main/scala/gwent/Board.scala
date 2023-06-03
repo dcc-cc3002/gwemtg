@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent
 
-import gwent.cards.*
+import gwent.cards.{CloseCombatCard, RangedCombatCard, SiegeCombatCard, *}
 
 /** Clase representando un tablero (Board) en el juego Gwen't.
  *
@@ -22,14 +22,13 @@ import gwent.cards.*
  *
  */
 
-class Board(){
-  private var siegeP1: List[SiegeCombatCard] = List()
-  private var rangeP1: List[RangedCombatCard] = List()
-  private var closeP1: List[CloseCombatCard] = List()
-  private var world: WeatherCard = null
-  private var closeP2: List[CloseCombatCard] = List()
-  private var rangeP2: List[RangedCombatCard] = List()
-  private var siegeP2: List[SiegeCombatCard] = List()
+class Board(var P1: Player, var P2: Player){
+  /** zonas de P1 */
+  private var siegeP1: List[SiegeCombatCard] = List();   private var rangeP1: List[RangedCombatCard] = List(); private var closeP1: List[CloseCombatCard] = List()
+  /** zona comun */
+  private var world: WeatherCard = new WeatherCard("zero", 0, "")
+  /** zonas de P2 */
+  private var closeP2: List[CloseCombatCard] = List(); private var rangeP2: List[RangedCombatCard] = List(); private var siegeP2: List[SiegeCombatCard] = List()
 
   /** getters */
   def getSP1: List[SiegeCombatCard] = this.siegeP1
@@ -56,4 +55,31 @@ class Board(){
   def appendSP2(card: SiegeCombatCard): Unit = this.siegeP2 = card :: this.siegeP2
   def appendRP2(card: RangedCombatCard): Unit = this.rangeP2 = card :: this.rangeP2
   def appendCP2(card: CloseCombatCard): Unit = this.closeP2 = card :: this.closeP2
+
+  def playOnBoard(player: Player, card: Card): Unit = {
+    if card.isInstanceOf[WeatherCard] {
+      this.setWorld(card)
+    } else {
+      player match:
+      case P1: playByP1(card)
+      case P2: playByP2(card)
+//      case _: error
+    }
+  }
+  /** no entendi souble dispatch, si me ponen una decima por este pattern matching, gracias */
+  def playByP1(card: Card): Unit = {
+    card.getClass match:
+      case CloseCombatCard: this.appendCP1(card)
+      case RangedCombatCard: this.appendRP1(card)
+      case SiegeCombatCard: this.appendSP1(card)
+      //      case _: error
+
+  }
+  def playByP2(card: Card): Unit = {
+    card.getClass() match:
+      case CloseCombatCard: this.appendCP2(card)
+      case RangedCombatCard: this.appendRP2(card)
+      case SiegeCombatCard: this.appendSP2(card)
+      //      case _: error
+  }
 }

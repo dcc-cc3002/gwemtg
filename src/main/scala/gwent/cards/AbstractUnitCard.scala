@@ -2,6 +2,9 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import gwent.Board
+import gwent.Player
+
 import java.util.Objects
 
 
@@ -45,4 +48,5 @@ abstract class AbstractUnitCard protected(val name: String, val cost: Int, val p
     case uc: AbstractUnitCard => uc.canEqual(this) && this.name == uc.name && this.power == uc.power && this.cost == uc.cost
     case _ => false
   }
+
 }

@@ -2,6 +2,8 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import gwent.{Board, Player}
+
 /** Trait representing a card in the Gwen't game.
  *
  * A card is characterized by its [[name]] and [[cost]].
@@ -35,4 +37,5 @@ trait Card {
    * This is an immutable property.
    */
   val cost: Int
+
 }
