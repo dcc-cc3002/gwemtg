@@ -28,12 +28,13 @@ class CloseCombatCard(name: String, cost: Int, power: Int) extends AbstractUnitC
 
   /** sobreescribimos canEqual para hacer .isInstanceOf[UnitCard] */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[CloseCombatCard]
-
+  /* todavia redunda
   /** sobreescibimos equals para que compare los parametros nuevos de UnitCard */
   override def equals(uc: Any): Boolean = uc match {
     case uc: CloseCombatCard => uc.canEqual(this) && this.name == uc.name && this.power == uc.power && this.cost == uc.cost
     case _ => false
   }
+  */
 }
 
 
