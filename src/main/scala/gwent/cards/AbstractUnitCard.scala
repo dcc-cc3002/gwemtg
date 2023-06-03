@@ -20,8 +20,7 @@ package gwent.cards
  * @version 1.1
  * @since 1.0
  */
-abstract class AbstractUnitCard protected(val name: String, val cost: Int,
-                                          val power: Int) extends Card {
+abstract class AbstractUnitCard protected(val name: String, val cost: Int, val power: Int) extends Card {
 
   /** The current power of the card, which may be affected by various conditions during
    * gameplay.
