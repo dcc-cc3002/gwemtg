@@ -2,6 +2,9 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import java.util.Objects
+
+
 /** Abstract class representing a unit card in the Gwen't game.
  *
  * An `AbstractUnitCard` is a type of [[Card]] that has a power value which contributes to
@@ -27,5 +30,17 @@ abstract class AbstractUnitCard protected(val name: String, val cost: Int, val p
    * Initially set to the base [[power]] of the card.
    */
   var currentPower: Int = power
-}
 
+
+  /** sobreescribimos hashCode para hacer classOf[UnitCard] */
+  override def hashCode: Int = Objects.hash(classOf[AbstractUnitCard], name, power, cost)
+
+  /** sobreescribimos canEqual para hacer .isInstanceOf[UnitCard] */
+  def canEqual(that: Any): Boolean = that.isInstanceOf[AbstractUnitCard]
+
+  /** sobreescibimos equals para que compare los parametros nuevos de UnitCard */
+  override def equals(uc: Any): Boolean = uc match {
+    case uc: AbstractUnitCard => uc.canEqual(this) && this.name == uc.name && this.power == uc.power && this.cost == uc.cost
+    case _ => false
+  }
+}
