@@ -17,7 +17,9 @@ import java.util.Objects
  *              machinery's strength.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
+ *         (comenta en ingles)
  * @author hugodiazroa
+ *         (comenta en espanxol)
  * @version 1.1
  * @since 1.0
  */

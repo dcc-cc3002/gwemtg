@@ -18,7 +18,9 @@ package gwent.cards
  * behaviours, are to be defined in the concrete classes that extend this trait.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
+ *         (comenta en ingles)
  * @author hugodiazroa
+ *         (comenta en espanxol)
  * @version 1.1
  * @since 1.0
  */

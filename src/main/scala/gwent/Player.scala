@@ -22,7 +22,9 @@ import java.util.Objects
  * @param _hand The initial list of cards in the player's hand.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
+ *         (comenta en ingles)
  * @author hugodiazroa
+ *         (comenta en espanxol)
  * @version 1.1
  * @since 1.0
  */
@@ -89,8 +91,8 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   def shuffleDeck(): Unit = {
     _deck = scala.util.Random.shuffle(_deck)
   }
-  
-  
+
+
   /**
    *  funcion que pone una carta en el indice i del mazo
    *  comienza desde el indice cero en la carta superior del mazo

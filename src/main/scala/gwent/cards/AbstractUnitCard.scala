@@ -19,7 +19,9 @@ import java.util.Objects
  *              the player's total power when unaffected by any special conditions.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
+ *         (comenta en ingles)
  * @author hugodiazroa
+ *         (comenta en espanxol)
  * @version 1.1
  * @since 1.0
  */
