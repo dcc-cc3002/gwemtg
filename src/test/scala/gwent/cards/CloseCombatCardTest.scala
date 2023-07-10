@@ -1,6 +1,10 @@
 package cl.uchile.dcc
 package gwent.cards
 
-class CloseCombatCardTest {
+
+import gwent.cards.*
+import munit.*
+
+class CloseCombatCardTest extends munit.FunSuite  {
 
 }
