@@ -75,4 +75,61 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    */
   override def hashCode: Int = Objects.hash(classOf[Player], name, gemCounter, deck, hand)
 
+  /**
+   * equals
+   * equals: any -> Boolean
+   * verifica si todos los campos son iguales
+   */
+  override def equals(p: Any): Boolean = p match {
+    case p: Player => p.canEqual(this) && this.name == p.name && this.gemCounter == p.gemCounter && this.deck == p.deck && this.hand == p.hand && this.## == p.##
+    case _ => false
+  }
+
+
+  /**
+   * funcion que pone una carta en el indice i del mazo
+   * comienza desde el indice cero en la carta superior del mazo
+   * tambien acepta numeros negativos, siendo -1 el fondo del mazo.
+   */
+  def cardIn(carta: Card, i: Double): Unit = {
+    val indice = i.asInstanceOf[Int]
+
+    (i, indice) match {
+      case (0, _) =>
+        _deck = List(carta) ::: _deck.drop(0)
+
+      case (_, _) if i > 0 =>
+        _deck = _deck.take(indice) ::: List(carta) ::: deck.drop(indice)
+
+      case (-1, _) =>
+        _deck = this.deck.take(this.deck.length) ::: List(carta)
+
+      case (_, _) if i < -1 =>
+        assert(deck.length >= indice)
+        val newIndex = (this.deck.length.asInstanceOf[Double] + i).asInstanceOf[Int] + 1
+        _deck = this.deck.take(newIndex) ::: List(carta) ::: this.deck.drop(newIndex)
+    }
+  }
+
+  /** funcion que pone una carta en el mazo y luego revuelve */
+  def cardInDeck(carta: Card): Unit = {
+    /** pone una carta en el mazo (arriba) */
+    cardIn(carta, 0)
+
+    /** baraja */
+    shuffleDeck()
+  }
+
+  /** funcion draw es analoga a pop y devuelve la carta robada */
+  def draw(): Card = {
+    /** carta robada */
+    val h = _deck.head
+
+    /** el mazo pierde la carta superior */
+    _deck = _deck.drop(1)
+    h
+  }
+  def getHand: List[Card] = _hand
+  def getDeck: List[Card] = _deck
+
 }

@@ -52,4 +52,66 @@ class PlayerTest extends munit.FunSuite{
     assertEquals(p1.hashCode, jugador.hashCode)
 
   }
+
+
+  test("test para getHand") {
+    assertEquals(jugador.getHand, List(troop2, ranged2, catapult2))
+  }
+
+  test("test para getDeck") {
+    assertEquals(jugador.getDeck, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3))
+  }
+
+
+
+  test("anxadir una carta sobre el mazo de un jugador deberia aumentar su tamanxo y quedar al principio") {
+    assertEquals(jugador.deck.size, 6, "mazo de distinto tamanxo al esperado")
+    jugador.cardIn(troop2, 0)
+    assertEquals(jugador.deck.size, 7, "mazo de distinto tamanxo al esperado")
+    assertEquals(jugador.deck.head, troop2, "la carta no fue anxadida arriba")
+    assertEquals(jugador.deck, List(troop2, troop1, troop3, ranged1, ranged3, catapult1, catapult3), "los mazos no coinciden")
+  }
+
+  test("anxadir una carta bajo el mazo de un jugador deberia aumentar su tamanxo y quedar al final") {
+    assertEquals(jugador.deck.size, 6, "mazo de distinto tamanxo al esperado")
+    jugador.cardIn(troop2, -1)
+    assertEquals(jugador.deck.size, 7, "mazo de distinto tamanxo al esperado")
+    assertEquals(jugador.deck.last, troop2, "la carta no fue anxadida abajo")
+    assertEquals(jugador.deck, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3, troop2), "los mazos no coinciden")
+  }
+
+  test("anxadir una carta en la posicion 1 del mazo deberia quedar segunda") {
+    assertEquals(jugador.deck.size, 6, "mazo de distinto tamanxo al esperado")
+    jugador.cardIn(troop2, 1)
+    assertEquals(jugador.deck.size, 7, "mazo de distinto tamanxo al esperado")
+    assertEquals(jugador.deck(1), troop2, "la carta fue anxadida en el indice 1")
+    assertEquals(jugador.deck, List(troop1, troop2, troop3, ranged1, ranged3, catapult1, catapult3), "los mazos no coinciden")
+  }
+
+  test("anxadir una carta en la posicion -2 del mazo deberia quedar penultima") {
+    assertEquals(jugador.deck.length, 6, "mazo de distinto tamanxo al esperado")
+    jugador.cardIn(troop2, -2)
+    assertEquals(jugador.deck.length, 7, "mazo de distinto tamanxo al esperado")
+    assertEquals(jugador.deck(jugador.deck.length - 2), troop2, "la carta no fue anxadida en el indice -2")
+    assertEquals(jugador.deck, List(troop1, troop3, ranged1, ranged3, catapult1, troop2, catapult3), "los mazos no coinciden")
+  }
+
+
+  test("robar una carta al mazo del jugador deberia disminuir su tamanxo y terminar siendo mas pequenxo") {
+    assertEquals(jugador.deck.size, 6, "mazo de distinto tamanxo al esperado")
+    val robada: Card = jugador.drawCard()
+    assertEquals(robada, troop1, "no se robo la carta esperada 'troop1'")
+    assertEquals(jugador.deck.size, 5, "mazo de distinto tamanxo al esperado")
+  }
+
+  test("anxadir una carta al mazo deberia aumentar su tamanxo y las cartas deberian ser las originales") {
+    val jugadorSinCartas: Player = new Player("Lain", 2, List(), List(troop1, troop2, troop3))
+    assertEquals(jugadorSinCartas.deck.length, 0, "mazo deberia estar vacio")
+    jugadorSinCartas.cardInDeck(troop1)
+    assertEquals(jugadorSinCartas.deck.length, 1, "mazo deberia tener  una carta")
+    jugadorSinCartas.cardInDeck(troop2)
+    assertEquals(jugadorSinCartas.deck.length, 2, "mazo deberia tener  dos cartas")
+    jugadorSinCartas.cardInDeck(troop3)
+    assertEquals(jugadorSinCartas.deck.length, 3, "mazo deberia tener tres cartas")
+  }
 }
