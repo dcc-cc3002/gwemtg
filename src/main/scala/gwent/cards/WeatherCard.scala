@@ -17,4 +17,8 @@ package gwent.cards
  * @version 1.1
  * @since 1.0
  */
-class WeatherCard(val name: String, val description: String) extends Card
+class WeatherCard(val name: String, val description: String) extends Card {
+  /** Checks if two objects belong to the class WeatherCard */
+  def canEqual(other: Any): Boolean = other.isInstanceOf[WeatherCard]
+
+}

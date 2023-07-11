@@ -41,7 +41,7 @@ class SiegeCombatCardTest extends munit.FunSuite {
 
   test("test for hashcode") {
     val catapultauno: SiegeCombatCard = new SiegeCombatCard("catapult1", "isis", 1)
-    assertEquals(catapult1.hashCode(), tropauno.hashCode(), "two cards with the same name, description and power should have the same hashcode")
+    assertEquals(catapult1.hashCode(), catapultauno.hashCode(), "two cards with the same name, description and power should have the same hashcode")
     assertNotEquals(catapult1.hashCode(), catapult2.hashCode(), "two cards with different name, description or power should not have the same hashcode")
     assertEquals(catapult1.hashCode(), catapult1.hashCode(), "a card should have the same hashcode as itself")
     assert(catapultauno.canEqual(catapult1), "two cards with the same name, description and power should be able to be compared")

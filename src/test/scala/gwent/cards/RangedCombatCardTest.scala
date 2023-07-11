@@ -49,4 +49,5 @@ class RangedCombatCardTest extends munit.FunSuite  {
     assert(ranged1.canEqual(arquerouno), "two cards with the same name, description and power should be able to be compared")
   }
 
+
 }

@@ -2,6 +2,8 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import java.util.Objects
+
 /** Class representing a siege combat unit card in the Gwen't game.
  *
  * A `SiegeCombatCard` is a type of [[AbstractUnitCard]].
@@ -13,12 +15,25 @@ package gwent.cards
  * @param description the description of the card.
  * @param power the initial power value of the card, which also corresponds to the siege
  *              machinery's strength.
- *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~YOUR NAME~
  * @version 1.1
  * @since 1.0
  */
 class SiegeCombatCard(name: String, description: String, power: Int)
-  extends AbstractUnitCard(name, description, power)
+  extends AbstractUnitCard(name, description, power){
+
+  /** Checks if two objects belong to the class SiegeCombatCard */
+  def canEqual(other: Any): Boolean = other.isInstanceOf[SiegeCombatCard]
+
+
+  /** overwrite equals for CloseCombatCard */
+  override def equals(scc: Any): Boolean = scc match {
+    case scc: SiegeCombatCard => scc.canEqual(this) && this.name == scc.name && this.description == scc.description && this.power == scc.power
+    case _ => false
+  }
+
+  /** overwrite hashcode */
+  override def hashCode: Int = Objects.hash(classOf[SiegeCombatCard], name, description, power)
+}
 

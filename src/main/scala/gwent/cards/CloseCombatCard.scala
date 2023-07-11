@@ -2,6 +2,8 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import java.util.Objects
+
 /** Class representing a close combat unit card in the Gwen't game.
  *
  * A `CloseCombatCard` is a type of [[AbstractUnitCard]].
@@ -14,13 +16,25 @@ package gwent.cards
  * @param description the description of the card.
  * @param power the initial power value of the card, which also corresponds to the
  *              strength of the troop it represents.
- *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~YOUR NAME~
  * @version 1.1
  * @since 1.0
  */
 class CloseCombatCard(name: String, description: String, power: Int)
-  extends AbstractUnitCard(name, description, power)
+  extends AbstractUnitCard(name, description, power){
+
+  /** Checks if two objects belong to the class CloseCombatCard */
+  def canEqual(other: Any): Boolean = other.isInstanceOf[CloseCombatCard]
+
+  /** overwrite equals for CloseCombatCard */
+  override def equals(ccc: Any): Boolean = ccc match {
+    case ccc: CloseCombatCard => ccc.canEqual(this) && this.name == ccc.name && this.description == ccc.description && this.power == ccc.power
+    case _ => false
+  }
+
+  /** overwrite hashcode */
+  override def hashCode: Int = Objects.hash(classOf[CloseCombatCard], name, description, power)
+}
 
 

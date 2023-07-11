@@ -4,6 +4,8 @@ package gwent
 
 import gwent.cards.Card
 
+import java.util.Objects
+
 /** Class representing a player in the Gwen't game.
  *
  * Each player has a name, a gem counter, a deck of cards, and a hand of cards.
@@ -61,4 +63,16 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   def shuffleDeck(): Unit = {
     _deck = scala.util.Random.shuffle(_deck)
   }
+
+  /** Checks if two objects are players */
+  def canEqual(other: Any): Boolean = other.isInstanceOf[Player]
+
+  /**
+   * hashCode
+   * hashCode: -> Int
+   * crea una llave a partir de algo
+   * este algo deberia ser los componentes de player
+   */
+  override def hashCode: Int = Objects.hash(classOf[Player], name, gemCounter, deck, hand)
+
 }
