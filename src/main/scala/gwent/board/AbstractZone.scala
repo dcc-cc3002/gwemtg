@@ -4,7 +4,9 @@ package gwent.board
 
 import gwent.cards.*
 
-/** Trait that represents a zone of the board.
+import scala.collection.immutable
+
+/** Zone is an abstract class that represents a zone of the board.
   * A zone is a set of cards that share a common property.
   * Zones constitute the board of the game.
   * The board is composed of 7 zones:
@@ -20,7 +22,6 @@ import gwent.cards.*
   *
   * created in @version 11072023
   */
-trait Zone {
-  /** List of cards in the zone. */
-  var data: List[Card]
+class AbstractZone(var data: List[Any]) {
+
 }

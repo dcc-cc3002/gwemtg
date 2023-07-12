@@ -9,8 +9,8 @@ import munit.*
 
 class BoardTest extends munit.FunSuite {
   /** tablero vacio */
-  val tablero1: Board = _
-  val tablero2: Board = _
+  var tablero1: Board = new Board()
+  var tablero2: Board = new Board()
 
   var troop1: CloseCombatCard = _
   var troop2: CloseCombatCard = _
@@ -27,8 +27,8 @@ class BoardTest extends munit.FunSuite {
   var jugador: Player = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    tablero1 = new Board(List(), List(), List(), List(), List(), List(), List())
-    tablero2 = new Board(List(catapult1, catapult2, catapult3),  List(ranged1, ranged2, ranged3),  List(troop1, troop2, troop3),  List(climate1), List(troop1, troop2, troop3), List(ranged1, ranged2, ranged3), List(catapult1, catapult2, catapult3))
+    tablero1 = Board(List(), List(), List(), List(), List(), List(), List())
+    tablero2 = Board(List(catapult1, catapult2, catapult3),  List(ranged1, ranged2, ranged3),  List(troop1, troop2, troop3),  List(climate1), List(troop1, troop2, troop3), List(ranged1, ranged2, ranged3), List(catapult1, catapult2, catapult3))
 
     climate1 = new ClimateCard("climate1", "lluvia", 1)
 
