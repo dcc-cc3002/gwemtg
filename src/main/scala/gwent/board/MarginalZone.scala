@@ -20,6 +20,22 @@ class MarginalZone(var data: List[SiegeCombatCard]) extends Zone {
     }
     result
   }
+
+  /** canEqual definition */
+  def canEqual(other: Any): Boolean = other.isInstanceOf[MarginalZone]
+
+  /**
+   * override for equals
+   */
+  override def equals(other: Any): Boolean = {
+    other match {
+      case other: MarginalZone => {
+        other.canEqual(this) &&
+          this.hashCode() == other.hashCode()
+      }
+      case _ => false
+    }
+  }
   /**
    * add a card to the zone 
    * this appends the card to the current list of cards

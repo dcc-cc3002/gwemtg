@@ -21,6 +21,22 @@ class RangeZone(var data: List[RangedCombatCard]) extends Zone {
     }
     result
   }
+
+  /** canEqual definition */
+  def canEqual(other: Any): Boolean = other.isInstanceOf[RangeZone]
+
+  /**
+   * override for equals
+   */
+  override def equals(other: Any): Boolean = {
+    other match {
+      case other: RangeZone => {
+        other.canEqual(this) &&
+          this.hashCode() == other.hashCode()
+      }
+      case _ => false
+    }
+  }
   /**
    * add a card to the zone
    * this appends the card to the current list of cards
