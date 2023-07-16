@@ -26,7 +26,4 @@ class Board(var p1s: MarginalZone, var p1r: RangeZone, var p1m: MeleeZone, var c
   /** constructor for an empty board */
   def this() = this(new MarginalZone(), new RangeZone(), new MeleeZone(), new ClimateZone(), new MeleeZone(), new RangeZone(), new MarginalZone())
 
-
-
-
 }
