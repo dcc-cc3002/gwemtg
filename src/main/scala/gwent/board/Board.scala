@@ -3,6 +3,10 @@ package cl.uchile.dcc
 package gwent.board
 
 
+import gwent.cards.*
+
+import cl.uchile.dcc.gwent.Player
+
 import java.util.Objects
 
 /**
@@ -39,7 +43,7 @@ class Board(var p1s: MarginalZone, var p1r: RangeZone, var p1m: MeleeZone, var c
 
   /** override de hashCode */
   override def hashCode(): Int = {
-    Objects.hash(p1s, p1r, p1m, clima, p2m, p2r, p2s)
+    Objects.hash(classOf[CloseCombatCard], p1s.hashCode(), p1r.hashCode(), p1m.hashCode(), clima.hashCode(), p2m.hashCode(), p2r.hashCode(), p2s.hashCode())
   }
 
   /**
@@ -52,8 +56,8 @@ class Board(var p1s: MarginalZone, var p1r: RangeZone, var p1m: MeleeZone, var c
    * MeleeZone -> CloseCombatCard
    * @param card: card to be put in the board
    */
-  def putCard(card: Card): Unit = {
-
+  def putCard(card: Card, player: Player): Unit = {
+    var a: Int = 2
   }
 
 }

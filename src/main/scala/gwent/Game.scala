@@ -3,6 +3,7 @@ package cl.uchile.dcc
 package gwent
 
 import gwent.*
+
 import gwent.board.Board
 
 /**
@@ -12,7 +13,7 @@ import gwent.board.Board
  * @param player2 The second player of the game.
  *
  * here the game is played, the players play their cards and the board is updated
- * here the design pattern observer is used, the game is the observable and the players are the observers
+ * here the design pattern observer is used, the board is the observable and the players are the observers
  * aswell as the design pattern factory is implemented here to create the decks of the players and the cards
  *
  */
