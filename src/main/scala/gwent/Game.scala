@@ -1,0 +1,5 @@
+package gwent
+
+class Game {
+
+}
