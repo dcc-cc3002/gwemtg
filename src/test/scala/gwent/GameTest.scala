@@ -1,6 +1,11 @@
 package cl.uchile.dcc
 package gwent
 
-class GameTest {
+import gwent.cards.*
+import gwent.board.*
+import gwent.Player
+import munit.*
+
+class GameTest extends munit.FunSuite{
 
 }

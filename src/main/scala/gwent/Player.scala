@@ -2,6 +2,7 @@
 package cl.uchile.dcc
 package gwent
 
+import gwent.Game
 import gwent.cards.Card
 
 import java.util.Objects
@@ -60,7 +61,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    * This is achieved by creating a new, shuffled list and reassigning _deck to it, rather
    * than by modifying the original list.
    */
-  def shuffleDeck(): Unit = {
+  private def shuffleDeck(): Unit = {
     _deck = scala.util.Random.shuffle(_deck)
   }
 
@@ -129,7 +130,17 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
     _deck = _deck.drop(1)
     h
   }
+  /** getter de la mano */
   def getHand: List[Card] = _hand
+  /** getter del mazo */
   def getDeck: List[Card] = _deck
 
+  /**
+   * funcion que juega una carta en una partida Game del juego Gwent
+   * esta funcion recibe una carta y un objeto Game y, usando double dispatch, 
+   * Game llama a board para que board ponga la carta donde corresponda
+   */
+  def playCard(carta: Card, game: Game): Unit = {
+    game.board.putCard(carta, this)
+  }  
 }

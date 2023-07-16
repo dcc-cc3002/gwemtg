@@ -26,11 +26,14 @@ class BoardTest extends munit.FunSuite {
 
   var jugador: Player = _
 
-  override def beforeEach(context: BeforeEach): Unit = {
-    tablero1 = Board(List(), List(), List(), List(), List(), List(), List())
-    tablero2 = Board(List(catapult1, catapult2, catapult3),  List(ranged1, ranged2, ranged3),  List(troop1, troop2, troop3),  List(climate1), List(troop1, troop2, troop3), List(ranged1, ranged2, ranged3), List(catapult1, catapult2, catapult3))
+  var climate1: WeatherCard = _
 
-    climate1 = new ClimateCard("climate1", "lluvia", 1)
+  override def beforeEach(context: BeforeEach): Unit = {
+    climate1 = new WeatherCard("climate1", "lluvia")
+
+    tablero1 = new Board()
+    tablero2 = new Board(new MarginalZone(List(catapult1, catapult2, catapult3)), new RangeZone(List(ranged1, ranged2, ranged3)), new MeleeZone(List(troop1, troop2, troop3)), new ClimateZone(List(climate1)), new MeleeZone(List(troop1, troop2, troop3)), new RangeZone(List(ranged1, ranged2, ranged3)), new MarginalZone(List(catapult1, catapult2, catapult3)))
+
 
     troop1 = new CloseCombatCard("troop1", "pedro", 1)
     troop2 = new CloseCombatCard("troop2", "pablo", 2)
@@ -47,12 +50,11 @@ class BoardTest extends munit.FunSuite {
     jugador = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
   }
 
-  test("tablero vacio") {
-    assert(tablero.isEmpty)
-  }
+
 
   test("test for equals"){
-    val tablerodos = new Board(List(troop1, troop2, troop3), List(ranged1, ranged2, ranged3), List(catapult1, catapult2, catapult3))
-    assert(tablero == tablero2)
+    val tablerodos = new Board(new MarginalZone(List(catapult1, catapult2, catapult3)), new RangeZone(List(ranged1, ranged2, ranged3)), new MeleeZone(List(troop1, troop2, troop3)), new ClimateZone(List(climate1)), new MeleeZone(List(troop1, troop2, troop3)), new RangeZone(List(ranged1, ranged2, ranged3)), new MarginalZone(List(catapult1, catapult2, catapult3)))
+    assertEquals(tablerodos, tablero2, "tableros iguales deberian ser iguales")
+    assertEquals(tablero2, tablerodos, "tableros iguales deberian ser iguales")
   }
 }
