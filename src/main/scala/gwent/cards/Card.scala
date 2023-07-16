@@ -2,6 +2,10 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import java.util.Objects
+import scala.collection.mutable
+
+
 /** Trait representing a card in the Gwen't game.
  *
  * A card is characterized by its [[name]] and [[description]].

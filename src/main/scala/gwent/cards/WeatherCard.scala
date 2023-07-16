@@ -22,13 +22,26 @@ class WeatherCard(val name: String, val description: String) extends Card {
   /** Checks if two objects belong to the class WeatherCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[WeatherCard]
 
+  /** Getter for the [[name]] of the card.
+   *
+   * @return The [[name]] of the card.
+   */
+  def getName: String = name
+
+  /** Getter for the [[description]] of the card.
+   *
+   * @return The [[description]] of the card.
+   */
+  def getDescription: String = description
+
+ 
   
   /** overwrite equals for WeatherCard */
   override def equals(wc: Any): Boolean = wc match {
-    case wc: SiegeCombatCard => wc.canEqual(this) && this.name == wc.name && this.description == wc.description
+    case wc: WeatherCard => wc.canEqual(this) && this.getName == wc.getName && this.getDescription == wc.getDescription
     case _ => false
   }
 
   /** overwrite hashcode */
-  override def hashCode: Int = Objects.hash(classOf[SiegeCombatCard], name, description)
+  override def hashCode: Int = Objects.hash(classOf[WeatherCard], name, description)
 }

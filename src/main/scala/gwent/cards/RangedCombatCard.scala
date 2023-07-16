@@ -27,7 +27,7 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
 
   /** overwrite equals for CloseCombatCard */
   override def equals(rcc: Any): Boolean = rcc match {
-    case rcc: RangedCombatCard => rcc.canEqual(this) && this.name == rcc.name && this.description == rcc.description && this.power == rcc.power
+    case rcc: RangedCombatCard => rcc.canEqual(this) && this.getName == rcc.getName && this.getDescription == rcc.getDescription && this.getPower == rcc.getPower
     case _ => false
   }
 

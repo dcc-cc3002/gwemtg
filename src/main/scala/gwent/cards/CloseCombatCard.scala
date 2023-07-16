@@ -21,15 +21,14 @@ import java.util.Objects
  * @version 1.1
  * @since 1.0
  */
-class CloseCombatCard(name: String, description: String, power: Int)
-  extends AbstractUnitCard(name, description, power){
+class CloseCombatCard(name: String, description: String, power: Int) extends AbstractUnitCard(name, description, power){
 
   /** Checks if two objects belong to the class CloseCombatCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[CloseCombatCard]
 
   /** overwrite equals for CloseCombatCard */
   override def equals(ccc: Any): Boolean = ccc match {
-    case ccc: CloseCombatCard => ccc.canEqual(this) && this.name == ccc.name && this.description == ccc.description && this.power == ccc.power
+    case ccc: CloseCombatCard => ccc.canEqual(this) && this.getName == ccc.getName && this.getDescription == ccc.getDescription && this.getPower == ccc.getPower
     case _ => false
   }
 

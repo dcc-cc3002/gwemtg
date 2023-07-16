@@ -16,12 +16,13 @@ import scala.collection.immutable
   * - climate: zone where climate cards are played.
   * - player 2's melee: zone where close combat cards are played.
   * - player 2's ranged: zone where ranged combat cards are played.
-  *  - player 2's marginal: zone where siege combat cards are played.
+  * - player 2's marginal: zone where siege combat cards are played.
   *
   * @see [[cl.uchile.dcc.gwent.board.Board]]
   *
   * created in @version 11072023
   */
-class AbstractZone(var data: List[Any]) {
+
+trait Zone {
 
 }

@@ -6,7 +6,7 @@ import gwent.cards.*
 
 import java.util.Objects
 
-class MeleeZone(var data: List[CloseCombatCard]) extends AbstractZone(data: List[Any]){
+class MeleeZone(var data: List[CloseCombatCard]) extends Zone{
   def this() = this(List())
 
 }

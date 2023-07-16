@@ -29,7 +29,7 @@ class SiegeCombatCard(name: String, description: String, power: Int)
 
   /** overwrite equals for CloseCombatCard */
   override def equals(scc: Any): Boolean = scc match {
-    case scc: SiegeCombatCard => scc.canEqual(this) && this.name == scc.name && this.description == scc.description && this.power == scc.power
+    case scc: SiegeCombatCard => scc.canEqual(this) && this.getName == scc.getName && this.getDescription == scc.getDescription && this.getPower == scc.getPower
     case _ => false
   }
 

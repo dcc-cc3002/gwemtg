@@ -6,7 +6,7 @@ import gwent.cards.*
 
 import java.util.Objects
 
-class ClimateZone(var data: List[WeatherCard]) extends AbstractZone(data: List[Any]){
+class ClimateZone(var data: List[WeatherCard]) extends Zone {
 
  def this() = this(List())
 }
