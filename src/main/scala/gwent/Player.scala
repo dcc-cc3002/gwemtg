@@ -59,7 +59,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    * This is achieved by creating a new, shuffled list and reassigning _deck to it, rather
    * than by modifying the original list.
    */
-  private def shuffleDeck(): Unit = {
+  def shuffleDeck(): Unit = {
     _deck = scala.util.Random.shuffle(_deck)
   }
 
@@ -120,7 +120,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   }
 
   /** funcion draw es analoga a pop y devuelve la carta robada */
-  def draw(): Card = {
+  private def draw(): Card = {
     /** carta robada */
     val h = _deck.head
 
@@ -148,5 +148,45 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   def removeCard(carta: Card): Unit = {
    /** la carta se saca de la mano, se asume no hay duplicados */
     _hand = _hand.filterNot(_ == carta)
+  }
+
+  /** deckToString
+   * function that returns a string with the cards in the deck
+   */
+  def deckToString: String = {
+    var deckString = ""
+    val d = this.getDeck
+    for (card <- d) {
+      deckString += card.toString + " "
+    }
+    deckString += "\n"
+    deckString
+  }
+
+  /** drawInitialHand
+   *  function that draws a hand of 10 cards
+   */
+  def drawInitialHand(): Unit = {
+    for (i <- 0 until 10) {
+      var carta: Card = draw()
+      _hand = carta :: _hand
+    }
+  }
+
+  /** handPrint
+   * function that prints the hand of the player
+   * this can be used with duress effects
+   * @return a string with the cards in the hand
+   */
+  def handPrint: String = {
+    var handString = ""
+    val h = this.getHand
+    var counter = 0
+    for (card <- h) {
+      handString += s"$counter: " + card.toString + "\n"
+      counter += 1
+    }
+    handString += "\n"
+    handString
   }
 }

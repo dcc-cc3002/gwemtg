@@ -48,6 +48,11 @@ class CloseCombatCard(name: String, description: String, power: Int) extends Abs
     game.addCCC(this, player)
     player.removeCard(this)
   }
+  
+  /** toString
+   * returns a string with the info of the card 
+   */
+  override def toString: String = {"CloseCombatCard: " + this.getName + ", " + this.getDescription + ", " + this.getPower}
 }
 
 

@@ -50,4 +50,10 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
     game.addRCC(this, player)
     player.removeCard(this)
   }
+
+
+  /** toString
+   * returns a string with the info of the card 
+   */
+  override def toString: String = {"RangedCombatCard: " + this.getName + ", " + this.getDescription + ", " + this.getPower}
 }

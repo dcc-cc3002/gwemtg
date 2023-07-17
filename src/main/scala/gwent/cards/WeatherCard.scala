@@ -59,4 +59,10 @@ class WeatherCard(val name: String, val description: String) extends Card with E
     game.addWC(this)
     player.removeCard(this)
   }
+
+
+  /** toString
+   * returns a string with the info of the card 
+   */
+  override def toString: String = {"WeatherCard: " + this.name + ", " + this.description}
 }

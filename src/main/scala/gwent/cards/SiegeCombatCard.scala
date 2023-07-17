@@ -49,5 +49,11 @@ class SiegeCombatCard(name: String, description: String, power: Int)
     game.addSCC(this, player)
     player.removeCard(this)
   }
+
+
+  /** toString
+   * returns a string with the info of the card 
+   */
+  override def toString: String = {"Name: " + this.getName + "Description: " + this.getDescription + "Power: " + this.getPower}
 }
 
