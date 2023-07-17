@@ -37,11 +37,5 @@ class MeleeZone(var data: List[CloseCombatCard]) extends Zone with Equals {
       case _ => false
     }
   }
-  /**
-   * add a card to the zone 
-   * this appends the card to the current list of cards
-   */
-  def add(card: CloseCombatCard): Unit = {
-    data = card :: data
-  }
+
 }

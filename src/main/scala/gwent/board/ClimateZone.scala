@@ -36,11 +36,5 @@ class ClimateZone(var data: List[WeatherCard]) extends Zone with Equals {
     case _ => false
     }
   }
- /**
-  * add a card to the zone
-  * this replaces the card if it is already in the zone
-  */
- def add(card: WeatherCard): Unit = {
-  data = List(card)
- }
+
 }

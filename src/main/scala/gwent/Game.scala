@@ -1,7 +1,6 @@
 package cl.uchile.dcc
 package gwent
 
-import gwent.*
 import gwent.board.*
 import gwent.cards.*
 
@@ -29,9 +28,9 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
    */
   def addCCC(card: CloseCombatCard, player: Player): Unit = {
     if (player == this.Player1) {
-        board.p1m.data = card :: p1m.data
+        board.p1m.data = card :: board.p1m.data
     } else if (player == this.Player2) {
-        board.p2m.data = card :: p2m.data
+        board.p2m.data = card :: board.p2m.data
     } else {
       throw new Exception("Player not found")
     }
@@ -43,9 +42,9 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
    */
   def addRCC(card: RangedCombatCard, player: Player): Unit = {
     if (player == this.Player1) {
-      board.p1r.data = card :: p1r.data
+      board.p1r.data = card :: board.p1r.data
     } else if (player == this.Player2) {
-      board.p2r.data = card :: p2r.data
+      board.p2r.data = card :: board.p2r.data
     } else {
       throw new Exception("Player not found")
     }
@@ -55,9 +54,9 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
    */
   def addSCC(card: SiegeCombatCard, player: Player): Unit = {
     if (player == this.Player1) {
-      board.p1s.data = card :: p1s.data
+      board.p1s.data = card :: board.p1s.data
     } else if (player == this.Player2) {
-      board.p2s.data = card :: p2s.data
+      board.p2s.data = card :: board.p2s.data
     } else {
       throw new Exception("Player not found")
     }

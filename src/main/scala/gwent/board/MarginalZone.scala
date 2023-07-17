@@ -36,11 +36,5 @@ class MarginalZone(var data: List[SiegeCombatCard]) extends Zone with Equals {
       case _ => false
     }
   }
-  /**
-   * add a card to the zone 
-   * this appends the card to the current list of cards
-   */
-  def add(card: SiegeCombatCard): Unit = {
-    data = card :: data
-  }
+
 }

@@ -24,6 +24,5 @@ import scala.collection.immutable
   */
 
 trait Zone {
-  /** adds a card to the zone */
-  def add(carta: Any): Unit
+
 }

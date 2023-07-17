@@ -2,7 +2,6 @@
 package cl.uchile.dcc
 package gwent.board
 
-
 import gwent.cards.*
 import gwent.Player
 
@@ -58,11 +57,6 @@ class Board(var p1s: MarginalZone, var p1r: RangeZone, var p1m: MeleeZone, var c
     for (card <- p2s.data) {if (card != null) result = result + (card.hashCode() % 1000000007) }
     return Objects.hash(classOf[Board], result)
   }
-  /** add
-   * add: Card Zone -> Unit
-   * adds a card to the specified zone
-   */
-  def add(card: Card, zone: Zone): Unit = {
-    zone.add(card)
-  }
+
+
 }
