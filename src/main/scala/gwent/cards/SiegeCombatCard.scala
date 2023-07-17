@@ -54,6 +54,11 @@ class SiegeCombatCard(name: String, description: String, power: Int)
   /** toString
    * returns a string with the info of the card 
    */
-  override def toString: String = {"Name: " + this.getName + "Description: " + this.getDescription + "Power: " + this.getPower}
+  override def toString: String = {"SiegeCombatCard" + this.getName + ", " + this.getDescription + ", " + this.getPower}
+
+  /** getPower
+   * getPower returns the power of the card
+   */
+  override def getPower: Int = {power}
 }
 

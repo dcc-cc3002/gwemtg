@@ -54,4 +54,9 @@ trait Card {
    * this function is used to print the card in the console for playing players to see.
    */
   def toString: String
+
+  /** getPower
+   * getPower returns the power of the card
+   */
+  def getPower: Int 
 }

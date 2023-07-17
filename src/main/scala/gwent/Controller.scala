@@ -24,7 +24,9 @@ import gwent.board.*
  *
  */
 object Controller extends App {
+  val rand = new scala.util.Random
   var log: List[String] = List()
+  var pasado: Boolean = false
   println("Enter your user name: ")
   val PlayerName = scala.io.StdIn.readLine()
   println(s"$PlayerName, here are the playing options:")
@@ -87,6 +89,93 @@ object Controller extends App {
     println()
     println("Here is the board:")
     println(tablero)
-    println("Here is your hand, you can play a card by choosing a number.")
+    println()
+    println("Humans go first against robots")
+    while(human.gemCounter>0 && robot.gemCounter>0) {
+      println("Here is your hand again, you can play a card by choosing a number.")
+      println("Any other input will pass your turn.")
+      println(human.handPrint)
+      pasado = false
+      var playMade: String = scala.io.StdIn.readLine()
+      playMade match {
+        case "0" => if human.getHand.length >= 1 then human.playCard(human.getHand(0), partida) else pasado = true
+        case "1" => if human.getHand.length >= 2 then human.playCard(human.getHand(1), partida) else pasado = true
+        case "2" => if human.getHand.length >= 3 then human.playCard(human.getHand(2), partida) else pasado = true
+        case "3" => if human.getHand.length >= 4 then human.playCard(human.getHand(3), partida) else pasado = true
+        case "4" => if human.getHand.length >= 5 then human.playCard(human.getHand(4), partida) else pasado = true
+        case "5" => if human.getHand.length >= 6 then human.playCard(human.getHand(5), partida) else pasado = true
+        case "6" => if human.getHand.length >= 7 then human.playCard(human.getHand(6), partida) else pasado = true
+        case "7" => if human.getHand.length >= 8 then human.playCard(human.getHand(7), partida) else pasado = true
+        case "8" => if human.getHand.length >= 9 then human.playCard(human.getHand(8), partida) else pasado = true
+        case "9" => if human.getHand.length >= 10 then human.playCard(human.getHand(9), partida) else pasado = true
+        case _ => pasado = true
+      }
+      if pasado then println("You passed your turn\n")
+
+      println()
+      println("Computers turn")
+      if (robot.getHand.length == 0){
+        if(pasado){
+          println()
+          println("Round finished")
+          println()
+          val ganador: Int =partida.nextRound()
+          if(ganador==1){println("You won the round")}
+          else if(ganador==2){println("Computer won the round")}
+          else{println("Round was a draw")}
+        }else{
+          println("Computer passed its turn")
+        }
+        println("Score is: ")
+        println("You: " + human.gemCounter)
+        println("Computer: " + robot.gemCounter)
+
+      }else if(partida.potentialPoints(robot)>partida.boardPoints(human)){
+        val manorobot: Int = robot.getHand.length
+        val randindex: Int = rand.nextInt(manorobot)
+        val cartarobot: Card = robot.getHand(randindex)
+        robot.playCard(cartarobot, partida)
+        println("Computer played a card: ")
+        println(cartarobot)
+      } else if(robot.hasClimate){
+        var listaClima: List[Int] = List()
+        for (i <- 0 to robot.getHand.length-1) {
+          if (robot.getHand(i).isInstanceOf[WeatherCard]) {
+            listaClima = listaClima :+ i
+          }
+        }
+        val indice: Int = rand.nextInt(listaClima.length)
+        val cartarobot: Card = robot.getHand(listaClima(indice))
+        robot.playCard(cartarobot, partida)
+        println("Computer played a card: ")
+        println(cartarobot)
+      } else if(pasado) {
+        println()
+        println("Round finished")
+        println()
+        val ganador: Int = partida.nextRound()
+        if (ganador == 1) {
+          println("You won the round")
+        }
+        else if (ganador == 2) {
+          println("Computer won the round")
+        }
+        else {
+          println("Round was a draw")
+        }
+        println("Score is: ")
+        println("You: " + human.gemCounter)
+        println("Computer: " + robot.gemCounter)
+
+      }
+      println("Here is the board:")
+      println(tablero)
+      println()
+      println()
+      println("your turn")
+
+
+    }
+
   }
 }

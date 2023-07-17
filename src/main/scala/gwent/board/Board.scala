@@ -58,5 +58,20 @@ class Board(var p1s: MarginalZone, var p1r: RangeZone, var p1m: MeleeZone, var c
     return Objects.hash(classOf[Board], result)
   }
 
+  /** toString 
+   * override of the toString method
+    * @return a string representation of the board
+   */
+  override def toString: String = {
+    val p1sString = p1s.toString
+    val p1rString = p1r.toString
+    val p1mString = p1m.toString
+    val climaString = clima.toString
+    val p2mString = p2m.toString
+    val p2rString = p2r.toString
+    val p2sString = p2s.toString
+    val boardString = s"Player 1's marginal: $p1sString\nPlayer 1's ranged: $p1rString\nPlayer 1's melee: $p1mString\nClimate: $climaString\nPlayer 2's melee: $p2mString\nPlayer 2's ranged: $p2rString\nPlayer 2's marginal: $p2sString"
+    return boardString
+  }
 
 }

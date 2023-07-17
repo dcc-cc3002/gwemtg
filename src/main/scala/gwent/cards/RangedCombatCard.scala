@@ -56,4 +56,9 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
    * returns a string with the info of the card 
    */
   override def toString: String = {"RangedCombatCard: " + this.getName + ", " + this.getDescription + ", " + this.getPower}
+
+  /** getPower
+   * getPower returns the power of the card
+   */
+  override def getPower: Int = {power}
 }

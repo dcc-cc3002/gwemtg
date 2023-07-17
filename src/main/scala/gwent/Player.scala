@@ -146,8 +146,16 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    * funcion que saca una carta desde la mano del jugador
    */
   def removeCard(carta: Card): Unit = {
-   /** la carta se saca de la mano, se asume no hay duplicados */
-    _hand = _hand.filterNot(_ == carta)
+   /**
+    * la carta se saca de la mano
+    * en caso de que existan duplicados, se saca solo el primero
+    */
+    for (i <- 0 until _hand.length) {
+      if (_hand(i) == carta) {
+        _hand = _hand.take(i) ::: _hand.drop(i + 1)
+        return
+      }
+    }
   }
 
   /** deckToString
@@ -189,4 +197,23 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
     handString += "\n"
     handString
   }
+
+  /** hasClimate
+   * function that checks if the player has a climate card in their hand
+   */
+  def hasClimate: Boolean = {
+    var hasClimate = false
+    val h = this.getHand
+    for (card <- h) {
+      if (card.isInstanceOf[WeatherCard]) {
+        hasClimate = true
+      }
+    }
+    hasClimate
+  }
+
+  /** loseGem
+   * the player loses a gem
+   */
+  def loseGem(): Unit = {this.gemCounter -= 1}
 }

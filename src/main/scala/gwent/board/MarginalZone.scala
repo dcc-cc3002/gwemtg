@@ -37,4 +37,17 @@ class MarginalZone(var data: List[SiegeCombatCard]) extends Zone with Equals {
     }
   }
 
+  /** toString 
+   * override of the toString method
+   *
+   * @return a string representation of the board
+   */
+  override def toString: String = {
+    var result: String = ""
+    for (card <- data) {
+      result = result + card.toString() + "\n"
+    }
+    result
+  }
+  
 }

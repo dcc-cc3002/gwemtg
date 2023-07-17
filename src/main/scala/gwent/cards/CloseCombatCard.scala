@@ -53,6 +53,12 @@ class CloseCombatCard(name: String, description: String, power: Int) extends Abs
    * returns a string with the info of the card 
    */
   override def toString: String = {"CloseCombatCard: " + this.getName + ", " + this.getDescription + ", " + this.getPower}
+
+  /** getPower
+   * getPower returns the power of the card
+   */
+  override def getPower: Int = {power}
+
 }
 
 

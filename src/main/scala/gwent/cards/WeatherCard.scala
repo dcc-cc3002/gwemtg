@@ -65,4 +65,9 @@ class WeatherCard(val name: String, val description: String) extends Card with E
    * returns a string with the info of the card 
    */
   override def toString: String = {"WeatherCard: " + this.name + ", " + this.description}
+
+  /** getPower
+   * getPower returns the power of the card
+   */
+  override def getPower: Int = 0
 }
