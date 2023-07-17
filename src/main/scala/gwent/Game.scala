@@ -21,30 +21,33 @@ import gwent.cards.*
 
 class Game(val board: Board, private val _player1: Player, private val _player2: Player) {
 
-  def Player1 = _player1
-  def Player2 = _player2
+  private def Player1 = _player1
+  private def Player2 = _player2
 
   /** addCCC
    * adds a close combat card to the board
    */
   def addCCC(card: CloseCombatCard, player: Player): Unit = {
     if (player == this.Player1) {
-        board.add(card, board.p1s)
-      }
-      else {
-        board.add(card, board.p2s)
+        board.p1m.data = card :: p1m.data
+    } else if (player == this.Player2) {
+        board.p2m.data = card :: p2m.data
+    } else {
+      throw new Exception("Player not found")
     }
   }
+
 
   /** addRCC
    * adds a ranged combat card to the board
    */
   def addRCC(card: RangedCombatCard, player: Player): Unit = {
     if (player == this.Player1) {
-      board.add(card, board.p1s)
-    }
-    else {
-      board.add(card, board.p2s)
+      board.p1r.data = card :: p1r.data
+    } else if (player == this.Player2) {
+      board.p2r.data = card :: p2r.data
+    } else {
+      throw new Exception("Player not found")
     }
   }
   /** addSCC
@@ -52,10 +55,11 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
    */
   def addSCC(card: SiegeCombatCard, player: Player): Unit = {
     if (player == this.Player1) {
-      board.add(card, board.p1s)
-    }
-    else {
-      board.add(card, board.p2s)
+      board.p1s.data = card :: p1s.data
+    } else if (player == this.Player2) {
+      board.p2s.data = card :: p2s.data
+    } else {
+      throw new Exception("Player not found")
     }
   }
   /** addWC
