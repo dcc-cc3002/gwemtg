@@ -73,6 +73,7 @@ class ClimateZoneTest extends munit.FunSuite{
     assertEquals(zonaclimate, new ClimateZone(List(climate1)))
     assertNotEquals(zonaclimate, new ClimateZone(List(new WeatherCard("climate2", "nieve"))))
     assertEquals(zonaclimate, zonaclimate, "zonaclimate should be equal to itself")
+    assertNotEquals(new ClimateZone(List(new WeatherCard("climate2", "nieve"))),zonaclimate)
   }
 
   test("test for hashCode") {

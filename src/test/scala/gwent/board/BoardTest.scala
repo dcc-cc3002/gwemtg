@@ -83,6 +83,11 @@ class BoardTest extends munit.FunSuite {
     assertEquals(tablerodos, tablero2, "equal boards should be equal")
     assertEquals(tablero2, tablerodos, "equal boards should be equal")
     assertNotEquals(tablero1, tablero2, "different boards should not be equal")
-//    assertNotEquals(tablero1, catapult1, "different classes should not be equal")
+    assertNotEquals(tablerodos, tablero1, "different boards should not be equal")
+  }
+
+  test("test for toString") {
+    val tablerodos = new Board(new MarginalZone(List(catapult1, catapult2, catapult3)), new RangeZone(List(ranged1, ranged2, ranged3)), new MeleeZone(List(troop1, troop2, troop3)), new ClimateZone(List(climate1)), new MeleeZone(List(troop1, troop2, troop3)), new RangeZone(List(ranged1, ranged2, ranged3)), new MarginalZone(List(catapult1, catapult2, catapult3)))
+    assertEquals(tablero2.toString(), tablerodos.toString(), "equal boards should have the same string representation")
   }
 }

@@ -63,5 +63,19 @@ class MeleeZoneTest extends munit.FunSuite{
 
     jugador = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
   }
+
+  test("test for equals") {
+    val testzona1melee = new MeleeZone(List(troop1, troop2, troop3))
+    assertEquals(zona1melee, zona1melee, "zona1siege should be equal to itself")
+    assertEquals(zona1melee, testzona1melee)
+    assertNotEquals(zona1melee, new MeleeZone(List(troop1, troop2)))
+    assertEquals(zona1melee, zona2melee)
+    assertNotEquals( new MeleeZone(List(troop1, troop2)), zona1melee)
+  }
+
+  test("test for hashCode") {
+    assertEquals(zona1melee.hashCode(), new MeleeZone(List(troop1, troop2, troop3)).hashCode())
+    assertNotEquals(zona1melee.hashCode(), new MeleeZone(List()).hashCode())
+  }
 }
 

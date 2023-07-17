@@ -69,6 +69,7 @@ class MarginalZoneTest extends munit.FunSuite{
     assertEquals(zona1siege, testzona1siege, "zona1siege should be equal to testzona1siege, because they have the same cards")
     assertNotEquals(zona1siege, new MarginalZone(List(catapult1, catapult2)))
     assertEquals(zona1siege, zona2siege, "zona1siege should be equal to zona2siege, because they have the same cards")
+    assertNotEquals(new MarginalZone(List(catapult1, catapult2)), zona1siege)
   }
 
   test("test for hashCode") {

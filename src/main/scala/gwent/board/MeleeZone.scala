@@ -30,7 +30,7 @@ class MeleeZone(var data: List[CloseCombatCard]) extends Zone with Equals {
    */
   override def equals(other: Any): Boolean = {
     other match {
-      case other: MarginalZone => {
+      case other: MeleeZone => {
         other.canEqual(this) &&
           this.hashCode() == other.hashCode()
       }

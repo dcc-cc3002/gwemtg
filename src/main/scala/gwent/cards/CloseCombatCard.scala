@@ -31,7 +31,7 @@ class CloseCombatCard(name: String, description: String, power: Int) extends Abs
 
   /** overwrite equals for CloseCombatCard */
   override def equals(ccc: Any): Boolean = ccc match {
-    case ccc: CloseCombatCard => ccc.canEqual(this) && this.getName == ccc.getName && this.getDescription == ccc.getDescription && this.getPower == ccc.getPower
+    case ccc: CloseCombatCard => ccc.canEqual(this) && this.getName == ccc.getName 
     case _ => false
   }
 
