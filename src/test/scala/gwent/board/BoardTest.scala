@@ -33,10 +33,11 @@ class BoardTest extends munit.FunSuite {
   var catapult2: SiegeCombatCard = new SiegeCombatCard("catapult2", "dracula", 2)
   var catapult3: SiegeCombatCard = new SiegeCombatCard("catapult3", "atenea", 3)
 
+  var climate1: WeatherCard = _
+
 
   var jugador: Player = _
 
-  var climate1: WeatherCard = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     climate1 = new WeatherCard("climate1", "lluvia")

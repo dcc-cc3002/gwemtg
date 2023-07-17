@@ -23,6 +23,15 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
 
   private def Player1 = _player1
   private def Player2 = _player2
+  
+  /** getP1
+   * returns the first player
+   */
+  def getP1: Player = Player1
+  /** getP2
+   * returns the second player
+   */
+  def getP2: Player = Player2
 
   /** addCCC
    * adds a close combat card to the board
