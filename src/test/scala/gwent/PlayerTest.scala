@@ -23,6 +23,7 @@ class PlayerTest extends munit.FunSuite{
   var climate2: WeatherCard = _
 
   var jugador: Player = _
+  var jugador2: Player = _
 
   var partida: Game = _
 
@@ -46,6 +47,7 @@ class PlayerTest extends munit.FunSuite{
     climate2 = new WeatherCard("climate2", "nieve")
 
     jugador = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2, climate2))
+    jugador2 = new Player("Lain", 2, List(), List())
 
     partida = new Game(tablero1, jugador, jugador)
 
@@ -154,5 +156,32 @@ class PlayerTest extends munit.FunSuite{
     partida.getP1.playCard(catapult2, partida)
     assertEquals(partida.getP1.getHand, List())
     assertEquals(partida.board.p1s.hashCode(), new MarginalZone(List(catapult2)).hashCode())
+  }
+
+
+  test("test pt 2 for playing cards: player 2") {
+
+    var partida2: Game = new Game(new Board(), jugador2, jugador)
+
+    assertEquals(partida2.getP2.getHand, List(troop2, ranged2, catapult2, climate2))
+    assertEquals(partida2.board.p2m.hashCode(), new MeleeZone().hashCode())
+    partida2.getP2.playCard(troop2, partida2)
+    assertEquals(partida2.getP2.getHand, List(ranged2, catapult2, climate2))
+    assertEquals(partida2.board.p2m.hashCode(), new MeleeZone(List(troop2)).hashCode())
+
+    assertEquals(partida2.board.p2r.hashCode(), new RangeZone().hashCode())
+    partida2.getP2.playCard(ranged2, partida2)
+    assertEquals(partida2.getP2.getHand, List(catapult2, climate2))
+    assertEquals(partida2.board.p2r.hashCode(), new RangeZone(List(ranged2)).hashCode())
+
+    assertEquals(partida2.board.clima.hashCode(), new ClimateZone().hashCode())
+    partida2.getP2.playCard(climate2, partida2)
+    assertEquals(partida2.getP2.getHand, List(catapult2))
+    assertEquals(partida2.board.clima.hashCode(), new ClimateZone(List(climate2)).hashCode())
+
+    assertEquals(partida2.board.p2s.hashCode(), new MarginalZone().hashCode())
+    partida2.getP2.playCard(catapult2, partida2)
+    assertEquals(partida2.getP2.getHand, List())
+    assertEquals(partida2.board.p2s.hashCode(), new MarginalZone(List(catapult2)).hashCode())
   }
 }
