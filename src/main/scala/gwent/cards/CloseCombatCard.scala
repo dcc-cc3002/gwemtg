@@ -2,6 +2,9 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import cl.uchile.dcc.gwent.{Game, Player}
+import cl.uchile.dcc.gwent.board.Board
+
 import java.util.Objects
 
 /** Class representing a close combat unit card in the Gwen't game.
@@ -36,6 +39,14 @@ class CloseCombatCard(name: String, description: String, power: Int) extends Abs
   override def hashCode: Int = {
     if this == null then return Objects.hash(classOf[CloseCombatCard], null)
     else return Objects.hash(classOf[CloseCombatCard], name)
+  }
+
+  /** getPlayed 
+   * tells the zone to be edited after player plays the card with play()
+   */
+  def getPlayed(player: Player, game: Game): Unit = {
+    game.addCCC(this, player)
+    player.removeCard(this)
   }
 }
 

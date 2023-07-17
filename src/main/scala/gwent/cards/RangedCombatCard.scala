@@ -2,6 +2,9 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import cl.uchile.dcc.gwent.{Game, Player}
+import cl.uchile.dcc.gwent.board.Board
+
 import java.util.Objects
 
 /** Class representing a ranged combat unit card in the Gwen't game.
@@ -20,7 +23,7 @@ import java.util.Objects
  * @version 1.1
  * @since 1.0
  */
-class RangedCombatCard(name: String, description: String, power: Int) extends AbstractUnitCard(name, description, power){
+class RangedCombatCard(name: String, description: String, power: Int) extends AbstractUnitCard(name, description, power) {
 
   /** Checks if two objects belong to the class RangedCombatCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[RangedCombatCard]
@@ -38,5 +41,13 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
     if this == null then return Objects.hash(classOf[RangedCombatCard], null)
     else return Objects.hash(classOf[RangedCombatCard], name)
   }
-}
 
+
+  /** getPlayed 
+   * tells the zone to be edited after player plays the card with play()
+   */
+  override def getPlayed(player: Player, game: Game): Unit = {
+    game.addRCC(this, player)
+    player.removeCard(this)
+  }
+}

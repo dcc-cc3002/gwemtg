@@ -2,6 +2,9 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import cl.uchile.dcc.gwent.{Game, Player}
+import cl.uchile.dcc.gwent.board.Board
+
 import java.util.Objects
 
 /** Class representing a siege combat unit card in the Gwen't game.
@@ -37,6 +40,14 @@ class SiegeCombatCard(name: String, description: String, power: Int)
   override def hashCode: Int = {
     if this == null then return Objects.hash(classOf[SiegeCombatCard], null)
     else return Objects.hash(classOf[SiegeCombatCard], name)
+  }
+
+  /** getPlayed 
+   * tells the zone to be edited after player plays the card with play()
+   */
+  override def getPlayed(player: Player, game: Game): Unit = {
+    game.addSCC(this, player)
+    player.removeCard(this)
   }
 }
 

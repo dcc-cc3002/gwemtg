@@ -2,6 +2,9 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import cl.uchile.dcc.gwent.{Game, Player}
+import cl.uchile.dcc.gwent.board.*
+
 import java.util.Objects
 
 /** Class representing a weather card in the Gwen't game.
@@ -42,11 +45,18 @@ class WeatherCard(val name: String, val description: String) extends Card with E
     case _ => false
   }
 
-  /** overwrite hashcode */
 
   /** overwrite hashcode */
   override def hashCode: Int = {
     if this == null then return Objects.hash(classOf[WeatherCard], null)
     else return Objects.hash(classOf[WeatherCard], name)
+  }
+
+  /** getPlayed 
+   * tells the zone to be edited after player plays the card with play()
+   */
+  override def getPlayed(player: Player, game: Game): Unit = {
+    game.addWC(this)
+    player.removeCard(this)
   }
 }

@@ -3,7 +3,7 @@ package cl.uchile.dcc
 package gwent
 
 import gwent.Game
-import gwent.cards.Card
+import gwent.cards.*
 
 import java.util.Objects
 
@@ -141,6 +141,14 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    * Game llama a board para que board ponga la carta donde corresponda
    */
   def playCard(carta: Card, game: Game): Unit = {
-    game.board.putCard(carta, this)
-  }  
+    carta.getPlayed(this, game)
+  }
+
+  /**
+   * funcion que saca una carta desde la mano del jugador
+   */
+  def removeCard(carta: Card): Unit = {
+   /** la carta se saca de la mano, se asume no hay duplicados */
+    _hand = _hand.filterNot(_ == carta)
+  }
 }

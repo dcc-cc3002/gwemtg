@@ -4,8 +4,7 @@ package gwent.board
 
 
 import gwent.cards.*
-
-import cl.uchile.dcc.gwent.Player
+import gwent.Player
 
 import java.util.Objects
 
@@ -13,7 +12,7 @@ import java.util.Objects
  * This class represents the board of the game.
  * The board is composed of 7 zones, 3 for each player and 1 for the climate.
  *
- * @params:
+ * 
  * The board is composed of 7 zones:
  * - player 1's marginal: zone where siege combat cards are played.
  * - player 1's ranged: zone where ranged combat cards are played.
@@ -57,21 +56,13 @@ class Board(var p1s: MarginalZone, var p1r: RangeZone, var p1m: MeleeZone, var c
     for (card <- p2r.data) {if (card != null) result = result + (card.hashCode() % 1000000007) }
     result = result % 1000000007
     for (card <- p2s.data) {if (card != null) result = result + (card.hashCode() % 1000000007) }
-    return Objects.hash(classOf[CloseCombatCard], result)
+    return Objects.hash(classOf[Board], result)
   }
-
-  /**
-   * putCard: Card Board -> Unit
-   * function that puts a card in the board
-   * it uses double dispatch to call the correct method
-   * the zone where the card is put depends on the card's type
-   * MarginalZone -> SiegeCombatCard
-   * RangeZone -> RangedCombatCard
-   * MeleeZone -> CloseCombatCard
-   * @param card: card to be put in the board
+  /** add
+   * add: Card Zone -> Unit
+   * adds a card to the specified zone
    */
-  def putCard(card: Card, player: Player): Unit = {
-    var a: Int = 2
+  def add(card: Card, zone: Zone): Unit = {
+    zone.add(card)
   }
-
 }

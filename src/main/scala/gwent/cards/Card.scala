@@ -2,6 +2,9 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import cl.uchile.dcc.gwent.{Game, Player}
+import cl.uchile.dcc.gwent.board.Board
+
 import java.util.Objects
 import scala.collection.mutable
 
@@ -37,4 +40,13 @@ trait Card {
    * This is an immutable property.
    */
   val description: String
+  
+  /** getPlayed
+   * A function that puts a card into the board according to the rules of the game.
+   * The card must be placed in a zone of the board that is owned by the player playing the card,
+   * in case of being a climate card, it is placed in the common weather zone.
+   * 
+   * Here we use double dispatch where the player is the one who calls the function and the board is the observed object.
+   */
+  def getPlayed(player: Player, game: Game): Unit
 }

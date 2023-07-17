@@ -3,8 +3,8 @@ package cl.uchile.dcc
 package gwent
 
 import gwent.*
-
-import gwent.board.Board
+import gwent.board.*
+import gwent.cards.{Card, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
 
 /**
  * A class representing a game of Gwent.
@@ -18,6 +18,49 @@ import gwent.board.Board
  *
  */
 
-class Game(val board: Board, val player1: Player, val player2: Player){
-  
+class Game(val board: Board, private val _player1: Player, private val _player2: Player) {
+
+  def Player1 = _player1
+  def Player2 = _player2
+
+  /** addCCC
+   * adds a close combat card to the board
+   */
+  def addCCC(card: CloseCombatCard, player: Player): Unit = {
+    if (player == this.Player1) {
+        board.add(card, board.p1s)
+      }
+      else {
+        board.add(card, board.p2s)
+    }
+  }
+
+  /** addRCC
+   * adds a ranged combat card to the board
+   */
+  def addRCC(card: RangedCombatCard, player: Player): Unit = {
+    if (player == this.Player1) {
+      board.add(card, board.p1s)
+    }
+    else {
+      board.add(card, board.p2s)
+    }
+  }
+  /** addSCC
+   * adds a siege combat card to the board
+   */
+  def addSCC(card: SiegeCombatCard, player: Player): Unit = {
+    if (player == this.Player1) {
+      board.add(card, board.p1s)
+    }
+    else {
+      board.add(card, board.p2s)
+    }
+  }
+  /** addWC
+   * swaps the weather card of the board
+   */
+  def addWC(card: WeatherCard): Unit = {
+    board.clima.data = List(card)
+  }
 }
