@@ -13,9 +13,12 @@ import gwent.cards.*
  * @param _player1 The first player of the game.
  * @param _player2 The second player of the game.
  *
- * here the game is played, the players play their cards and the board is updated
- * here the design pattern observer is used, the board is the observable and the players are the observers
- * aswell as the design pattern factory is implemented here to create the decks of the players and the cards
+ * Here the game is played, the players play their cards and the board is updated
+ * here the design pattern observer is used, Board is the observable and Player s are the observers
+ * Game, for playing cards, follows the proxy pattern, Game is the proxy and the board is the real subject.
+ * 
+ * Aswell as the design pattern factory is implemented in Game,
+ * to create the decks of the players and the cards.
  *
  */
 
