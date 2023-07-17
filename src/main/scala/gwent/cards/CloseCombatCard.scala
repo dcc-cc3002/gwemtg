@@ -33,10 +33,9 @@ class CloseCombatCard(name: String, description: String, power: Int) extends Abs
   }
 
   /** overwrite hashcode */
-
   override def hashCode: Int = {
-    if this == null then return 0
-    else return Objects.hash(classOf[CloseCombatCard], name, description, power)
+    if this == null then return Objects.hash(classOf[CloseCombatCard], null)
+    else return Objects.hash(classOf[CloseCombatCard], name)
   }
 }
 

@@ -12,7 +12,7 @@ class BoardTest extends munit.FunSuite {
   var tablero1: Board = new Board()
   var tablero2: Board = _
   var tablero3: Board = _
-  
+
   var zona1siege: MarginalZone = _
   var zona1range: RangeZone = _
   var zona1melee: MeleeZone = _
@@ -20,18 +20,19 @@ class BoardTest extends munit.FunSuite {
   var zona2melee: MeleeZone = _
   var zona2range: RangeZone = _
   var zona2siege: MarginalZone = _
-  
-  var troop1: CloseCombatCard = _
-  var troop2: CloseCombatCard = _
-  var troop3: CloseCombatCard = _
 
-  var ranged1: RangedCombatCard = _
-  var ranged2: RangedCombatCard = _
-  var ranged3: RangedCombatCard = _
+  var troop1: CloseCombatCard = new CloseCombatCard("troop1", "pedro", 1)
+  var troop2: CloseCombatCard = new CloseCombatCard("troop2", "pablo", 2)
+  var troop3: CloseCombatCard = new CloseCombatCard("troop3", "jose", 3)
 
-  var catapult1: SiegeCombatCard = _
-  var catapult2: SiegeCombatCard = _
-  var catapult3: SiegeCombatCard = _
+  var ranged1: RangedCombatCard = new RangedCombatCard("ranged1", "eliana", 1)
+  var ranged2: RangedCombatCard = new RangedCombatCard("ranged2", "maria", 2)
+  var ranged3: RangedCombatCard = new RangedCombatCard("ranged3", "alia", 3)
+
+  var catapult1: SiegeCombatCard = new SiegeCombatCard("catapult1", "isis", 1)
+  var catapult2: SiegeCombatCard = new SiegeCombatCard("catapult2", "dracula", 2)
+  var catapult3: SiegeCombatCard = new SiegeCombatCard("catapult3", "atenea", 3)
+
 
   var jugador: Player = _
 
@@ -78,7 +79,8 @@ class BoardTest extends munit.FunSuite {
 
   test("test for equals"){
     val tablerodos = new Board(new MarginalZone(List(catapult1, catapult2, catapult3)), new RangeZone(List(ranged1, ranged2, ranged3)), new MeleeZone(List(troop1, troop2, troop3)), new ClimateZone(List(climate1)), new MeleeZone(List(troop1, troop2, troop3)), new RangeZone(List(ranged1, ranged2, ranged3)), new MarginalZone(List(catapult1, catapult2, catapult3)))
-    assertEquals(tablerodos, tablero2, "tableros iguales deberian ser iguales")
-    assertEquals(tablero2, tablerodos, "tableros iguales deberian ser iguales")
+    assertEquals(tablerodos, tablero2, "equal boards should be equal")
+    assertEquals(tablero2, tablerodos, "equal boards should be equal")
+
   }
 }

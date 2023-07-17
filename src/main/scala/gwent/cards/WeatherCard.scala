@@ -18,7 +18,7 @@ import java.util.Objects
  * @version 1.1
  * @since 1.0
  */
-class WeatherCard(val name: String, val description: String) extends Card {
+class WeatherCard(val name: String, val description: String) extends Card with Equals {
   /** Checks if two objects belong to the class WeatherCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[WeatherCard]
 
@@ -44,8 +44,9 @@ class WeatherCard(val name: String, val description: String) extends Card {
 
   /** overwrite hashcode */
 
+  /** overwrite hashcode */
   override def hashCode: Int = {
-    if this == null then return 0
-    else return Objects.hash(classOf[WeatherCard], name, description)
+    if this == null then return Objects.hash(classOf[WeatherCard], null)
+    else return Objects.hash(classOf[WeatherCard], name)
   }
 }

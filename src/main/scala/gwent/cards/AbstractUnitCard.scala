@@ -23,7 +23,7 @@ import scala.collection.mutable
  * @version 1.1
  * @since 1.0
  */
-abstract class AbstractUnitCard (val name: String, val description: String, val power: Int) extends Card{
+abstract class AbstractUnitCard (val name: String, val description: String, val power: Int) extends Card with Equals {
 
   /** The current power of the card, which may be affected by various conditions during
    * gameplay.
