@@ -33,7 +33,11 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
 
 
   /** overwrite hashcode */
-  override def hashCode: Int = Objects.hash(classOf[RangedCombatCard], name, description, power)
+
+  override def hashCode: Int = {
+    if this == null then return 0
+    else return Objects.hash(classOf[RangedCombatCard], name, description, power)
+  }
 
 }
 

@@ -36,14 +36,28 @@ class Board(var p1s: MarginalZone, var p1r: RangeZone, var p1m: MeleeZone, var c
   /** override de Equals */
   override def equals(obj: Any): Boolean = {
     obj match {
-      case board: Board => this.canEqual(board) && this.hashCode() == board.hashCode()
+      case board: Board => this.canEqual(board) &&  this.hashCode() == board.hashCode()
       case _ => false
     }
   }
 
   /** override de hashCode */
   override def hashCode(): Int = {
-    Objects.hash(classOf[CloseCombatCard], p1s.hashCode(), p1r.hashCode(), p1m.hashCode(), clima.hashCode(), p2m.hashCode(), p2r.hashCode(), p2s.hashCode())
+    var result: Int = 0
+    for (card <- p1s.data) {if (card != null) result = result + (card.hashCode() % 1000000007) }
+    result = result % 1000000007
+    for (card <- p1r.data) {if (card != null) result = result + (card.hashCode() % 1000000007) }
+    result = result % 1000000007
+    for (card <- p1m.data) {if (card != null) result = result + (card.hashCode() % 1000000007) }
+    result = result % 1000000007
+    for (card <- clima.data) {if (card != null) result = result + (card.hashCode() % 1000000007) }
+    result = result % 1000000007
+    for (card <- p2m.data) {if (card != null) result = result + (card.hashCode() % 1000000007) }
+    result = result % 1000000007
+    for (card <- p2r.data) {if (card != null) result = result + (card.hashCode() % 1000000007) }
+    result = result % 1000000007
+    for (card <- p2s.data) {if (card != null) result = result + (card.hashCode() % 1000000007) }
+    return Objects.hash(classOf[CloseCombatCard], result)
   }
 
   /**

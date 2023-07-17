@@ -21,7 +21,7 @@ import java.util.Objects
  * @version 1.1
  * @since 1.0
  */
-class CloseCombatCard(name: String, description: String, power: Int) extends AbstractUnitCard(name, description, power){
+class CloseCombatCard(name: String, description: String, power: Int) extends AbstractUnitCard(name, description, power) {
 
   /** Checks if two objects belong to the class CloseCombatCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[CloseCombatCard]
@@ -33,7 +33,11 @@ class CloseCombatCard(name: String, description: String, power: Int) extends Abs
   }
 
   /** overwrite hashcode */
-  override def hashCode: Int = Objects.hash(classOf[CloseCombatCard], name, description, power)
+
+  override def hashCode: Int = {
+    if this == null then return 0
+    else return Objects.hash(classOf[CloseCombatCard], name, description, power)
+  }
 }
 
 

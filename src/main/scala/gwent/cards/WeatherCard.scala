@@ -43,5 +43,9 @@ class WeatherCard(val name: String, val description: String) extends Card {
   }
 
   /** overwrite hashcode */
-  override def hashCode: Int = Objects.hash(classOf[WeatherCard], name, description)
+
+  override def hashCode: Int = {
+    if this == null then return 0
+    else return Objects.hash(classOf[WeatherCard], name, description)
+  }
 }

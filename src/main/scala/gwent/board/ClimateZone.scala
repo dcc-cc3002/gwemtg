@@ -6,25 +6,25 @@ import gwent.cards.*
 
 import java.util.Objects
 
-class ClimateZone(var data: List[WeatherCard]) extends Zone {
+class ClimateZone(var data: List[WeatherCard]) extends Zone with Equals {
  /** constructor for empty zone */
  def this() = this(List())
- 
- /** 
+
+ /**
   *  override for hashcode
   */
  override def hashCode(): Int = {
-  var result = 0
+  var result: Int = 0
   for (card <- data) {
-   result += Objects.hash(card)
+   result = result + (card.hashCode() % 1000000007)
   }
-  result
+  return Objects.hash(classOf[ClimateZone], result)
  }
- 
+
  /** canEqual definition */
  def canEqual(other: Any): Boolean = other.isInstanceOf[ClimateZone]
- 
- /** 
+
+ /**
   *  override for equals
   */
   override def equals(other: Any): Boolean = {

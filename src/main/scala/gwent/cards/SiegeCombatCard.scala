@@ -34,6 +34,9 @@ class SiegeCombatCard(name: String, description: String, power: Int)
   }
 
   /** overwrite hashcode */
-  override def hashCode: Int = Objects.hash(classOf[SiegeCombatCard], name, description, power)
+  override def hashCode: Int = {
+    if this == null then return 0
+    else return Objects.hash(classOf[SiegeCombatCard], name, description, power)
+  }
 }
 

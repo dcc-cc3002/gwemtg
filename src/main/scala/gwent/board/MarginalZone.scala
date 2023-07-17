@@ -5,7 +5,7 @@ package gwent.board
 import gwent.cards.*
 import java.util.Objects
 
-class MarginalZone(var data: List[SiegeCombatCard]) extends Zone {
+class MarginalZone(var data: List[SiegeCombatCard]) extends Zone with Equals {
   /** constructor for empty zone */
 
   def this() = this(List())
@@ -14,11 +14,11 @@ class MarginalZone(var data: List[SiegeCombatCard]) extends Zone {
    * override for hashcode
    */
   override def hashCode(): Int = {
-    var result = 0
+    var result: Int = 0
     for (card <- data) {
-      result += Objects.hash(card)
+      result = result + (card.hashCode() % 1000000007)
     }
-    result
+    return Objects.hash(classOf[MarginalZone], result)
   }
 
   /** canEqual definition */
