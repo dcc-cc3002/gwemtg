@@ -1,10 +1,11 @@
-
 package cl.uchile.dcc
 package gwent
 
 import gwent.*
 import gwent.board.*
-import gwent.cards.{Card, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
+import gwent.cards.*
+
+
 
 /**
  * A class representing a game of Gwent.
