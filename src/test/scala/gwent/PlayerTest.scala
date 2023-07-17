@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent
 
+import gwent.Game
+import gwent.board.*
 import gwent.cards.*
 import munit.*
 
@@ -17,7 +19,15 @@ class PlayerTest extends munit.FunSuite{
   var catapult2: SiegeCombatCard = _
   var catapult3: SiegeCombatCard = _
 
+  var climate1: WeatherCard = _
+  var climate2: WeatherCard = _
+
   var jugador: Player = _
+
+  var partida: Game = _
+
+  var tablero1: Board = new Board()
+
 
   override def beforeEach(context: BeforeEach): Unit = {
     troop1 = new CloseCombatCard("troop1", "pedro", 1)
@@ -32,21 +42,29 @@ class PlayerTest extends munit.FunSuite{
     catapult2 = new SiegeCombatCard("catapult2", "dracula", 2)
     catapult3 = new SiegeCombatCard("catapult3", "atenea", 3)
 
-    jugador = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
+    climate1 = new WeatherCard("climate1", "lluvia")
+    climate2 = new WeatherCard("climate2", "nieve")
+
+    jugador = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2, climate2))
+
+    partida = new Game(tablero1, jugador, jugador)
+
+    tablero1 = new Board()
 
   }
 
 
   test("test para equals") {
-    val p1: Player = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
+    val p1: Player = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2, climate2))
     val p2: Player = new Player("Lain", 2, List(), List())
-    p1.equals(jugador)
-    jugador.equals(p1)
-    assert(!(p1.equals(p2)))
+    assertEquals(p1,jugador)
+    assertEquals(jugador,p1)
+    assertNotEquals(p1,p2)
+
   }
 
   test("un jugador tiene bien su hashCode y debe poder ser comparado con canEqual") {
-    val p1: Player = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
+    val p1: Player = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2, climate2))
     assert(p1.canEqual(jugador))
     assert(jugador.canEqual(p1))
     assertEquals(p1.hashCode, jugador.hashCode)
@@ -55,7 +73,7 @@ class PlayerTest extends munit.FunSuite{
 
 
   test("test para getHand") {
-    assertEquals(jugador.getHand, List(troop2, ranged2, catapult2))
+    assertEquals(jugador.getHand, List(troop2, ranged2, catapult2, climate2))
   }
 
   test("test para getDeck") {
@@ -113,5 +131,28 @@ class PlayerTest extends munit.FunSuite{
     assertEquals(jugadorSinCartas.deck.length, 2, "mazo deberia tener  dos cartas")
     jugadorSinCartas.cardInDeck(troop3)
     assertEquals(jugadorSinCartas.deck.length, 3, "mazo deberia tener tres cartas")
+  }
+
+  test("tests for playing cards of all types") {
+    assertEquals(partida.getP1.getHand, List(troop2, ranged2, catapult2, climate2))
+    assertEquals(partida.board.p1m.hashCode(), new MeleeZone().hashCode())
+    partida.getP1.playCard(troop2, partida)
+    assertEquals(partida.getP1.getHand, List(ranged2, catapult2, climate2))
+    assertEquals(partida.board.p1m.hashCode(), new MeleeZone(List(troop2)).hashCode())
+
+    assertEquals(partida.board.p1r.hashCode(), new RangeZone().hashCode())
+    partida.getP1.playCard(ranged2, partida)
+    assertEquals(partida.getP1.getHand, List(catapult2, climate2))
+    assertEquals(partida.board.p1r.hashCode(), new RangeZone(List(ranged2)).hashCode())
+
+    assertEquals(partida.board.clima.hashCode(), new ClimateZone().hashCode())
+    partida.getP1.playCard(climate2, partida)
+    assertEquals(partida.getP1.getHand, List(catapult2))
+    assertEquals(partida.board.clima.hashCode(), new ClimateZone(List(climate2)).hashCode())
+
+    assertEquals(partida.board.p1s.hashCode(), new MarginalZone().hashCode())
+    partida.getP1.playCard(catapult2, partida)
+    assertEquals(partida.getP1.getHand, List())
+    assertEquals(partida.board.p1s.hashCode(), new MarginalZone(List(catapult2)).hashCode())
   }
 }
