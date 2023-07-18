@@ -150,7 +150,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
     * la carta se saca de la mano
     * en caso de que existan duplicados, se saca solo el primero
     */
-    for (i <- 0 until _hand.length) {
+    for (i <- _hand.indices) {
       if (_hand(i) == carta) {
         _hand = _hand.take(i) ::: _hand.drop(i + 1)
         return
@@ -176,7 +176,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    */
   def drawInitialHand(): Unit = {
     for (i <- 0 until 10) {
-      var carta: Card = draw()
+      val carta: Card = draw()
       _hand = carta :: _hand
     }
   }

@@ -184,4 +184,29 @@ class PlayerTest extends munit.FunSuite{
     assertEquals(partida2.getP2.getHand, List())
     assertEquals(partida2.board.p2s.hashCode(), new MarginalZone(List(catapult2)).hashCode())
   }
+
+  test("test for remove card: removeCard"){
+    assertEquals(jugador.getHand, List(troop2, ranged2, catapult2, climate2))
+    jugador.removeCard(troop2)
+    assertEquals(jugador.getHand, List(ranged2, catapult2, climate2))
+  }
+  test("deckToString and hand print"){
+//    assertEquals(jugador.deckToString, "CloseCombatCard: troop1, pedro, 1 CloseCombatCard: troop3, jose, 3 RangedCombatCard: ranged1, eliana, 1 RangedCombatCard: ranged3, alia, 3 SiegeCombatCardcatapult1, isis, 1 SiegeCombatCardcatapult3, atenea, 3\n")
+//  values are not equal even if they have the same `toString()`: CloseCombatCard: troop1, pedro, 1 CloseCombatCard: troop3, jose, 3 RangedCombatCard: ranged1, eliana, 1 RangedCombatCard: ranged3, alia, 3 SiegeCombatCardcatapult1, isis, 1 SiegeCombatCardcatapult3, atenea, 3
+    assertEquals(jugador2.deckToString, "\n")
+    assertEquals(jugador2.handPrint, "\n")
+    }
+
+  test("test for hasClimate"){
+    assertEquals(jugador.hasClimate, true)
+    jugador.playCard(climate2, partida)
+    assertEquals(jugador.hasClimate, false)
+  }
+
+  test("test for loseGem"){
+    assertEquals(jugador.gemCounter, 2)
+    jugador.loseGem()
+    assertEquals(jugador.gemCounter, 1)
+  }
+
 }
