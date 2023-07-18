@@ -37,6 +37,8 @@ class CloseCombatCardTest extends munit.FunSuite  {
     assertEquals(troop1, tropauno, "two cards with the same name, description and power should be equal")
     assertNotEquals(troop1, troop2, "two cards with different name, description or power should not be equal")
     assertEquals(troop1, troop1, "a card should be equal to itself")
+    assertNotEquals(troop2, troop1, "two cards with different name, description or power should not be equal")
+
   }
 
   test("test for hashcode") {
