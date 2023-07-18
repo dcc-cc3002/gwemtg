@@ -38,45 +38,49 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
   /** addCCC
    * adds a close combat card to the board
    */
-  def addCCC(card: CloseCombatCard, player: Player): Unit = {
-    if (player == this.Player1) {
+  def addCCC(card: CloseCombatCard, player: Player): Unit = 
+  {
+    if (player == this.Player1) 
+    {
         board.p1m.data = card :: board.p1m.data
-    } else if (player == this.Player2) {
+    } else if (player == this.Player2) 
+    {
         board.p2m.data = card :: board.p2m.data
-    } else {
-      throw new Exception("Player not found")
-    }
+    } else {throw new Exception("Player not found")}
   }
 
 
   /** addRCC
    * adds a ranged combat card to the board
    */
-  def addRCC(card: RangedCombatCard, player: Player): Unit = {
-    if (player == this.Player1) {
+  def addRCC(card: RangedCombatCard, player: Player): Unit = 
+  {
+    if (player == this.Player1) 
+    {
       board.p1r.data = card :: board.p1r.data
-    } else if (player == this.Player2) {
+    } else if (player == this.Player2) 
+    {
       board.p2r.data = card :: board.p2r.data
-    } else {
-      throw new Exception("Player not found")
-    }
+    } else {throw new Exception("Player not found")}
   }
   /** addSCC
    * adds a siege combat card to the board
    */
-  def addSCC(card: SiegeCombatCard, player: Player): Unit = {
-    if (player == this.Player1) {
+  def addSCC(card: SiegeCombatCard, player: Player): Unit = 
+  {
+    if (player == this.Player1) 
+    {
       board.p1s.data = card :: board.p1s.data
-    } else if (player == this.Player2) {
+    } else if (player == this.Player2) 
+    {
       board.p2s.data = card :: board.p2s.data
-    } else {
-      throw new Exception("Player not found")
-    }
+    } else {throw new Exception("Player not found")}
   }
   /** addWC
    * swaps the weather card of the board
    */
-  def addWC(card: WeatherCard): Unit = {
+  def addWC(card: WeatherCard): Unit = 
+  {
     board.clima.data = List(card)
   }
 
@@ -84,48 +88,56 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
    * potentialPoints returns the potential points of a player,
    * found by adding the power of all the cards in a player's hand and its board
    */
-  def potentialPoints(player: Player): Int = {
+  def potentialPoints(player: Player): Int = 
+  {
     var counter: Int = 0
-    if (player == this.Player1) {
+    if (player == this.Player1) 
+    {
       counter += boardPoints(player)
       counter += handPoints(player)
-    } else if (player == this.Player2) {
+    } else if (player == this.Player2) 
+    {
       counter += boardPoints(player)
       counter += handPoints(player)
-    } else {
-      throw new Exception("Player not found")
-    }
+    } else {throw new Exception("Player not found")}
     counter
   }
 
   /** boardPoints
    * boardPoints returns the public points of a player, found in the board
    */
-  def boardPoints(player: Player): Int = {
+  def boardPoints(player: Player): Int = 
+  {
     var counter: Int = 0
-    if (player == this.Player1) {
-      for (card <- board.p1m.data) {
+    if (player == this.Player1) 
+    {
+      for (card <- board.p1m.data) 
+      {
         counter += card.getPower
       }
-      for (card <- board.p1r.data) {
+      for (card <- board.p1r.data) 
+      {
         counter += card.getPower
       }
-      for (card <- board.p1s.data) {
+      for (card <- board.p1s.data) 
+      {
         counter += card.getPower
       }
-    } else if (player == this.Player2) {
-      for (card <- board.p2m.data) {
+    } else if (player == this.Player2) 
+    {
+      for (card <- board.p2m.data) 
+      {
         counter += card.getPower
       }
-      for (card <- board.p2r.data) {
+      for (card <- board.p2r.data) 
+      {
         counter += card.getPower
       }
-      for (card <- board.p2s.data) {
+      for (card <- board.p2s.data) 
+      {
         counter += card.getPower
       }
-    } else {
-      throw new Exception("Player not found")
-    }
+    } else {throw new Exception("Player not found")}
     counter
   }
 

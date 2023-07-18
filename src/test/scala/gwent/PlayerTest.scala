@@ -161,7 +161,7 @@ class PlayerTest extends munit.FunSuite{
 
   test("test pt 2 for playing cards: player 2") {
 
-    var partida2: Game = new Game(new Board(), jugador2, jugador)
+    val partida2: Game = new Game(new Board(), jugador2, jugador)
 
     assertEquals(partida2.getP2.getHand, List(troop2, ranged2, catapult2, climate2))
     assertEquals(partida2.board.p2m.hashCode(), new MeleeZone().hashCode())
