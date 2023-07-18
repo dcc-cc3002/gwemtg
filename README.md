@@ -1,5 +1,8 @@
 # Gwen't
 
+## Diagrama de estados
+![Untitled Diagram](https://github.com/dcc-cc3002/gwen-t-hugodiazroa/assets/16340209/ed0a63a9-c582-48bf-aa27-0173ae7d3d75)
+
 ![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png)
 
 This work is licensed under a
