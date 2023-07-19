@@ -48,5 +48,10 @@ abstract class AbstractUnitCard (val name: String, val description: String, val 
    * @return The [[power]] of the card.
    */
   def getPower: Int = power
+
+  /** refuerzo_moral()
+   * refuerzo_moral() is a method that increases the currentPower of the card by 1.
+   * @return The [[currentPower]] of the card.
+   */
 }
 

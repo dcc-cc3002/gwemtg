@@ -1,11 +1,19 @@
 package cl.uchile.dcc
 package gwent.cards.effects
 
-import gwent.cards.{CloseCombatCard, RangedCombatCard, SiegeCombatCard}
+import gwent.cards.*
 
-trait vainilla 
-  //extends {CloseCombatCard;RangedCombatCard;SiegeCombatCard} 
+/** Trait representing no effect
+ *
+ * It has a override metho for getPlayed 
+ * the method is used to excecute nothing
+ * prints " " then get the card played
+ */
+trait vainilla extends AbstractUnitCard
 {
   /** do nothing */
-  println(" ")
+  override def getPlayed(): Unit = {
+    println(" ")
+    getPlayed()
+  }
 }
