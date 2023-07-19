@@ -153,8 +153,8 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
    */
   def handPoints(player: Player): Int = {
     var counter: Int = 0
-    if (player == this.Player1) then for (card <- player.getHand) counter = counter + card.getPower
-    else if (player == this.Player2) then for (card <- player.getHand) counter = counter + card.getPower
+    if player == this.Player1 then for (card <- player.getHand) counter = counter + card.getPower
+    else if player == this.Player2 then for (card <- player.getHand) counter = counter + card.getPower
     else {throw new Exception("Player not found")}
     counter
   }
@@ -170,13 +170,13 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
     if(this.boardPoints(this.Player1) == this.boardPoints(this.Player2)){
       this.Player1.loseGem()
       this.Player2.loseGem()
-      return 0
+      0
     } else if(result_1on2){
       this.Player2.loseGem()
-      return 1
+      1
     } else {
       this.Player1.loseGem()
-      return 2
+      2
     }
   }
 
@@ -190,9 +190,9 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
   def RangedCombatCardEffect(name: String, p: Player): Unit = {
     name match
       case "refuerzo_moral" =>{
-        if (p == this.Player1) then for(card <- board.p1r.data){card.setPower(card.getPower + 1)}
+        if p == this.Player1 then for(card <- board.p1r.data){card.setPower(card.getPower + 1)}
         else
-          if (p == this.Player2) then for(card <- board.p2r.data){card.setPower(card.getPower + 1)}
+          if p == this.Player2 then for(card <- board.p2r.data){card.setPower(card.getPower + 1)}
           else {throw new Exception("Player not found")}
       }
       case "vinculo_estrecho" =>{
@@ -295,7 +295,7 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
 
   /** WeatherEffect
    * WeatherEffect is a function that applies the effect of a weather card
-   * there are 4 possible effects:
+   * there are 5 possible effects:
    * "Escarcha mordiente", "Convierte el valor de fuerza de todas las cartas de melee a 1"
    * "Niebla Impenetrable", "Convierte el valor de fuerza de todas las cartas de rango a 1."
    * "LLuvia Torrencial", "Convierte el valor de fuerza de todas las cartas de asedio a 1."
@@ -338,6 +338,41 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
         else {
           throw new Exception("Player not found")
         }
+      }
+      case "Despejar" => {
+        if (p == this.Player1){
+          for(card <- this.board.p1m.data){card.setPower(card.getOGPower)}
+          for(card <- this.board.p1r.data){card.setPower(card.getOGPower)}
+          for(card <- this.board.p1s.data){card.setPower(card.getOGPower)}
+        }
+
+        else if (p == this.Player2){
+          for(card <- this.board.p2m.data){card.setPower(card.getOGPower)}
+          for(card <- this.board.p2r.data){card.setPower(card.getOGPower)}
+          for(card <- this.board.p2s.data){card.setPower(card.getOGPower)}
+        }
+        else {
+          throw new Exception("Player not found")
+        }
+      }
+      case "Cuerno del Comandante" =>{
+        if (p == this.Player1){
+          val rand = new scala.util.Random
+          val row = rand.nextInt(3)
+          row match
+            case 0 => for(card <- this.board.p1m.data){card.setPower(card.getPower * 2)}
+            case 1 => for(card <- this.board.p1r.data){card.setPower(card.getPower * 2)}
+            case 2 => for(card <- this.board.p1s.data){card.setPower(card.getPower * 2)}
+        }
+        else if(p == this.Player2){
+          val rand = new scala.util.Random
+          val row = rand.nextInt(3)
+          row match
+            case 0 => for (card <- this.board.p2m.data) {card.setPower(card.getPower * 2)}
+            case 1 => for (card <- this.board.p2r.data) {card.setPower(card.getPower * 2)}
+            case 2 => for (card <- this.board.p2s.data) {card.setPower(card.getPower * 2)}
+        }
+        else {throw new Exception("Player not found")}
       }
       case _ => {}
   }

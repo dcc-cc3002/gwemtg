@@ -29,7 +29,12 @@ abstract class AbstractUnitCard (val name: String, val description: String, val 
    * gameplay.
    * Initially set to the base [[power]] of the card.
    */
-  var currentPower: Int = power
+  private var currentPower: Int = power
+  
+  /** The original power of the card, which is used to reset the current power of the card
+   * this is what would be printed on the card in a physical game.
+   */
+  private val originalPower: Int = power
 
   /** Getter for the [[name]] of the card.
    *
@@ -48,6 +53,12 @@ abstract class AbstractUnitCard (val name: String, val description: String, val 
    * @return The [[power]] of the card.
    */
   def getPower: Int = power
+  
+  /** Getter for the [[originalPower]] of the card.
+   *
+   * @return The [[originalPower]] of the card.
+   */
+  def getOGPower: Int = originalPower
   
   /** setPower  
    * setPower is a setter function for the currentPower of the card.
