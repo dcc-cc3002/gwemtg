@@ -58,5 +58,10 @@ trait Card {
   /** getPower
    * getPower returns the power of the card
    */
-  def getPower: Int 
+  def getPower: Int
+
+  /** getName
+   * getName returns the name of the card
+   */
+  def getName: String
 }

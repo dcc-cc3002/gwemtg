@@ -56,6 +56,8 @@ class WeatherCard(val name: String, val description: String) extends Card with E
    * tells the zone to be edited after player plays the card with play()
    */
   override def getPlayed(player: Player, game: Game): Unit = {
+    /** not the best implementation, but i want to finish the game */
+    game.WeatherEffect(this.name, player)
     game.addWC(this)
     player.removeCard(this)
   }
@@ -70,4 +72,6 @@ class WeatherCard(val name: String, val description: String) extends Card with E
    * getPower returns the power of the card
    */
   override def getPower: Int = 0
+
+
 }

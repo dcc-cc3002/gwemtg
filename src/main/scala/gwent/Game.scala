@@ -5,6 +5,8 @@ import gwent.Player
 import gwent.board.*
 import gwent.cards.*
 
+import java.util.jar.Attributes.Name
+
 
 /**
  * A class representing a game of Gwent.
@@ -176,5 +178,167 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
       this.Player1.loseGem()
       return 2
     }
+  }
+
+  /*** RangedCombatCardEffect
+   * function that applies the effect of a ranged combat card
+   * there are 3 possible effects:
+   * refuerzo_moral: adds 1 power to all other cards in the same row
+   * vinculo_estrecho: duplicates the power of any card in the same row with the same name
+   * vainilla: no effect
+   */
+  def RangedCombatCardEffect(name: String, p: Player): Unit = {
+    name match
+      case "refuerzo_moral" =>{
+        if (p == this.Player1) then for(card <- board.p1r.data){card.setPower(card.getPower + 1)}
+        else
+          if (p == this.Player2) then for(card <- board.p2r.data){card.setPower(card.getPower + 1)}
+          else {throw new Exception("Player not found")}
+      }
+      case "vinculo_estrecho" =>{
+        if (p == this.Player1) {
+          for (card <- board.p1r.data) {
+            if (card.getName == name) {
+              card.setPower(card.getPower * 2)
+            }
+          }
+        } else if (p == this.Player2) {
+          for (card <- board.p2r.data) {
+            if (card.getName == name) {
+              card.setPower(card.getPower * 2)
+            }
+          }
+        } else {throw new Exception("Player not found")}
+      }
+      case "vainilla" => {}
+  }
+
+  /** CloseCombatCardEffect
+   * function that applies the effect of a close combat card
+   * there are 3 possible effects:
+   * refuerzo_moral: adds 1 power to all other cards in the same row
+   * vinculo_estrecho: duplicates the power of any card in the same row with the same name
+   * vainilla: no effect
+   */
+  def CloseCombatCardEffect(name: String, p: Player): Unit = {
+    name match
+      case "refuerzo_moral" => {
+        if (p == this.Player1) then for (card <- this.board.p1m.data) {
+          card.setPower(card.getPower + 1)
+        }
+        else if (p == this.Player2) then for (card <- this.board.p1m.data) {
+          card.setPower(card.getPower + 1)
+        }
+        else {
+          throw new Exception("Player not found")
+        }
+      }
+      case "vinculo_estrecho" => {
+        if (p == this.Player1) {
+          for (card <- board.p1m.data) {
+            if (card.getName == name) {
+              card.setPower(card.getPower * 2)
+            }
+          }
+        } else if (p == this.Player2) {
+          for (card <- board.p1m.data) {
+            if (card.getName == name) {
+              card.setPower(card.getPower * 2)
+            }
+          }
+        } else {
+          throw new Exception("Player not found")
+        }
+      }
+      case "vainilla" => {}
+  }
+
+  /** SiegeCombatCardEffect
+   * function that applies the effect of a siege combat card
+   * there are 3 possible effects:
+   * refuerzo_moral: adds 1 power to all other cards in the same row
+   * vinculo_estrecho: duplicates the power of any card in the same row with the same name
+   * vainilla: no effect
+   */
+  def SiegeCombatCardEffect(name: String, p: Player): Unit = {
+    name match
+      case "refuerzo_moral" => {
+        if (p == this.Player1) then for (card <- this.board.p1s.data) {
+          card.setPower(card.getPower + 1)
+        }
+        else if (p == this.Player2) then for (card <- this.board.p1s.data) {
+          card.setPower(card.getPower + 1)
+        }
+        else {
+          throw new Exception("Player not found")
+        }
+      }
+      case "vinculo_estrecho" => {
+        if (p == this.Player1) {
+          for (card <- board.p1s.data) {
+            if (card.getName == name) {
+              card.setPower(card.getPower * 2)
+            }
+          }
+        } else if (p == this.Player2) {
+          for (card <- board.p1s.data) {
+            if (card.getName == name) {
+              card.setPower(card.getPower * 2)
+            }
+          }
+        } else {
+          throw new Exception("Player not found")
+        }
+      }
+      case "vainilla" => {}
+  }
+
+  /** WeatherEffect
+   * WeatherEffect is a function that applies the effect of a weather card
+   * there are 4 possible effects:
+   * "Escarcha mordiente", "Convierte el valor de fuerza de todas las cartas de melee a 1"
+   * "Niebla Impenetrable", "Convierte el valor de fuerza de todas las cartas de rango a 1."
+   * "LLuvia Torrencial", "Convierte el valor de fuerza de todas las cartas de asedio a 1."
+   * "Despejar", "Limpia todos los efectos de clima del campo de batalla."
+   * "Cuerno del Comandante", "Dobla la fuerza de todas las unidades de una fila propia al azar."
+   *
+   * because every card has a different effect, we will use name as id instead of description
+   */
+  def WeatherEffect(n: String, p: Player) : Unit = {
+    n match
+      case "Escarcha mordiente" => {
+        if (p == this.Player1) then for (card <- this.board.p1m.data) {
+          card.setPower(1)
+        }
+        else if (p == this.Player2) then for (card <- this.board.p2m.data) {
+          card.setPower(1)
+        }
+        else {
+          throw new Exception("Player not found")
+        }
+      }
+      case "Niebla Impenetrable" => {
+        if (p == this.Player1) then for (card <- this.board.p1r.data) {
+          card.setPower(1)
+        }
+        else if (p == this.Player2) then for (card <- this.board.p2r.data) {
+          card.setPower(1)
+        }
+        else {
+          throw new Exception("Player not found")
+        }
+      }
+      case "Lluvia Torrencial" => {
+        if (p == this.Player1) then for (card <- this.board.p1s.data) {
+          card.setPower(1)
+        }
+        else if (p == this.Player2) then for (card <- this.board.p2s.data) {
+          card.setPower(1)
+        }
+        else {
+          throw new Exception("Player not found")
+        }
+      }
+      case _ => {}
   }
 }

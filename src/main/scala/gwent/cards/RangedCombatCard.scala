@@ -47,6 +47,8 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
    * tells the zone to be edited after player plays the card with play()
    */
   override def getPlayed(player: Player, game: Game): Unit = {
+    /** not the best implementation, but i want to finish the game */
+    game.RangedCombatCardEffect(this.description, player)
     game.addRCC(this, player)
     player.removeCard(this)
   }
@@ -61,4 +63,9 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
    * getPower returns the power of the card
    */
   override def getPower: Int = {power}
+
+  /** getName
+   * getName returns the name of the card
+   */
+  override def getName: String = {name}
 }

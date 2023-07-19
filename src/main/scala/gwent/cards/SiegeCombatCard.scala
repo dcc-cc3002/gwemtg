@@ -46,6 +46,8 @@ class SiegeCombatCard(name: String, description: String, power: Int)
    * tells the zone to be edited after player plays the card with play()
    */
   override def getPlayed(player: Player, game: Game): Unit = {
+    /** not the best implementation, but i want to finish the game */
+    game.SiegeCombatCardEffect(this.description, player)
     game.addSCC(this, player)
     player.removeCard(this)
   }
@@ -60,5 +62,10 @@ class SiegeCombatCard(name: String, description: String, power: Int)
    * getPower returns the power of the card
    */
   override def getPower: Int = {power}
+
+  /** getName
+   * getName returns the name of the card
+   */
+  override def getName: String = {name}
 }
 

@@ -29,11 +29,11 @@ class DeckBuilder {
     val lambert: SiegeCombatCard = SiegeCombatCard("Lambert", "vainilla", 6)
     val zoltanChivay: CloseCombatCard = CloseCombatCard("Zoltan Chivay", "refuerzo_moral", 4)
     /** 5 ClimateCards para el juego */
-    val bitingFrost: WeatherCard = new WeatherCard("Escarcha mordiente", "Convierte el valor de fuerza de todas las cartas de mele a 1")
-    val impenetrableFog: WeatherCard = new WeatherCard("Niebla Impenetrable", "Aplica niebla a una fila enemiga.")
-    val torrentialRain: WeatherCard = new WeatherCard("LLuvia Torrencial", "Aplica lluvia a una fila enemiga.")
+    val bitingFrost: WeatherCard = new WeatherCard("Escarcha mordiente", "Convierte el valor de fuerza de todas las cartas de melee a 1")
+    val impenetrableFog: WeatherCard = new WeatherCard("Niebla Impenetrable", "Convierte el valor de fuerza de todas las cartas de rango a 1.")
+    val torrentialRain: WeatherCard = new WeatherCard("LLuvia Torrencial", "Convierte el valor de fuerza de todas las cartas de asedio a 1.")
     val clearWeather: WeatherCard = new WeatherCard("Despejar", "Limpia todos los efectos de clima del campo de batalla.")
-    val commanderHorn: WeatherCard = new WeatherCard("Cuerno del Comandante", "Dobla la fuerza de todas las unidades de una fila.")
+    val commanderHorn: WeatherCard = new WeatherCard("Cuerno del Comandante", "Dobla la fuerza de todas las unidades de una fila propia al azar.")
 
     /** list of cards in this, the first version of gwent */
     val coleccion: List[Card] = List(geraltOfRivia, yenneferOfVengerberg, ciri, vesemir, dandelion, trissMerigold, yen, eskel, lambert, zoltanChivay, bitingFrost, impenetrableFog, torrentialRain, clearWeather, commanderHorn)
