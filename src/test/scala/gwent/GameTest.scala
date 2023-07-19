@@ -4,6 +4,7 @@ package gwent
 import gwent.cards.*
 import gwent.board.*
 import gwent.Player
+
 import munit.*
 
 class GameTest extends munit.FunSuite{
@@ -171,5 +172,27 @@ class GameTest extends munit.FunSuite{
     val partida5 = new Game(tablero5, jugador1, jugador2)
     assertEquals(partida4.nextRound(),2)
     assertEquals(partida5.nextRound(),1)
+  }
+
+  test("test for addWC"){
+    val p1: Player = new Player("p1", 1, List(), List(climate3))
+    val p2: Player = new Player("p2", 2, List(), List())
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+    assertEquals(g.getP1.getHand, List(climate3))
+    p1.playCard(climate3, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP1.getHand, List())
+  }
+
+  test("test for addWC") {
+    val p1: Player = new Player("p1", 1, List(), List())
+    val p2: Player = new Player("p2", 2, List(), List(ranged2))
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+    assertEquals(g.getP1.getHand, List(climate3))
+    p1.playCard(climate3, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP1.getHand, List())
   }
 }
