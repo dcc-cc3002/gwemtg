@@ -29,17 +29,11 @@ object Controller extends App {
   private var pasado: Boolean = false
   println("Enter your user name: ")
   private val PlayerName = scala.io.StdIn.readLine()
-//  println(s"$PlayerName, here are the playing options:")
-//  println("1 Play against the computer")
-//  println("2 Watch a game between two computers")
-//  println("please enter your choice (1/2): ")
-//  private var choice = scala.io.StdIn.readLine()
-//  if (choice != "1" && choice != "2") {
-//    println("Invalid choice, please enter 1 or 2: ")
-//    val choice = scala.io.StdIn.readInt()
-//  }
-//  else if (choice == "1") {
+
+  /** we create the deckbuilder and the decks of the players */
   private val deckbuilder: DeckBuilder = new DeckBuilder()
+
+  /** we build the decks */
   private val deckPlayer1: List[Card] = deckbuilder.buildDeck()
   private val deckPlayer2: List[Card] = deckbuilder.buildDeck()
 
@@ -116,36 +110,25 @@ object Controller extends App {
 
     println()
     println("Computers turn")
-    if (robot.getHand.length == 0) {
-      if (pasado) {
-        println()
-        println("Round finished")
-        println()
-        val ganador: Int = partida.nextRound()
-        if (ganador == 1) {
-          println("You won the round")
-        }
-        else if (ganador == 2) {
-          println("Computer won the round")
-        }
-        else {
-          println("Round was a draw")
-        }
-      } else {
-        println("Computer passed its turn")
-      }
-      println("Score is: ")
-      println("You: " + human.gemCounter)
-      println("Computer: " + robot.gemCounter)
 
-    } else if (partida.potentialPoints(robot) > partida.boardPoints(human)) {
+
+    /** we make the robot play a card at random in case it has more potential points
+     * than the human's visible points
+     *
+     * in this case the robot will play a card at random
+     */
+    if (partida.potentialPoints(robot) > partida.boardPoints(human)) {
       val manorobot: Int = robot.getHand.length
       val randindex: Int = rand.nextInt(manorobot)
       val cartarobot: Card = robot.getHand(randindex)
       robot.playCard(cartarobot, partida)
       println("Computer played a card: ")
       println(cartarobot)
-    } else if (robot.hasClimate) {
+    } else if (robot.hasClimate)
+    /** in case the robot has less power accordind to the previous comparison
+     * the robot will play a random weather card if it has one
+     */
+    {
       var listaClima: List[Int] = List()
       for (i <- robot.getHand.indices) {
         if (robot.getHand(i).isInstanceOf[WeatherCard]) {
@@ -158,6 +141,11 @@ object Controller extends App {
       println("Computer played a card: ")
       println(cartarobot)
     } else if (pasado) {
+      /**
+       * if the robot has no weather cards and the human passed its turn
+       * the round is done, counting points procedes
+       */
+      println("the computer passed its turn")
       println()
       println("Round finished")
       println()
@@ -174,8 +162,13 @@ object Controller extends App {
       println("Score is: ")
       println("You: " + human.gemCounter)
       println("Computer: " + robot.gemCounter)
-
+    } else {
+    /** otherwise the robot will pass, but the round is not done yet */
+      println("the computer passed its turn")
     }
+
+
+
     println("Here is the board:")
     println(tablero)
     println()
