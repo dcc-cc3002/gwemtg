@@ -44,7 +44,7 @@ class CloseCombatCard(name: String, description: String, power: Int) extends Abs
   /** getPlayed 
    * tells the zone to be edited after player plays the card with play()
    */
-  def getPlayed(player: Player, game: Game): Unit = {
+  override def getPlayed(player: Player, game: Game): Unit = {
     game.addCCC(this, player)
     player.removeCard(this)
   }

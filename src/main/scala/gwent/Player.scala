@@ -145,7 +145,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   /**
    * funcion que saca una carta desde la mano del jugador
    */
-  def removeCard(carta: Card): Unit = {
+  def removeCard(carta: Any): Unit = {
    /**
     * la carta se saca de la mano
     * en caso de que existan duplicados, se saca solo el primero

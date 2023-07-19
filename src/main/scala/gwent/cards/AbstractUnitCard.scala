@@ -53,5 +53,16 @@ abstract class AbstractUnitCard (val name: String, val description: String, val 
    * refuerzo_moral() is a method that increases the currentPower of the card by 1.
    * @return The [[currentPower]] of the card.
    */
+
+  /** ******* */
+  /** Methods for effects*/
+
+  /** refuerzo_moral()
+   * method that increases the power by 1 of all other cards in it's zone.
+   */
+  def refuerzo_moral(): Unit = {
+    /**  */
+  }
+
 }
 
