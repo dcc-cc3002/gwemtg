@@ -185,7 +185,7 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
     if(i != -1){ return i}
     else {throw new Exception("Error in nextRound")}
   }
-  
+
 
   /*** RangedCombatCardEffect
    * function that applies the effect of a ranged combat card
@@ -314,66 +314,36 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
   def WeatherEffect(n: String, p: Player) : Unit = {
     n match
       case "Escarcha mordiente" => {
-        if (p == this.Player1) then for (card <- this.board.p1m.data) {
-          card.setPower(1)
-        }
-        else if (p == this.Player2) then for (card <- this.board.p2m.data) {
-          card.setPower(1)
-        }
-        else {
-          throw new Exception("Player not found")
-        }
+        for (card <- this.board.p1m.data) {card.setPower(1)}
+        for (card <- this.board.p2m.data) {card.setPower(1)}
       }
       case "Niebla Impenetrable" => {
-        if (p == this.Player1) then for (card <- this.board.p1r.data) {
-          card.setPower(1)
-        }
-        else if (p == this.Player2) then for (card <- this.board.p2r.data) {
-          card.setPower(1)
-        }
-        else {
-          throw new Exception("Player not found")
-        }
+         for (card <- this.board.p1r.data) {card.setPower(1)}
+         for (card <- this.board.p2r.data) {card.setPower(1)}
       }
       case "Lluvia Torrencial" => {
-        if (p == this.Player1) then for (card <- this.board.p1s.data) {
-          card.setPower(1)
-        }
-        else if (p == this.Player2) then for (card <- this.board.p2s.data) {
-          card.setPower(1)
-        }
-        else {
-          throw new Exception("Player not found")
-        }
+        for (card <- this.board.p1s.data) {card.setPower(1)}
+        for (card <- this.board.p2s.data) {card.setPower(1)}
       }
       case "Despejar" => {
-        if (p == this.Player1){
-          for(card <- this.board.p1m.data){card.setPower(card.getOGPower)}
-          for(card <- this.board.p1r.data){card.setPower(card.getOGPower)}
-          for(card <- this.board.p1s.data){card.setPower(card.getOGPower)}
-        }
+        for(card <- this.board.p1m.data){card.setPower(card.getOGPower)}
+        for(card <- this.board.p1r.data){card.setPower(card.getOGPower)}
+        for(card <- this.board.p1s.data){card.setPower(card.getOGPower)}
+        for(card <- this.board.p2m.data){card.setPower(card.getOGPower)}
+        for(card <- this.board.p2r.data){card.setPower(card.getOGPower)}
+        for(card <- this.board.p2s.data){card.setPower(card.getOGPower)}
 
-        else if (p == this.Player2){
-          for(card <- this.board.p2m.data){card.setPower(card.getOGPower)}
-          for(card <- this.board.p2r.data){card.setPower(card.getOGPower)}
-          for(card <- this.board.p2s.data){card.setPower(card.getOGPower)}
-        }
-        else {
-          throw new Exception("Player not found")
-        }
       }
       case "Cuerno del Comandante" =>{
+        val rand = new scala.util.Random
+        val row = rand.nextInt(3)
         if (p == this.Player1){
-          val rand = new scala.util.Random
-          val row = rand.nextInt(3)
           row match
             case 0 => for(card <- this.board.p1m.data){card.setPower(card.getPower * 2)}
             case 1 => for(card <- this.board.p1r.data){card.setPower(card.getPower * 2)}
             case 2 => for(card <- this.board.p1s.data){card.setPower(card.getPower * 2)}
         }
         else if(p == this.Player2){
-          val rand = new scala.util.Random
-          val row = rand.nextInt(3)
           row match
             case 0 => for (card <- this.board.p2m.data) {card.setPower(card.getPower * 2)}
             case 1 => for (card <- this.board.p2r.data) {card.setPower(card.getPower * 2)}

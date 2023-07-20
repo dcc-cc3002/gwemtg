@@ -92,7 +92,7 @@ object Controller extends App {
     println("Any other input will pass your turn.")
     println(human.handPrint)
     pasado = false
-    var playMade: String = scala.io.StdIn.readLine()
+    val playMade: String = scala.io.StdIn.readLine()
     playMade match {
       case "0" => if human.getHand.nonEmpty then human.playCard(human.getHand.head, partida) else pasado = true
       case "1" => if human.getHand.length >= 2 then human.playCard(human.getHand(1), partida) else pasado = true
@@ -125,6 +125,24 @@ object Controller extends App {
         robot.playCard(cartarobot, partida)
         println("Computer played a card: ")
         println(cartarobot)
+      } else {
+        println("the computer passed its turn")
+        println()
+        println("Round finished")
+        println()
+        val ganador: Int = partida.nextRound()
+        if (ganador == 1) {
+          println("You won the round")
+        }
+        else if (ganador == 2) {
+          println("Computer won the round")
+        }
+        else {
+          println("Round was a draw")
+        }
+        println("Score is: ")
+        println("You: " + human.gemCounter)
+        println("Computer: " + robot.gemCounter)
       }
     } else if (robot.hasClimate)
     /** in case the robot has less power accordind to the previous comparison
