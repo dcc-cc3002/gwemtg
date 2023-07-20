@@ -77,4 +77,11 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
    * getName returns the name of the card
    */
   override def getName: String = {name}
+
+  /** setPower  
+   * setPower is a setter function for the currentPower of the card.
+   */
+  def setPower(newPower: Int): Unit = {
+    currentPower = newPower
+  }
 }

@@ -60,12 +60,7 @@ abstract class AbstractUnitCard (val name: String, val description: String, val 
    */
   def getOGPower: Int = originalPower
   
-  /** setPower  
-   * setPower is a setter function for the currentPower of the card.
-   */
-  def setPower(newPower: Int): Unit = {
-    currentPower = newPower
-  }
+
 
 }
 

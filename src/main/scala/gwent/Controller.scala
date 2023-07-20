@@ -93,21 +93,36 @@ object Controller extends App {
     println(human.handPrint)
     pasado = false
     val playMade: String = scala.io.StdIn.readLine()
+    var cartita: Card = new WeatherCard("error","bad")
     playMade match {
-      case "0" => if human.getHand.nonEmpty then human.playCard(human.getHand.head, partida) else pasado = true
-      case "1" => if human.getHand.length >= 2 then human.playCard(human.getHand(1), partida) else pasado = true
-      case "2" => if human.getHand.length >= 3 then human.playCard(human.getHand(2), partida) else pasado = true
-      case "3" => if human.getHand.length >= 4 then human.playCard(human.getHand(3), partida) else pasado = true
-      case "4" => if human.getHand.length >= 5 then human.playCard(human.getHand(4), partida) else pasado = true
-      case "5" => if human.getHand.length >= 6 then human.playCard(human.getHand(5), partida) else pasado = true
-      case "6" => if human.getHand.length >= 7 then human.playCard(human.getHand(6), partida) else pasado = true
-      case "7" => if human.getHand.length >= 8 then human.playCard(human.getHand(7), partida) else pasado = true
-      case "8" => if human.getHand.length >= 9 then human.playCard(human.getHand(8), partida) else pasado = true
-      case "9" => if human.getHand.length >= 10 then human.playCard(human.getHand(9), partida) else pasado = true
+      case "0" => if human.getHand.nonEmpty then {cartita = human.getHand(0)} else pasado = true
+      case "1" => if human.getHand.length >= 2 then {cartita = human.getHand(1)} else pasado = true
+      case "2" => if human.getHand.length >= 3 then {cartita = human.getHand(2)} else pasado = true
+      case "3" => if human.getHand.length >= 4 then {cartita = human.getHand(3)} else pasado = true
+      case "4" => if human.getHand.length >= 5 then {cartita = human.getHand(4)} else pasado = true
+      case "5" => if human.getHand.length >= 6 then {cartita = human.getHand(5)} else pasado = true
+      case "6" => if human.getHand.length >= 7 then {cartita = human.getHand(6)} else pasado = true
+      case "7" => if human.getHand.length >= 8 then {cartita = human.getHand(7)} else pasado = true
+      case "8" => if human.getHand.length >= 9 then {cartita = human.getHand(8)} else pasado = true
+      case "9" => if human.getHand.length >= 10 then {cartita = human.getHand(9)} else pasado = true
+      case "10" => if human.getHand.length >= 11 then {cartita = human.getHand(10)} else pasado = true
+      case "11" => if human.getHand.length >= 12 then {cartita = human.getHand(11)} else pasado = true
+      case "12" => if human.getHand.length >= 13 then {cartita = human.getHand(12)} else pasado = true
+      case "13" => if human.getHand.length >= 14 then {cartita = human.getHand(13)} else pasado = true
+      case "14" => if human.getHand.length >= 15 then {cartita = human.getHand(14)} else pasado = true
+      case "15" => if human.getHand.length >= 16 then {cartita = human.getHand(15)} else pasado = true
+      case "16" => if human.getHand.length >= 17 then {cartita = human.getHand(16)} else pasado = true
       case _ => pasado = true
     }
     if pasado then println("You passed your turn\n")
-
+    else {
+  //    if (cartita == new WeatherCard("error","bad")) {
+  //      throw new Exception("Invalid play")
+  //    }
+      human.playCard(cartita, partida)
+      println("You played a card: ")
+      println(cartita)
+    }
     println()
     println("Computers turn")
 
