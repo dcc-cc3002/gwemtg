@@ -47,5 +47,10 @@ class SiegeCombatCardTest extends munit.FunSuite {
     assert(catapultauno.canEqual(catapult1), "two cards with the same name, description and power should be able to be compared")
     assert(catapult1.canEqual(catapultauno), "two cards with the same name, description and power should be able to be compared")
   }
-
+  test("test for getters") {
+    assertEquals(catapult1.getName, "catapult1")
+    assertEquals(catapult1.getDescription, "isis")
+    assertEquals(catapult1.getPower, 1)
+    assertEquals(catapult1.getOGPower, 1)
+  }
 }

@@ -55,13 +55,14 @@ trait Card {
    */
   def toString: String
 
-  /** getPower
-   * getPower returns the power of the card
-   */
-  def getPower: Int
 
   /** getName
    * getName returns the name of the card
    */
   def getName: String
+  
+  /** getPower
+   * this gets the current power of a given card
+   */
+  def getPower: Int
 }

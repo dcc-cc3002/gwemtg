@@ -49,5 +49,10 @@ class RangedCombatCardTest extends munit.FunSuite  {
     assert(ranged1.canEqual(arquerouno), "two cards with the same name, description and power should be able to be compared")
   }
 
-
+  test("test for getters") {
+    assertEquals(ranged1.getName, "ranged1")
+    assertEquals(ranged1.getDescription, "eliana")
+    assertEquals(ranged1.getPower, 1)
+    assertEquals(ranged1.getOGPower, 1)
+  }
 }

@@ -48,4 +48,24 @@ class AbstractUnitCardTest extends munit.FunSuite {
     assert(troop1.canEqual(tropauno), "two cards with the same name, description and power should be able to be compared")
   }
 
+  test("test for toString"){
+    assertEquals(troop1.toString(), "CloseCombatCard: troop1, pedro, 1" )
+    assertEquals(ranged1.toString(), "RangedCombatCard: ranged1, eliana, 1")
+    assertEquals(catapult1.toString(), "SiegeCombatCard: catapult1, isis, 1")
+  }
+
+  test("test for getters"){
+    assertEquals(troop1.getName, "troop1")
+    assertEquals(troop1.getDescription, "pedro")
+    assertEquals(troop1.getPower, 1)
+    assertEquals(troop1.getOGPower, 1)
+    assertEquals(ranged1.getName, "ranged1")
+    assertEquals(ranged1.getDescription, "eliana")
+    assertEquals(ranged1.getPower, 1)
+    assertEquals(ranged1.getOGPower, 1)
+    assertEquals(catapult1.getName, "catapult1")
+    assertEquals(catapult1.getDescription, "isis")
+    assertEquals(catapult1.getPower, 1)
+    assertEquals(catapult1.getOGPower, 1)
+  }
 }

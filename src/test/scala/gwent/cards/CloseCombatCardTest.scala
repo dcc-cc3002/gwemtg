@@ -50,6 +50,12 @@ class CloseCombatCardTest extends munit.FunSuite  {
     assert(troop1.canEqual(tropauno), "two cards with the same name, description and power should be able to be compared")
   }
 
+  test("test for getters") {
+    assertEquals(troop1.getName, "troop1")
+    assertEquals(troop1.getDescription, "pedro")
+    assertEquals(troop1.getPower, 1)
+    assertEquals(troop1.getOGPower, 1)
+  }
 
 
 }

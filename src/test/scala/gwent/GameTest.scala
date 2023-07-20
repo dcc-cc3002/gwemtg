@@ -163,14 +163,15 @@ class GameTest extends munit.FunSuite{
   }
 
   test("test for nextRound"){
-    assertEquals(partida.nextRound(),0)
+    jugador1 = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
+    jugador2 = new Player("Dios", 2, List(troop3, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
     val partida3 = new Game(tablero2, jugador1, jugador2)
+    val partida4 = new Game(new Board(zona1siege, new RangeZone(), new MeleeZone(), zonaclimate, zona2melee, zona2range, zona2siege), jugador1, jugador2)
     assertEquals(partida3.nextRound(),0)
-    val tablero4 = new Board(zona1siege, zona1range, new MeleeZone(), zonaclimate, zona2melee, zona2range, zona2siege)
-    val tablero5 = new Board(zona1siege, zona1range, zona2melee, zonaclimate, new MeleeZone(), zona2range, zona2siege)
-    val partida4 = new Game(tablero4, jugador1, jugador2)
-    val partida5 = new Game(tablero5, jugador1, jugador2)
     assertEquals(partida4.nextRound(),2)
+    jugador1 = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
+    jugador2 = new Player("Dios", 2, List(troop3, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
+    val partida5 = new Game(new Board(zona1siege, zona1range, zona2melee, zonaclimate, new MeleeZone(), new RangeZone(), new MarginalZone()), jugador1, jugador2)
     assertEquals(partida5.nextRound(),1)
   }
 

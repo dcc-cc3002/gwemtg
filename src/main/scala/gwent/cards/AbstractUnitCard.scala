@@ -48,11 +48,7 @@ abstract class AbstractUnitCard (val name: String, val description: String, val 
    */
   def getDescription: String = description
 
-  /** Getter for the [[currentPower]] of the card.
-   *
-   * @return The [[currentPower]] of the card.
-   */
-  def getPower: Int = currentPower
+
   
   /** Getter for the [[originalPower]] of the card.
    *
