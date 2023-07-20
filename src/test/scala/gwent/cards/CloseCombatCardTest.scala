@@ -57,5 +57,11 @@ class CloseCombatCardTest extends munit.FunSuite  {
     assertEquals(troop1.getOGPower, 1)
   }
 
+  test("test for setPower"){
+    assertEquals(troop1.getPower, 1)
+    troop1.setPower(2)
+    assertEquals(troop1.getPower, 2)
+    assertEquals(troop1.getOGPower, 1)
+  }
 
 }

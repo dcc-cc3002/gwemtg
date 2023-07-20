@@ -53,4 +53,12 @@ class SiegeCombatCardTest extends munit.FunSuite {
     assertEquals(catapult1.getPower, 1)
     assertEquals(catapult1.getOGPower, 1)
   }
+
+  test("test for setPower"){
+    assertEquals(catapult1.getPower, 1)
+    catapult1.setPower(2)
+    assertEquals(catapult1.getPower, 2)
+    assertEquals(catapult1.getOGPower, 1)
+  }
+
 }

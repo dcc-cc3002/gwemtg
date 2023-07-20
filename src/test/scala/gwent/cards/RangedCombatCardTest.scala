@@ -55,4 +55,12 @@ class RangedCombatCardTest extends munit.FunSuite  {
     assertEquals(ranged1.getPower, 1)
     assertEquals(ranged1.getOGPower, 1)
   }
+
+  test("test for setPower"){
+    assertEquals(ranged1.getPower, 1)
+    ranged1.setPower(2)
+    assertEquals(ranged1.getPower, 2)
+    assertEquals(ranged1.getOGPower, 1)
+  }
+
 }
