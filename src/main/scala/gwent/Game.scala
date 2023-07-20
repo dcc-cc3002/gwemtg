@@ -166,19 +166,26 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
    * in case of a tie, both players lose a gem
    */
   def nextRound(): Int = {
+    var i: Int = -1
     val result_1on2: Boolean = this.boardPoints(this.Player1) > this.boardPoints(this.Player2)
     if(this.boardPoints(this.Player1) == this.boardPoints(this.Player2)){
       this.Player1.loseGem()
       this.Player2.loseGem()
-      0
+      i = 0
     } else if(result_1on2){
       this.Player2.loseGem()
-      1
+      i = 1
     } else {
       this.Player1.loseGem()
-      2
+      i = 2
     }
+    this.board.reset()
+    this.getP1.draw3()
+    this.getP2.draw3()
+    if(i != -1){ return i}
+    else {throw new Exception("Error in nextRound")}
   }
+  
 
   /*** RangedCombatCardEffect
    * function that applies the effect of a ranged combat card

@@ -30,12 +30,12 @@ abstract class AbstractUnitCard (val name: String, val description: String, val 
    * Initially set to the base [[power]] of the card.
    */
   private var currentPower: Int = power
-  
+
   /** The original power of the card, which is used to reset the current power of the card
    * this is what would be printed on the card in a physical game.
    */
   private val originalPower: Int = power
-
+  
   /** Getter for the [[name]] of the card.
    *
    * @return The [[name]] of the card.
@@ -48,11 +48,11 @@ abstract class AbstractUnitCard (val name: String, val description: String, val 
    */
   def getDescription: String = description
 
-  /** Getter for the [[power]] of the card.
+  /** Getter for the [[currentPower]] of the card.
    *
-   * @return The [[power]] of the card.
+   * @return The [[currentPower]] of the card.
    */
-  def getPower: Int = power
+  def getPower: Int = currentPower
   
   /** Getter for the [[originalPower]] of the card.
    *

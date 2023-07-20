@@ -73,5 +73,18 @@ class Board(var p1s: MarginalZone, var p1r: RangeZone, var p1m: MeleeZone, var c
     val boardString = s"Player 1's marginal: $p1sString\nPlayer 1's ranged: $p1rString\nPlayer 1's melee: $p1mString\nClimate: $climaString\nPlayer 2's melee: $p2mString\nPlayer 2's ranged: $p2rString\nPlayer 2's marginal: $p2sString"
     return boardString
   }
+  
+  /** reset
+   * function that resets the board
+   */
+  def reset(): Unit = {
+    this.p1s = new MarginalZone()
+    this.p1r = new RangeZone()
+    this.p1m = new MeleeZone()
+    this.clima = new ClimateZone()
+    this.p2m = new MeleeZone()
+    this.p2r = new RangeZone()
+    this.p2s = new MarginalZone()
+  }
 
 }

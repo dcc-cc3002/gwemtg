@@ -33,7 +33,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   def deck: List[Card] = _deck
 
   /** Accessor method for the player's hand */
-  def hand: List[Card] = _hand
+  private def hand: List[Card] = _hand
 
   /** Draws a card from the deck and adds it to the hand.
    *
@@ -153,7 +153,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
     for (i <- _hand.indices) {
       if (_hand(i) == carta) {
         _hand = _hand.take(i) ::: _hand.drop(i + 1)
-        return
+        return ()
       }
     }
   }
@@ -175,7 +175,18 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    *  function that draws a hand of 10 cards
    */
   def drawInitialHand(): Unit = {
-    for (i <- 0 until 10) {
+    for (i <- 0 until 2) {
+      val carta: Card = draw()
+      _hand = carta :: _hand
+    }
+  }
+
+  /** draw3
+   *  function that draws a hand of 3 cards
+   *  used after the first round is done
+   */
+  def draw3(): Unit = {
+    for (i <- 0 until 3) {
       val carta: Card = draw()
       _hand = carta :: _hand
     }

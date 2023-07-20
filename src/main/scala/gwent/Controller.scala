@@ -118,12 +118,14 @@ object Controller extends App {
      * in this case the robot will play a card at random
      */
     if (partida.potentialPoints(robot) > partida.boardPoints(human)) {
-      val manorobot: Int = robot.getHand.length
-      val randindex: Int = rand.nextInt(manorobot)
-      val cartarobot: Card = robot.getHand(randindex)
-      robot.playCard(cartarobot, partida)
-      println("Computer played a card: ")
-      println(cartarobot)
+      if (robot.getHand.length > 0){
+        val manorobot: Int = robot.getHand.length
+        val randindex: Int = rand.nextInt(manorobot)
+        val cartarobot: Card = robot.getHand(randindex)
+        robot.playCard(cartarobot, partida)
+        println("Computer played a card: ")
+        println(cartarobot)
+      }
     } else if (robot.hasClimate)
     /** in case the robot has less power accordind to the previous comparison
      * the robot will play a random weather card if it has one

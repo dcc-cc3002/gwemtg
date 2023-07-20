@@ -45,8 +45,9 @@ class ClimateZone(var data: List[WeatherCard]) extends Zone with Equals {
  override def toString: String = {
   var result: String = ""
   for (card <- data) {
-   result = result + card.toString() + "\n"
+   result = result + card.getName + "\n"
    }
-  result
+  if (result != "") then result = result.substring(0, result.length - 1)
+  return result
   }
  }

@@ -25,7 +25,16 @@ import java.util.Objects
  * @since 1.0
  */
 class CloseCombatCard(name: String, description: String, power: Int) extends AbstractUnitCard(name, description, power) {
+  /** The current power of the card, which may be affected by various conditions during
+   * gameplay.
+   * Initially set to the base [[power]] of the card.
+   */
+  private var currentPower: Int = power
 
+  /** The original power of the card, which is used to reset the current power of the card
+   * this is what would be printed on the card in a physical game.
+   */
+  private val originalPower: Int = power
   /** Checks if two objects belong to the class CloseCombatCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[CloseCombatCard]
 
@@ -59,13 +68,13 @@ class CloseCombatCard(name: String, description: String, power: Int) extends Abs
   /** getPower
    * getPower returns the power of the card
    */
-  override def getPower: Int = {power}
+  override def getPower: Int = {currentPower}
 
   /** getName
    * getName returns the name of the card
    */
   override def getName: String = {name}
-
+  
 
 }
 
