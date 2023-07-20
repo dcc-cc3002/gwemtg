@@ -7,7 +7,7 @@ import gwent.Player
 
 import munit.*
 
-class GameTest extends munit.FunSuite{
+class GameTest extends munit.FunSuite {
 
   var tablero1: Board = new Board()
   var tablero2: Board = _
@@ -17,6 +17,17 @@ class GameTest extends munit.FunSuite{
   var torrentialRain: WeatherCard = _
   var clearWeather: WeatherCard = _
   var commanderHorn: WeatherCard = _
+  var geraltOfRivia: CloseCombatCard = _
+  var yenneferOfVengerberg: RangedCombatCard = _
+  var ciri: RangedCombatCard = _
+  var vesemir: SiegeCombatCard = _
+  var dandelion: SiegeCombatCard = _
+  var trissMerigold: CloseCombatCard = _
+  var yen: RangedCombatCard = _
+  var eskel: CloseCombatCard = _
+  var lambert: SiegeCombatCard = _
+  var zoltanChivay: CloseCombatCard = _
+
   var zona1siege: MarginalZone = _
   var zona1range: RangeZone = _
   var zona1melee: MeleeZone = _
@@ -87,9 +98,20 @@ class GameTest extends munit.FunSuite{
     clearWeather = new WeatherCard("Despejar", "Limpia todos los efectos de clima del campo de batalla.")
     commanderHorn = new WeatherCard("Cuerno del Comandante", "Dobla la fuerza de todas las unidades de una fila propia al azar.")
 
+    geraltOfRivia = new CloseCombatCard("Geralt of Rivia", "vainilla", 5)
+    yenneferOfVengerberg = new RangedCombatCard("Yennefer of Vengerberg", "vinculo_estrecho", 3)
+    ciri = new RangedCombatCard("Ciri", "vainilla", 4)
+    vesemir = new SiegeCombatCard("Vesemir", "refuerzo_moral", 5)
+    dandelion = new SiegeCombatCard("Dandelion", "vinculo_estrecho", 3)
+    trissMerigold = new CloseCombatCard("Triss Merigold", "vainilla", 5)
+    yen = new RangedCombatCard("Yen", "refuerzo_moral", 6)
+    eskel = new CloseCombatCard("Eskel", "refuerzo_moral", 3)
+    lambert = new SiegeCombatCard("Lambert", "vainilla", 6)
+    zoltanChivay = new CloseCombatCard("Zoltan Chivay", "vinculo_estrecho", 4)
+
   }
 
-  test("Game constructor for beforeEach"){
+  test("Game constructor for beforeEach") {
     assertEquals(partida.board, tablero1)
     assertEquals(partida.getP1, jugador1)
     assertEquals(partida.getP2, jugador2)
@@ -107,7 +129,7 @@ class GameTest extends munit.FunSuite{
    * ie. partida and partida3 are different even if they have the same board, players and cards
    * this is good, we don't override hashcode because two games are different even in the same conditions
    */
-  test("test for hashcode"){
+  test("test for hashcode") {
     val partida2 = new Game(tablero2, jugador1, jugador2)
     val partida3 = new Game(tablero1, jugador1, jugador2)
     assertNotEquals(partida.hashCode(), partida2.hashCode())
@@ -115,7 +137,7 @@ class GameTest extends munit.FunSuite{
     assertNotEquals(partida2.hashCode(), partida3.hashCode())
   }
 
-  test("tests for playing cards"){
+  test("tests for playing cards") {
     assertEquals(partida.getP1.getHand, List(troop2, ranged2, catapult2))
     assertEquals(partida.board.p1m.hashCode(), new MeleeZone(List()).hashCode())
     partida.getP1.playCard(troop2, partida)
@@ -123,7 +145,7 @@ class GameTest extends munit.FunSuite{
     assertEquals(partida.board.p1m.hashCode(), new MeleeZone(List(troop2)).hashCode())
   }
 
-  test("tests for playing cards but for player 2: jugador2"){
+  test("tests for playing cards but for player 2: jugador2") {
     assertEquals(partida.getP2.getHand, List())
     assertEquals(partida.board.p2m.hashCode(), new MeleeZone(List()).hashCode())
     partida.getP2.playCard(troop2, partida)
@@ -131,12 +153,12 @@ class GameTest extends munit.FunSuite{
     assertEquals(partida.board.p2m.hashCode(), new MeleeZone(List(troop2)).hashCode())
   }
 
-    test("tests for getters"){
+  test("tests for getters") {
     assertEquals(partida.getP1, jugador1)
     assertEquals(partida.getP2, jugador2)
   }
 
-  test("tests for calculating potential, board and hand points"){
+  test("tests for calculating potential, board and hand points") {
     assertEquals(partida.handPoints(partida.getP1), 6)
     assertEquals(partida.boardPoints(partida.getP1), 0)
     assertEquals(partida.potentialPoints(partida.getP1), 6)
@@ -173,20 +195,20 @@ class GameTest extends munit.FunSuite{
     assertEquals(partida2.potentialPoints(partida2.getP2), 6)
   }
 
-  test("test for nextRound"){
+  test("test for nextRound") {
     jugador1 = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
     jugador2 = new Player("Dios", 2, List(troop3, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
     val partida3 = new Game(tablero2, jugador1, jugador2)
     val partida4 = new Game(new Board(zona1siege, new RangeZone(), new MeleeZone(), zonaclimate, zona2melee, zona2range, zona2siege), jugador1, jugador2)
-    assertEquals(partida3.nextRound(),0)
-    assertEquals(partida4.nextRound(),2)
+    assertEquals(partida3.nextRound(), 0)
+    assertEquals(partida4.nextRound(), 2)
     jugador1 = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
     jugador2 = new Player("Dios", 2, List(troop3, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
     val partida5 = new Game(new Board(zona1siege, zona1range, zona2melee, zonaclimate, new MeleeZone(), new RangeZone(), new MarginalZone()), jugador1, jugador2)
-    assertEquals(partida5.nextRound(),1)
+    assertEquals(partida5.nextRound(), 1)
   }
 
-  test("test for addWC: escarcha mordiente"){
+  test("test for addWC: escarcha mordiente") {
     val p1: Player = new Player("p1", 1, List(), List(bitingFrost))
     val p2: Player = new Player("p2", 2, List(), List())
     val t: Board = new Board()
@@ -197,7 +219,7 @@ class GameTest extends munit.FunSuite{
     assertEquals(g.getP2.getHand, List())
   }
 
-  test("test for addWC: niebla impenetrable"){
+  test("test for addWC: niebla impenetrable") {
     val p1: Player = new Player("p1", 1, List(), List(impenetrableFog))
     val p2: Player = new Player("p2", 2, List(), List())
     val t: Board = new Board()
@@ -209,7 +231,7 @@ class GameTest extends munit.FunSuite{
   }
 
 
-  test("test for addWC: lluvia torrencial"){
+  test("test for addWC: lluvia torrencial") {
     val p1: Player = new Player("p1", 1, List(), List(torrentialRain))
     val p2: Player = new Player("p2", 2, List(), List())
     val t: Board = new Board()
@@ -220,7 +242,7 @@ class GameTest extends munit.FunSuite{
     assertEquals(g.getP2.getHand, List())
   }
 
-  test("test for addWC: despejar"){
+  test("test for addWC: despejar") {
     val p1: Player = new Player("p1", 1, List(), List(clearWeather))
     val p2: Player = new Player("p2", 2, List(), List())
     val t: Board = new Board()
@@ -231,7 +253,7 @@ class GameTest extends munit.FunSuite{
     assertEquals(g.getP2.getHand, List())
   }
 
-  test("test for addWC: cuerno del comandante"){
+  test("test for addWC: cuerno del comandante") {
     val p1: Player = new Player("p1", 1, List(), List(commanderHorn))
     val p2: Player = new Player("p2", 2, List(), List())
     val t: Board = new Board()
@@ -242,7 +264,7 @@ class GameTest extends munit.FunSuite{
     assertEquals(g.getP2.getHand, List())
   }
 
-  test("test for addWC: player 2, cuerno del comandante"){
+  test("test for addWC: player 2, cuerno del comandante") {
     val p1: Player = new Player("p1", 1, List(), List())
     val p2: Player = new Player("p2", 2, List(), List(commanderHorn))
     val t: Board = new Board()
@@ -262,6 +284,121 @@ class GameTest extends munit.FunSuite{
     p2.playCard(climate1, g)
     assertEquals(g.getP1.getHand, List())
     assertEquals(g.getP2.getHand, List())
+  }
+
+  test("test for refuerzo_moral") {
+    val p1: Player = new Player("p1", 1, List(), List(eskel, vesemir, yen))
+    val p2: Player = new Player("p2", 2, List(), List(eskel, vesemir, yen))
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+    assertEquals(g.getP1.getHand, List(eskel, vesemir, yen))
+    assertEquals(g.getP2.getHand, List(eskel, vesemir, yen))
+    p1.playCard(eskel, g)
+    p2.playCard(eskel, g)
+    assertEquals(g.getP1.getHand, List(vesemir, yen))
+    assertEquals(g.getP2.getHand, List(vesemir, yen))
+    p1.playCard(vesemir, g)
+    p2.playCard(vesemir, g)
+    assertEquals(g.getP1.getHand, List(yen))
+    assertEquals(g.getP2.getHand, List(yen))
+    p1.playCard(yen, g)
+    p2.playCard(yen, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
+  }
+
+  test("test for vinculo_estrecho") {
+    val p1: Player = new Player("p1", 1, List(), List(zoltanChivay, dandelion, yenneferOfVengerberg))
+    val p2: Player = new Player("p2", 2, List(), List(zoltanChivay, dandelion, yenneferOfVengerberg))
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+    assertEquals(g.getP1.getHand, List(zoltanChivay, dandelion, yenneferOfVengerberg))
+    assertEquals(g.getP2.getHand, List(zoltanChivay, dandelion, yenneferOfVengerberg))
+    p1.playCard(zoltanChivay, g)
+    p2.playCard(zoltanChivay, g)
+    assertEquals(g.getP1.getHand, List(dandelion, yenneferOfVengerberg))
+    assertEquals(g.getP2.getHand, List(dandelion, yenneferOfVengerberg))
+    p1.playCard(dandelion, g)
+    p2.playCard(dandelion, g)
+    assertEquals(g.getP1.getHand, List(yenneferOfVengerberg))
+    assertEquals(g.getP2.getHand, List(yenneferOfVengerberg))
+    p1.playCard(yenneferOfVengerberg, g)
+    p2.playCard(yenneferOfVengerberg, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
+  }
+
+  test("test for vainilla"){
+    val p1: Player = new Player("p1", 1, List(), List(geraltOfRivia, ciri, lambert))
+    val p2: Player = new Player("p2", 2, List(), List(geraltOfRivia, ciri, lambert))
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+    assertEquals(g.getP1.getHand, List(geraltOfRivia, ciri, lambert))
+    assertEquals(g.getP2.getHand, List(geraltOfRivia, ciri, lambert))
+    p1.playCard(geraltOfRivia, g)
+    p2.playCard(geraltOfRivia, g)
+    assertEquals(g.getP1.getHand, List(ciri, lambert))
+    assertEquals(g.getP2.getHand, List(ciri, lambert))
+    p1.playCard(ciri, g)
+    p2.playCard(ciri, g)
+    assertEquals(g.getP1.getHand, List(lambert))
+    assertEquals(g.getP2.getHand, List(lambert))
+    p1.playCard(lambert, g)
+    p2.playCard(lambert, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
+  }
+
+  test("test for doble vinculo_estrecho") {
+    val p1: Player = new Player("p1", 1, List(), List(zoltanChivay, dandelion, yenneferOfVengerberg,zoltanChivay, dandelion, yenneferOfVengerberg))
+    val p2: Player = new Player("p2", 2, List(), List(zoltanChivay, dandelion, yenneferOfVengerberg, zoltanChivay, dandelion, yenneferOfVengerberg))
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+
+    p1.playCard(zoltanChivay, g)
+    p2.playCard(zoltanChivay, g)
+    p1.playCard(zoltanChivay, g)
+    p2.playCard(zoltanChivay, g)
+    p1.playCard(dandelion, g)
+    p2.playCard(dandelion, g)
+    p1.playCard(dandelion, g)
+    p2.playCard(dandelion, g)
+    p1.playCard(yenneferOfVengerberg, g)
+    p2.playCard(yenneferOfVengerberg, g)
+    p1.playCard(yenneferOfVengerberg, g)
+    p2.playCard(yenneferOfVengerberg, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
+  }
+  test("test for doble refuerzo_moral") {
+    val p1: Player = new Player("p1", 1, List(), List(eskel, vesemir, yen, eskel, vesemir, yen))
+    val p2: Player = new Player("p2", 2, List(), List(eskel, vesemir, yen, eskel, vesemir, yen))
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+
+    p1.playCard(eskel, g)
+    p2.playCard(eskel, g)
+    p1.playCard(eskel, g)
+    p2.playCard(eskel, g)
+    p1.playCard(vesemir, g)
+    p2.playCard(vesemir, g)
+    p1.playCard(vesemir, g)
+    p2.playCard(vesemir, g)
+    p1.playCard(yen, g)
+    p2.playCard(yen, g)
+    p1.playCard(yen, g)
+    p2.playCard(yen, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
+  }
+
+  test("get lucky with Cuerno del Comandante"){
+    val p1: Player = new Player("p1", 1, List(), List(commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn))
+    val p2: Player = new Player("p2", 1, List(), List(commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn, commanderHorn))
+    for (i <- 1 to p1.getHand.length){p1.playCard(commanderHorn, partida)}
+    for (i <- 1 to p2.getHand.length){p2.playCard(commanderHorn, partida)}
+    assertEquals(p1.getHand, List())
+    assertEquals(p2.getHand, List())
   }
 
 }
