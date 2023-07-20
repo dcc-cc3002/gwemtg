@@ -12,7 +12,11 @@ class GameTest extends munit.FunSuite{
   var tablero1: Board = new Board()
   var tablero2: Board = _
   var tablero3: Board = _
-
+  var bitingFrost: WeatherCard = _
+  var impenetrableFog: WeatherCard = _
+  var torrentialRain: WeatherCard = _
+  var clearWeather: WeatherCard = _
+  var commanderHorn: WeatherCard = _
   var zona1siege: MarginalZone = _
   var zona1range: RangeZone = _
   var zona1melee: MeleeZone = _
@@ -76,6 +80,13 @@ class GameTest extends munit.FunSuite{
     tablero3 = new Board(zona1siege, zona1range, zona1melee, zonaclimate, zona2melee, zona2range, zona2siege)
 
     partida = new Game(tablero1, jugador1, jugador2)
+
+    bitingFrost = new WeatherCard("Escarcha mordiente", "Convierte el valor de fuerza de todas las cartas de melee a 1")
+    impenetrableFog = new WeatherCard("Niebla Impenetrable", "Convierte el valor de fuerza de todas las cartas de rango a 1.")
+    torrentialRain = new WeatherCard("LLuvia Torrencial", "Convierte el valor de fuerza de todas las cartas de asedio a 1.")
+    clearWeather = new WeatherCard("Despejar", "Limpia todos los efectos de clima del campo de batalla.")
+    commanderHorn = new WeatherCard("Cuerno del Comandante", "Dobla la fuerza de todas las unidades de una fila propia al azar.")
+
   }
 
   test("Game constructor for beforeEach"){
@@ -175,25 +186,82 @@ class GameTest extends munit.FunSuite{
     assertEquals(partida5.nextRound(),1)
   }
 
-  test("test for addWC"){
-    val p1: Player = new Player("p1", 1, List(), List(climate3))
+  test("test for addWC: escarcha mordiente"){
+    val p1: Player = new Player("p1", 1, List(), List(bitingFrost))
     val p2: Player = new Player("p2", 2, List(), List())
     val t: Board = new Board()
     val g: Game = new Game(t, p1, p2)
-    assertEquals(g.getP1.getHand, List(climate3))
-    p1.playCard(climate3, g)
+    assertEquals(g.getP1.getHand, List(bitingFrost))
+    p1.playCard(bitingFrost, g)
     assertEquals(g.getP1.getHand, List())
-    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
   }
 
-  test("test for addWC") {
-    val p1: Player = new Player("p1", 1, List(), List())
-    val p2: Player = new Player("p2", 2, List(), List(ranged2))
+  test("test for addWC: niebla impenetrable"){
+    val p1: Player = new Player("p1", 1, List(), List(impenetrableFog))
+    val p2: Player = new Player("p2", 2, List(), List())
     val t: Board = new Board()
     val g: Game = new Game(t, p1, p2)
-    assertEquals(g.getP1.getHand, List(climate3))
-    p1.playCard(climate3, g)
+    assertEquals(g.getP1.getHand, List(impenetrableFog))
+    p1.playCard(impenetrableFog, g)
     assertEquals(g.getP1.getHand, List())
-    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
   }
+
+
+  test("test for addWC: lluvia torrencial"){
+    val p1: Player = new Player("p1", 1, List(), List(torrentialRain))
+    val p2: Player = new Player("p2", 2, List(), List())
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+    assertEquals(g.getP1.getHand, List(torrentialRain))
+    p1.playCard(torrentialRain, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
+  }
+
+  test("test for addWC: despejar"){
+    val p1: Player = new Player("p1", 1, List(), List(clearWeather))
+    val p2: Player = new Player("p2", 2, List(), List())
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+    assertEquals(g.getP1.getHand, List(clearWeather))
+    p1.playCard(clearWeather, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
+  }
+
+  test("test for addWC: cuerno del comandante"){
+    val p1: Player = new Player("p1", 1, List(), List(commanderHorn))
+    val p2: Player = new Player("p2", 2, List(), List())
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+    assertEquals(g.getP1.getHand, List(commanderHorn))
+    p1.playCard(commanderHorn, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
+  }
+
+  test("test for addWC: player 2, cuerno del comandante"){
+    val p1: Player = new Player("p1", 1, List(), List())
+    val p2: Player = new Player("p2", 2, List(), List(commanderHorn))
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+    assertEquals(g.getP2.getHand, List(commanderHorn))
+    p2.playCard(commanderHorn, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
+  }
+
+  test("test for random card") {
+    val p1: Player = new Player("p1", 1, List(), List())
+    val p2: Player = new Player("p2", 2, List(), List(climate1))
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+    assertEquals(g.getP2.getHand, List(climate1))
+    p2.playCard(climate1, g)
+    assertEquals(g.getP1.getHand, List())
+    assertEquals(g.getP2.getHand, List())
+  }
+
 }
