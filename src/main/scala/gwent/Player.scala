@@ -175,7 +175,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    *  function that draws a hand of 10 cards
    */
   def drawInitialHand(): Unit = {
-    for (i <- 0 until 2) {
+    for (i <- 0 until 10) {
       val carta: Card = draw()
       _hand = carta :: _hand
     }

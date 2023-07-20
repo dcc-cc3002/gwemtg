@@ -138,7 +138,7 @@ class PlayerTest extends munit.FunSuite{
   test("tests for playing cards of all types") {
     assertEquals(partida.getP1.getHand, List(troop2, ranged2, catapult2, climate2))
     assertEquals(partida.board.p1m.hashCode(), new MeleeZone().hashCode())
-    partida.getP1.playCard(troop2, partida)
+    jugador.playCard(troop2, partida)
     assertEquals(partida.getP1.getHand, List(ranged2, catapult2, climate2))
     assertEquals(partida.board.p1m.hashCode(), new MeleeZone(List(troop2)).hashCode())
 

@@ -217,7 +217,7 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
           }
         } else {throw new Exception("Player not found")}
       }
-      case "vainilla" => {}
+      case _ => {}
   }
 
   /** CloseCombatCardEffect
@@ -257,7 +257,7 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
           throw new Exception("Player not found")
         }
       }
-      case "vainilla" => {}
+      case _ => {}
   }
 
   /** SiegeCombatCardEffect
@@ -297,7 +297,7 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
           throw new Exception("Player not found")
         }
       }
-      case "vainilla" => {}
+      case _ => {}
   }
 
   /** WeatherEffect

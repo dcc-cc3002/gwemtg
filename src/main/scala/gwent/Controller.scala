@@ -116,9 +116,9 @@ object Controller extends App {
     }
     if pasado then println("You passed your turn\n")
     else {
-  //    if (cartita == new WeatherCard("error","bad")) {
-  //      throw new Exception("Invalid play")
-  //    }
+      if (cartita == new WeatherCard("error","bad")) {
+        throw new Exception("Invalid play")
+      }
       human.playCard(cartita, partida)
       println("You played a card: ")
       println(cartita)
