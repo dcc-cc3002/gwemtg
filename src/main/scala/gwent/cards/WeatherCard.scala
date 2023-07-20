@@ -2,8 +2,8 @@
 package cl.uchile.dcc
 package gwent.cards
 
-import cl.uchile.dcc.gwent.{Game, Player}
-import cl.uchile.dcc.gwent.board.*
+import gwent.{Game, Player}
+import gwent.board.*
 
 import java.util.Objects
 
@@ -48,8 +48,8 @@ class WeatherCard(val name: String, val description: String) extends Card with E
 
   /** overwrite hashcode */
   override def hashCode: Int = {
-    if this == null then return Objects.hash(classOf[WeatherCard], null)
-    else return Objects.hash(classOf[WeatherCard], name)
+    if this == null then Objects.hash(classOf[WeatherCard], null)
+    else Objects.hash(classOf[WeatherCard], name)
   }
 
   /** getPlayed 
@@ -72,8 +72,9 @@ class WeatherCard(val name: String, val description: String) extends Card with E
   /** getPower
    * weather cards have no power
    * thus, it returns 0
-   * @return 0
    */
   def getPower: Int = 0
+
+
 
 }

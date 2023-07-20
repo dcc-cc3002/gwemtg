@@ -11,6 +11,7 @@ class WeatherCardTest extends munit.FunSuite {
   var torrentialRain: WeatherCard = _
   var clearWeather: WeatherCard = _
   var commanderHorn: WeatherCard = _
+  val yenneferOfVengerberg: RangedCombatCard = RangedCombatCard("Yennefer of Vengerberg", "refuerzo_moral", 3)
 
   override def beforeEach(context: BeforeEach): Unit = {
     bitingFrost = new WeatherCard("Escarcha mordiente", "Convierte el valor de fuerza de todas las cartas de melee a 1")
@@ -23,6 +24,16 @@ class WeatherCardTest extends munit.FunSuite {
 
   test("test for Equals"){
     assertEquals(bitingFrost, new WeatherCard("Escarcha mordiente", "Convierte el valor de fuerza de todas las cartas de melee a 1"))
+  }
+
+  test("test for not Equals"){
+    assertNotEquals(bitingFrost, impenetrableFog)
+    assert(bitingFrost != commanderHorn)
+    assert(bitingFrost != yenneferOfVengerberg)
+  }
+
+  test("test for toString"){
+    assertEquals(bitingFrost.toString, "WeatherCard: Escarcha mordiente, Convierte el valor de fuerza de todas las cartas de melee a 1")
   }
 
   test("test for getters") {
@@ -38,11 +49,12 @@ class WeatherCardTest extends munit.FunSuite {
     assertEquals(commanderHorn.getDescription, "Dobla la fuerza de todas las unidades de una fila propia al azar.")
   }
 
-  /** getPower
-   * getPower returns the power of the card
-   * weather cards have no power
-   * therefore, getPower returns 0
-   */
-  def getPower: Int = 0
+  test("test for getPower"){
+    assertEquals(bitingFrost.getPower, 0)
+    assertEquals(impenetrableFog.getPower, 0)
+    assertEquals(torrentialRain.getPower, 0)
+    assertEquals(clearWeather.getPower, 0)
+    assertEquals(commanderHorn.getPower, 0)
+  }
 
 }

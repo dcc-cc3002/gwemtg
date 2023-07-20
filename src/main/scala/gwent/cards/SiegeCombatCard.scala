@@ -86,5 +86,16 @@ class SiegeCombatCard(name: String, description: String, power: Int)
   def setPower(newPower: Int): Unit = {
     currentPower = newPower
   }
+
+  /** Getter for the [[originalPower]] of the card.
+   *
+   * @return The [[originalPower]] of the card.
+   */
+  def getOGPower: Int = originalPower
+
+
+  /** Getter for the [[description]] of the card. */
+  def getDescription: String = description
+
 }
 
