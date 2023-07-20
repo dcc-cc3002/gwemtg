@@ -55,7 +55,7 @@ class CloseCombatCard(name: String, description: String, power: Int) extends Abs
    */
   override def getPlayed(player: Player, game: Game): Unit = {
     /** not the best implementation, but i want to finish the game */
-    game.CloseCombatCardEffect(this.description, player)
+    game.CloseCombatCardEffect(this, player)
     game.addCCC(this, player)
     player.removeCard(this)
   }

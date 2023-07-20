@@ -59,7 +59,7 @@ class SiegeCombatCard(name: String, description: String, power: Int)
    */
   override def getPlayed(player: Player, game: Game): Unit = {
     /** not the best implementation, but i want to finish the game */
-    game.SiegeCombatCardEffect(this.description, player)
+    game.SiegeCombatCardEffect(this, player)
     game.addSCC(this, player)
     player.removeCard(this)
   }

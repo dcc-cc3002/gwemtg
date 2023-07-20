@@ -195,28 +195,27 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
    * vinculo_estrecho: duplicates the power of any card in the same row with the same name
    * vainilla: no effect
    */
-  def RangedCombatCardEffect(name: String, p: Player): Unit = {
+  def RangedCombatCardEffect(cartita: Card, p: Player): Unit = {
+    val name = cartita.description
     name match
       case "refuerzo_moral" =>
         if p == this.Player1 then for(card <- board.p1r.data){card.setPower(card.getPower + 1)}
         else if p == this.Player2 then for(card <- board.p2r.data){card.setPower(card.getPower + 1)}
-//          else {throw new Exception("Player not found")}
       
       case "vinculo_estrecho" =>
         if (p == this.Player1) {
           for (card <- board.p1r.data) {
-            if (card.getName == name) {
+            if (card.getName == cartita.getName) {
               card.setPower(card.getPower * 2)
             }
           }
         } else if (p == this.Player2) {
           for (card <- board.p2r.data) {
-            if (card.getName == name) {
+            if (card.getName == cartita.getName) {
               card.setPower(card.getPower * 2)
             }
           }
         } 
-//        else {throw new Exception("Player not found")}
       
       case _ => 
   }
@@ -228,7 +227,8 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
    * vinculo_estrecho: duplicates the power of any card in the same row with the same name
    * vainilla: no effect
    */
-  def CloseCombatCardEffect(name: String, p: Player): Unit = {
+  def CloseCombatCardEffect(cartita: Card, p: Player): Unit = {
+    val name = cartita.description
     name match
       case "refuerzo_moral" => 
         if p == this.Player1 then for (card <- this.board.p1m.data) {
@@ -242,19 +242,17 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
       case "vinculo_estrecho" => 
         if (p == this.Player1) {
           for (card <- board.p1m.data) {
-            if (card.getName == name) {
+            if (card.getName == cartita.getName) {
               card.setPower(card.getPower * 2)
             }
           }
         } else if (p == this.Player2) {
           for (card <- board.p1m.data) {
-            if (card.getName == name) {
+            if (card.getName == cartita.getName) {
               card.setPower(card.getPower * 2)
             }
           }
-        } 
-
-      
+        }
       case _ => 
   }
 
@@ -265,7 +263,8 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
    * vinculo_estrecho: duplicates the power of any card in the same row with the same name
    * vainilla: no effect
    */
-  def SiegeCombatCardEffect(name: String, p: Player): Unit = {
+  def SiegeCombatCardEffect(cartita: Card, p: Player): Unit = {
+    val name = cartita.description
     name match
       case "refuerzo_moral" => 
         if p == this.Player1 then for (card <- this.board.p1s.data) {
@@ -279,13 +278,13 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
       case "vinculo_estrecho" => 
         if (p == this.Player1) {
           for (card <- board.p1s.data) {
-            if (card.getName == name) {
+            if (card.getName == cartita.getName) {
               card.setPower(card.getPower * 2)
             }
           }
         } else if (p == this.Player2) {
           for (card <- board.p1s.data) {
-            if (card.getName == name) {
+            if (card.getName == cartita.getName) {
               card.setPower(card.getPower * 2)
             }
           }
@@ -327,20 +326,21 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
         for(card <- this.board.p2r.data){card.setPower(card.getOGPower)}
         for(card <- this.board.p2s.data){card.setPower(card.getOGPower)}
       case "Cuerno del Comandante" =>
-        var rand = new scala.util.Random
-        val row = rand.nextInt(3)
         if (p == this.Player1){
+          var rand = new scala.util.Random
+          var row = rand.nextInt(3)
           row match
             case 0 => for(card <- this.board.p1m.data){card.setPower(card.getPower * 2)}
             case 1 => for(card <- this.board.p1r.data){card.setPower(card.getPower * 2)}
             case 2 => for(card <- this.board.p1s.data){card.setPower(card.getPower * 2)}
         }
         else if(p == this.Player2){
+          var rand = new scala.util.Random
+          var row = rand.nextInt(3)
           row match
             case 0 => for (card <- this.board.p2m.data) {card.setPower(card.getPower * 2)}
             case 1 => for (card <- this.board.p2r.data) {card.setPower(card.getPower * 2)}
             case 2 => for (card <- this.board.p2s.data) {card.setPower(card.getPower * 2)}}
-      
       case _ => 
   }
 }
