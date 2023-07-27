@@ -4,7 +4,9 @@
 * Lya Díaz
 
 ## Description
- is a trading card game based upon Gwen from the Witcher series. The game is played over a best-of-three series of rounds, as players unleash their hand by slinging spells and diverse units with special abilities and use clever tricks to deceive their opponents.
+Gwemt is a trading card game based upon Gwen from the Witcher series with {Magic the Gathering themed} cards. The game is played over a best-of-three series of rounds, as players unleash their hand by slinging spells and diverse units with special abilities.
+There are four types of cards: 
+
 The game is played by two players. A human player and a computer player. The human player is the one who starts the game and the computer player is the one who responds to the human player's actions. The game is played in turns, where each player can play a card or pass. The player who wins two rounds wins the game.
 The game is played over a board which is divided into two rows, the melee row and the ranged row. Each player has a deck of cards which contains 25 cards. Each card has a name and a description. Unit cards also have power. The cards are divided into two mayor types: unit cards and special cards. The unit cards are divided into three subtypes: melee cards, ranged cards and siege cards. The special cards weather cards. 
 The first round players draw 10 cards, then 3 cards at the beginning of each round. The player who starts is always the human. If the player passes, the other player can play a card or pass. If both players pass, the round ends. The player who wins the round is the one who has the highest power. If both players have the same power, the round ends in a draw. The player who wins two rounds wins the game.
