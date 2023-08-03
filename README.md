@@ -15,7 +15,7 @@ The first round players draw 10 cards, then 3 cards at the beginning of each rou
 The game runs on the console after excecuting the Controller object. The game is played by entering the number of the card you want to play. The game ends when one of the players wins two rounds and then the program excecuting ends.
 
 ## State diagram
-file:///home/hd/Desktop/Untitled_Diagram.jpg
+![Untitled_Diagram](https://github.com/dcc-cc3002/gwemtg/assets/16340209/ac5272fb-d807-4a98-af4e-5dff1f074e1c)
 
 
 
