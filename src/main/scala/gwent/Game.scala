@@ -10,6 +10,11 @@ import java.util.jar.Attributes.Name
 
 /**
  * A class representing a game of Gwent.
+ * this abstraction acomplishes the role of an observer
+ * in the design pattern observer, the players are the observable
+ * they notify the game when they play a card, and the game updates the board
+ * the same way, players notify the game when they pass and when they die (their gems are 0)
+ *
  * @param board The board of the game.
  * @param _player1 The first player of the game.
  * @param _player2 The second player of the game.
