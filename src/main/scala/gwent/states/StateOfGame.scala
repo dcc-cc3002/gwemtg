@@ -23,6 +23,28 @@ package gwent
 
 
 
-class State {
+class StateOfGame {
+    private var state: State = new BeginGame
+    private var log: List[State] = List()
+
+    def getState(): State = state
+    def setState(newState: State): Unit = {
+        state = newState
+        log = log :+ state
+    }
+
+
+    def BeginGame(): Unit = State.BeginGame(this)
+    def RobotVSRobot(): Unit = State.RobotVSRobot(this)
+    def CDHAM(): Unit = State.CDHAM(this)
+    def PlayRound(): Unit = State.PlayRound(this)
+    def SubstractGems(): Unit = State.SubstractGems(this)
+    def ChangeBoard(): Unit = State.ChangeBoard(this)
+    def ShowResult(): Unit = State.ShowResult(this)
+
+    def isBeginGame(): Boolean = State.isBeginGame(this)
+    def isRobotVSRobot(): Boolean = State.isRobotVSRobot(this)
+    def isPlayRound(): Boolean = State.isPlayRound(this)
+    def isGameFinished(): Boolean = State.isGameFinished(this)
 
 }
