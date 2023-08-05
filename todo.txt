@@ -1,3 +1,27 @@
+>>> 0. Mensaje Personal
+
+Funcionalidad:
+No se almacena el estado del juego(-0.33)
+Faltan los efectos de unidad y de clima (-0.5)
+
+Diseño:
+No se usa un state pattern para manejar el estado de la partida (-0.83)
+No usa Composite para manejar los efectos (-0.83)
+No usa observer para notificar si un jugador gano/perdio (-0.84)
+
+Adicionales:
+No cumple con entregas parciales (-0.9)
+
+Revisando los comentarios se menciona que se quería usar un state pattern, 
+pero no veo en ninguna parte que se haya hecho de esta manera. 
+Ademas, quería acotar que el controlador no esta implementado del todo bien. 
+Solo se pedia el controlador, y al usar tantos prints es como si se hubiera implementado 
+una vista al mismo tiempo lo cual no es lo que se pedia. 
+Me parece que no se tiene del todo claro el concepto de que es es un controlador, 
+como se diferencia de una vista y como se debe implementar.
+
+
+
 >>> 1. Descripción
 
 El proyecto a realizar será crear un clon (simplificado) del juego de cartas Gwent desarrollado por
@@ -19,23 +43,11 @@ Cada jugador tiene:
 > equals
 
 
-############### >   Nombre: Es el identificador del jugador. Es una manera de distinguir a los distintos
-###############     participantes en la partida.
->   Sección del tablero: Es la zona del tablero que le corresponde al jugador. En ella, el jugador
-    ubicará sus cartas.
-
->   Contador de gemas: Es la cantidad de gemas que tiene el jugador. Estas gemas representan la «vida»
-    del jugador.
-
->   Mazo de cartas: Es el conjunto de cartas que tiene el jugador. Desde aquí, podrá robar cartas.
-
->   Mano de cartas: Es el conjunto de cartas que el jugador tiene en su mano. Estas cartas pueden ser
-    utilizadas para jugar durante la partida.
-
 Las acciones que un jugador puede realizar son:
 >   Jugar una carta de su mano: Seleccionar una carta de su mano y colocarla en el tablero para realizar
     una acción.
 >   Robar una carta del mazo: Tomar una carta del mazo y agregarla a su mano.
+
 
 1.2. Tablero
 El tablero es la representación física del campo de batalla en el que los jugadores colocan sus cartas.
