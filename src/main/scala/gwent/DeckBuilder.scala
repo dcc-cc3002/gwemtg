@@ -19,15 +19,18 @@ class DeckBuilder {
     val rand = new scala.util.Random
     /** 10 UnitCards para el juego */
     val geraltOfRivia: CloseCombatCard = CloseCombatCard("Geralt of Rivia", "vainilla", 5)
-    val yenneferOfVengerberg: RangedCombatCard = RangedCombatCard("Yennefer of Vengerberg", "refuerzo_moral", 3)
+    val trissMerigold: CloseCombatCard = CloseCombatCard("Triss Merigold", "vainilla", 5)
+    val zoltanChivay: CloseCombatCard = CloseCombatCard("Zoltan Chivay", "refuerzo_moral", 4)
+    val eskel: CloseCombatCard = CloseCombatCard("Eskel", "refuerzo_moral", 3)
+    
+    val yen: RangedCombatCard = RangedCombatCard("Yen", "vainilla", 6)
     val ciri: RangedCombatCard = RangedCombatCard("Ciri", "vainilla", 4)
+    val yenneferOfVengerberg: RangedCombatCard = RangedCombatCard("Yennefer of Vengerberg", "refuerzo_moral", 3)
+
+    val lambert: SiegeCombatCard = SiegeCombatCard("Lambert", "vainilla", 6)
     val vesemir: SiegeCombatCard = SiegeCombatCard("Vesemir", "vinculo_estrecho", 5)
     val dandelion: SiegeCombatCard = SiegeCombatCard("Dandelion", "vinculo_estrecho", 3)
-    val trissMerigold: CloseCombatCard = CloseCombatCard("Triss Merigold", "vainilla", 5)
-    val yen: RangedCombatCard = RangedCombatCard("Yen", "vainilla", 6)
-    val eskel: CloseCombatCard = CloseCombatCard("Eskel", "refuerzo_moral", 3)
-    val lambert: SiegeCombatCard = SiegeCombatCard("Lambert", "vainilla", 6)
-    val zoltanChivay: CloseCombatCard = CloseCombatCard("Zoltan Chivay", "refuerzo_moral", 4)
+    
     /** 5 ClimateCards para el juego */
     val bitingFrost: WeatherCard = new WeatherCard("Escarcha mordiente", "Convierte el valor de fuerza de todas las cartas de melee a 1")
     val impenetrableFog: WeatherCard = new WeatherCard("Niebla Impenetrable", "Convierte el valor de fuerza de todas las cartas de rango a 1.")
