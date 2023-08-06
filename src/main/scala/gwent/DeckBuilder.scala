@@ -18,6 +18,37 @@ class DeckBuilder {
     var output = List[Card]()
     val rand = new scala.util.Random
     /** 10 UnitCards para el juego */
+/*    
+    def CloseCombatCardEffect(cartita: Card, p: Player): Unit = {
+    val name = cartita.description
+    name match
+      case "refuerzo_moral" => 
+        if p == this.Player1 then for (card <- this.board.p1m.data) {
+          card.setPower(card.getPower + 1)
+        }
+        else if p == this.Player2 then for (card <- this.board.p1m.data) {
+          card.setPower(card.getPower + 1)
+        }
+
+      
+      case "vinculo_estrecho" => 
+        if (p == this.Player1) {
+          for (card <- board.p1m.data) {
+            if (card.getName == cartita.getName) {
+              card.setPower(card.getPower * 2)
+            }
+          }
+        } else if (p == this.Player2) {
+          for (card <- board.p1m.data) {
+            if (card.getName == cartita.getName) {
+              card.setPower(card.getPower * 2)
+            }
+          }
+        }
+      case _ =>   
+*/    
+    /** refuerzo moral: recibe un bonus de +1 por cada carta de su mismo tipo en el campo de batalla */
+    /** vinculo estrecho: recibe un bonus de +1 por cada carta de su mismo tipo en la mano */
     val geraltOfRivia: CloseCombatCard = CloseCombatCard("Geralt of Rivia", "vainilla", 5)
     val trissMerigold: CloseCombatCard = CloseCombatCard("Triss Merigold", "vainilla", 5)
     val zoltanChivay: CloseCombatCard = CloseCombatCard("Zoltan Chivay", "refuerzo_moral", 4)
