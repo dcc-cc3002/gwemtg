@@ -19,7 +19,7 @@ class CDHAM extends Estado {
         val tupla_mazos = stateofgame.createDecks
         val tupla_manos = stateofgame.createHands
         val tablero: Board = new Board()
-        var juego: Game = stateofgame.createMatch(tupla_mazos._1, tupla_mazos._2, tupla_manos._1, tupla_manos._2, tablero, juego)
+        var juego: Game = stateofgame.createMatch(tupla_mazos._1, tupla_mazos._2, tupla_manos._1, tupla_manos._2, tablero)
         /** we make sure both players begin with the gems according to whats stipulated in the rules */
         assert(stateofgame.getMatch.getP1.getGems == 2)
         assert(stateofgame.getMatch.getP2.getGems == 2)

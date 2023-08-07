@@ -54,8 +54,8 @@ object VistaController extends App {
   /** we shuffle the decks and draw the hands */
   human.shuffleDeck
   robot.shuffleDeck
-  human.drawInitialHand
-  robot.drawInitialHand
+  human.drawInitialHand()
+  robot.drawInitialHand()
 
   /** we show the hand of the human player */
   println("Your hand is: ")

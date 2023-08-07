@@ -23,9 +23,9 @@ package states
  */
 
 import gwemtg.states.*
+//import gwemtg.cards.*
+import gwemtg.Game
 import gwemtg.Player
-import gwemtg.board.*
-import gwemtg.cards.*
 
 class StateOfGame {
     private var state: Estado = new BeginGame
@@ -44,7 +44,9 @@ class StateOfGame {
 
 
     def BeginGame(): Unit = Estado.BeginGame(this)
-    def RobotVSRobot(): Unit = Estado.RobotVSRobot(this)
+    def RobotVSRobot(): Unit = {
+        Estado.RobotVSRobot(this)
+    }
     def CDHAM(): Unit = Estado.CDHAM(this)
     def PlayRound(): Unit = Estado.PlayRound(this)
     def SubstractGems(): Unit = Estado.SubstractGems(this)
