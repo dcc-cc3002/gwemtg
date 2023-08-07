@@ -4,7 +4,7 @@ ThisBuild / scalaVersion := "3.2.2"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "gwent",
+    name := "gwemtg",
     idePackagePrefix := Some("cl.uchile.dcc")
   )
 
