@@ -179,7 +179,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    */
   def drawInitialHand: Unit = {
     for (i <- 0 until 10) {
-      val carta: Card = draw()
+      val carta: Card = this.draw
       _hand = carta :: _hand
     }
   }
@@ -190,7 +190,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    */
   def draw3: Unit = {
     for (i <- 0 until 3) {
-      val carta: Card = draw()
+      val carta: Card = this.draw
       _hand = carta :: _hand
     }
   }

@@ -21,5 +21,5 @@ class BeginGame extends Estado {
         }
     }
 
-    override def isBeginGame(): Boolean = true
+    override def isBeginGame: Boolean = true
 }

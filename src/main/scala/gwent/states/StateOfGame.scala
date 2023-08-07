@@ -21,11 +21,18 @@ package gwent
  *    if there are not two players alive, the program ends in the state << show winner (or draw) >>
  */
 
-
+import gwent.Player
+import gwent.board.*
+import gwent.cards.*
 
 class StateOfGame {
     private var state: Estado = new BeginGame
     private var log: List[Estado] = List()
+    
+    private var player1: Player = _
+    private var player2: Player = _
+    private var board: Board = _
+    private var game: Game = _
 
     def getState: Estado = state
     def setState(newState: Estado): Unit = {
@@ -49,4 +56,54 @@ class StateOfGame {
     def isPlayRound: Boolean = Estado.isPlayRound(this)
     def isGameFinished: Boolean = Estado.isGameFinished(this)
 
+    /** 
+     * createDecks
+     * this method is in charge of creating the decks
+     * it is accomplished by calling the class DeckBuilder
+     */
+    def createDecks(): (List[Card], List[Card]) = {
+        val deck_builder = new DeckBuilder()
+        val deck1 = deck_builder.buildDeck()
+        val deck2 = deck_builder.buildDeck()
+        (deck1, deck2)
+    } 
+    
+    /** 
+     * createHands 
+     * this method is in charge of creating the hands
+     */
+    def createHands(): (List[Card], List[Card]) = {
+        val hand1 = List()
+        val hand2 = List()
+        (hand1, hand2)
+    }
+    
+    /**
+     * this method is used to initialize the game
+     * player1: the first player
+     * player2: the second player
+     * @param deck1 the deck of the first player
+     * @param deck2 the deck of the second player
+     * @param hand1 the hand of the first player
+     * @param hand2 the hand of the second player
+     * @param board the board of the game
+     * game: the game
+     * 
+     * @return the game 
+     */
+    def createMatch(deck1: List[Card], deck2: List[Card], hand1: List[Card], hand2: List[Card], board: Board, game: Game): Game = {
+        this.player1 = new Player("human", 2, deck1, hand1)
+        this.player2 = new Player("robot", 2, deck2, hand2)
+        this.board = new Board()
+        this.game = new Game(this.board, player1, player2)
+        this.game
+    } 
+    
+    
+    /** 
+     * getMatch
+     * this method is in charge of retrieving the match from the StateOfGame class that is in charge of the game
+     */
+    def getMatch: Game = this.game
+    
 }

@@ -36,7 +36,7 @@ class PlayRound extends Estado {
 
             /** if the robot passes, we advance to the state << subtract gems >> */
             /** if the robot plays a card, we advance to the state << change board >> */
-        } 
+        
     }
 
     override def isPlayRound(): Boolean = true

@@ -9,6 +9,8 @@ package gwent
   * and then changing the state to PlayRound
   */
 
+import gwent.states.*
+
 class CDHAM extends States {
     override def CDHAM(stateofgame: StateOfGame): Unit = {
         this.stateofgame.createDecks()
