@@ -63,7 +63,7 @@ Context
 -------
 
 This project's goal is to create a (simplified) clone of the
-[Gwent](https://www.playgwent.com/en/)card game developed by 
+[Gwent](https://www.playgwent.com/en/) card game developed by 
 [_CD PROJEKT RED_](https://cdprojektred.com/en/) with some influence fron the original trading card game, Magic: the Gathering developed by 
 [Wizards of the Coast](https://company.wizards.com/en)
 
