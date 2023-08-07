@@ -38,5 +38,5 @@ class PlayRound extends Estado {
         
     }
 
-    override def isPlayRound: Boolean = true
+    override def isPlayRound() = true
 }

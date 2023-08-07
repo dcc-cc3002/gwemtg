@@ -18,6 +18,5 @@ class SubstractGems extends Estado {
         else if p2lifes == 0 then this.changeState(stateofgame, new P1Win())
         else this.changeState(stateofgame, new PlayRound())
     }
-
-    override def isSubstractGems: Boolean = true
+    
 }

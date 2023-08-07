@@ -21,12 +21,12 @@ package gwemtg.states
  *    if there are not two players alive, the program ends in the state << show winner (or draw) >>
  */
 
-import gwemtg.states.Estado
-import gwemtg.cards.{Card, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
+import gwemtg.states.*
 import gwemtg.Game
 import gwemtg.Player
 import gwemtg.board.Board
 import gwemtg.DeckBuilder
+import gwemtg.cards.*
 
 class StateOfGame() {
     private var state: Estado = new BeginGame()
@@ -43,11 +43,8 @@ class StateOfGame() {
         log = log :+ state
     }
 
-
     def BeginGame(): Unit = Estado.BeginGame(this)
-    def RobotVSRobot(): Unit = {
-        Estado.RobotVSRobot(this)
-    }
+    def RobotVSRobot(): Unit = Estado.RobotVSRobot(this)
     def CDHAM(): Unit = Estado.CDHAM(this)
     def PlayRound(): Unit = Estado.PlayRound(this)
     def SubstractGems(): Unit = Estado.SubstractGems(this)
@@ -55,11 +52,14 @@ class StateOfGame() {
     def Draw(): Unit = Estado.Draw(this)
     def P1Win(): Unit = Estado.P1Win(this)
     def P2Win(): Unit = Estado.P2Win(this)
+    def ShowResult(): Unit = Estado.ShowResult(this)
 
-    def isBeginGame: Boolean = Estado.isBeginGame(this)
-    def isRobotVSRobot: Boolean = Estado.isRobotVSRobot(this)
-    def isPlayRound: Boolean = Estado.isPlayRound(this)
-    def isGameFinished: Boolean = Estado.isGameFinished(this)
+    def isBeginGame(): Boolean = Estado.isBeginGame()
+    def isRobotVSRobot(): Boolean = Estado.isRobotVSRobot()
+    def isPlayRound(): Boolean = Estado.isPlayRound()
+    def isGameFinished(): Boolean = Estado.isGameFinished()
+
+
 
     /**
      * createDecks

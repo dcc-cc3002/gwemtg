@@ -9,7 +9,7 @@ import gwemtg.cards.*
  *
  * it has the method buildDeck() that returns a [[cl.uchile.dcc.gwemtg.Deck]].
  */
-class DeckBuilder {
+class DeckBuilder() {
   /** buildDeck
    * ***** Cada jugador cuenta con un mazo de 25 cartas de cualquier clasificación
    *

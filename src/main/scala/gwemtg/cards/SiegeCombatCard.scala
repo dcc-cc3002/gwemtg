@@ -42,7 +42,7 @@ class SiegeCombatCard(name: String, description: String, power: Int, cmc: Int)
    * aka: CMC
    * This shows how much mana is needed to play the card.
    */
-  private val CMC: Int = cmc
+  val CMC: Int = cmc
 
   /** Checks if two objects belong to the class SiegeCombatCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[SiegeCombatCard]
@@ -105,8 +105,10 @@ class SiegeCombatCard(name: String, description: String, power: Int, cmc: Int)
   def getOGPower: Int = originalPower
 
 
-  /** Getter for the [[description]] of the card. */
-  def getDescription: String = description
+  /** getDescription
+   * getDescription returns the description of the card
+   */
+  override def getDescription: String = description
 
 }
 

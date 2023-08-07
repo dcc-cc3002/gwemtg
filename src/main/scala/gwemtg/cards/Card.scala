@@ -41,11 +41,11 @@ trait Card {
    */
   val description: String
 
-  /** Converted Mana Cost of the card.
+  /** The converted mana cost of the card.
    * aka: CMC
-   * This is an immutable property.
+   * This shows how much mana is needed to play the card.
    */
-  val CMC: Int
+  val CMC: Int 
   
   /** getPlayed
    * A function that puts a card into the board according to the rules of the game.
@@ -77,4 +77,10 @@ trait Card {
    * this gets the mana cost of a given card
    */
   def getCMC: Int
+
+
+  /** getDescription
+   * getDescription returns the description of the card
+   */
+  def getDescription: String
 }

@@ -26,7 +26,7 @@ class WeatherCard(val name: String, val description: String) extends Card with E
    * This shows how much mana is needed to play the card.
    * Climate cards have no mana cost, this means they are free to play.
    */
-  private val CMC: Int = 0
+  val CMC: Int = 0
 
   /** Checks if two objects belong to the class WeatherCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[WeatherCard]
@@ -37,17 +37,17 @@ class WeatherCard(val name: String, val description: String) extends Card with E
    */
   override def getName: String = name
 
-  /** Getter for the [[description]] of the card.
-   *
-   * @return The [[description]] of the card.
-   */
-  override def getDescription: String = description
 
   /** getCMC
    * getCMC returns the mana cost of the card
    */
   override def getCMC: Int = CMC
-  
+
+  /** getDescription
+   * getDescription returns the description of the card
+   */
+  override def getDescription: String = description
+
   /** overwrite equals for WeatherCard */
   override def equals(wc: Any): Boolean = wc match {
     case wc: WeatherCard => wc.canEqual(this) && this.getName == wc.getName && this.getDescription == wc.getDescription

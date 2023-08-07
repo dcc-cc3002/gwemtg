@@ -26,5 +26,4 @@ class CDHAM extends Estado {
         this.changeState(stateofgame, new PlayRound())
     }
 
-    override def isCDHAM(): Boolean = true
 }

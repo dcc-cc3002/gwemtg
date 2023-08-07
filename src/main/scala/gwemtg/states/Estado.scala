@@ -40,12 +40,12 @@ class Estado() {
     def SubstractGems(stateofgame: StateOfGame): Unit = error()
     def ChangeBoard(stateofgame: StateOfGame): Unit = error()
     def ShowResult(stateofgame: StateOfGame): Unit = error()
-    def Draw(): Unit = error()
-    def P1Win(): Unit = error()
-    def P2Win(): Unit = error()
+    def Draw(stateofgame: StateOfGame): Unit = error()
+    def P1Win(stateofgame: StateOfGame): Unit = error()
+    def P2Win(stateofgame: StateOfGame): Unit = error()
 
-    def isBeginGame: Boolean = false
-    def isRobotVSRobot: Boolean = false
-    def isPlayRound: Boolean = false
-    def isGameFinished: Boolean = false
+    def isBeginGame(stateofgame: StateOfGame): Boolean = false
+    def isRobotVSRobot(stateofgame: StateOfGame): Boolean = false
+    def isPlayRound(stateofgame: StateOfGame): Boolean = false
+    def isGameFinished(stateofgame: StateOfGame): Boolean = false
 }
