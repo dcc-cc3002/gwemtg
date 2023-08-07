@@ -111,6 +111,6 @@ class SiegeCombatCard(name: String, description: String, power: Int, cmc: Int)
   override def getDescription: String = description
 
   /** effect: does nothing */
-  override def effect: Unit = {}
+  override def effect(player: Player, game: Game): Unit = {}
 }
 

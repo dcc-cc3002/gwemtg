@@ -85,6 +85,6 @@ class WeatherCard(val name: String, val description: String) extends Card with E
   def getPower: Int = 0
 
   /** effect: does nothing */
-  override def effect: Unit = {}
+  override def effect(player: Player, game: Game): Unit = {}
 
 }
