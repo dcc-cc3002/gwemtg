@@ -1,6 +1,5 @@
-package cl.uchile.dcc
-package gwemtg
-package states
+package hugodiazroa
+package gwemtg.states
 
 /**
  * in this file we define the state of the game
@@ -22,13 +21,15 @@ package states
  *    if there are not two players alive, the program ends in the state << show winner (or draw) >>
  */
 
-import gwemtg.states.*
-//import gwemtg.cards.*
+import gwemtg.states.Estado
+import gwemtg.cards.{Card, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
 import gwemtg.Game
 import gwemtg.Player
+import gwemtg.board.Board
+import gwemtg.DeckBuilder
 
 class StateOfGame {
-    private var state: Estado = new BeginGame
+    private var state: Estado = new BeginGame()
     private var log: List[Estado] = List()
 
     private var player1: Player = _
@@ -52,8 +53,8 @@ class StateOfGame {
     def SubstractGems(): Unit = Estado.SubstractGems(this)
     def ChangeBoard(): Unit = Estado.ChangeBoard(this)
     def Draw(): Unit = Estado.Draw(this)
-    def P1Win(): Unit = Estado.ShowResult(this)
-    def P2Win(): Unit = Estado.ShowResult(this)
+    def P1Win(): Unit = Estado.P1Win(this)
+    def P2Win(): Unit = Estado.P2Win(this)
 
     def isBeginGame: Boolean = Estado.isBeginGame(this)
     def isRobotVSRobot: Boolean = Estado.isRobotVSRobot(this)

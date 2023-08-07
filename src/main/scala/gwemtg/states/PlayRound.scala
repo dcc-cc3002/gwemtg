@@ -1,4 +1,4 @@
-package cl.uchile.dcc
+package hugodiazroa
 package gwemtg.states
 /**
   * PlayRound is a state that represents the state of playing a round in the game.

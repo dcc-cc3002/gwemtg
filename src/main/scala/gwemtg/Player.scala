@@ -1,4 +1,4 @@
-package cl.uchile.dcc
+package hugodiazroa
 package gwemtg
 
 import gwemtg.cards.*

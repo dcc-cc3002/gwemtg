@@ -1,7 +1,9 @@
-package cl.uchile.dcc
-package gwemtg.states
+package hugodiazroa
+package gwemtg
+package states
 
-import gwemtg.cards.*
+import gwemtg.states.StateOfGame
+import gwemtg.cards._
 
 /**
  * in this file we define the state of the game
@@ -23,12 +25,13 @@ import gwemtg.cards.*
  *    if there are not two players alive, the program ends in the state << show winner (or draw) >>
  */
 
-class Estado {
+class Estado() {
     protected def changeState(stateofgame: StateOfGame, newState: Estado): Unit = {
         stateofgame.setState(newState)
     }
 
-    private def error() = throw new Exception("Error: wrong state")
+    //def error() = throw new Exception("Error: wrong state")
+    def error() = println("Error: wrong state")
 
     def BeginGame(stateofgame: StateOfGame): Unit = error()
     def RobotVSRobot(stateofgame: StateOfGame): Unit = error()
@@ -37,6 +40,9 @@ class Estado {
     def SubstractGems(stateofgame: StateOfGame): Unit = error()
     def ChangeBoard(stateofgame: StateOfGame): Unit = error()
     def ShowResult(stateofgame: StateOfGame): Unit = error()
+    def Draw(): Unit = error()
+    def P1Win(): Unit = error()
+    def P2Win(): Unit = error()
 
     def isBeginGame: Boolean = false
     def isRobotVSRobot: Boolean = false

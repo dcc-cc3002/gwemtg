@@ -1,10 +1,9 @@
-
-package cl.uchile.dcc
+package hugodiazroa
 package gwemtg
 package cards
 
-import cl.uchile.dcc.gwemtg.{Game, Player}
-import cl.uchile.dcc.gwemtg.board.Board
+import gwemtg.{Game, Player}
+import gwemtg.board.Board
 
 import java.util.Objects
 import scala.collection.mutable

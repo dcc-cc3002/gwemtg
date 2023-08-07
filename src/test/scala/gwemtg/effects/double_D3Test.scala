@@ -1,7 +1,7 @@
- package cl.uchile.dcc
-package gwemtg.cards
+package hugodiazroa
+package gwemtg.effects
 
-
+//import munit.Clue.generate
 import gwemtg.cards.*
 import munit.*
 

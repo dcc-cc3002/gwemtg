@@ -1,9 +1,8 @@
-
-package cl.uchile.dcc
+package hugodiazroa
 package gwemtg.cards
 
 
-import cl.uchile.dcc.gwemtg.{Game, Player}
+import gwemtg.{Game, Player}
 
 import java.util.Objects
 

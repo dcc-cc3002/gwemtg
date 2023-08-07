@@ -1,4 +1,4 @@
-package cl.uchile.dcc
+package hugodiazroa
 package gwemtg.states
 
 /** here climate effects are played

@@ -1,4 +1,6 @@
-package cl.uchile.dcc
+package hugodiazroa
 package gwemtg.states
 
-class ShowResult extends Estado{}
+class ShowResult extends Estado{
+  
+}
