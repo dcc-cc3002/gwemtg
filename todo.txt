@@ -1,3 +1,9 @@
+>>> -1. mini tasks
+tests para states
+1) en sogT poner un juego nuevo
+2) en states test jugar un juego entero 
+3) mezclar states test en cada test individual 
+
 >>> 0. Mensaje Personal
 
 Funcionalidad:
