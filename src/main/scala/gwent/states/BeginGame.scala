@@ -9,12 +9,12 @@ class BeginGame extends States {
         println("Do you want to play? (y/n)")
         val answer = scala.io.StdIn.readLine()
         if (answer == "y") {
-            changeState(stateofgame, new CDHAM())
+            this.changeState(stateofgame, new CDHAM())
         } else if (answer == "n") {
-            changeState(stateofgame, new RobotVSRobot())
+            this.changeState(stateofgame, new RobotVSRobot())
         } else {
             println("Please answer with y or n")
-            BeginGame(stateofgame)
+            this.changeState(stateofgame, new BeginGame())
         }
     }
 

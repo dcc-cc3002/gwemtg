@@ -7,13 +7,13 @@ class SubstractGems extends States {
         val p1lifes: int =  stateofgame.getMatch.getP1.getGems
         val p2lifes: int =  stateofgame.getMatch.getP2.getGems
         if p1lifes == 0 || p2lifes == 0 {
-            changeState(stateofgame, new Draw())
+            this.changeState(stateofgame, new Draw())
         } else if p1lifes == 0 {
-            changeState(stateofgame, new P2Win())
+            this.changeState(stateofgame, new P2Win())
         } else if p2lifes == 0 {
-            changeState(stateofgame, new P1Win())
+            this.changeState(stateofgame, new P1Win())
         } else {
-            changeState(stateofgame, new PlayRound())
+            this.changeState(stateofgame, new PlayRound())
         }
     }
 

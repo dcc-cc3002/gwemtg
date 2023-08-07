@@ -9,8 +9,8 @@ class PlayRound extends States {
     override def PlayRound(stateofgame: StateOfGame): Unit = {
         println("Do you want to play a card? select the index of the card you want to play, or to pass press enter")
         val answer = scala.io.StdIn.readLine()
-        if (answer in x ) {
-            changeState(stateofgame, new SubstractGems())
+        if (answer in List(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)) {
+            this.changeState(stateofgame, new SubstractGems())
         } else {
             /** let's see what the robot does */
             
@@ -23,14 +23,14 @@ class PlayRound extends States {
             if (stateofgame.getMatch().boardPoints(stateofgame.getMatch.getPlayer1) > stateofgame.getMatch().boardPoints(stateofgame.getMatch.getPlayer2))
             {
                 stateofgame.getMatch.getP2
-                changeState(stateofgame, new ChangeBoard())
+                this.changeState(stateofgame, new ChangeBoard())
             } else {
                 /** if the robot has less potential points than the human's visible points
                  * we will make the robot pass
                  * and we will advance to the state << subtract gems >>
                  */
                 stateofgame.getMatch.nextRound()
-                changeState(stateofgame, new SubstractGems())
+                this.changeState(stateofgame, new SubstractGems())
             }
 
             /** if the robot passes, we advance to the state << subtract gems >> */

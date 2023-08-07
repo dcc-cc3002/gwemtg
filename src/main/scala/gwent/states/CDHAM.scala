@@ -8,13 +8,13 @@
 
 class CDHAM extends States {
     override def CDHAM(stateofgame: StateOfGame): Unit = {
-        stateofgame.createDecks()
-        stateofgame.createHands()
-        stateofgame.createMatch()
+        this.stateofgame.createDecks()
+        this.stateofgame.createHands()
+        this.stateofgame.createMatch()
         /** we make sure both players begin with the gems according to whats stipulated in the rules */
         assert(stateofgame.getMatch().getP1.getGems() == 2)
         assert(stateofgame.getMatch().getP2.getGems() == 2)
-        changeState(stateofgame, new PlayRound())
+        this.changeState(stateofgame, new PlayRound())
     }
 
     override def isCDHAM(): Boolean = true
