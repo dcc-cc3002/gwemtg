@@ -11,7 +11,7 @@ class WeatherCardTest extends munit.FunSuite {
   var torrentialRain: WeatherCard = _
   var clearWeather: WeatherCard = _
   var commanderHorn: WeatherCard = _
-  val yenneferOfVengerberg: RangedCombatCard = RangedCombatCard("Yennefer of Vengerberg", "refuerzo_moral", 3)
+  var yenneferOfVengerberg: RangedCombatCard = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     bitingFrost = new WeatherCard("Escarcha mordiente", "Convierte el valor de fuerza de todas las cartas de melee a 1")
@@ -19,6 +19,7 @@ class WeatherCardTest extends munit.FunSuite {
     torrentialRain = new WeatherCard("LLuvia Torrencial", "Convierte el valor de fuerza de todas las cartas de asedio a 1.")
     clearWeather = new WeatherCard("Despejar", "Limpia todos los efectos de clima del campo de batalla.")
     commanderHorn = new WeatherCard("Cuerno del Comandante", "Dobla la fuerza de todas las unidades de una fila propia al azar.")
+    yenneferOfVengerberg = new RangedCombatCard("Yennefer of Vengerberg", "refuerzo_moral", 3, 3)
 
   }
 

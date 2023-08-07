@@ -3,7 +3,9 @@ package gwemtg.board
 
 import gwemtg.cards.*
 import gwemtg.Player
+import gwemtg.Game
 import munit.*
+
 class MeleeZoneTest extends munit.FunSuite{
   var tablero1: Board = _
   var tablero2: Board = _

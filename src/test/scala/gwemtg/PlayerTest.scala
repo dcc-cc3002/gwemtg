@@ -102,7 +102,7 @@ class PlayerTest extends munit.FunSuite{
 
   test("anxadir una carta en la posicion 1 del mazo deberia quedar segunda") {
     assertEquals(jugador.deck.size, 6, "mazo de distinto tamanxo al esperado")
-    jugador.cardIn(troop2, 1, 1)
+    jugador.cardIn(troop2, 1)
     assertEquals(jugador.deck.size, 7, "mazo de distinto tamanxo al esperado")
     assertEquals(jugador.deck(1), troop2, "la carta fue anxadida en el indice 1")
     assertEquals(jugador.deck, List(troop1, troop2, troop3, ranged1, ranged3, catapult1, catapult3), "los mazos no coinciden")
@@ -112,14 +112,14 @@ class PlayerTest extends munit.FunSuite{
     assertEquals(jugador.deck.length, 6, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(troop2, -2)
     assertEquals(jugador.deck.length, 7, "mazo de distinto tamanxo al esperado")
-    assertEquals(jugador.deck(jugador.deck.length - 2, 2), troop2, "la carta no fue anxadida en el indice -2")
+    assertEquals(jugador.deck(jugador.deck.length - 2), troop2, "la carta no fue anxadida en el indice -2")
     assertEquals(jugador.deck, List(troop1, troop3, ranged1, ranged3, catapult1, troop2, catapult3), "los mazos no coinciden")
   }
 
 
   test("robar una carta al mazo del jugador deberia disminuir su tamanxo y terminar siendo mas pequenxo") {
     assertEquals(jugador.deck.size, 6, "mazo de distinto tamanxo al esperado")
-    val robada: Card = jugador.drawCard()
+    val robada: Card = jugador.drawCard
     assertEquals(robada, troop1, "no se robo la carta esperada 'troop1'")
     assertEquals(jugador.deck.size, 5, "mazo de distinto tamanxo al esperado")
   }

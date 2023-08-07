@@ -98,16 +98,16 @@ class StateOfGameTest extends munit.FunSuite {
     clearWeather = new WeatherCard("Despejar", "Limpia todos los efectos de clima del campo de batalla.")
     commanderHorn = new WeatherCard("Cuerno del Comandante", "Dobla la fuerza de todas las unidades de una fila propia al azar.")
 
-    geraltOfRivia = new CloseCombatCard("Geralt of Rivia", "vainilla", 5)
-    yenneferOfVengerberg = new RangedCombatCard("Yennefer of Vengerberg", "vinculo_estrecho", 3)
-    ciri = new RangedCombatCard("Ciri", "vainilla", 4)
-    vesemir = new SiegeCombatCard("Vesemir", "refuerzo_moral", 5)
-    dandelion = new SiegeCombatCard("Dandelion", "vinculo_estrecho", 3)
-    trissMerigold = new CloseCombatCard("Triss Merigold", "vainilla", 5)
-    yen = new RangedCombatCard("Yen", "refuerzo_moral", 6)
-    eskel = new CloseCombatCard("Eskel", "refuerzo_moral", 3)
-    lambert = new SiegeCombatCard("Lambert", "vainilla", 6)
-    zoltanChivay = new CloseCombatCard("Zoltan Chivay", "vinculo_estrecho", 4)
+    geraltOfRivia = new CloseCombatCard("Geralt of Rivia", "vainilla", 5, 5)
+    yenneferOfVengerberg = new RangedCombatCard("Yennefer of Vengerberg", "vinculo_estrecho", 3, 3)
+    ciri = new RangedCombatCard("Ciri", "vainilla", 4, 4)
+    vesemir = new SiegeCombatCard("Vesemir", "refuerzo_moral", 5, 5)
+    dandelion = new SiegeCombatCard("Dandelion", "vinculo_estrecho", 3, 3)
+    trissMerigold = new CloseCombatCard("Triss Merigold", "vainilla", 5, 5)
+    yen = new RangedCombatCard("Yen", "refuerzo_moral", 6, 6)
+    eskel = new CloseCombatCard("Eskel", "refuerzo_moral", 3, 3)
+    lambert = new SiegeCombatCard("Lambert", "vainilla", 6, 6)
+    zoltanChivay = new CloseCombatCard("Zoltan Chivay", "vinculo_estrecho", 4, 4)
 
   }
 

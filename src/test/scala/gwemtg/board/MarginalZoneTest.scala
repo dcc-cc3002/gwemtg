@@ -2,8 +2,10 @@ package hugodiazroa
 package gwemtg.board
 
 import gwemtg.cards.*
+import gwemtg.Game
 import gwemtg.Player
 import munit.*
+
 class MarginalZoneTest extends munit.FunSuite{
   var tablero1: Board = _
   var tablero2: Board = _

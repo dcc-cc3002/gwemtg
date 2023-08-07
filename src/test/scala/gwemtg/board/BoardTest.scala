@@ -2,9 +2,9 @@ package hugodiazroa
 package gwemtg.board
 
 import gwemtg.cards.*
+import gwemtg.Game
 import gwemtg.Player
 import gwemtg.board.*
-
 import munit.*
 
 class BoardTest extends munit.FunSuite {

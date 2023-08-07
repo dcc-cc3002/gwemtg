@@ -3,6 +3,8 @@ package gwemtg.cards
 
 
 import gwemtg.cards.*
+import gwemtg.Game
+import gwemtg.Player
 import munit.*
 
 class RangedCombatCardTest extends munit.FunSuite  {
