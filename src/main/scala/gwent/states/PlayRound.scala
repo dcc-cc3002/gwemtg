@@ -21,7 +21,7 @@ class PlayRound extends Estado {
              * in this case the robot will play a card at random
              * and we will advance to the state << change board >>
              */
-        else if (stateofgame.getMatch().boardPoints(stateofgame.getMatch.getPlayer1) > stateofgame.getMatch().boardPoints(stateofgame.getMatch.getPlayer2))
+        else if (stateofgame.getMatch.boardPoints(stateofgame.getMatch.getPlayer1) > stateofgame.getMatch().boardPoints(stateofgame.getMatch.getPlayer2))
             {
                 stateofgame.getMatch.getP2
                 this.changeState(stateofgame, new ChangeBoard())
@@ -39,5 +39,5 @@ class PlayRound extends Estado {
         
     }
 
-    override def isPlayRound(): Boolean = true
+    override def isPlayRound: Boolean = true
 }

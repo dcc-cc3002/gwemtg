@@ -11,7 +11,7 @@ package gwent
 
 import gwent.states.*
 
-class CDHAM extends States {
+class CDHAM extends Estado {
     override def CDHAM(stateofgame: StateOfGame): Unit = {
         this.stateofgame.createDecks()
         this.stateofgame.createHands()

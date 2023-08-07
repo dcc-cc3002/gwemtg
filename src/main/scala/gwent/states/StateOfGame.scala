@@ -21,6 +21,7 @@ package gwent
  *    if there are not two players alive, the program ends in the state << show winner (or draw) >>
  */
 
+import gwent.states.*
 import gwent.Player
 import gwent.board.*
 import gwent.cards.*

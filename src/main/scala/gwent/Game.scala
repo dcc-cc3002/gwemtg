@@ -5,8 +5,6 @@ import gwent.Player
 import gwent.board.*
 import gwent.cards.*
 
-import java.util.jar.Attributes.Name
-
 
 /**
  * A class representing a game of Gwent.
@@ -176,14 +174,14 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
   def nextRound(): Int = {
     var i: Int = -1
     if(this.boardPoints(this.Player1) == this.boardPoints(this.Player2)){
-      this.Player1.loseGem()
-      this.Player2.loseGem()
+      this.Player1.loseGem
+      this.Player2.loseGem
       i = 0
     } else if(this.boardPoints(this.Player1) > this.boardPoints(this.Player2)){
-      this.Player2.loseGem()
+      this.Player2.loseGem
       i = 1
     } else if (this.boardPoints(this.Player1) < this.boardPoints(this.Player2)) {
-      this.Player1.loseGem()
+      this.Player1.loseGem
       i = 2
     }
 //    else {throw new Exception("Error in nextRound")}

@@ -4,6 +4,7 @@
   * when a climate card is resolved, it applies its effect to the board
   * the effect is lasting, so it will be applied each round as long as the card is there
   */
+
 package cl.uchile.dcc
 package gwent
 
@@ -11,6 +12,8 @@ package gwent
   * anyways, the basic structure must be built
   * here it is, it does nothing
   */
+
+import gwent.states.*
 
 class ChangeBoard extends Estado {
     override def ChangeBoard(): Unit = {

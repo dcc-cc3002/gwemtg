@@ -7,6 +7,8 @@ package gwent
  *      the state CDHAM
  */
 
+import gwent.states.*
+
 class BeginGame extends Estado {
     override def BeginGame(stateofgame: StateOfGame): Unit = {
         println("Do you want to play? (y/n)")
