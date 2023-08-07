@@ -2,7 +2,8 @@ package hugodiazroa
 package gwemtg
 package cards
 
-import gwemtg.{Game, Player}
+import gwemtg.Game
+import gwemtg.Player
 import gwemtg.board.Board
 
 import java.util.Objects
@@ -45,7 +46,12 @@ trait Card {
    * aka: CMC
    * This shows how much mana is needed to play the card.
    */
-  val CMC: Int 
+  val CMC: Int
+  
+  /** effect of the card
+   * does nothing by default, but is used to be overridden by the cards that have an effect. 
+   */
+  def effect(player: Player, game: Game): Unit
   
   /** getPlayed
    * A function that puts a card into the board according to the rules of the game.
@@ -83,4 +89,5 @@ trait Card {
    * getDescription returns the description of the card
    */
   def getDescription: String
+  
 }

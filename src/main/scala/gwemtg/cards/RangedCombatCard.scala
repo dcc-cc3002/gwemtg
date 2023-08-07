@@ -64,7 +64,7 @@ class RangedCombatCard(name: String, description: String, power: Int, cmc: Int) 
    */
   override def getPlayed(player: Player, game: Game): Unit = {
     /** not the best implementation, but i want to finish the game */
-    game.RangedCombatCardEffect(this, player)
+    this.effect(player, game)
     game.addRCC(this, player)
     player.removeCard(this)
   }
@@ -110,4 +110,6 @@ class RangedCombatCard(name: String, description: String, power: Int, cmc: Int) 
    */
   override def getDescription: String = description
 
+  /** effect: does nothing */
+  override def effect: Unit = {}
 }

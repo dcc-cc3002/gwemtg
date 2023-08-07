@@ -26,12 +26,16 @@ import gwemtg.cards._
  */
 
 class Estado() {
+    /**
+     * changeState:
+     * following the state pattern, we define the way to change the state of the game
+     * this is done by changing the state of the stateofgame object
+     */
     protected def changeState(stateofgame: StateOfGame, newState: Estado): Unit = {
         stateofgame.setState(newState)
     }
 
-    //def error() = throw new Exception("Error: wrong state")
-    def error() = println("Error: wrong state")
+    private def error() = throw new Exception("Error: wrong state")
 
     def BeginGame(stateofgame: StateOfGame): Unit = error()
     def RobotVSRobot(stateofgame: StateOfGame): Unit = error()

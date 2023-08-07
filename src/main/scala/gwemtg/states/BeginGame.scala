@@ -11,6 +11,10 @@ import gwemtg.states.*
 
 class BeginGame extends Estado {
     override def BeginGame(stateofgame: StateOfGame): Unit = {
+        //todo sum 4 printing rules
+
+        //let's not implements robot vs robot for now
+        /*
         println("Do you want to play? (y/n)")
         val answer = scala.io.StdIn.readLine()
         if (answer == "y") {
@@ -21,6 +25,10 @@ class BeginGame extends Estado {
             println("Please answer with y or n")
             this.changeState(stateofgame, new BeginGame())
         }
+        */
+        this.changeState(stateofgame, new CDHAM())
     }
+
+    override def isBeginGame() = true
 
 }

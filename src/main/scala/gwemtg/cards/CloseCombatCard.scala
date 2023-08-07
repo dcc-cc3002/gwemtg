@@ -62,7 +62,7 @@ class CloseCombatCard(name: String, description: String, power: Int, cmc: Int) e
    */
   override def getPlayed(player: Player, game: Game): Unit = {
     /** not the best implementation, but i want to finish the game */
-    game.CloseCombatCardEffect(this, player)
+    this.effect(player, game)
     game.addCCC(this, player)
     player.removeCard(this)
   }
@@ -106,6 +106,8 @@ class CloseCombatCard(name: String, description: String, power: Int, cmc: Int) e
    */
   override def getDescription: String = description
 
+  /** effect: does nothing */
+  override def effect: Unit = {}
 }
 
 

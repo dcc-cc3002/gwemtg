@@ -22,16 +22,15 @@ class PlayRound extends Estado {
              * in this case the robot will play a card at random
              * and we will advance to the state << change board >>
              */
-        else if (stateofgame.getMatch.boardPoints(stateofgame.getMatch.getP1) > stateofgame.getMatch.boardPoints(stateofgame.getMatch.getP2))
+        else if (stateofgame.game.boardPoints(stateofgame.player1) > stateofgame.game.boardPoints(stateofgame.player2))
             {
-                stateofgame.getMatch.getP2
                 this.changeState(stateofgame, new ChangeBoard())
             } else {
                 /** if the robot has less potential points than the human's visible points
                  * we will make the robot pass
                  * and we will advance to the state << subtract gems >>
                  */
-                stateofgame.getMatch.nextRound()
+                stateofgame.game.nextRound()
                 this.changeState(stateofgame, new SubstractGems())
             }
 

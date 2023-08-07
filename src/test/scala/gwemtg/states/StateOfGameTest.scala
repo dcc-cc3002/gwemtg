@@ -4,6 +4,7 @@ package gwemtg
 import gwemtg.cards.*
 import gwemtg.board.*
 import gwemtg.Player
+import gwemtg.states.*
 
 import munit.*
 
@@ -111,10 +112,29 @@ class StateOfGameTest extends munit.FunSuite {
 
   }
 
+  test("play a game using the state pattern") {
+    //var estado = new Estado()
+    val safe = new StateOfGame()
+    assertEquals(safe.getState.getClass, new BeginGame().getClass)
+    safe.setState(new BeginGame())
+    assertEquals(safe.getState.getClass, new BeginGame().getClass)
+    assert(safe.isBeginGame(), "Boolean asking if it is BeginGame or not")
+    safe.BeginGame()
+    assertEquals(safe.getState.getClass, new CDHAM().getClass)
+    safe.CDHAM()
+    assertEquals(safe.getState.getClass, new PlayRound().getClass)
+    assertEquals(safe.player1.name, "human")
+    assertEquals(safe.player2.name, "robot")
+    assertEquals(safe.player1.getDeck.length, 15)
+    assertEquals(safe.player2.getDeck.length, 15)
+    assertEquals(safe.player1.getHand.length, 10)
+    assertEquals(safe.player2.getHand.length, 10)
+    assertEquals(safe.game.boardPoints(safe.player1), 0)
+    assertEquals(safe.game.boardPoints(safe.player2), 0)
+    assert(safe.game.handPoints(safe.player1) >= 0)
+    assert(safe.game.handPoints(safe.player2) >= 0)
+    assert(safe.isPlayRound())
 
-
-
-
-
+  }
 
 }

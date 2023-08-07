@@ -4,9 +4,10 @@ package gwemtg
 import gwemtg.Game
 import gwemtg.board.*
 import gwemtg.cards.*
+import gwemtg.states.*
 import munit.*
 
-class StatesTest extends munit.FunSuite{
+class EstadoTest extends munit.FunSuite{
   var troop1: CloseCombatCard = _
   var troop2: CloseCombatCard = _
   var troop3: CloseCombatCard = _
@@ -55,7 +56,13 @@ class StatesTest extends munit.FunSuite{
 
   }
 
-
+  test("create a new stateofgameobject"){
+    val estado = new Estado()
+    val safe = new StateOfGame()
+    
+    
+  }
+  
 
 
 
