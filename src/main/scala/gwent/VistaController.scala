@@ -52,10 +52,10 @@ object VistaController extends App {
   log = log :+ "Player 2 deck: " + robot.deckToString + "\n"
 
   /** we shuffle the decks and draw the hands */
-  human.shuffleDeck()
-  robot.shuffleDeck()
-  human.drawInitialHand()
-  robot.drawInitialHand()
+  human.shuffleDeck
+  robot.shuffleDeck
+  human.drawInitialHand
+  robot.drawInitialHand
 
   /** we show the hand of the human player */
   println("Your hand is: ")
