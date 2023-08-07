@@ -87,6 +87,8 @@ object Controller extends App {
   println(tablero)
   println()
   println("Humans go first against robots")
+
+  /** we start the game */
   while (human.gemCounter > 0 && robot.gemCounter > 0) {
     println("Here is your hand again, you can play a card by choosing a number.")
     println("Any other input will pass your turn.")
@@ -94,6 +96,7 @@ object Controller extends App {
     pasado = false
     val playMade: String = scala.io.StdIn.readLine()
     var cartita: Card = new WeatherCard("error","bad")
+    /** we check if the player wants to pass */
     playMade match {
       case "0" => if human.getHand.nonEmpty then {cartita = human.getHand(0)} else pasado = true
       case "1" => if human.getHand.length >= 2 then {cartita = human.getHand(1)} else pasado = true

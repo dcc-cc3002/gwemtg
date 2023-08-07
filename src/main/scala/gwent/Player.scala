@@ -46,7 +46,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    *
    * @return The card that was drawn from the deck.
    */
-  def drawCard(): Card = {
+  def drawCard: Card = {
     val card = deck.head
     _deck = deck.tail
     _hand = card :: hand
@@ -59,7 +59,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    * This is achieved by creating a new, shuffled list and reassigning _deck to it, rather
    * than by modifying the original list.
    */
-  def shuffleDeck(): Unit = {
+  def shuffleDeck: Unit = {
     _deck = scala.util.Random.shuffle(_deck)
   }
 
@@ -116,11 +116,11 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
     cardIn(carta, 0)
 
     /** baraja */
-    shuffleDeck()
+    this.shuffleDeck
   }
 
   /** funcion draw es analoga a pop y devuelve la carta robada */
-  private def draw(): Card = {
+  private def draw: Card = {
     /** carta robada */
     val h = _deck.head
 
@@ -174,7 +174,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   /** drawInitialHand
    *  function that draws a hand of 10 cards
    */
-  def drawInitialHand(): Unit = {
+  def drawInitialHand: Unit = {
     for (i <- 0 until 10) {
       val carta: Card = draw()
       _hand = carta :: _hand
@@ -185,7 +185,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    *  function that draws a hand of 3 cards
    *  used after the first round is done
    */
-  def draw3(): Unit = {
+  def draw3: Unit = {
     for (i <- 0 until 3) {
       val carta: Card = draw()
       _hand = carta :: _hand
@@ -226,5 +226,5 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   /** loseGem
    * the player loses a gem
    */
-  def loseGem(): Unit = {this.gemCounter -= 1}
+  def loseGem: Unit = {this.gemCounter -= 1}
 }

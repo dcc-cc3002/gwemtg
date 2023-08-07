@@ -11,8 +11,9 @@ class CDHAM extends States {
         stateofgame.createDecks()
         stateofgame.createHands()
         stateofgame.createMatch()
-        assert(stateofgame.getMatch().getPlayer1.getGems() == 2)
-        assert(stateofgame.getMatch().getPlayer2.getGems() == 2)
+        /** we make sure both players begin with the gems according to whats stipulated in the rules */
+        assert(stateofgame.getMatch().getP1.getGems() == 2)
+        assert(stateofgame.getMatch().getP2.getGems() == 2)
         changeState(stateofgame, new PlayRound())
     }
 
