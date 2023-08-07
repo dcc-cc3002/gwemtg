@@ -10,12 +10,13 @@ package gwent.states
   */
 
 import gwent.states.*
+import gwent.Game
 
 class CDHAM extends Estado {
     override def CDHAM(stateofgame: StateOfGame): Unit = {
-        this.stateofgame.createDecks()
-        this.stateofgame.createHands()
-        this.stateofgame.createMatch()
+        val tupla_mazos = stateofgame.createDecks
+        val tupla_manos = stateofgame.createHands
+        val juego: Game = stateofgame.createMatch()
         /** we make sure both players begin with the gems according to whats stipulated in the rules */
         assert(stateofgame.getMatch().getP1.getGems() == 2)
         assert(stateofgame.getMatch().getP2.getGems() == 2)

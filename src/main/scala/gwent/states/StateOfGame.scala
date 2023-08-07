@@ -1,5 +1,6 @@
 package cl.uchile.dcc
-package gwent.states
+package gwent
+package states
 
 /**
  * in this file we define the state of the game
@@ -24,12 +25,12 @@ package gwent.states
 import gwent.states.*
 import gwent.Player
 import gwent.board.*
-import gwent.cards.*
+//import gwent.cards.*
 
 class StateOfGame {
     private var state: Estado = new BeginGame
     private var log: List[Estado] = List()
-    
+
     private var player1: Player = _
     private var player2: Player = _
     private var board: Board = _
@@ -57,7 +58,7 @@ class StateOfGame {
     def isPlayRound: Boolean = Estado.isPlayRound(this)
     def isGameFinished: Boolean = Estado.isGameFinished(this)
 
-    /** 
+    /**
      * createDecks
      * this method is in charge of creating the decks
      * it is accomplished by calling the class DeckBuilder
@@ -67,10 +68,10 @@ class StateOfGame {
         val deck1 = deck_builder.buildDeck()
         val deck2 = deck_builder.buildDeck()
         (deck1, deck2)
-    } 
-    
-    /** 
-     * createHands 
+    }
+
+    /**
+     * createHands
      * this method is in charge of creating the hands
      */
     def createHands(): (List[Card], List[Card]) = {
@@ -78,7 +79,7 @@ class StateOfGame {
         val hand2 = List()
         (hand1, hand2)
     }
-    
+
     /**
      * this method is used to initialize the game
      * player1: the first player
@@ -89,8 +90,8 @@ class StateOfGame {
      * @param hand2 the hand of the second player
      * @param board the board of the game
      * game: the game
-     * 
-     * @return the game 
+     *
+     * @return the game
      */
     def createMatch(deck1: List[Card], deck2: List[Card], hand1: List[Card], hand2: List[Card], board: Board, game: Game): Game = {
         this.player1 = new Player("human", 2, deck1, hand1)
@@ -98,13 +99,13 @@ class StateOfGame {
         this.board = new Board()
         this.game = new Game(this.board, player1, player2)
         this.game
-    } 
-    
-    
-    /** 
+    }
+
+
+    /**
      * getMatch
      * this method is in charge of retrieving the match from the StateOfGame class that is in charge of the game
      */
     def getMatch: Game = this.game
-    
+
 }
