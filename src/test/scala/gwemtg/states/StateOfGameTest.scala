@@ -59,17 +59,17 @@ class StateOfGameTest extends munit.FunSuite {
   var partida: Game = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    troop1 = new CloseCombatCard("troop1", "pedro", 1)
-    troop2 = new CloseCombatCard("troop2", "pablo", 2)
-    troop3 = new CloseCombatCard("troop3", "jose", 3)
+    troop1 = new CloseCombatCard("troop1", "pedro", 1, 1)
+    troop2 = new CloseCombatCard("troop2", "pablo", 2, 2)
+    troop3 = new CloseCombatCard("troop3", "jose", 3, 3)
 
-    ranged1 = new RangedCombatCard("ranged1", "eliana", 1)
-    ranged2 = new RangedCombatCard("ranged2", "maria", 2)
-    ranged3 = new RangedCombatCard("ranged3", "alia", 3)
+    ranged1 = new RangedCombatCard("ranged1", "eliana", 1, 1)
+    ranged2 = new RangedCombatCard("ranged2", "maria", 2, 2)
+    ranged3 = new RangedCombatCard("ranged3", "alia", 3, 3)
 
-    catapult1 = new SiegeCombatCard("catapult1", "isis", 1)
-    catapult2 = new SiegeCombatCard("catapult2", "dracula", 2)
-    catapult3 = new SiegeCombatCard("catapult3", "atenea", 3)
+    catapult1 = new SiegeCombatCard("catapult1", "isis", 1, 1)
+    catapult2 = new SiegeCombatCard("catapult2", "dracula", 2, 2)
+    catapult3 = new SiegeCombatCard("catapult3", "atenea", 3, 3)
 
     jugador1 = new Player("Hugo", 2, List(troop1, troop3, ranged1, ranged3, catapult1, catapult3), List(troop2, ranged2, catapult2))
     jugador2 = new Player("Lya", 2, List(), List())
