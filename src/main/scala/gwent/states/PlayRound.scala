@@ -29,6 +29,7 @@ class PlayRound extends States {
                  * we will make the robot pass
                  * and we will advance to the state << subtract gems >>
                  */
+                stateofgame.getMatch.nextRound()
                 changeState(stateofgame, new SubstractGems())
             }
 

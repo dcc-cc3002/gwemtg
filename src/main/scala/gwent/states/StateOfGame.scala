@@ -40,7 +40,9 @@ class StateOfGame {
     def PlayRound(): Unit = State.PlayRound(this)
     def SubstractGems(): Unit = State.SubstractGems(this)
     def ChangeBoard(): Unit = State.ChangeBoard(this)
-    def ShowResult(): Unit = State.ShowResult(this)
+    def Draw(): Unit = State.Draw(this)
+    def P1Win(): Unit = State.ShowResult(this)
+    def P2Win(): Unit = State.ShowResult(this)
 
     def isBeginGame(): Boolean = State.isBeginGame(this)
     def isRobotVSRobot(): Boolean = State.isRobotVSRobot(this)
