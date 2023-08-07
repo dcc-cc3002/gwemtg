@@ -54,7 +54,7 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
     {
         board.p2m.data = card :: board.p2m.data
     } 
-//    else {throw new Exception("Player not found")}
+    else {throw new Exception("Player not found")}
   }
 
 
@@ -71,8 +71,9 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
     {
       board.p2r.data = card :: board.p2r.data
     } 
-//    else {throw new Exception("Player not found")}
+    else {throw new Exception("Player not found")}
   }
+
   /** addSCC
    * adds a siege combat card to the board
    */
@@ -85,8 +86,9 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
     {
       board.p2s.data = card :: board.p2s.data
     }
-//    else {throw new Exception("Player not found")}
+    else {throw new Exception("Player not found")}
   }
+
   /** addWC
    * swaps the weather card of the board
    */

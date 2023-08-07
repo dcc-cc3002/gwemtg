@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent
 
+import gwent.cards.*
+
 /**
  * in this file we define the state of the game
  * the state of the game is defined by the following:
@@ -21,12 +23,12 @@ package gwent
  *    if there are not two players alive, the program ends in the state << show winner (or draw) >>
  */
 
-class States {
-    protected def changeState(stateofgame: StateOfGame, newState: State): Unit = {
+class Estado {
+    protected def changeState(stateofgame: StateOfGame, newState: Estado): Unit = {
         stateofgame.setState(newState)
     }
 
-    def error() = throw new Exception("Error: wrong state")
+    private def error() = throw new Exception("Error: wrong state")
 
     def BeginGame(stateofgame: StateOfGame): Unit = error()
     def RobotVSRobot(stateofgame: StateOfGame): Unit = error()
@@ -36,8 +38,8 @@ class States {
     def ChangeBoard(stateofgame: StateOfGame): Unit = error()
     def ShowResult(stateofgame: StateOfGame): Unit = error()
 
-    def isBeginGame(): Boolean = false
-    def isRobotVSRobot(): Boolean = false
-    def isPlayRound(): Boolean = false
-    def isGameFinished(): Boolean = false
+    def isBeginGame: Boolean = false
+    def isRobotVSRobot: Boolean = false
+    def isPlayRound: Boolean = false
+    def isGameFinished: Boolean = false
 }

@@ -1,10 +1,13 @@
+package cl.uchile.dcc
+package gwent
+
 /** in this state we override the method BeginGame, 
  *   so that it advances to either:
  *      the state RobotVSRobot
  *      the state CDHAM
  */
 
-class BeginGame extends States {
+class BeginGame extends Estado {
     override def BeginGame(stateofgame: StateOfGame): Unit = {
         println("Do you want to play? (y/n)")
         val answer = scala.io.StdIn.readLine()

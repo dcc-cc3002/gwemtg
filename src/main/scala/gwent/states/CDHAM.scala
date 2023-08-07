@@ -1,3 +1,6 @@
+package cl.uchile.dcc
+package gwent
+
 /**
   * CDHAM: Create Decks, Hands, and Match
   * in this state we override the method CDHAM 

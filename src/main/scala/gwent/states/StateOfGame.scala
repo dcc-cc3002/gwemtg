@@ -24,29 +24,29 @@ package gwent
 
 
 class StateOfGame {
-    private var state: State = new BeginGame
-    private var log: List[State] = List()
+    private var state: Estado = new BeginGame
+    private var log: List[Estado] = List()
 
-    def getState(): State = state
-    def setState(newState: State): Unit = {
+    def getState: Estado = state
+    def setState(newState: Estado): Unit = {
         state = newState
         log = log :+ state
     }
 
 
-    def BeginGame(): Unit = State.BeginGame(this)
-    def RobotVSRobot(): Unit = State.RobotVSRobot(this)
-    def CDHAM(): Unit = State.CDHAM(this)
-    def PlayRound(): Unit = State.PlayRound(this)
-    def SubstractGems(): Unit = State.SubstractGems(this)
-    def ChangeBoard(): Unit = State.ChangeBoard(this)
-    def Draw(): Unit = State.Draw(this)
-    def P1Win(): Unit = State.ShowResult(this)
-    def P2Win(): Unit = State.ShowResult(this)
+    def BeginGame(): Unit = Estado.BeginGame(this)
+    def RobotVSRobot(): Unit = Estado.RobotVSRobot(this)
+    def CDHAM(): Unit = Estado.CDHAM(this)
+    def PlayRound(): Unit = Estado.PlayRound(this)
+    def SubstractGems(): Unit = Estado.SubstractGems(this)
+    def ChangeBoard(): Unit = Estado.ChangeBoard(this)
+    def Draw(): Unit = Estado.Draw(this)
+    def P1Win(): Unit = Estado.ShowResult(this)
+    def P2Win(): Unit = Estado.ShowResult(this)
 
-    def isBeginGame(): Boolean = State.isBeginGame(this)
-    def isRobotVSRobot(): Boolean = State.isRobotVSRobot(this)
-    def isPlayRound(): Boolean = State.isPlayRound(this)
-    def isGameFinished(): Boolean = State.isGameFinished(this)
+    def isBeginGame: Boolean = Estado.isBeginGame(this)
+    def isRobotVSRobot: Boolean = Estado.isRobotVSRobot(this)
+    def isPlayRound: Boolean = Estado.isPlayRound(this)
+    def isGameFinished: Boolean = Estado.isGameFinished(this)
 
 }
