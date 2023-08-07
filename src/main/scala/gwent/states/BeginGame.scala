@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent
+package gwent.states
 
 /** in this state we override the method BeginGame, 
  *   so that it advances to either:

@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent
+package gwent.states
 
 /**
   * CDHAM: Create Decks, Hands, and Match

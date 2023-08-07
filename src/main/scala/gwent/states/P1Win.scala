@@ -1,4 +1,6 @@
 package cl.uchile.dcc
 package gwent.states
 
-class ShowResult extends Estado{}
+class P1Win extends Estado {
+
+}

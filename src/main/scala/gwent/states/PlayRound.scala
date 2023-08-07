@@ -1,6 +1,5 @@
 package cl.uchile.dcc
-package gwent
-
+package gwent.states
 /**
   * PlayRound is a state that represents the state of playing a round in the game.
   * In this state we override the method PlayRound, so that it advances to either: 
@@ -21,7 +20,7 @@ class PlayRound extends Estado {
              * in this case the robot will play a card at random
              * and we will advance to the state << change board >>
              */
-        else if (stateofgame.getMatch.boardPoints(stateofgame.getMatch.getPlayer1) > stateofgame.getMatch().boardPoints(stateofgame.getMatch.getPlayer2))
+        else if (stateofgame.getMatch.boardPoints(stateofgame.getMatch.getP1) > stateofgame.getMatchboardPoints(stateofgame.getMatch.getP2))
             {
                 stateofgame.getMatch.getP2
                 this.changeState(stateofgame, new ChangeBoard())

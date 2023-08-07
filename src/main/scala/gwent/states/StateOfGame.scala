@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent
+package gwent.states
 
 /**
  * in this file we define the state of the game

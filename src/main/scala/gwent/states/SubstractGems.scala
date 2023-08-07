@@ -1,5 +1,6 @@
 package cl.uchile.dcc
 package gwent
+package states
 
 /**
   * in this state it is answered the question weahter there are alive players or not
