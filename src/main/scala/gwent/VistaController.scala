@@ -23,7 +23,7 @@ import gwent.board.*
  * This generates a log of the game, that can be used to replay the game.
  *
  */
-object Controller extends App {
+object VistaController extends App {
   val rand = new scala.util.Random
   private var log: List[String] = List()
   private var pasado: Boolean = false
@@ -52,10 +52,10 @@ object Controller extends App {
   log = log :+ "Player 2 deck: " + robot.deckToString + "\n"
 
   /** we shuffle the decks and draw the hands */
-  human.shuffleDeck()
-  robot.shuffleDeck()
-  human.drawInitialHand()
-  robot.drawInitialHand()
+  human.shuffleDeck
+  robot.shuffleDeck
+  human.drawInitialHand
+  robot.drawInitialHand
 
   /** we show the hand of the human player */
   println("Your hand is: ")
