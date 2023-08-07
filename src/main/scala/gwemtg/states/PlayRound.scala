@@ -7,6 +7,8 @@ package gwemtg.states
   * if there is a player that does not pass, the game advances to the state << change board >>  
   */
 
+import gwemtg.states.*
+
 class PlayRound extends Estado {
     override def PlayRound(stateofgame: StateOfGame): Unit = {
         println("Do you want to play a card? select the index of the card you want to play, or to pass press enter")

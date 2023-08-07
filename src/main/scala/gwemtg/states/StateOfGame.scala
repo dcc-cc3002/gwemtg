@@ -43,21 +43,21 @@ class StateOfGame() {
         log = log :+ state
     }
 
-    def BeginGame(): Unit = Estado BeginGame this
-    def RobotVSRobot(): Unit = Estado RobotVSRobot this
-    def CDHAM(): Unit = Estado CDHAM this
-    def PlayRound(): Unit = Estado PlayRound this
-    def SubstractGems(): Unit = Estado SubstractGems this
-    def ChangeBoard(): Unit = Estado ChangeBoard this
-    def Draw(): Unit = Estado Draw this
-    def P1Win(): Unit = Estado P1Win this
-    def P2Win(): Unit = Estado P2Win this
-    def ShowResult(): Unit = Estado ShowResult this
+    def BeginGame(): Unit = state BeginGame this
+    def RobotVSRobot(): Unit = state RobotVSRobot this
+    def CDHAM(): Unit = state CDHAM this
+    def PlayRound(): Unit = state PlayRound this
+    def SubstractGems(): Unit = state SubstractGems this
+    def ChangeBoard(): Unit = state ChangeBoard this
+    def Draw(): Unit = state Draw this
+    def P1Win(): Unit = state P1Win this
+    def P2Win(): Unit = state P2Win this
+    def ShowResult(): Unit = state ShowResult this
 
-    def isBeginGame(): Boolean = Estado.isBeginGame()
-    def isRobotVSRobot(): Boolean = Estado.isRobotVSRobot()
-    def isPlayRound(): Boolean = Estado.isPlayRound()
-    def isGameFinished(): Boolean = Estado.isGameFinished()
+    def isBeginGame(): Boolean = state.isBeginGame()
+    def isRobotVSRobot(): Boolean = state.isRobotVSRobot()
+    def isPlayRound(): Boolean = state.isPlayRound()
+    def isGameFinished(): Boolean = state.isGameFinished()
 
 
 

@@ -44,8 +44,11 @@ class Estado() {
     def P1Win(stateofgame: StateOfGame): Unit = error()
     def P2Win(stateofgame: StateOfGame): Unit = error()
 
-    def isBeginGame(stateofgame: StateOfGame): Boolean = false
-    def isRobotVSRobot(stateofgame: StateOfGame): Boolean = false
-    def isPlayRound(stateofgame: StateOfGame): Boolean = false
-    def isGameFinished(stateofgame: StateOfGame): Boolean = false
+    def isBeginGame(): Boolean = false
+
+    def isRobotVSRobot(): Boolean = false
+
+    def isPlayRound(): Boolean = false
+
+    def isGameFinished(): Boolean = false
 }

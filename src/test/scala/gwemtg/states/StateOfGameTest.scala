@@ -7,7 +7,7 @@ import gwemtg.Player
 
 import munit.*
 
-class GameTest extends munit.FunSuite {
+class StateOfGameTest extends munit.FunSuite {
 
   var tablero1: Board = new Board()
   var tablero2: Board = _
