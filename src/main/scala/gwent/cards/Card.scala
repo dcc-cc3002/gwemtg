@@ -40,6 +40,12 @@ trait Card {
    * This is an immutable property.
    */
   val description: String
+
+  /** Converted Mana Cost of the card.
+   * aka: CMC
+   * This is an immutable property.
+   */
+  val CMC: Int
   
   /** getPlayed
    * A function that puts a card into the board according to the rules of the game.
@@ -49,6 +55,7 @@ trait Card {
    * Here we use double dispatch where the player is the one who calls the function and the board is the observed object.
    */
   def getPlayed(player: Player, game: Game): Unit
+  
   /** toString 
    * function that returns a string with the information of the card.
    * this function is used to print the card in the console for playing players to see.
@@ -65,4 +72,9 @@ trait Card {
    * this gets the current power of a given card
    */
   def getPower: Int
+
+  /** getManaCost
+   * this gets the mana cost of a given card
+   */
+  def getCMC: Int
 }

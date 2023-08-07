@@ -23,7 +23,7 @@ import java.util.Objects
  * @version 1.1
  * @since 1.0
  */
-class SiegeCombatCard(name: String, description: String, power: Int)
+class SiegeCombatCard(name: String, description: String, power: Int, cmc: Int)
   extends AbstractUnitCard(name, description, power){
 
 
@@ -37,6 +37,12 @@ class SiegeCombatCard(name: String, description: String, power: Int)
    * this is what would be printed on the card in a physical game.
    */
   private val originalPower: Int = power
+
+  /** The converted mana cost of the card.
+   * aka: CMC
+   * This shows how much mana is needed to play the card.
+   */
+  private val CMC: Int = cmc
 
   /** Checks if two objects belong to the class SiegeCombatCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[SiegeCombatCard]
@@ -79,6 +85,11 @@ class SiegeCombatCard(name: String, description: String, power: Int)
    * getName returns the name of the card
    */
   override def getName: String = {name}
+
+  /** getCMC
+   * getCMC returns the mana cost of the card
+   */
+  override def getCMC: Int = {CMC}
 
   /** setPower  
    * setPower is a setter function for the currentPower of the card.

@@ -23,7 +23,7 @@ import java.util.Objects
  * @version 1.1
  * @since 1.0
  */
-class RangedCombatCard(name: String, description: String, power: Int) extends AbstractUnitCard(name, description, power) {
+class RangedCombatCard(name: String, description: String, power: Int, cmc: Int) extends AbstractUnitCard(name, description, power) {
   /** The current power of the card, which may be affected by various conditions during
    * gameplay.
    * Initially set to the base [[power]] of the card.
@@ -34,6 +34,13 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
    * this is what would be printed on the card in a physical game.
    */
   private val originalPower: Int = power
+
+  /** The converted mana cost of the card.
+   * aka: CMC
+   * This shows how much mana is needed to play the card.
+   */
+  private val CMC: Int = cmc
+
   /** Checks if two objects belong to the class RangedCombatCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[RangedCombatCard]
 
@@ -78,6 +85,11 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
    */
   override def getName: String = {name}
 
+  /** getCMC
+   * getCMC returns the mana cost of the card
+   */
+  override def getCMC: Int = {CMC}
+  
   /** setPower  
    * setPower is a setter function for the currentPower of the card.
    */
@@ -85,6 +97,7 @@ class RangedCombatCard(name: String, description: String, power: Int) extends Ab
     currentPower = newPower
   }
 
+  
   /** Getter for the [[originalPower]] of the card.
    *
    * @return The [[originalPower]] of the card.

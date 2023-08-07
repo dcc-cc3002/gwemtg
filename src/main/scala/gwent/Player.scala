@@ -27,13 +27,16 @@ import java.util.Objects
  * @since 1.0
  */
 class Player(val name: String, var gemCounter: Int, private var _deck: List[Card],
-             private var _hand: List[Card]) {
+             private var _hand: List[Card], private var _mana_pool: Int = 4) extends Equals {
 
   /** Accessor method for the player's deck */
   def deck: List[Card] = _deck
 
   /** Accessor method for the player's hand */
   private def hand: List[Card] = _hand
+
+  /** Accessor method for the player's mana pool */
+  def manaPool: Int = _mana_pool
 
   /** Draws a card from the deck and adds it to the hand.
    *
