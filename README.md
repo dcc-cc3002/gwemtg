@@ -19,7 +19,7 @@ There are four types of cards:
 
 The game is played by two players. In this iteration of the development of the game the only implementaion of the code we will only cover the case of a  match between a human and a robot ~todo: robot v robot~
 
-Under this rules, the human player is the one who starts the game and the computer player is the one who responds to the human player's actions. The game is played in turns, where each player can play a card or pass.  The first round players draw 10 cards, then 3 cards at the beginning of each round. ~The player who starts is always the human.~ 
+Under this rules, the human player is the one who starts the game and the computer player is the one who responds to the human player's actions. The game is played in turns, where each player can play a card or pass.  The first round players draw 10 cards, then 3 cards at the beginning of each round. ~The player who starts is always the human.~
 
 A round ends when both players pass. The player who wins the round is the one who has the highest power. If both players have the same power, the round ends in a draw. The loser of a round starts the next round and loses a gem.
 
@@ -36,7 +36,6 @@ The game is played over a board which is divided into seven rows,
    • The siege row, for each player
 
 Each player has a deck of cards which contains 25 cards. Each card has a name a converted mana cost and a description ~todo: change description to oracle "pattern"??~. Unit cards also have power.
-
 
 ## How to run the game
 
