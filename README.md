@@ -45,15 +45,15 @@ Each player has a deck of cards which contains 25 cards. Each card has a name a 
 
 ![State diagram](https://github.com/dcc-cc3002/gwemtg/assets/16340209/ac5272fb-d807-4a98-af4e-5dff1f074e1c)
 
+## Context
+
+This project's goal is to create a (simplified) clone of the
+[Gwent](https://www.playgwent.com/en/) card game developed by [_CD PROJEKT RED_](https://cdprojektred.com/en/) with some influence fron the original trading card game, Magic: the Gathering developed by [Wizards of the Coast](https://company.wizards.com/en)
+
+## License
+
 ![http://creative![Creative Commons logo]()
 commons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png)
 
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
-
-## Context
-
-This project's goal is to create a (simplified) clone of the
-[Gwent](https://www.playgwent.com/en/) card game developed by 
-[_CD PROJEKT RED_](https://cdprojektred.com/en/) with some influence fron the original trading card game, Magic: the Gathering developed by 
-[Wizards of the Coast](https://company.wizards.com/en)
