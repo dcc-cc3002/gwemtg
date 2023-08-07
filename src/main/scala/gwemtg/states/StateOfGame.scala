@@ -28,7 +28,7 @@ import gwemtg.Player
 import gwemtg.board.Board
 import gwemtg.DeckBuilder
 
-class StateOfGame {
+class StateOfGame() {
     private var state: Estado = new BeginGame()
     private var log: List[Estado] = List()
 
