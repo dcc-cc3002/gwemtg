@@ -31,17 +31,17 @@ class PlayerTest extends munit.FunSuite{
 
 
   override def beforeEach(context: BeforeEach): Unit = {
-    troop1 = new CloseCombatCard("troop1", "pedro", 1)
-    troop2 = new CloseCombatCard("troop2", "pablo", 2)
-    troop3 = new CloseCombatCard("troop3", "jose", 3)
+    troop1 = new CloseCombatCard("troop1", "pedro", 1, 1)
+    troop2 = new CloseCombatCard("troop2", "pablo", 2, 2)
+    troop3 = new CloseCombatCard("troop3", "jose", 3, 3)
 
-    ranged1 = new RangedCombatCard("ranged1", "eliana", 1)
-    ranged2 = new RangedCombatCard("ranged2", "maria", 2)
-    ranged3 = new RangedCombatCard("ranged3", "alia", 3)
+    ranged1 = new RangedCombatCard("ranged1", "eliana", 1, 1)
+    ranged2 = new RangedCombatCard("ranged2", "maria", 2, 2)
+    ranged3 = new RangedCombatCard("ranged3", "alia", 3, 3)
 
-    catapult1 = new SiegeCombatCard("catapult1", "isis", 1)
-    catapult2 = new SiegeCombatCard("catapult2", "dracula", 2)
-    catapult3 = new SiegeCombatCard("catapult3", "atenea", 3)
+    catapult1 = new SiegeCombatCard("catapult1", "isis", 1, 1)
+    catapult2 = new SiegeCombatCard("catapult2", "dracula", 2, 2)
+    catapult3 = new SiegeCombatCard("catapult3", "atenea", 3, 3)
 
     climate1 = new WeatherCard("climate1", "lluvia")
     climate2 = new WeatherCard("climate2", "nieve")
@@ -102,7 +102,7 @@ class PlayerTest extends munit.FunSuite{
 
   test("anxadir una carta en la posicion 1 del mazo deberia quedar segunda") {
     assertEquals(jugador.deck.size, 6, "mazo de distinto tamanxo al esperado")
-    jugador.cardIn(troop2, 1)
+    jugador.cardIn(troop2, 1, 1)
     assertEquals(jugador.deck.size, 7, "mazo de distinto tamanxo al esperado")
     assertEquals(jugador.deck(1), troop2, "la carta fue anxadida en el indice 1")
     assertEquals(jugador.deck, List(troop1, troop2, troop3, ranged1, ranged3, catapult1, catapult3), "los mazos no coinciden")
@@ -112,7 +112,7 @@ class PlayerTest extends munit.FunSuite{
     assertEquals(jugador.deck.length, 6, "mazo de distinto tamanxo al esperado")
     jugador.cardIn(troop2, -2)
     assertEquals(jugador.deck.length, 7, "mazo de distinto tamanxo al esperado")
-    assertEquals(jugador.deck(jugador.deck.length - 2), troop2, "la carta no fue anxadida en el indice -2")
+    assertEquals(jugador.deck(jugador.deck.length - 2, 2), troop2, "la carta no fue anxadida en el indice -2")
     assertEquals(jugador.deck, List(troop1, troop3, ranged1, ranged3, catapult1, troop2, catapult3), "los mazos no coinciden")
   }
 
@@ -191,7 +191,7 @@ class PlayerTest extends munit.FunSuite{
     assertEquals(jugador.getHand, List(ranged2, catapult2, climate2))
   }
   test("deckToString and hand print"){
-//    assertEquals(jugador.deckToString, "CloseCombatCard: troop1, pedro, 1 CloseCombatCard: troop3, jose, 3 RangedCombatCard: ranged1, eliana, 1 RangedCombatCard: ranged3, alia, 3 SiegeCombatCardcatapult1, isis, 1 SiegeCombatCardcatapult3, atenea, 3\n")
+//  assertEquals(jugador.deckToString, "CloseCombatCard: troop1, pedro, 1 CloseCombatCard: troop3, jose, 3 RangedCombatCard: ranged1, eliana, 1 RangedCombatCard: ranged3, alia, 3 SiegeCombatCardcatapult1, isis, 1 SiegeCombatCardcatapult3, atenea, 3\n")
 //  values are not equal even if they have the same `toString()`: CloseCombatCard: troop1, pedro, 1 CloseCombatCard: troop3, jose, 3 RangedCombatCard: ranged1, eliana, 1 RangedCombatCard: ranged3, alia, 3 SiegeCombatCardcatapult1, isis, 1 SiegeCombatCardcatapult3, atenea, 3
     assertEquals(jugador2.deckToString, "\n")
     assertEquals(jugador2.handPrint, "\n")
