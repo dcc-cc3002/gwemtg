@@ -5,6 +5,7 @@ package gwemtg.cards
 import gwemtg.cards.*
 import gwemtg.Game
 import gwemtg.Player
+import gwemtg.board.*
 import munit.*
 
 class CloseCombatCardTest extends munit.FunSuite  {
@@ -57,7 +58,7 @@ class CloseCombatCardTest extends munit.FunSuite  {
   }
 
   test("test for equals") {
-    val tropauno: CloseCombatCard = new CloseCombatCard("troop1", "pedro", 1)
+    val tropauno: CloseCombatCard = new CloseCombatCard("troop1", "pedro", 1,1)
     assertEquals(troop1, tropauno, "two cards with the same name, description and power should be equal")
     assertNotEquals(troop1, troop2, "two cards with different name, description or power should not be equal")
     assertEquals(troop1, troop1, "a card should be equal to itself")
@@ -66,7 +67,7 @@ class CloseCombatCardTest extends munit.FunSuite  {
   }
 
   test("test for hashcode") {
-    val tropauno: CloseCombatCard = new CloseCombatCard("troop1", "pedro", 1)
+    val tropauno: CloseCombatCard = new CloseCombatCard("troop1", "pedro", 1, 1)
     assertEquals(troop1.hashCode(), tropauno.hashCode(), "two cards with the same name, description and power should have the same hashcode")
     assertNotEquals(troop1.hashCode(), troop2.hashCode(), "two cards with different name, description or power should not have the same hashcode")
     assertEquals(troop1.hashCode(), troop1.hashCode(), "a card should have the same hashcode as itself")

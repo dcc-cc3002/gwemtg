@@ -5,6 +5,7 @@ package gwemtg.cards
 import gwemtg.cards.*
 import gwemtg.Game
 import gwemtg.Player
+import gwemtg.board.*
 import munit.*
 
 class RangedCombatCardTest extends munit.FunSuite  {
@@ -57,14 +58,14 @@ var troop1: CloseCombatCard = _
   }
 
   test("test for equals") {
-    val arquerouno: RangedCombatCard = new RangedCombatCard("ranged1", "eliana", 1)
+    val arquerouno: RangedCombatCard = new RangedCombatCard("ranged1", "eliana", 1, 1)
     assertEquals(ranged1, arquerouno, "two cards with the same name, description and power should be equal")
     assertNotEquals(ranged1, ranged2, "two cards with different name, description or power should not be equal")
     assertEquals(ranged1, ranged1, "a card should be equal to itself")
   }
 
   test("test for hashcode") {
-    val arquerouno: RangedCombatCard = new RangedCombatCard("ranged1", "eliana", 1)
+    val arquerouno: RangedCombatCard = new RangedCombatCard("ranged1", "eliana", 1, 1)
     assertEquals(ranged1.hashCode(), arquerouno.hashCode(), "two cards with the same name, description and power should have the same hashcode")
     assertNotEquals(ranged1.hashCode(), ranged2.hashCode(), "two cards with different name, description or power should not have the same hashcode")
     assertEquals(ranged1.hashCode(), ranged1.hashCode(), "a card should have the same hashcode as itself")

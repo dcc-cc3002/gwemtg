@@ -5,6 +5,7 @@ package gwemtg.cards
 import gwemtg.cards.*
 import gwemtg.Game
 import gwemtg.Player
+import gwemtg.board.*
 import munit.*
 
 class SiegeCombatCardTest extends munit.FunSuite {
@@ -58,14 +59,14 @@ class SiegeCombatCardTest extends munit.FunSuite {
 
   
   test("test for equals") {
-    val catapultauno: SiegeCombatCard = new SiegeCombatCard("catapult1", "isis", 1)
+    val catapultauno: SiegeCombatCard = new SiegeCombatCard("catapult1", "isis", 1, 1)
     assertEquals(catapult1, catapultauno, "two cards with the same name, description and power should be equal")
     assertNotEquals(catapult1, catapult2, "two cards with different name, description or power should not be equal")
     assertEquals(catapult1, catapult1, "a card should be equal to itself")
   }
 
   test("test for hashcode") {
-    val catapultauno: SiegeCombatCard = new SiegeCombatCard("catapult1", "isis", 1)
+    val catapultauno: SiegeCombatCard = new SiegeCombatCard("catapult1", "isis", 1, 1)
     assertEquals(catapult1.hashCode(), catapultauno.hashCode(), "two cards with the same name, description and power should have the same hashcode")
     assertNotEquals(catapult1.hashCode(), catapult2.hashCode(), "two cards with different name, description or power should not have the same hashcode")
     assertEquals(catapult1.hashCode(), catapult1.hashCode(), "a card should have the same hashcode as itself")
