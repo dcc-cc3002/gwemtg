@@ -1,4 +1,9 @@
 >>> -1. mini tasks
+
+cards: add mana
+rules: add mana
+README.md: add mana
+
 tests para states
 1) en sogT poner un juego nuevo
 2) en states test jugar un juego entero 
