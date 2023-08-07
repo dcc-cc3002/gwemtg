@@ -39,7 +39,7 @@ The game is played over a board which is divided into seven rows,
 
    • The siege row, for each player
 
-Each player has a deck of cards which contains 25 cards. Each card has a name and a description ~todo: change description to oracle pattern??~. Unit cards also have power. 
+Each player has a deck of cards which contains 25 cards. Each card has a name a converted mana cost and a description ~todo: change description to oracle "pattern"??~. Unit cards also have power. 
 
 
 
