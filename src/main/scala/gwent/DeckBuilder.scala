@@ -26,13 +26,13 @@ class DeckBuilder {
     val goblinKing: CloseCombatCard = CloseCombatCard("Goblin King", "refuerzo_moral", 3, 3)
     val battleCryGoblin: CloseCombatCard = CloseCombatCard("Battle Cry Goblin", "refuerzo_moral", 2, 2)
     
-    val yen: RangedCombatCard = RangedCombatCard("Yen", "vainilla", 6 , 5)
-    val ciri: RangedCombatCard = RangedCombatCard("Ciri", "vainilla", 4, 3)
-    val yenneferOfVengerberg: RangedCombatCard = RangedCombatCard("Yennefer of Vengerberg", "refuerzo_moral", 3, 3)
+    val orgg: RangedCombatCard = RangedCombatCard("Orgg", "vainilla", 6 , 5)
+    val fogElemental: RangedCombatCard = RangedCombatCard("Fog Elemental", "vainilla", 4, 3)
+    val warlordsElite: RangedCombatCard = RangedCombatCard("Warlord's Elite", "refuerzo_moral", 3, 3)
 
-    val lambert: SiegeCombatCard = SiegeCombatCard("Lambert", "vainilla", 6, 5)
-    val vesemir: SiegeCombatCard = SiegeCombatCard("Vesemir", "vinculo_estrecho", 5, 5)
-    val dandelion: SiegeCombatCard = SiegeCombatCard("Dandelion", "vinculo_estrecho", 3, 3)
+    val huntedDragon: SiegeCombatCard = SiegeCombatCard("Hunted Dragon", "vainilla", 6, 5)
+    val atogatog: SiegeCombatCard = SiegeCombatCard("Atogatog", "vinculo_estrecho", 5, 5)
+    val emperorMihailII: SiegeCombatCard = SiegeCombatCard("Emperor Mihail II", "vinculo_estrecho", 3, 3)
     
     /** 5 ClimateCards para el juego */
     val bitingFrost: WeatherCard = new WeatherCard("Escarcha mordiente", "Convierte el valor de fuerza de todas las cartas de melee a 1")
@@ -42,7 +42,7 @@ class DeckBuilder {
     val commanderHorn: WeatherCard = new WeatherCard("Cuerno del Comandante", "Dobla la fuerza de todas las unidades de una fila propia al azar.")
 
     /** list of cards in this, the first version of gwent */
-    val coleccion: List[Card] = List(geraltOfRivia, yenneferOfVengerberg, ciri, vesemir, dandelion, trissMerigold, yen, eskel, lambert, zoltanChivay, bitingFrost, impenetrableFog, torrentialRain, clearWeather, commanderHorn)
+    val coleccion: List[Card] = List(vorstclaw, grizzledOutrider, goblinKing, battleCryGoblin, orgg, fogElemental, warlordsElite, huntedDragon, atogatog, emperorMihailII, bitingFrost, impenetrableFog, torrentialRain, clearWeather, commanderHorn)
 
     for (i <- 1 to 25) {
       output = output :+ coleccion(rand.nextInt(coleccion.length))
