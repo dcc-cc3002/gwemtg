@@ -25,7 +25,7 @@ package states
 import gwent.states.*
 import gwent.Player
 import gwent.board.*
-//import gwent.cards.*
+import gwent.cards.*
 
 class StateOfGame {
     private var state: Estado = new BeginGame
@@ -63,7 +63,7 @@ class StateOfGame {
      * this method is in charge of creating the decks
      * it is accomplished by calling the class DeckBuilder
      */
-    def createDecks(): (List[Card], List[Card]) = {
+    def createDecks: (List[Card], List[Card]) = {
         val deck_builder = new DeckBuilder()
         val deck1 = deck_builder.buildDeck()
         val deck2 = deck_builder.buildDeck()
@@ -74,7 +74,7 @@ class StateOfGame {
      * createHands
      * this method is in charge of creating the hands
      */
-    def createHands(): (List[Card], List[Card]) = {
+    def createHands: (List[Card], List[Card]) = {
         val hand1 = List()
         val hand2 = List()
         (hand1, hand2)

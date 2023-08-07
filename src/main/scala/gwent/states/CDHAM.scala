@@ -1,5 +1,6 @@
 package cl.uchile.dcc
-package gwent.states
+package gwent
+package states
 
 /**
   * CDHAM: Create Decks, Hands, and Match
@@ -11,12 +12,15 @@ package gwent.states
 
 import gwent.states.*
 import gwent.Game
+import gwent.board.Board
 
 class CDHAM extends Estado {
     override def CDHAM(stateofgame: StateOfGame): Unit = {
         val tupla_mazos = stateofgame.createDecks
         val tupla_manos = stateofgame.createHands
-        val juego: Game = stateofgame.createMatch()
+        val tablero: Board = new Board()
+        var juego: Game = new Game()
+        juego = stateofgame.createMatch(tupla_mazos._1, tupla_mazos._2, tupla_manos._1, tupla_manos._2, tablero, juego)
         /** we make sure both players begin with the gems according to whats stipulated in the rules */
         assert(stateofgame.getMatch().getP1.getGems() == 2)
         assert(stateofgame.getMatch().getP2.getGems() == 2)
