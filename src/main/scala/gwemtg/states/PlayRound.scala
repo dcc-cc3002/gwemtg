@@ -20,7 +20,7 @@ class PlayRound extends Estado {
              * in this case the robot will play a card at random
              * and we will advance to the state << change board >>
              */
-        else if (stateofgame.getMatch.boardPoints(stateofgame.getMatch.getP1) > stateofgame.getMatchboardPoints(stateofgame.getMatch.getP2))
+        else if (stateofgame.getMatch.boardPoints(stateofgame.getMatch.getP1) > stateofgame.getMatch.boardPoints(stateofgame.getMatch.getP2))
             {
                 stateofgame.getMatch.getP2
                 this.changeState(stateofgame, new ChangeBoard())

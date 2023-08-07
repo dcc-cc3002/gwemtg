@@ -1,6 +1,7 @@
 
 package cl.uchile.dcc
-package gwemtg.cards
+package gwemtg
+package cards
 
 import cl.uchile.dcc.gwemtg.{Game, Player}
 import cl.uchile.dcc.gwemtg.board.Board

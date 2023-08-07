@@ -93,12 +93,12 @@ class StateOfGame {
      *
      * @return the game
      */
-    def createMatch(deck1: List[Card], deck2: List[Card], hand1: List[Card], hand2: List[Card], board: Board, game: Game): Game = {
+    def createMatch(deck1: List[Card], deck2: List[Card], hand1: List[Card], hand2: List[Card], board: Board): Game = {
         this.player1 = new Player("human", 2, deck1, hand1)
         this.player2 = new Player("robot", 2, deck2, hand2)
         this.board = new Board()
-        this.game = new Game(this.board, player1, player2)
-        this.game
+        val game: Game = new Game(this.board, player1, player2)
+        game
     }
 
 

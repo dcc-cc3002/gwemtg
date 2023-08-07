@@ -1,6 +1,7 @@
 
 package cl.uchile.dcc
-package gwemtg.cards
+package gwemtg
+package cards
 
 import java.util.Objects
 import scala.collection.mutable

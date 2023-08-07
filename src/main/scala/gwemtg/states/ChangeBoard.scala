@@ -17,7 +17,7 @@ package gwemtg.states
 import gwemtg.states.*
 
 class ChangeBoard extends Estado {
-    override def ChangeBoard(): Unit = {
+    override def ChangeBoard(stateofgame: StateOfGame): Unit = {
         this.changeState(stateofgame, new PlayRound())
     }
 }

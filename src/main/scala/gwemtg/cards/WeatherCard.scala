@@ -2,8 +2,8 @@
 package cl.uchile.dcc
 package gwemtg.cards
 
-import gwemtg.{Game, Player}
-import gwemtg.board.*
+
+import cl.uchile.dcc.gwemtg.{Game, Player}
 
 import java.util.Objects
 
@@ -47,7 +47,7 @@ class WeatherCard(val name: String, val description: String) extends Card with E
   /** getCMC
    * getCMC returns the mana cost of the card
    */
-  override def getCMC: Int = {CMC}
+  override def getCMC: Int = CMC
   
   /** overwrite equals for WeatherCard */
   override def equals(wc: Any): Boolean = wc match {

@@ -135,6 +135,10 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   def getHand: List[Card] = _hand
   /** getter del mazo */
   def getDeck: List[Card] = _deck
+  /** getter del mana pool */
+  def getManaPool: Int = _mana_pool
+  /** getter del contador de gemas */
+  def getGems: Int = gemCounter
 
   /**
    * funcion que juega una carta en una partida Game del juego Gwent
@@ -177,7 +181,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   /** drawInitialHand
    *  function that draws a hand of 10 cards
    */
-  def drawInitialHand: Unit = {
+  def drawInitialHand(): Unit = {
     for (i <- 0 until 10) {
       val carta: Card = this.draw
       _hand = carta :: _hand
@@ -188,7 +192,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    *  function that draws a hand of 3 cards
    *  used after the first round is done
    */
-  def draw3: Unit = {
+  def draw3(): Unit = {
     for (i <- 0 until 3) {
       val carta: Card = this.draw
       _hand = carta :: _hand
@@ -229,5 +233,5 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   /** loseGem
    * the player loses a gem
    */
-  def loseGem: Unit = {this.gemCounter -= 1}
+  def loseGem(): Unit = {this.gemCounter -= 1}
 }
