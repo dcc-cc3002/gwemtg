@@ -1,13 +1,10 @@
 >>> -1. mini tasks
 
-cards: add mana
-rules: add mana
-README.md: add mana
-
 tests para states
 1) en sogT poner un juego nuevo
 2) en states test jugar un juego entero 
 3) mezclar states test en cada test individual 
+
 
 >>> 0. Mensaje Personal
 
@@ -25,10 +22,10 @@ No cumple con entregas parciales (-0.9)
 
 Revisando los comentarios se menciona que se quería usar un state pattern, 
 pero no veo en ninguna parte que se haya hecho de esta manera. 
-Ademas, quería acotar que el controlador no esta implementado del todo bien. 
+Ademas, quería acotar que el controlador no esta implementado del to'o bien.
 Solo se pedia el controlador, y al usar tantos prints es como si se hubiera implementado 
 una vista al mismo tiempo lo cual no es lo que se pedia. 
-Me parece que no se tiene del todo claro el concepto de que es es un controlador, 
+Me parece que no se tiene del to'o claro el concepto de que es es un controlador,
 como se diferencia de una vista y como se debe implementar.
 
 

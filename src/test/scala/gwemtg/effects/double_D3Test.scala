@@ -96,7 +96,7 @@ class double_D3Test extends munit.FunSuite {
     impenetrableFog = new WeatherCard("Niebla Impenetrable", "Convierte el valor de fuerza de todas las cartas de rango a 1.")
     torrentialRain = new WeatherCard("LLuvia Torrencial", "Convierte el valor de fuerza de todas las cartas de asedio a 1.")
     clearWeather = new WeatherCard("Despejar", "Limpia todos los efectos de clima del campo de batalla.")
-    commanderHorn = new WeatherCard("Cuerno del Comandante", "Dobla la fuerza de todas las unidades de una fila propia al azar.")
+    commanderHorn = new double_D3("Cuerno del Comandante", "Dobla la fuerza de todas las unidades de una fila propia al azar.")
 
     geraltOfRivia = new CloseCombatCard("Geralt of Rivia", "vainilla", 5, 5)
     yenneferOfVengerberg = new RangedCombatCard("Yennefer of Vengerberg", "vinculo_estrecho", 3, 3)
@@ -113,8 +113,10 @@ class double_D3Test extends munit.FunSuite {
 
   test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works"){
     var board = new Board()
-    var player = new Player("Hugo", 2, List(), List())
-    var game = new Game(board, player, player)
+    var player = new Player("Hugo", 2, List(), List(troop1,ranged1,catapult1,commanderHorn))
+    var game = new Game(board, player, jugador1)
+    player.playCard(troop1)
+    player.ranged1
 
   }
 

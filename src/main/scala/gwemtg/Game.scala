@@ -154,7 +154,7 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
         counter += card.getPower
       }
     }
-//    else {throw new Exception("Player not found")}
+    //    else {throw new Exception("Player not found")}
     counter
   }
 
@@ -165,7 +165,7 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
     var counter: Int = 0
     if player == this.Player1 then for (card <- player.getHand) counter = counter + card.getPower
     else if player == this.Player2 then for (card <- player.getHand) counter = counter + card.getPower
-//    else {throw new Exception("Player not found")}
+    //    else {throw new Exception("Player not found")}
     counter
   }
 
@@ -188,12 +188,12 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
       this.Player1.loseGem()
       i = 2
     }
-//    else {throw new Exception("Error in nextRound")}
+    //    else {throw new Exception("Error in nextRound")}
     this.board.reset()
     this.getP1.draw3()
     this.getP2.draw3()
     i
-//    else {throw new Exception("Error in nextRound")}
+    //    else {throw new Exception("Error in nextRound")}
   }
 
 

@@ -27,17 +27,17 @@ import java.util.Objects
  * @since 1.0
  */
 class Player(val name: String, var gemCounter: Int, private var _deck: List[Card],
-             private var _hand: List[Card], private var _mana_pool: Int = 4) extends Equals {
+             private var _hand: List[Card]) extends Equals {
 
   /** Accessor method for the player's deck */
   def deck: List[Card] = _deck
 
   /** Accessor method for the player's hand */
   private def hand: List[Card] = _hand
-
+/*
   /** Accessor method for the player's mana pool */
   def manaPool: Int = _mana_pool
-
+*/
   /** Draws a card from the deck and adds it to the hand.
    *
    * The top card from the deck is removed and added to the player's hand.
@@ -135,8 +135,10 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   def getHand: List[Card] = _hand
   /** getter del mazo */
   def getDeck: List[Card] = _deck
+/*
   /** getter del mana pool */
   def getManaPool: Int = _mana_pool
+*/
   /** getter del contador de gemas */
   def getGems: Int = gemCounter
 

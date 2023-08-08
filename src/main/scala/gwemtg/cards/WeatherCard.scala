@@ -2,7 +2,8 @@ package hugodiazroa
 package gwemtg.cards
 
 
-import gwemtg.{Game, Player}
+import gwemtg.Game
+import gwemtg.Player
 
 import java.util.Objects
 
