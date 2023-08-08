@@ -5,6 +5,7 @@ import gwemtg.cards.*
 
 import java.util.Objects
 import scala.collection.mutable.ListBuffer
+import scala.util.control.NonLocalReturns
 
 /** Class representing a player in the Gwen't game.
  *
@@ -40,7 +41,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   private def manaPool: Int = _mana_pool
 
   /** Observer (a player can only play a game at the same time) */
-  val observer: ListBuffer[Game] = ListBuffer()
+  private val observer: ListBuffer[Game] = ListBuffer()
 
   /** register observer */
   def registerObserver(o: Game): Unit = observer += o
@@ -69,7 +70,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    * This is achieved by creating a new, shuffled list and reassigning _deck to it, rather
    * than by modifying the original list.
    */
-  def shuffleDeck: Unit = {
+  private def shuffleDeck(): Unit = {
     _deck = scala.util.Random.shuffle(_deck)
   }
 
@@ -125,10 +126,9 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
     /** pone una carta en el mazo (arriba) */
     cardIn(carta, 0)
 
-    /** baraja */
-    this.shuffleDeck
+      /** baraja */
+    this.shuffleDeck()
   }
-
   /** funcion draw es analoga a pop y devuelve la carta robada */
   private def draw: Card = {
     /** carta robada */
@@ -160,6 +160,7 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
    * funcion que saca una carta desde la mano del jugador
    */
   def removeCard(carta: Any): Unit = {
+
    /**
     * la carta se saca de la mano
     * en caso de que existan duplicados, se saca solo el primero

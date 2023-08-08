@@ -1,5 +1,6 @@
 package hugodiazroa
 package gwemtg
+package states
 
 import gwemtg.cards.*
 import gwemtg.board.*
@@ -138,6 +139,8 @@ class StateOfGameTest extends munit.FunSuite {
 
 
     safe.player1.playCard(safe.player1.getHand.head, safe.game)
+    safe.player1.playCard(safe.player1.getHand.head, safe.game)
+    safe.player1.playCard(safe.player1.getHand.head, safe.game)
 
     assertEquals(safe.player1.getGems, 2)
     assertEquals(safe.player2.getGems, 2)
@@ -147,6 +150,10 @@ class StateOfGameTest extends munit.FunSuite {
     assertEquals(safe.player2.getGems, 1)
 
     safe.player1.playCard(safe.player1.getHand.head, safe.game)
+    safe.player1.playCard(safe.player1.getHand.head, safe.game)
+
+    assertEquals(safe.game.killed.length, 0)
+
     safe.setState(new SubstractGems())
     safe.SubstractGems()
     assertEquals(safe.player1.getGems, 2)
@@ -200,6 +207,8 @@ class StateOfGameTest extends munit.FunSuite {
     assertEquals(safe.getState.getClass, new PlayRound().getClass)
 
     safe.player2.playCard(safe.player2.getHand.head, safe.game)
+    safe.player2.playCard(safe.player2.getHand.head, safe.game)
+    safe.player2.playCard(safe.player2.getHand.head, safe.game)
 
     assertEquals(safe.player1.getGems, 2)
     assertEquals(safe.player2.getGems, 2)
@@ -208,6 +217,7 @@ class StateOfGameTest extends munit.FunSuite {
     assertEquals(safe.player1.getGems, 1)
     assertEquals(safe.player2.getGems, 2)
 
+    safe.player2.playCard(safe.player2.getHand.head, safe.game)
     safe.player2.playCard(safe.player2.getHand.head, safe.game)
     safe.setState(new SubstractGems())
     safe.SubstractGems()

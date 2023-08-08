@@ -405,4 +405,18 @@ class GameTest extends munit.FunSuite {
     assertEquals(p2.getHand, List())
   }
 
+  test("add a  player to killed"){
+    val p1: Player = new Player("p1", 1, List(), List(eskel, vesemir, yen, eskel, vesemir, yen))
+    val p2: Player = new Player("p2", 2, List(), List(eskel, vesemir, yen, eskel, vesemir, yen))
+    val t: Board = new Board()
+    val g: Game = new Game(t, p1, p2)
+
+    assertEquals(g.killed.length, 0)
+    g.deadPlayers(p1)
+    assertEquals(g.killed.length, 1)
+    g.deadPlayers(p2)
+    assertEquals(g.killed.length, 2)
+
+  }
+
 }

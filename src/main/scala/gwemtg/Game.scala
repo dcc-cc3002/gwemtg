@@ -31,7 +31,7 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
   private def Player1 = _player1
   private def Player2 = _player2
 
-  private var killed: List[Player] = List()
+  var killed: List[Player] = List()
 
   /** getP1
    * returns the first player
@@ -141,8 +141,7 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
       {
         counter += card.getPower
       }
-    } else if (player == this.Player2) 
-    {
+    } else if (player == this.Player2) {
       for (card <- board.p2m.data) 
       {
         counter += card.getPower
