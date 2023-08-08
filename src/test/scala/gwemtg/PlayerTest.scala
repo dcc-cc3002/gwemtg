@@ -209,4 +209,9 @@ class PlayerTest extends munit.FunSuite{
     assertEquals(jugador.gemCounter, 1)
   }
 
+
+  /** we wont use mana in this iteration, still we will test it */
+  test("tests for mana"){
+    assertEquals(jugador.getManaPool, 4)
+  }
 }

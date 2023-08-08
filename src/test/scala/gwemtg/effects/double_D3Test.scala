@@ -4,7 +4,7 @@ package gwemtg
 import gwemtg.cards.*
 import gwemtg.board.*
 import gwemtg.Player
-
+import gwemtg.effects.double_D3
 import munit.*
 
 class double_D3Test extends munit.FunSuite {
@@ -16,7 +16,7 @@ class double_D3Test extends munit.FunSuite {
   var impenetrableFog: WeatherCard = _
   var torrentialRain: WeatherCard = _
   var clearWeather: WeatherCard = _
-  var commanderHorn: WeatherCard = _
+  var commanderHorn: double_D3 = _
   var geraltOfRivia: CloseCombatCard = _
   var yenneferOfVengerberg: RangedCombatCard = _
   var ciri: RangedCombatCard = _
@@ -115,9 +115,210 @@ class double_D3Test extends munit.FunSuite {
     var board = new Board()
     var player = new Player("Hugo", 2, List(), List(troop1,ranged1,catapult1,commanderHorn))
     var game = new Game(board, player, jugador1)
-    player.playCard(troop1)
-    player.ranged1
+    player.playCard(troop1, game)
+    player.playCard(ranged1,game)
+    player.playCard(catapult1,game)
+    assertEquals(game.boardPoints(player),3)
+    player.playCard(commanderHorn,game)
+    assertEquals(game.boardPoints(player),4)
 
   }
 
+  /** lets make sure all lines are taken */
+
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, player, jugador1)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, player, jugador1)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, player, jugador1)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, player, jugador1)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, player, jugador1)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, player, jugador1)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+
+
+  /** and for p2 */
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, jugador1, player)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, jugador1, player)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, jugador1, player)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, jugador1, player)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, jugador1, player)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, jugador1, player)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, jugador1, player)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, jugador1, player)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, jugador1, player)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
+  test("check if when a card with Dobla la fuerza de todas las unidades de una fila propia al azar. is player, the effect works") {
+    var board = new Board()
+    var player = new Player("Hugo", 2, List(), List(troop1, ranged1, catapult1, commanderHorn))
+    var game = new Game(board, jugador1, player)
+    player.playCard(troop1, game)
+    player.playCard(ranged1, game)
+    player.playCard(catapult1, game)
+    assertEquals(game.boardPoints(player), 3)
+    player.playCard(commanderHorn, game)
+    assertEquals(game.boardPoints(player), 4)
+
+  }
 }

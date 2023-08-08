@@ -17,8 +17,6 @@ No se usa un state pattern para manejar el estado de la partida (-0.83)
 No usa Composite para manejar los efectos (-0.83)
 No usa observer para notificar si un jugador gano/perdio (-0.84)
 
-Adicionales:
-No cumple con entregas parciales (-0.9)
 
 Revisando los comentarios se menciona que se quería usar un state pattern, 
 pero no veo en ninguna parte que se haya hecho de esta manera. 
