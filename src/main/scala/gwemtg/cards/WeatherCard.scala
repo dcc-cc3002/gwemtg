@@ -22,31 +22,31 @@ import java.util.Objects
  * @since 1.0
  */
 class WeatherCard(val name: String, val description: String) extends Card with Equals {
-  /** The converted mana cost of the card.
-   * aka: CMC
-   * This shows how much mana is needed to play the card.
-   * Climate cards have no mana cost, this means they are free to play.
-   */
+      /** The converted mana cost of the card.
+       * aka: CMC
+       * This shows how much mana is needed to play the card.
+       * Climate cards have no mana cost, this means they are free to play.
+       */
   val CMC: Int = 0
 
-  /** Checks if two objects belong to the class WeatherCard */
+      /** Checks if two objects belong to the class WeatherCard */
   def canEqual(other: Any): Boolean = other.isInstanceOf[WeatherCard]
 
-  /** Getter for the [[name]] of the card.
-   *
-   * @return The [[name]] of the card.
-   */
+      /** Getter for the [[name]] of the card.
+       *
+       * @return The [[name]] of the card.
+       */
   override def getName: String = name
 
 
-  /** getCMC
-   * getCMC returns the mana cost of the card
-   */
+      /** getCMC
+       * getCMC returns the mana cost of the card
+       */
   override def getCMC: Int = CMC
 
-  /** getDescription
-   * getDescription returns the description of the card
-   */
+      /** getDescription
+       * getDescription returns the description of the card
+       */
   override def getDescription: String = description
 
   /** overwrite equals for WeatherCard */
@@ -56,36 +56,35 @@ class WeatherCard(val name: String, val description: String) extends Card with E
   }
 
 
-  /** overwrite hashcode */
+    /** overwrite hashcode */
   override def hashCode: Int = {
     if this == null then Objects.hash(classOf[WeatherCard], null)
     else Objects.hash(classOf[WeatherCard], name)
   }
 
-  /** getPlayed 
-   * tells the zone to be edited after player plays the card with play()
-   */
+    /** getPlayed
+      * tells the zone to be edited after player plays the card with play()
+      */
   override def getPlayed(player: Player, game: Game): Unit = {
-    /** not the best implementation, but i want to finish the game */
     this.effect(player, game)
     game.addWC(this)
     player.removeCard(this)
   }
 
 
-  /** toString
-   * returns a string with the info of the card 
-   */
+      /** toString
+       * returns a string with the info of the card
+       */
   override def toString: String = {"WeatherCard: " + this.name + ", " + this.description}
 
 
-  /** getPower
-   * weather cards have no power
-   * thus, it returns 0
-   */
+      /** getPower
+       * weather cards have no power
+       * thus, it returns 0
+       */
   def getPower: Int = 0
 
-  /** effect: does nothing */
+      /** effect: does nothing */
   override def effect(player: Player, game: Game): Unit = {}
 
 }

@@ -4,7 +4,7 @@ package gwemtg
 import gwemtg.cards.*
 import gwemtg.board.*
 import gwemtg.Player
-import gwemtg.states.*
+import gwemtg.states.{PlayRound, SubstractGems, *}
 
 import munit.*
 
@@ -121,6 +121,7 @@ class StateOfGameTest extends munit.FunSuite {
     assert(safe.isBeginGame(), "Boolean asking if it is BeginGame or not")
     safe.BeginGame()
     assertEquals(safe.getState.getClass, new CDHAM().getClass)
+
     safe.CDHAM()
     assertEquals(safe.getState.getClass, new PlayRound().getClass)
     assertEquals(safe.player1.name, "human")
@@ -135,6 +136,76 @@ class StateOfGameTest extends munit.FunSuite {
     assert(safe.game.handPoints(safe.player2) >= 0)
     assert(safe.isPlayRound())
 
+
+    safe.player1.playCard(safe.player1.getHand.head, safe.game)
+
+    assertEquals(safe.player1.getGems, 2)
+    assertEquals(safe.player2.getGems, 2)
+    safe.setState(new SubstractGems())
+    safe.SubstractGems()
+    assertEquals(safe.player1.getGems, 2)
+    assertEquals(safe.player2.getGems, 1)
+
   }
 
+  test("other cases for substract gems: draw") {
+    //var estado = new Estado()
+    val safe = new StateOfGame()
+    assertEquals(safe.getState.getClass, new BeginGame().getClass)
+    safe.setState(new BeginGame())
+    assertEquals(safe.getState.getClass, new BeginGame().getClass)
+    assert(safe.isBeginGame(), "Boolean asking if it is BeginGame or not")
+    safe.BeginGame()
+    assertEquals(safe.getState.getClass, new CDHAM().getClass)
+
+    safe.CDHAM()
+    assertEquals(safe.getState.getClass, new PlayRound().getClass)
+
+
+    assertEquals(safe.player1.getGems, 2)
+    assertEquals(safe.player2.getGems, 2)
+    safe.setState(new SubstractGems())
+    safe.SubstractGems()
+    assertEquals(safe.player1.getGems, 1)
+    assertEquals(safe.player2.getGems, 1)
+    safe.setState(new SubstractGems())
+    safe.SubstractGems()
+    assertEquals(safe.player1.getGems, 0)
+    assertEquals(safe.player2.getGems, 0)
+    assert(safe.isDraw())
+    safe.Draw()
+  }
+
+
+  test("other cases for substract gems: p1 loses a gem") {
+    //var estado = new Estado()
+    val safe = new StateOfGame()
+    assertEquals(safe.getState.getClass, new BeginGame().getClass)
+    safe.setState(new BeginGame())
+    assertEquals(safe.getState.getClass, new BeginGame().getClass)
+    assert(safe.isBeginGame(), "Boolean asking if it is BeginGame or not")
+    safe.BeginGame()
+    assertEquals(safe.getState.getClass, new CDHAM().getClass)
+
+    safe.CDHAM()
+    assertEquals(safe.getState.getClass, new PlayRound().getClass)
+
+    safe.player2.playCard(safe.player2.getHand.head, safe.game)
+
+    assertEquals(safe.player1.getGems, 2)
+    assertEquals(safe.player2.getGems, 2)
+    safe.setState(new SubstractGems())
+    safe.SubstractGems()
+    assertEquals(safe.player1.getGems, 1)
+    assertEquals(safe.player2.getGems, 2)
+
+    safe.player2.playCard(safe.player2.getHand.head, safe.game)
+    safe.setState(new SubstractGems())
+    safe.SubstractGems()
+    assertEquals(safe.player1.getGems, 0)
+    assertEquals(safe.player2.getGems, 2)
+
+    assert(safe.isP2Victory())
+    safe.P2Win()
+  }
 }

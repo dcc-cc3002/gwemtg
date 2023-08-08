@@ -233,5 +233,5 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   /** loseGem
    * the player loses a gem
    */
-  def loseGem(): Unit = {this.gemCounter -= 1}
+  def loseGem(): Unit = {this.gemCounter = this.gemCounter - 1}
 }

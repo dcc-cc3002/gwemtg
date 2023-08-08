@@ -57,6 +57,11 @@ class StateOfGame() {
     def isBeginGame(): Boolean = state.isBeginGame()
     def isRobotVSRobot(): Boolean = state.isRobotVSRobot()
     def isPlayRound(): Boolean = state.isPlayRound()
-    def isGameFinished(): Boolean = state.isGameFinished()
-    
+
+    def isDraw(): Boolean = state.isDraw()
+
+    def isP1Victory(): Boolean = state.isP1Victory()
+
+    def isP2Victory(): Boolean = state.isP2Victory()
+
 }

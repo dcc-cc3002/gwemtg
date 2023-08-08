@@ -54,5 +54,7 @@ class Estado() {
 
     def isPlayRound(): Boolean = false
 
-    def isGameFinished(): Boolean = false
+    def isDraw(): Boolean = false
+    def isP1Victory(): Boolean = false
+    def isP2Victory(): Boolean = false
 }
