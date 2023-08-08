@@ -36,7 +36,11 @@ class StateOfGame() {
     var player2: Player = _
     var board: Board = _
     var game: Game = _
-
+    
+    /** buffer for the missing changeBoard 
+      * var buffer: (Card, Card) = (nullcard, nullcard)
+      */
+    
     def getState: Estado = state
     def setState(newState: Estado): Unit = {
         state = newState
@@ -44,18 +48,18 @@ class StateOfGame() {
     }
 
     def BeginGame(): Unit = state BeginGame this
-    def RobotVSRobot(): Unit = state RobotVSRobot this
+    //def RobotVSRobot(): Unit = state RobotVSRobot this
     def CDHAM(): Unit = state CDHAM this
     def PlayRound(): Unit = state PlayRound this
     def SubstractGems(): Unit = state SubstractGems this
-    def ChangeBoard(): Unit = state ChangeBoard this
+    //def ChangeBoard(): Unit = state ChangeBoard this
     def Draw(): Unit = state Draw this
     def P1Win(): Unit = state P1Win this
     def P2Win(): Unit = state P2Win this
     def ShowResult(): Unit = state ShowResult this
 
     def isBeginGame(): Boolean = state.isBeginGame()
-    def isRobotVSRobot(): Boolean = state.isRobotVSRobot()
+    //def isRobotVSRobot(): Boolean = state.isRobotVSRobot()
     def isPlayRound(): Boolean = state.isPlayRound()
 
     def isDraw(): Boolean = state.isDraw()

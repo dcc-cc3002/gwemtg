@@ -24,7 +24,10 @@ class PlayRound extends Estado {
              */
         else if (stateofgame.game.boardPoints(stateofgame.player1) > stateofgame.game.boardPoints(stateofgame.player2))
             {
-                this.changeState(stateofgame, new ChangeBoard())
+                /** for implementing changeState is needed a buffer of picked cards in StateOfGame 
+                 * this is implemented in comments, because the deadline caught me 
+                 */
+                // this.changeState(stateofgame, new ChangeBoard())
             } else {
                 /** if the robot has less potential points than the human's visible points
                  * we will make the robot pass

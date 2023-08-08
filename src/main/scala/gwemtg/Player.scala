@@ -4,6 +4,7 @@ package gwemtg
 import gwemtg.cards.*
 
 import java.util.Objects
+import scala.collection.mutable.ListBuffer
 
 /** Class representing a player in the Gwen't game.
  *
@@ -36,7 +37,13 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   private def hand: List[Card] = _hand
 
   /** Accessor method for the player's mana pool */
-  def manaPool: Int = _mana_pool
+  private def manaPool: Int = _mana_pool
+
+  /** Observer (a player can only play a game at the same time) */
+  val observer: ListBuffer[Game] = ListBuffer()
+
+  /** register observer */
+  def registerObserver(o: Game): Unit = observer += o
 
   /** Draws a card from the deck and adds it to the hand.
    *
@@ -233,5 +240,10 @@ class Player(val name: String, var gemCounter: Int, private var _deck: List[Card
   /** loseGem
    * the player loses a gem
    */
-  def loseGem(): Unit = {this.gemCounter = this.gemCounter - 1}
+  def loseGem(): Unit = {
+    this.gemCounter = this.gemCounter - 1
+    if (this.gemCounter < 1) {
+      for (o <- observer) o.deadPlayers(this)
+    }
+  }
 }

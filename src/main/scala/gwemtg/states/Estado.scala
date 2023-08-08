@@ -38,11 +38,11 @@ class Estado() {
     private def error() = throw new Exception("Error: wrong state")
 
     def BeginGame(stateofgame: StateOfGame): Unit = error()
-    def RobotVSRobot(stateofgame: StateOfGame): Unit = error()
+    //def RobotVSRobot(stateofgame: StateOfGame): Unit = error()
     def CDHAM(stateofgame: StateOfGame): Unit = error()
     def PlayRound(stateofgame: StateOfGame): Unit = error()
     def SubstractGems(stateofgame: StateOfGame): Unit = error()
-    def ChangeBoard(stateofgame: StateOfGame): Unit = error()
+    //def ChangeBoard(stateofgame: StateOfGame): Unit = error()
     def ShowResult(stateofgame: StateOfGame): Unit = error()
     def Draw(stateofgame: StateOfGame): Unit = error()
     def P1Win(stateofgame: StateOfGame): Unit = error()
@@ -50,7 +50,7 @@ class Estado() {
 
     def isBeginGame(): Boolean = false
 
-    def isRobotVSRobot(): Boolean = false
+    //def isRobotVSRobot(): Boolean = false
 
     def isPlayRound(): Boolean = false
 

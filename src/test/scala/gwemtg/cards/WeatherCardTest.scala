@@ -58,4 +58,12 @@ class WeatherCardTest extends munit.FunSuite {
     assertEquals(commanderHorn.getPower, 0)
   }
 
+  test("get cmc"){
+    assertEquals(bitingFrost.getCMC, 0)
+    assertEquals(impenetrableFog.getCMC, 0)
+    assertEquals(torrentialRain.getCMC, 0)
+    assertEquals(clearWeather.getCMC, 0)
+    assertEquals(commanderHorn.getCMC, 0)
+  }
+
 }

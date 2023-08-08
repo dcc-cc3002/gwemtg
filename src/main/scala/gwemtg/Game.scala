@@ -10,8 +10,8 @@ import gwemtg.cards.*
  * A class representing a game of Gwent.
  * this abstraction acomplishes the role of an observer
  * in the design pattern observer, the players are the observable
- * they notify the game when they play a card, and the game updates the board
- * the same way, players notify the game when they pass and when they die (their gems are 0)
+ * they notify the game when they die, when the state is triggered
+ * the players die  when their gems are 0
  *
  * @param board The board of the game.
  * @param _player1 The first player of the game.
@@ -30,7 +30,9 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
 
   private def Player1 = _player1
   private def Player2 = _player2
-  
+
+  private var killed: List[Player] = List()
+
   /** getP1
    * returns the first player
    */
@@ -196,5 +198,11 @@ class Game(val board: Board, private val _player1: Player, private val _player2:
     //    else {throw new Exception("Error in nextRound")}
   }
 
-
+  /**
+   * deadPlayers
+   * add dead players to killed list
+   */
+  def deadPlayers(p: Player): Unit ={
+    this.killed = List(p) ::: this.killed
+  }
 }

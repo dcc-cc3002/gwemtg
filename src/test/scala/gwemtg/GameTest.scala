@@ -124,6 +124,10 @@ class GameTest extends munit.FunSuite {
     assertEquals(partida2.getP2, jugador2)
   }
 
+  test("test for getboard"){
+    assertEquals(partida.getBoard, tablero1)
+  }
+
   /**
    * exception to the rule, two identical games should be different even if everything is equal
    * ie. partida and partida3 are different even if they have the same board, players and cards
