@@ -146,6 +146,15 @@ class StateOfGameTest extends munit.FunSuite {
     assertEquals(safe.player1.getGems, 2)
     assertEquals(safe.player2.getGems, 1)
 
+    safe.player1.playCard(safe.player1.getHand.head, safe.game)
+    safe.setState(new SubstractGems())
+    safe.SubstractGems()
+    assertEquals(safe.player1.getGems, 2)
+    assertEquals(safe.player2.getGems, 0)
+
+    assert(safe.isP1Victory())
+    safe.P1Win()
+
   }
 
   test("other cases for substract gems: draw") {
