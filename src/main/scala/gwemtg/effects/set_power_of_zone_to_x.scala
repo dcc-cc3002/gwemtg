@@ -13,7 +13,8 @@ import gwemtg.cards.*
 
 
 
-trait set_power_of_zone_to_x(row: Int, x: Int) extends WeatherCard {
+class set_power_of_zone_to_x(row: Int, x: Int, override val name: String, override val description: String) extends WeatherCard(name, description) {
+
   override def effect(player: Player, game: Game): Unit = {
     if (player == game.getP1) {
       row match {
@@ -29,5 +30,4 @@ trait set_power_of_zone_to_x(row: Int, x: Int) extends WeatherCard {
       }
     }
   }
-
 }
